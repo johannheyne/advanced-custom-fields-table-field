@@ -1,0 +1,304 @@
+.acf-table-field-wrap {
+	padding: 11px 26px 11px 11px;
+}
+
+.acf-table-field-wrap,
+.acf-table-field-wrap *,
+.acf-table-field-wrap *:before,
+.acf-table-field-wrap *:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* TABLE { */
+
+	.acf-table-field-table {
+		display: table;
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	.acf-table-field-body-row {
+		width: 100%;
+	}
+
+	/* TOP { */
+
+		.acf-table-field-top-row {
+			position: relative;
+			display: table-row;
+		}
+		.acf-table-field-top-left {
+			position: relative;
+			display: table-cell;
+			width: 1px;
+			padding: 4px 8px 4px 16px;
+			height: 27px;
+		}
+		.acf-table-field-top-cell {
+			position: relative;
+			display: table-cell;
+			padding: 4px 8px;
+			border: 1px solid #e1e1e1;
+			background-color: #eee;
+			cursor: move;
+			min-width: 68px;
+		}
+		.acf-table-field-top-right {
+			position: relative;
+			display: table-cell;
+			width: 26px;
+		}
+		.acf-table-field-top-cont {
+			margin: 0;
+			padding: 0;
+			font-size: inherit;
+			line-height: inherit;
+			text-align: center;
+			color: #aaa;
+		}
+
+	/* TOP } */
+
+	/* HEADER { */
+
+		.acf-table-field-header-row {
+			position: relative;
+			display: table-row;
+		}
+		.acf-table-field-header-left {
+			position: relative;
+			display: table-cell;
+			height: 28px;
+		}
+		.acf-table-field-header-cell {
+			position: relative;
+			display: table-cell;
+			padding: 4px 8px;
+			border: 1px solid #e1e1e1;
+			background-color: #f9f9f9;
+		}
+		.acf-table-field-header-right {
+			position: relative;
+			display: table-cell;
+			width: 26px;
+		}
+		.acf-table-field-header-cont {
+			margin: 0;
+			padding: 0;
+			font-size: inherit;
+			line-height: inherit;
+			font-weight: bold;
+		}
+
+	/* HEADER } */
+
+	/* BODY { */
+
+		.acf-table-field-body-row {
+			position: relative;
+			display: table-row;
+		}
+		.acf-table-field-body-left {
+			position: relative;
+			display: table-cell;
+			border: 1px solid #e1e1e1;
+			padding: 4px 8px 4px 16px;
+			background-color: #eee;
+			height: 27px;
+			cursor: move;
+			text-align: right;
+			color: #aaa;
+		}
+		.acf-table-field-body-cell {
+			position: relative;
+			display: table-cell;
+			border: 1px solid #e1e1e1;
+			padding: 4px 8px;
+			background-color: white;
+
+		}
+		.acf-table-field-body-right {
+			position: relative;
+			display: table-cell;
+		}
+		.acf-table-field-body-cont {
+			margin: 0;
+			padding: 0;
+			font-size: inherit;
+			line-height: inherit;
+
+			/* FOLD CELLS { *off/
+
+				max-height: 18px;
+				overflow: hidden;
+
+			/* FOLD CELLS } */
+		}
+
+	/* BODY } */
+
+	/* BOTTOM { */
+
+		.acf-table-field-bottom-row {
+			position: relative;
+			display: table-row;
+		}
+		.acf-table-field-bottom-left {
+			position: relative;
+			display: table-cell;
+			height: 24px;
+		}
+		.acf-table-field-bottom-cell {
+			position: relative;
+			display: table-cell;
+		}
+		.acf-table-field-bottom-right {
+			position: relative;
+			display: table-cell;
+		}
+
+	/* BOTTOM } */
+
+	/* HIDES { */
+
+		/* .acf-table-field-hide-header { */
+
+			.acf-table-field-hide-header .acf-table-field-header-row,
+			.acf-table-field-hide-header .acf-table-field-header-row > * {
+				height: 0 !important;
+				font-size: 0 !important;
+				line-height: 0 !important;
+				padding: 0 !important;
+				border: 0 !important;
+			}
+			.acf-table-field-hide-header .acf-table-field-top-row > * {
+				border-bottom: none;
+			}
+
+		/* .acf-table-field-hide-header } */
+
+		/* .acf-table-field-hide-left { */
+
+			.acf-table-field.acf-table-field-hide-left > * > *:first-child {
+				font-size: 0 !important;
+				line-height: 0 !important;
+				width: 16px !important;
+				padding: 0 !important;
+				//border: 0 !important;
+				background: none !important;
+				border-left: none;
+			}
+
+		/* .acf-table-field-hide-left } */
+
+		/* .acf-table-field-hide-top { */
+
+			.acf-table-field.acf-table-field-hide-top .acf-table-field-top-left,
+			.acf-table-field.acf-table-field-hide-top .acf-table-field-top-cell,
+			.acf-table-field.acf-table-field-hide-top .acf-table-field-top-right {
+				height: 0 !important;
+				font-size: 0 !important;
+				line-height: 0 !important;
+				height: 16px !important;
+				//padding: 0 !important;
+				//border: 0 !important;
+				background: none !important;
+				border-top: none;
+			}
+
+		/* .acf-table-field-hide-top } */
+
+	/* HIDE } */
+
+/* TABLE } */
+
+/* BUTTONS { */
+
+	.acf-table-field-add-col {
+		position: absolute;
+		top: -9px;
+		right: -10px;
+		z-index: 1;
+	}
+	.acf-table-field-add-row {
+		position: absolute;
+		bottom: -9px;
+		left: -10px;
+		z-index: 1;
+	}
+	.acf-table-field-remove-col {
+		position: absolute;
+		top: 4px;
+		left: 50%;
+		margin-left: -10px;
+	}
+	.acf-table-field-remove-row {
+		position: absolute;
+		left: 6px;
+		top: 50%;
+		margin-top: -10px;
+	}
+
+/* BUTTONS } */
+
+/* CELL EDITOR { */
+
+	.acf-table-field-cell-editor {
+		position: absolute;
+		border: 3px solid #2ea2cc;
+		top: -67px;
+		left: 0;
+		z-index: 2;
+		font-size: 0;
+		line-height: 0;
+	}
+	.acf-table-field-cell-editor:before {
+		content: "";
+		display: block;
+		position: absolute;
+		left: 3px;
+		bottom: -17px;
+		width 0;
+		height: 0;
+		border: 7px solid transparent;
+		border-top: 7px solid #2ea2cc;
+	}
+	.acf-table-field-cell-editor:after {
+		content: "";
+		display: block;
+		position: absolute;
+		left: 4px;
+		bottom: -12px;
+		width 0;
+		height: 0;
+		border: 6px solid transparent;
+		border-top: 6px solid #e5f8ff;
+	}
+	.acf-table-field-cell-editor-textarea {
+		border: none;
+		padding: 3px 7px !important;
+		background-color: #e5f8ff;
+		font-size: 13px;
+		line-height: 1.4;
+		min-width: 180px;
+		min-height: 61px !important;
+	}
+
+/* CELL EDITOR } */
+
+/* OPTIONBOX { */
+
+	.acf-table-field-optionbox {
+		padding-bottom: 8px;
+		margin-bottom: 8px;
+	}
+	.acf-flexible-content .acf-table-field-optionbox {
+		border-bottom: 1px solid #e1e1e1;
+		padding-bottom: 10px;
+		margin-bottom: 10px;
+	}
+
+/* OPTIONBOX } */
