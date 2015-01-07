@@ -1,0 +1,103 @@
+=== Advanced Custom Fields: Table Field ===
+Contributors: jonua
+Tags: acf table
+Requires at least: 3.0
+Tested up to: 4.1
+Stable tag: trunk
+License: GPLv2 or later
+
+A Table Field Add-on for the Advanced Custom Fields Plugin
+
+== Description ==
+
+
+The Table field plugin enables easely editing a table.  
+The plugin ist compatible with ACF4 and ACF5.  
+The table field works also with the repeater and flexible field types.
+
+* table header (option)
+* add and remove table columns and rows
+* change order of columns and rows by dragging
+
+To display the table fields data as an html table you can start with the following code.
+
+`
+$table = get_field( 'your_table_field_name' );
+
+if ( $table ) {
+
+	echo '<table border="0">';
+
+		if ( $table['header'] ) {
+
+			echo '<thead>';
+
+				echo '<tr>';
+
+					foreach ( $table['header'] as $th ) {
+
+						echo '<th>';
+							echo $th['c'];
+						echo '</th>';
+					}
+
+				echo '</tr>';
+
+			echo '</thead>';
+		}
+
+		echo '<tbody>';
+
+			foreach ( $table['body'] as $tr ) {
+
+				echo '<tr>';
+
+					foreach ( $tr as $td ) {
+
+						echo '<td>';
+							echo $td['c'];
+						echo '</td>';
+					}
+
+				echo '</tr>';
+			}
+
+		echo '</tbody>';
+
+	echo '</table>';
+}
+`
+
+== Installation ==
+
+This software can be used as both a WP plugin and a theme include.
+However, only when activated as a plugin will updates be available.
+
+= Plugin =
+1. Copy the 'acf-table' folder into your plugins folder
+2. Activate the plugin via the Plugins admin page
+
+= Include =
+1. Copy the 'acf-table' folder into your theme folder (can use sub folders).  
+   You can place the folder anywhere inside the 'wp-content' directory
+2. Edit your functions.php file and add the following code to include the field:
+
+`
+include_once('acf-table/acf-table.php');
+`
+3. Make sure the path is correct to include the acf-table.php file
+
+
+== Screenshots ==
+
+1. The Field Settings
+
+2. The Field Content Editing
+
+2. Grab the rows and columns in the grey area and drag them.
+
+
+== Changelog ==
+
+= 1.0 =
+* Official Release of the free version

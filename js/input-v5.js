@@ -9,74 +9,75 @@ jQuery(document).ready(function($){
 
 		t.param.class = {
 
-			btn_remove_row:	 'acf-button-remove acf-table-field-remove-row',
-			btn_add_row:		'acf-button-add acf-table-field-add-row',
-			btn_add_col:		'acf-button-add acf-table-field-add-col',
-			btn_remove_col:	 'acf-button-remove acf-table-field-remove-col',
+			btn_small:		'acf-icon small',
+			btn_add_row:	'acf-sprite-add',
+			btn_add_col:	'acf-sprite-add',
+			btn_remove_row:	'acf-sprite-remove',
+			btn_remove_col:	'acf-sprite-remove',
 		};
 
 		t.param.htmlbuttons = {
 
-			add_row:		'<a href="#" class="' + t.param.class.btn_add_row + '"></a>',
-			remove_row:	 '<a href="#" class="' + t.param.class.btn_remove_row + '"></a>',
-			add_col:		'<a href="#" class="' + t.param.class.btn_add_col + '"></a>',
-			remove_col:	 '<a href="#" class="' + t.param.class.btn_remove_col + '"></a>',
+			add_row:		'<a href="#" class="acf-table-add-row ' + t.param.class.btn_small + '"><i class="' + t.param.class.btn_add_row + '"></i></a>',
+			remove_row:		'<a href="#" class="acf-table-remove-row ' + t.param.class.btn_small + '"><i class="' + t.param.class.btn_remove_row + '"></i></a>',
+			add_col:		'<a href="#" class="acf-table-add-col ' + t.param.class.btn_small + '"><i class="' + t.param.class.btn_add_col + '"></i></a>',
+			remove_col:		'<a href="#" class="acf-table-remove-col ' + t.param.class.btn_small + '"><i class="' + t.param.class.btn_remove_col + '"></i></a>',
 		};
 
 		t.param.htmltable = {
 
-			body_row:	   '<div class="acf-table-field-body-row">' +
-								'<div class="acf-table-field-body-left">' +
+			body_row:	   '<div class="acf-table-body-row">' +
+								'<div class="acf-table-body-left">' +
 									t.param.htmlbuttons.add_row +
-									'<div class="acf-table-field-body-cont"><!--ph--></div>' +
+									'<div class="acf-table-body-cont"><!--ph--></div>' +
 								'</div>' +
-								'<div class="acf-table-field-body-right">' +
+								'<div class="acf-table-body-right">' +
 									t.param.htmlbuttons.remove_row +
 								'</div>' +
 							'</div>',
 
-			top_cell:	   '<div class="acf-table-field-top-cell" data-colparam="">' +
+			top_cell:	   '<div class="acf-table-top-cell" data-colparam="">' +
 								t.param.htmlbuttons.add_col +
-								'<div class="acf-table-field-top-cont"><!--ph--></div>' +
+								'<div class="acf-table-top-cont"><!--ph--></div>' +
 							'</div>',
 
-			header_cell:	'<div class="acf-table-field-header-cell">' +
-								'<div class="acf-table-field-header-cont"><!--ph--></div>' +
+			header_cell:	'<div class="acf-table-header-cell">' +
+								'<div class="acf-table-header-cont"><!--ph--></div>' +
 							'</div>',
 
-			body_cell:	  '<div class="acf-table-field-body-cell">' +
-								'<div class="acf-table-field-body-cont"><!--ph--></div>' +
+			body_cell:	  '<div class="acf-table-body-cell">' +
+								'<div class="acf-table-body-cont"><!--ph--></div>' +
 							'</div>',
 
-			bottom_cell:	'<div class="acf-table-field-bottom-cell">' +
+			bottom_cell:	'<div class="acf-table-bottom-cell">' +
 								t.param.htmlbuttons.remove_col +
 							'</div>',
 
-			table:		   '<div class="acf-table-field-wrap">' +
-								'<div class="acf-table-field-table">' + //  acf-table-field-hide-header acf-table-field-hide-left acf-table-field-hide-top
-									'<div class="acf-table-field-top-row">' +
-										'<div class="acf-table-field-top-left">' +
+			table:		   '<div class="acf-table-wrap">' +
+								'<div class="acf-table-table">' + //  acf-table-hide-header acf-table-hide-left acf-table-hide-top
+									'<div class="acf-table-top-row">' +
+										'<div class="acf-table-top-left">' +
 											t.param.htmlbuttons.add_col +
 										'</div>' +
-										'<div class="acf-table-field-top-right"></div>' +
+										'<div class="acf-table-top-right"></div>' +
 									'</div>' +
-									'<div class="acf-table-field-header-row acf-table-field-header-hide-off">' +
-										'<div class="acf-table-field-header-left">' +
+									'<div class="acf-table-header-row acf-table-header-hide-off">' +
+										'<div class="acf-table-header-left">' +
 											t.param.htmlbuttons.add_row +
 										'</div>' +
-										'<div class="acf-table-field-header-right"></div>' +
+										'<div class="acf-table-header-right"></div>' +
 									'</div>' +
-									'<div class="acf-table-field-bottom-row">' +
-										'<div class="acf-table-field-bottom-left"></div>' +
-										'<div class="acf-table-field-bottom-right"></div>' +
+									'<div class="acf-table-bottom-row">' +
+										'<div class="acf-table-bottom-left"></div>' +
+										'<div class="acf-table-bottom-right"></div>' +
 									'</div>' +
 								'</div>' +
 
 							'</div>',
 		};
 
-		t.param.htmleditor =	'<div class="acf-table-field-cell-editor">' +
-									'<textarea name="acf-table-field-cell-editor-textarea" class="acf-table-field-cell-editor-textarea"></textarea>' +
+		t.param.htmleditor =	'<div class="acf-table-cell-editor">' +
+									'<textarea name="acf-table-cell-editor-textarea" class="acf-table-cell-editor-textarea"></textarea>' +
 								'</div>';
 
 		t.init = function() {
@@ -96,7 +97,7 @@ jQuery(document).ready(function($){
 
 		t.each_table = function( ) {
 
-			$('.field_type-table .acf-table-field-root').each( function() {
+			$('.field_type-table .acf-table-root').each( function() {
 
 				var p = {};
 				p.obj_root = $( this );
@@ -124,13 +125,13 @@ jQuery(document).ready(function($){
 
 			// HEADER: CHECKBOX ACTIONS {
 
-				$( 'body' ).on( 'click', '.acf-table-field-fc-opt-use-header', function() {
+				$( 'body' ).on( 'click', '.acf-table-fc-opt-use-header', function() {
 
 					var that = $( this ),
 						p = {};
 
-					p.obj_root = that.parents( '.acf-table-field-root' );
-					p.obj_table = p.obj_root.find( '.acf-table-field-table' );
+					p.obj_root = that.parents( '.acf-table-root' );
+					p.obj_table = p.obj_root.find( '.acf-table-table' );
 
 					t.data_get( p );
 
@@ -138,14 +139,14 @@ jQuery(document).ready(function($){
 
 					if ( that.is(':checked') ) {
 
-						p.obj_table.removeClass( 'acf-table-field-hide-header' );
+						p.obj_table.removeClass( 'acf-table-hide-header' );
 
 						p.data.p.o.uh = 1;
 						t.update_table_data_field( p );
 					}
 					else {
 
-						p.obj_table.addClass( 'acf-table-field-hide-header' );
+						p.obj_table.addClass( 'acf-table-hide-header' );
 
 						p.data.p.o.uh = 0;
 						t.update_table_data_field( p );
@@ -162,8 +163,8 @@ jQuery(document).ready(function($){
 
 				// SORTABLE {
 
-					$( '.acf-table-field-table' ).sortable('destroy');
-					$( '.acf-table-field-table' ).unbind();
+					$( '.acf-table-table' ).sortable('destroy');
+					$( '.acf-table-table' ).unbind();
 
 					window.setTimeout( function() {
 
@@ -263,13 +264,13 @@ jQuery(document).ready(function($){
 
 			// TABLE GET OBJECTS {
 
-				p.obj_table = p.obj_root.find( '.acf-table-field-table' );
-				p.obj_top_row = p.obj_root.find( '.acf-table-field-top-row' ),
-				p.obj_top_insert = p.obj_top_row.find( '.acf-table-field-top-right' ),
-				p.obj_header_row = p.obj_root.find( '.acf-table-field-header-row' ),
-				p.obj_header_insert = p.obj_header_row.find( '.acf-table-field-header-right' ),
-				p.obj_bottom_row = p.obj_root.find( '.acf-table-field-bottom-row' ),
-				p.obj_bottom_insert = p.obj_bottom_row.find( '.acf-table-field-bottom-right' );
+				p.obj_table = p.obj_root.find( '.acf-table-table' );
+				p.obj_top_row = p.obj_root.find( '.acf-table-top-row' ),
+				p.obj_top_insert = p.obj_top_row.find( '.acf-table-top-right' ),
+				p.obj_header_row = p.obj_root.find( '.acf-table-header-row' ),
+				p.obj_header_insert = p.obj_header_row.find( '.acf-table-header-right' ),
+				p.obj_bottom_row = p.obj_root.find( '.acf-table-bottom-row' ),
+				p.obj_bottom_insert = p.obj_bottom_row.find( '.acf-table-bottom-right' );
 
 			// }
 
@@ -313,7 +314,7 @@ jQuery(document).ready(function($){
 
 			// BODY ROWS CELLS {
 
-				var body_rows = p.obj_root.find( '.acf-table-field-body-row'),
+				var body_rows = p.obj_root.find( '.acf-table-body-row'),
 					row_i = 0;
 
 				if ( body_rows ) {
@@ -321,7 +322,7 @@ jQuery(document).ready(function($){
 					body_rows.each( function() {
 
 						var body_row = $( this ),
-							row_insert = body_row.find( '.acf-table-field-body-right' );
+							row_insert = body_row.find( '.acf-table-body-right' );
 
 						for( i in p.data.b[ row_i ] ) {
 
@@ -354,7 +355,7 @@ jQuery(document).ready(function($){
 
 				var v = {};
 
-			   v.obj_use_header = p.obj_root.find( '.acf-table-field-fc-opt-use-header' );
+			   v.obj_use_header = p.obj_root.find( '.acf-table-fc-opt-use-header' );
 
 			// }
 
@@ -366,7 +367,7 @@ jQuery(document).ready(function($){
 
 					if ( p.field_options.use_header === 2 ) {
 
-						p.obj_table.addClass( 'acf-table-field-hide-header' );
+						p.obj_table.addClass( 'acf-table-hide-header' );
 
 						p.data.p.o.uh = 0;
 						t.update_table_data_field( p );
@@ -400,13 +401,13 @@ jQuery(document).ready(function($){
 
 					if ( p.data.p.o.uh === 1 ) {
 
-						p.obj_table.removeClass( 'acf-table-field-hide-header' );
+						p.obj_table.removeClass( 'acf-table-hide-header' );
 
 					}
 
 					if ( p.data.p.o.uh === 0 ) {
 
-						p.obj_table.addClass( 'acf-table-field-hide-header' );
+						p.obj_table.addClass( 'acf-table-hide-header' );
 					}
 
 				// }
@@ -416,7 +417,7 @@ jQuery(document).ready(function($){
 
 		t.table_add_col = function() {
 
-			$( 'body' ).on( 'click', '.acf-table-field-add-col', function( e ) {
+			$( 'body' ).on( 'click', '.acf-table-add-col', function( e ) {
 
 				e.preventDefault();
 
@@ -424,19 +425,19 @@ jQuery(document).ready(function($){
 					that = $( this ),
 					that_index = that.parent().index();
 
-				p.obj_root = that.parents( '.acf-table-field-root' );
-				p.obj_table = p.obj_root.find( '.acf-table-field-table' );
+				p.obj_root = that.parents( '.acf-table-root' );
+				p.obj_table = p.obj_root.find( '.acf-table-table' );
 
-				$( p.obj_table.find( '.acf-table-field-top-row' ).children()[ that_index ] ).after( t.param.htmltable.top_cell.replace( '<!--ph-->', '' ) );
+				$( p.obj_table.find( '.acf-table-top-row' ).children()[ that_index ] ).after( t.param.htmltable.top_cell.replace( '<!--ph-->', '' ) );
 
-				$( p.obj_table.find( '.acf-table-field-header-row' ).children()[ that_index ] ).after( t.param.htmltable.header_cell.replace( '<!--ph-->', '' ) );
+				$( p.obj_table.find( '.acf-table-header-row' ).children()[ that_index ] ).after( t.param.htmltable.header_cell.replace( '<!--ph-->', '' ) );
 
-				p.obj_table.find( '.acf-table-field-body-row' ).each( function() {
+				p.obj_table.find( '.acf-table-body-row' ).each( function() {
 
 					$( $( this ).children()[ that_index ] ).after( t.param.htmltable.body_cell.replace( '<!--ph-->', '' ) );
 				} );
 
-				$( p.obj_table.find( '.acf-table-field-bottom-row' ).children()[ that_index ] ).after( t.param.htmltable.bottom_cell.replace( '<!--ph-->', '' ) );
+				$( p.obj_table.find( '.acf-table-bottom-row' ).children()[ that_index ] ).after( t.param.htmltable.bottom_cell.replace( '<!--ph-->', '' ) );
 
 				t.table_top_labels( p );
 
@@ -446,7 +447,7 @@ jQuery(document).ready(function($){
 
 		t.table_remove_col = function() {
 
-			$( 'body' ).on( 'click', '.acf-table-field-remove-col', function( e ) {
+			$( 'body' ).on( 'click', '.acf-table-remove-col', function( e ) {
 
 				e.preventDefault();
 
@@ -454,19 +455,19 @@ jQuery(document).ready(function($){
 					that = $( this ),
 					that_index = that.parent().index();
 
-				p.obj_root = that.parents( '.acf-table-field-root' );
-				p.obj_table = p.obj_root.find( '.acf-table-field-table' );
+				p.obj_root = that.parents( '.acf-table-root' );
+				p.obj_table = p.obj_root.find( '.acf-table-table' );
 
-				$( p.obj_table.find( '.acf-table-field-top-row' ).children()[ that_index ] ).remove();
+				$( p.obj_table.find( '.acf-table-top-row' ).children()[ that_index ] ).remove();
 
-				$( p.obj_table.find( '.acf-table-field-header-row' ).children()[ that_index ] ).remove();
+				$( p.obj_table.find( '.acf-table-header-row' ).children()[ that_index ] ).remove();
 
-				p.obj_table.find( '.acf-table-field-body-row' ).each( function() {
+				p.obj_table.find( '.acf-table-body-row' ).each( function() {
 
 					$( $( this ).children()[ that_index ] ).remove();
 				} );
 
-				$( p.obj_table.find( '.acf-table-field-bottom-row' ).children()[ that_index ] ).remove();
+				$( p.obj_table.find( '.acf-table-bottom-row' ).children()[ that_index ] ).remove();
 
 				t.table_top_labels( p );
 
@@ -477,7 +478,7 @@ jQuery(document).ready(function($){
 
 		t.table_add_row = function() {
 
-			$( 'body' ).on( 'click', '.acf-table-field-add-row', function( e ) {
+			$( 'body' ).on( 'click', '.acf-table-add-row', function( e ) {
 
 				e.preventDefault();
 
@@ -488,10 +489,10 @@ jQuery(document).ready(function($){
 					col_amount = 0,
 					body_cells_html = '';
 
-				p.obj_root = that.parents( '.acf-table-field-root' );
-				p.obj_table = p.obj_root.find( '.acf-table-field-table' );
+				p.obj_root = that.parents( '.acf-table-root' );
+				p.obj_table = p.obj_root.find( '.acf-table-table' );
 				p.obj_table_rows = p.obj_table.children();
-				col_amount = p.obj_table.find( '.acf-table-field-top-cell' ).size();
+				col_amount = p.obj_table.find( '.acf-table-top-cell' ).size();
 				that_index = that.parent().parent().index();
 
 				for ( i = 0; i < col_amount; i++ ) {
@@ -502,7 +503,7 @@ jQuery(document).ready(function($){
 				$( p.obj_table_rows[ that_index ] )
 					.after( t.param.htmltable.body_row )
 					.next()
-					.find('.acf-table-field-body-left')
+					.find('.acf-table-body-left')
 					.after( body_cells_html );
 
 				t.table_left_labels( p );
@@ -514,15 +515,15 @@ jQuery(document).ready(function($){
 
 		t.table_remove_row = function() {
 
-			$( 'body' ).on( 'click', '.acf-table-field-remove-row', function( e ) {
+			$( 'body' ).on( 'click', '.acf-table-remove-row', function( e ) {
 
 				e.preventDefault();
 
 				var p = {},
 					that = $( this );
 
-				p.obj_root = that.parents( '.acf-table-field-root' );
-				p.obj_table = p.obj_root.find( '.acf-table-field-table' );
+				p.obj_root = that.parents( '.acf-table-root' );
+				p.obj_table = p.obj_root.find( '.acf-table-table' );
 
 				that.parent().parent().remove();
 
@@ -539,7 +540,7 @@ jQuery(document).ready(function($){
 				letter_i_2 = 'A'.charCodeAt( 0 ),
 				use_2 = false;
 
-			p.obj_table.find( '.acf-table-field-top-cont' ).each( function() {
+			p.obj_table.find( '.acf-table-top-cont' ).each( function() {
 
 				var string = '';
 
@@ -581,11 +582,11 @@ jQuery(document).ready(function($){
 
 			var i = 0;
 
-			p.obj_table.find( '.acf-table-field-body-left' ).each( function() {
+			p.obj_table.find( '.acf-table-body-left' ).each( function() {
 
 				i = i + 1;
 
-				$( this ).find( '.acf-table-field-body-cont' ).text( i );
+				$( this ).find( '.acf-table-body-cont' ).text( i );
 
 			} );
 		};
@@ -606,7 +607,7 @@ jQuery(document).ready(function($){
 
 				i = 0;
 
-				p.obj_table.find( '.acf-table-field-top-cont' ).each( function() {
+				p.obj_table.find( '.acf-table-top-cont' ).each( function() {
 
 					p.data.c[ i ] = {};
 					p.data.c[ i ].p = $( this ).parent().data( 'colparam' );
@@ -620,7 +621,7 @@ jQuery(document).ready(function($){
 
 				i = 0;
 
-				p.obj_table.find( '.acf-table-field-header-cont' ).each( function() {
+				p.obj_table.find( '.acf-table-header-cont' ).each( function() {
 
 					p.data.h[ i ] = {};
 					p.data.h[ i ].c = $( this ).html();
@@ -635,11 +636,11 @@ jQuery(document).ready(function($){
 				i = 0;
 				i2 = 0;
 
-				p.obj_table.find( '.acf-table-field-body-row' ).each( function() {
+				p.obj_table.find( '.acf-table-body-row' ).each( function() {
 
 					p.data.b[ i ] = {};
 
-					$( this ).find( '.acf-table-field-body-cell .acf-table-field-body-cont' ).each( function() {
+					$( this ).find( '.acf-table-body-cell .acf-table-body-cont' ).each( function() {
 
 						p.data.b[ i ][ i2 ] = {};
 						p.data.b[ i ][ i2 ].c = $( this ).html();
@@ -671,19 +672,19 @@ jQuery(document).ready(function($){
 
 		t.cell_editor = function() {
 
-			$( 'body' ).on( 'click', '.acf-table-field-body-cell, .acf-table-field-header-cell', function( e ) {
+			$( 'body' ).on( 'click', '.acf-table-body-cell, .acf-table-header-cell', function( e ) {
 
 				e.stopImmediatePropagation();
 
 				t.cell_editor_save();
 
 				var that = $( this ),
-					that_val = that.find( '.acf-table-field-body-cont, .acf-table-field-header-cont' ).html();
+					that_val = that.find( '.acf-table-body-cont, .acf-table-header-cont' ).html();
 
-				that.prepend( t.param.htmleditor ).find( '.acf-table-field-cell-editor-textarea' ).html( that_val ).focus();
+				that.prepend( t.param.htmleditor ).find( '.acf-table-cell-editor-textarea' ).html( that_val ).focus();
 			} );
 
-			$( 'body' ).on( 'click', '.acf-table-field-cell-editor-textarea', function( e ) {
+			$( 'body' ).on( 'click', '.acf-table-cell-editor-textarea', function( e ) {
 
 				 e.stopImmediatePropagation();
 			} );
@@ -696,14 +697,14 @@ jQuery(document).ready(function($){
 
 		t.cell_editor_save = function() {
 
-			var cell_editor = $( 'body' ).find( '.acf-table-field-cell-editor' ),
-				cell_editor_textarea = cell_editor.find( '.acf-table-field-cell-editor-textarea' ),
+			var cell_editor = $( 'body' ).find( '.acf-table-cell-editor' ),
+				cell_editor_textarea = cell_editor.find( '.acf-table-cell-editor-textarea' ),
 				p = {};
 
 			if ( typeof cell_editor_textarea.val() !== 'undefined' ) {
 
-				p.obj_root = cell_editor.parents( '.acf-table-field-root' );
-				p.obj_table = p.obj_root.find( '.acf-table-field-table' );
+				p.obj_root = cell_editor.parents( '.acf-table-root' );
+				p.obj_table = p.obj_root.find( '.acf-table-table' );
 
 				cell_editor.next().html( cell_editor_textarea.val() );
 
@@ -715,7 +716,7 @@ jQuery(document).ready(function($){
 
 		t.prevent_cell_links = function() {
 
-			$( 'body' ).on( 'click', '.acf-table-field-body-cont a, .acf-table-field-header-cont a', function( e ) {
+			$( 'body' ).on( 'click', '.acf-table-body-cont a, .acf-table-header-cont a', function( e ) {
 
 				e.preventDefault();
 			} );
@@ -736,23 +737,23 @@ jQuery(document).ready(function($){
 
 			var param = {
 				axis: 'y',
-				items: '> .acf-table-field-body-row',
+				items: '> .acf-table-body-row',
 				containment: 'parent',
-				handle: '.acf-table-field-body-left',
+				handle: '.acf-table-body-left',
 				helper: t.sortable_fix_width,
 				update: function( event, ui ) {
 
 					var p = {};
 
-					p.obj_root = ui.item.parents( '.acf-table-field-root' );
-					p.obj_table = p.obj_root.find( '.acf-table-field-table' );
+					p.obj_root = ui.item.parents( '.acf-table-root' );
+					p.obj_table = p.obj_root.find( '.acf-table-table' );
 
 					t.table_left_labels( p );
 					t.table_build_json( p );
 				},
 			};
 
-			$( '.acf-table-field-table' ).sortable( param );
+			$( '.acf-table-table' ).sortable( param );
 
 		};
 
@@ -765,7 +766,7 @@ jQuery(document).ready(function($){
 
 			var param = {
 				axis: 'x',
-				items: '> .acf-table-field-top-cell',
+				items: '> .acf-table-top-cell',
 				containment: 'parent',
 				helper: t.sortable_fix_width,
 				start: function(event, ui) {
@@ -776,8 +777,8 @@ jQuery(document).ready(function($){
 
 					p.end_index = ui.item.index();
 
-					p.obj_root = ui.item.parents( '.acf-table-field-root' );
-					p.obj_table = p.obj_root.find( '.acf-table-field-table' );
+					p.obj_root = ui.item.parents( '.acf-table-root' );
+					p.obj_table = p.obj_root.find( '.acf-table-table' );
 
 					t.table_top_labels( p );
 					t.sort_cols( p );
@@ -785,16 +786,16 @@ jQuery(document).ready(function($){
 				},
 			};
 
-			$( '.acf-table-field-top-row' ).sortable( param );
+			$( '.acf-table-top-row' ).sortable( param );
 
 			$( 'body' ).on( 'click', '.acf-fc-popup', function() {
 
-				$( '.acf-table-field-top-row' ).sortable('destroy');
-				$( '.acf-table-field-top-row' ).unbind();
+				$( '.acf-table-top-row' ).sortable('destroy');
+				$( '.acf-table-top-row' ).unbind();
 
 				window.setTimeout( function() {
 
-					$( '.acf-table-field-top-row' ).sortable( param );
+					$( '.acf-table-top-row' ).sortable( param );
 
 				}, 300 );
 
@@ -804,7 +805,7 @@ jQuery(document).ready(function($){
 
 		t.sort_cols = function( p ) {
 
-			p.obj_table.find('.acf-table-field-header-row').each( function() {
+			p.obj_table.find('.acf-table-header-row').each( function() {
 
 				p.header_row = $(this),
 				p.header_row_children = p.header_row.children();
@@ -821,7 +822,7 @@ jQuery(document).ready(function($){
 
 			} );
 
-			p.obj_table.find('.acf-table-field-body-row').each( function() {
+			p.obj_table.find('.acf-table-body-row').each( function() {
 
 				p.body_row = $(this),
 				p.body_row_children = p.body_row.children();

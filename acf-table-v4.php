@@ -1,6 +1,6 @@
 <?php
 
-	class acf_table_field extends acf_field
+	class acf_table_add_on extends acf_field
 	{
 		// vars
 		var $settings, // will hold info such as dir / path
@@ -18,11 +18,11 @@
 		function __construct()
 		{
 			// language
-			load_textdomain( 'acf-table-field', dirname(__FILE__) . '/lang/acf-table-field-' . get_locale() . '.mo' );
+			load_textdomain( 'acf-table', dirname(__FILE__) . '/lang/acf-table-' . get_locale() . '.mo' );
 			
 			
 			$this->name = 'table';
-			$this->label = __( 'Table','acf-table-field' );
+			$this->label = __( 'Table','acf-table' );
 			$this->category = __( 'Layout', 'acf' ); // Basic, Content, Choice, etc
 			$this->defaults = array(
 				'use_header' => 0,
@@ -63,14 +63,14 @@
 
 			$e = '';
 
-			$e .= '<div class="acf-table-field-root">';
+			$e .= '<div class="acf-table-root">';
 
 				// OPTION HEADER {
 
 				if ( $data_field['use_header'] === 0 ) {
 
-					$e .= '<div class="acf-table-field-optionbox">';
-						$e .= '<label><input name="acf-table-field-opt-use-header" class="acf-table-field-fc-opt-use-header" type="checkbox"/> ' . __( 'use table header', 'acf-table-field' ) . '</label>';
+					$e .= '<div class="acf-table-optionbox">';
+						$e .= '<label><input name="acf-table-opt-use-header" class="acf-table-fc-opt-use-header" type="checkbox"/> ' . __( 'use table header', 'acf-table' ) . '</label>';
 					$e .= '</div>';
 				}
 
@@ -103,7 +103,7 @@
 			// Note: This function can be removed if not used
 
 			// register acf scripts
-			wp_register_script('acf-input-table', $this->settings['dir'] . 'js/input.js', array('acf-input'), $this->settings['version']);
+			wp_register_script('acf-input-table', $this->settings['dir'] . 'js/input-v4.js', array('acf-input'), $this->settings['version']);
 			wp_register_style('acf-input-table', $this->settings['dir'] . 'css/input.css', array('acf-input'), $this->settings['version']);
 
 			// scripts
@@ -115,7 +115,6 @@
 			wp_enqueue_style(array(
 				'acf-input-table',
 			));
-
 		}
 
 		/*
@@ -147,7 +146,7 @@
 
 			echo '<tr class="field_option field_option_' . $this->name . '">';
 				echo '<td class="label">';
-					echo '<label>' . __( "Table Header", 'acf-table-field' ) . '</label>';
+					echo '<label>' . __( "Table Header", 'acf-table' ) . '</label>';
 					//echo '<p class="description">' . __( "", 'acf' ) . '</p>';
 				echo '</td>';
 				echo '<td>';
@@ -157,9 +156,9 @@
 							'name'	=>  'fields[' . $key . '][use_header]',
 							'value'   =>  $field['use_header'],
 							'choices'   =>  array(
-								0   =>  __( "Optional", 'acf-table-field' ),
-								1   =>  __( "Yes", 'acf-table-field' ),
-								2   =>  __( "No", 'acf-table-field' ),
+								0   =>  __( "Optional", 'acf-table' ),
+								1   =>  __( "Yes", 'acf-table' ),
+								2   =>  __( "No", 'acf-table' ),
 							),
 							'layout'	=>  'horizontal',
 						));
@@ -239,6 +238,6 @@
 	}
 
 	// create field
-	new acf_table_field();
+	new acf_table_add_on();
 
 ?>
