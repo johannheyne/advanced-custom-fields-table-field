@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Custom Fields: Table Field
-Plugin URI: http://www.johannheyne.de/acf-repeater-field
+Plugin URI: http://www.johannheyne.de/
 Description: This free Add-on adds a table field type for the Advanced Custom Fields plugin
 Version: 1.0
 Author: Johann Heyne
