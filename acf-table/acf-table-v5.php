@@ -1,8 +1,7 @@
 <?php
 
 class acf_field_table extends acf_field {
-	
-	
+
 	/*
 	*  __construct
 	*
@@ -15,55 +14,56 @@ class acf_field_table extends acf_field {
 	*  @param	n/a
 	*  @return	n/a
 	*/
-	
+
 	function __construct() {
-		
+
+		/*
+		*  settings (array) Array of settings
+		*/
+		$this->settings = array(
+			'version' => '1.0.1'
+		);
+
 		/*
 		*  name (string) Single word, no spaces. Underscores allowed
 		*/
-		
+
 		$this->name = 'table';
-		
-		
+
 		/*
 		*  label (string) Multiple words, can include spaces, visible when selecting a field type
 		*/
-		
+
 		$this->label = __('Table', 'acf-table');
-		
-		
+
 		/*
 		*  category (string) basic | content | choice | relational | jquery | layout | CUSTOM GROUP NAME
 		*/
-		
+
 		$this->category = 'layout';
-		
-		
+
 		/*
 		*  defaults (array) Array of default settings which are merged into the field object. These are used later in settings
 		*/
-		
+
 		$this->defaults = array(
 			//'font_size'	=> 14,
 		);
-		
-		
+
 		/*
 		*  l10n (array) Array of strings that are used in JavaScript. This allows JS strings to be translated in PHP and loaded via:
 		*  var message = acf._e('table', 'error');
 		*/
-		
+
 		$this->l10n = array(
 			'error'	=> __('Error! Please enter a higher value', 'acf-table'),
 		);
-		
-				
+
 		// do not delete!
     	parent::__construct();
-    	
+
 	}
-	
-	
+
 	/*
 	*  render_field_settings()
 	*
@@ -76,9 +76,9 @@ class acf_field_table extends acf_field {
 	*  @param	$field (array) the $field being edited
 	*  @return	n/a
 	*/
-	
+
 	function render_field_settings( $field ) {
-		
+
 		/*
 		*  acf_render_field_setting
 		*
@@ -88,7 +88,7 @@ class acf_field_table extends acf_field {
 		*  More than one setting can be added by copy/paste the above code.
 		*  Please note that you must also have a matching $defaults value for the field name (font_size)
 		*/
-		
+
 		acf_render_field_setting( $field, array(
 			'label'			=> __('Table Header','acf-table'),
 			'instructions'	=> __('Presetting the usage of table header','acf-table'),
@@ -103,9 +103,7 @@ class acf_field_table extends acf_field {
 		));
 
 	}
-	
-	
-	
+
 	/*
 	*  render_field()
 	*
@@ -120,20 +118,18 @@ class acf_field_table extends acf_field {
 	*  @param	$field (array) the $field being edited
 	*  @return	n/a
 	*/
-	
+
 	function render_field( $field ) {
-		
-		
+
 		/*
 		*  Review the data of $field.
 		*  This will show what data is available
 		*/
-		
+
 		//echo '<pre>';
 		//	print_r( $field );
 		//echo '</pre>';
-		
-		
+
 		/*
 		*  Create a simple text input using the 'font_size' setting.
 		*/
@@ -142,7 +138,7 @@ class acf_field_table extends acf_field {
 		<input type="text" name="<?php echo esc_attr($field['name']) ?>" value="<?php echo esc_attr($field['value']) ?>" style="font-size:<?php echo $field['font_size'] ?>px;" />
 		<?php
 		*/
-		
+
 		$data_field['use_header'] = $field['use_header'];
 
 		$e = '';
@@ -154,7 +150,11 @@ class acf_field_table extends acf_field {
 			if ( $data_field['use_header'] === 0 ) {
 
 				$e .= '<div class="acf-table-optionbox">';
-					$e .= '<label><input name="acf-table-opt-use-header" class="acf-table-fc-opt-use-header" type="checkbox"/> ' . __( 'use table header', 'acf-table' ) . '</label>';
+					$e .= '<label>' . __( 'use table header', 'acf-table' ) . ' </label>';
+					$e .= '<select class="acf-table-optionbox-field acf-table-fc-opt-use-header" name="acf-table-opt-use-header">';
+						$e .= '<option value="0">' . __( 'No', 'acf-table' ) . '</option>';
+						$e .= '<option value="1">' . __( 'Yes', 'acf-table' ) . '</option>';
+					$e .= '</select>';
 				$e .= '</div>';
 			}
 
@@ -167,11 +167,9 @@ class acf_field_table extends acf_field {
 		$e .= '</div>';
 
 		echo $e;
-		
-		
+
 	}
-	
-		
+
 	/*
 	*  input_admin_enqueue_scripts()
 	*
@@ -186,28 +184,20 @@ class acf_field_table extends acf_field {
 	*  @return	n/a
 	*/
 
-
-
 	function input_admin_enqueue_scripts() {
-		
-		$dir = plugin_dir_url( __FILE__ );
-		
-		
-		// register & include JS
-		wp_register_script( 'acf-input-table', "{$dir}js/input-v5.js" );
-		wp_enqueue_script('acf-input-table');
-		
-		
-		// register & include CSS
-		wp_register_style( 'acf-input-table', "{$dir}css/input.css" ); 
-		wp_enqueue_style('acf-input-table');
-		
-		
-	}
-	
 
-	
-	
+		$dir = plugin_dir_url( __FILE__ );
+
+		// register & include JS
+		wp_register_script( 'acf-input-table', "{$dir}js/input-v5.js", array('acf-input'), $this->settings['version'] );
+		wp_enqueue_script('acf-input-table');
+
+		// register & include CSS
+		wp_register_style( 'acf-input-table', "{$dir}css/input.css?pv=1.0.1", array('acf-input'), $this->settings['version'] ); 
+		wp_enqueue_style('acf-input-table');
+
+	}
+
 	/*
 	*  input_admin_head()
 	*
@@ -223,16 +213,13 @@ class acf_field_table extends acf_field {
 	*/
 
 	/*
-		
+
 	function input_admin_head() {
-	
-		
-		
+
 	}
-	
+
 	*/
-	
-	
+
 	/*
    	*  input_form_data()
    	*
@@ -249,18 +236,15 @@ class acf_field_table extends acf_field {
    	*  @param	$args (array)
    	*  @return	n/a
    	*/
-   	
+
    	/*
-   	
+
    	function input_form_data( $args ) {
-	   	
-		
-	
+
    	}
-   	
+
    	*/
-	
-	
+
 	/*
 	*  input_admin_footer()
 	*
@@ -276,16 +260,13 @@ class acf_field_table extends acf_field {
 	*/
 
 	/*
-		
+
 	function input_admin_footer() {
-	
-		
-		
+
 	}
-	
+
 	*/
-	
-	
+
 	/*
 	*  field_group_admin_enqueue_scripts()
 	*
@@ -301,14 +282,13 @@ class acf_field_table extends acf_field {
 	*/
 
 	/*
-	
+
 	function field_group_admin_enqueue_scripts() {
-		
+
 	}
-	
+
 	*/
 
-	
 	/*
 	*  field_group_admin_head()
 	*
@@ -324,13 +304,12 @@ class acf_field_table extends acf_field {
 	*/
 
 	/*
-	
-	function field_group_admin_head() {
-	
-	}
-	
-	*/
 
+	function field_group_admin_head() {
+
+	}
+
+	*/
 
 	/*
 	*  load_value()
@@ -346,18 +325,17 @@ class acf_field_table extends acf_field {
 	*  @param	$field (array) the field array holding all the field options
 	*  @return	$value
 	*/
-	
+
 	/*
-	
+
 	function load_value( $value, $post_id, $field ) {
-		
+
 		return $value;
-		
+
 	}
-	
+
 	*/
-	
-	
+
 	/*
 	*  update_value()
 	*
@@ -372,20 +350,15 @@ class acf_field_table extends acf_field {
 	*  @param	$field (array) the field array holding all the field options
 	*  @return	$value
 	*/
-	
 
-	
 	function update_value( $value, $post_id, $field ) {
-		
+
 		$value = urldecode( str_replace( '%5C', '%5C%5C', $value ) );
 
 		return $value;
-		
-	}
-	
 
-	
-	
+	}
+
 	/*
 	*  format_value()
 	*
@@ -401,11 +374,9 @@ class acf_field_table extends acf_field {
 	*
 	*  @return	$value (mixed) the modified value
 	*/
-		
 
-	
 	function format_value( $value, $post_id, $field ) {
-		
+
 		$a = json_decode( $value, true );
 
 		$value = false;
@@ -432,10 +403,7 @@ class acf_field_table extends acf_field {
 
 		return $value;
 	}
-	
 
-	
-	
 	/*
 	*  validate_value()
 	*
@@ -453,33 +421,30 @@ class acf_field_table extends acf_field {
 	*  @param	$input (string) the corresponding input name for $_POST value
 	*  @return	$valid
 	*/
-	
+
 	/*
-	
+
 	function validate_value( $valid, $value, $field, $input ){
-		
+
 		// Basic usage
 		if( $value < $field['custom_minimum_setting'] )
 		{
 			$valid = false;
 		}
-		
-		
+
 		// Advanced usage
 		if( $value < $field['custom_minimum_setting'] )
 		{
 			$valid = __('The value is too little!','acf-table'),
 		}
-		
-		
+
 		// return
 		return $valid;
-		
+
 	}
-	
+
 	*/
-	
-	
+
 	/*
 	*  delete_value()
 	*
@@ -494,18 +459,15 @@ class acf_field_table extends acf_field {
 	*  @param	$key (string) the $meta_key which the value was deleted
 	*  @return	n/a
 	*/
-	
+
 	/*
-	
+
 	function delete_value( $post_id, $key ) {
-		
-		
-		
+
 	}
-	
+
 	*/
-	
-	
+
 	/*
 	*  load_field()
 	*
@@ -518,18 +480,17 @@ class acf_field_table extends acf_field {
 	*  @param	$field (array) the field array holding all the field options
 	*  @return	$field
 	*/
-	
+
 	/*
-	
+
 	function load_field( $field ) {
-		
+
 		return $field;
-		
+
 	}	
-	
+
 	*/
-	
-	
+
 	/*
 	*  update_field()
 	*
@@ -542,18 +503,17 @@ class acf_field_table extends acf_field {
 	*  @param	$field (array) the field array holding all the field options
 	*  @return	$field
 	*/
-	
+
 	/*
-	
+
 	function update_field( $field ) {
-		
+
 		return $field;
-		
+
 	}	
-	
+
 	*/
-	
-	
+
 	/*
 	*  delete_field()
 	*
@@ -566,20 +526,16 @@ class acf_field_table extends acf_field {
 	*  @param	$field (array) the field array holding all the field options
 	*  @return	n/a
 	*/
-	
-	/*
-	
-	function delete_field( $field ) {
-		
-		
-		
-	}	
-	
-	*/
-	
-	
-}
 
+	/*
+
+	function delete_field( $field ) {
+
+	}	
+
+	*/
+
+}
 
 // create field
 new acf_field_table();

@@ -19,8 +19,7 @@
 		{
 			// language
 			load_textdomain( 'acf-table', dirname(__FILE__) . '/lang/acf-table-' . get_locale() . '.mo' );
-			
-			
+
 			$this->name = 'table';
 			$this->label = __( 'Table','acf-table' );
 			$this->category = __( 'Layout', 'acf' ); // Basic, Content, Choice, etc
@@ -34,12 +33,11 @@
 			// do not delete!
 			parent::__construct();
 
-			
 			// settings
 			$this->settings = array(
 				'path' => apply_filters( 'acf/helpers/get_path', __FILE__ ),
 				'dir' => apply_filters( 'acf/helpers/get_dir', __FILE__ ),
-				'version' => '1.0.0'
+				'version' => '1.0.1'
 			);
 
 		}
@@ -70,7 +68,11 @@
 				if ( $data_field['use_header'] === 0 ) {
 
 					$e .= '<div class="acf-table-optionbox">';
-						$e .= '<label><input name="acf-table-opt-use-header" class="acf-table-fc-opt-use-header" type="checkbox"/> ' . __( 'use table header', 'acf-table' ) . '</label>';
+						$e .= '<label>' . __( 'use table header', 'acf-table' ) . ' </label>';
+						$e .= '<select class="acf-table-optionbox-field acf-table-fc-opt-use-header" name="acf-table-opt-use-header">';
+							$e .= '<option value="0">' . __( 'No', 'acf-table' ) . '</option>';
+							$e .= '<option value="1">' . __( 'Yes', 'acf-table' ) . '</option>';
+						$e .= '</select>';
 					$e .= '</div>';
 				}
 
@@ -103,8 +105,8 @@
 			// Note: This function can be removed if not used
 
 			// register acf scripts
-			wp_register_script('acf-input-table', $this->settings['dir'] . 'js/input-v4.js', array('acf-input'), $this->settings['version']);
-			wp_register_style('acf-input-table', $this->settings['dir'] . 'css/input.css', array('acf-input'), $this->settings['version']);
+			wp_register_script('acf-input-table', $this->settings['dir'] . 'js/input-v4.js', array('acf-input'), $this->settings['version'] );
+			wp_register_style('acf-input-table', $this->settings['dir'] . 'css/input.css', array('acf-input'), $this->settings['version'] );
 
 			// scripts
 			wp_enqueue_script(array(

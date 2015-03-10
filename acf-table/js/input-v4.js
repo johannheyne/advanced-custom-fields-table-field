@@ -122,9 +122,9 @@ jQuery(document).ready(function($){
 
 		t.ui_event_use_header = function() {
 
-			// HEADER: CHECKBOX ACTIONS {
+			// HEADER: SELECT FIELD ACTIONS {
 
-				$( 'body' ).on( 'click', '.acf-table-fc-opt-use-header', function() {
+				$( 'body' ).on( 'change', '.acf-table-fc-opt-use-header', function() {
 
 					var that = $( this ),
 						p = {};
@@ -136,7 +136,7 @@ jQuery(document).ready(function($){
 
 					t.data_default( p );
 
-					if ( that.is(':checked') ) {
+					if ( that.val() === '1' ) {
 
 						p.obj_table.removeClass( 'acf-table-hide-header' );
 
@@ -386,12 +386,12 @@ jQuery(document).ready(function($){
 
 					if ( p.data.p.o.uh === 1 ) {
 
-						v.obj_use_header.prop( 'checked', true );
+						v.obj_use_header.val( '1' );
 					}
 
 					if ( p.data.p.o.uh === 0 ) {
 
-						v.obj_use_header.prop( 'checked', false );
+						v.obj_use_header.val( '0' );
 					}
 
 				// }
@@ -601,7 +601,7 @@ jQuery(document).ready(function($){
 			p.data.c = {};
 			p.data.h = {};
 			p.data.b = {};
-			
+
 			// TOP {
 
 				i = 0;
@@ -846,7 +846,7 @@ jQuery(document).ready(function($){
 				var len = o.length ? --o.length : -1;
 
 				for (var k in o) {
-				
+
 					len++;
 				}
 
@@ -881,7 +881,7 @@ jQuery(document).ready(function($){
 					else {
 
 						if ( typeof p.d[ i ] !== 'undefined' && t.helper.getLength( r[ i ] ) !== t.helper.getLength( p.d[ i ] ) ) {
-						
+
 							r[ i ] = t.helper.setDefaultParam({ p: r[ i ], d: p.d[ i ] });
 						}
 					}
