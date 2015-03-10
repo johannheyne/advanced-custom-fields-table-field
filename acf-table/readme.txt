@@ -2,14 +2,13 @@
 Contributors: jonua
 Tags: acf table
 Requires at least: 3.0
-Tested up to: 4.1
+Tested up to: 4.1.1
 Stable tag: trunk
 License: GPLv2 or later
 
 A Table Field Add-on for the Advanced Custom Fields Plugin
 
 == Description ==
-
 
 The Table field plugin enables easely editing a table.  
 The plugin ist compatible with ACF4 and ACF5.  
@@ -87,7 +86,6 @@ include_once('acf-table/acf-table.php');
 `
 3. Make sure the path is correct to include the acf-table.php file
 
-
 == Screenshots ==
 
 1. The Field Settings
@@ -96,8 +94,10 @@ include_once('acf-table/acf-table.php');
 
 2. Grab the rows and columns in the grey area and drag them.
 
-
 == Changelog ==
+
+= 1.0.1 =
+* Fixed ACF validation error "required" when header option "use table header" was used and unchecked.
 
 = 1.0 =
 * Official Release of the free version
