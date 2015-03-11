@@ -77,11 +77,11 @@ However, only when activated as a plugin will updates be available.
 2. Activate the plugin via the Plugins admin page
 
 = Include =
-1. Copy the 'acf-table' folder into your theme folder.  
+1. Copy the 'advanced-custom-fields-table-field' folder into your theme folder.  
 2. Edit your functions.php file and add the following code to include the field:
 
 `
-include_once('acf-table/acf-table.php');
+include_once( 'advanced-custom-fields-table-field/acf-table.php' );
 `
 3. Make sure the path is correct to include the acf-table.php file
 
