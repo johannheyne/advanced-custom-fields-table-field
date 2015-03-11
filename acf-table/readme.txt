@@ -73,17 +73,17 @@ This software can be used as both a WP plugin and a theme include.
 However, only when activated as a plugin will updates be available.
 
 = Plugin =
-1. Copy the 'acf-table' folder into your plugins folder
+1. Copy the "advanced-custom-fields-table-field" folder into your plugins folder
 2. Activate the plugin via the Plugins admin page
 
 = Include =
-1. Copy the 'advanced-custom-fields-table-field' folder into your theme folder.  
+1. Copy the "advanced-custom-fields-table-field" folder into your theme folder.  
 2. Edit your functions.php file and add the following code to include the field:
 
 `
 include_once( 'advanced-custom-fields-table-field/acf-table.php' );
 `
-3. Make sure the path is correct to include the acf-table.php file
+3. Make sure the path is correct to include the acf-table.php file.
 
 == Screenshots ==
 
