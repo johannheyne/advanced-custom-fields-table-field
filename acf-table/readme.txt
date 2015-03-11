@@ -73,8 +73,8 @@ This software can be used as both a WP plugin and a theme include.
 However, only when activated as a plugin will updates be available.
 
 = Plugin =
-1. Copy the "advanced-custom-fields-table-field" folder into your plugins folder
-2. Activate the plugin via the Plugins admin page
+1. Copy the "advanced-custom-fields-table-field" folder into your plugins folder.
+2. Activate the plugin via the Plugins admin page.
 
 = Include =
 1. Copy the "advanced-custom-fields-table-field" folder into your theme folder.  
