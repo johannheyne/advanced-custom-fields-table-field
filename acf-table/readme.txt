@@ -77,8 +77,7 @@ However, only when activated as a plugin will updates be available.
 2. Activate the plugin via the Plugins admin page
 
 = Include =
-1. Copy the 'acf-table' folder into your theme folder (can use sub folders).  
-   You can place the folder anywhere inside the 'wp-content' directory
+1. Copy the 'acf-table' folder into your theme folder.  
 2. Edit your functions.php file and add the following code to include the field:
 
 `
@@ -95,6 +94,9 @@ include_once('acf-table/acf-table.php');
 2. Grab the rows and columns in the grey area and drag them.
 
 == Changelog ==
+
+= 1.0.2 =
+* Fixed error when including the plugin from inside a theme.
 
 = 1.0.1 =
 * Fixed ACF validation error "required" when header option "use table header" was used and unchecked.

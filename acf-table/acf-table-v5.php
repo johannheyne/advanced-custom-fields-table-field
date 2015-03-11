@@ -21,7 +21,8 @@ class acf_field_table extends acf_field {
 		*  settings (array) Array of settings
 		*/
 		$this->settings = array(
-			'version' => '1.0.1'
+			'version' => '1.0.2',
+			'dir_url' => $this->get_file_dirname_url()
 		);
 
 		/*
@@ -62,6 +63,31 @@ class acf_field_table extends acf_field {
 		// do not delete!
     	parent::__construct();
 
+	}
+
+	/*
+	*  get_file_dirname_url()
+	*
+	*  This function generates the URL based of the file path
+	*
+	*  @type	function
+	*  @param	n/a
+	*  @return	$url (string)
+	*/
+
+	function get_file_dirname_url() {
+
+		$temp = dirname( str_replace( $_SERVER['DOCUMENT_ROOT'], '', __FILE__ ) );
+		$http = 'http://';
+
+		if ( stristr( $_SERVER['HTTP_REFFERER'] , 'https://' ) ) {
+
+			$http = 'https://';
+		}
+
+		$url = $http . $_SERVER['SERVER_NAME'] . $temp . '/';
+
+		return $url;
 	}
 
 	/*
@@ -186,14 +212,12 @@ class acf_field_table extends acf_field {
 
 	function input_admin_enqueue_scripts() {
 
-		$dir = plugin_dir_url( __FILE__ );
-
 		// register & include JS
-		wp_register_script( 'acf-input-table', "{$dir}js/input-v5.js", array('acf-input'), $this->settings['version'] );
+		wp_register_script( 'acf-input-table', $this->settings['dir_url'] . 'js/input-v5.js', array('acf-input'), $this->settings['version'] );
 		wp_enqueue_script('acf-input-table');
 
 		// register & include CSS
-		wp_register_style( 'acf-input-table', "{$dir}css/input.css?pv=1.0.1", array('acf-input'), $this->settings['version'] ); 
+		wp_register_style( 'acf-input-table', $this->settings['dir_url'] . 'css/input.css', array('acf-input'), $this->settings['version'] ); 
 		wp_enqueue_style('acf-input-table');
 
 	}

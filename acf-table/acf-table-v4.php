@@ -35,11 +35,35 @@
 
 			// settings
 			$this->settings = array(
-				'path' => apply_filters( 'acf/helpers/get_path', __FILE__ ),
-				'dir' => apply_filters( 'acf/helpers/get_dir', __FILE__ ),
-				'version' => '1.0.1'
+				'dir_url' => $this->get_file_dirname_url(),
+				'version' => '1.0.2'
 			);
 
+		}
+
+		/*
+		*  get_file_dirname_url()
+		*
+		*  This function generates the URL based of the file path
+		*
+		*  @type	function
+		*  @param	n/a
+		*  @return	$url (string)
+		*/
+
+		function get_file_dirname_url() {
+
+			$temp = dirname( str_replace( $_SERVER['DOCUMENT_ROOT'], '', __FILE__ ) );
+			$http = 'http://';
+
+			if ( stristr( $_SERVER['HTTP_REFFERER'] , 'https://' ) ) {
+
+				$http = 'https://';
+			}
+
+			$url = $http . $_SERVER['SERVER_NAME'] . $temp . '/';
+
+			return $url;
 		}
 
 		/*
@@ -105,8 +129,8 @@
 			// Note: This function can be removed if not used
 
 			// register acf scripts
-			wp_register_script('acf-input-table', $this->settings['dir'] . 'js/input-v4.js', array('acf-input'), $this->settings['version'] );
-			wp_register_style('acf-input-table', $this->settings['dir'] . 'css/input.css', array('acf-input'), $this->settings['version'] );
+			wp_register_script('acf-input-table', $this->settings['dir_url'] . 'js/input-v4.js', array('acf-input'), $this->settings['version'] );
+			wp_register_style('acf-input-table', $this->settings['dir_url'] . 'css/input.css', array('acf-input'), $this->settings['version'] );
 
 			// scripts
 			wp_enqueue_script(array(
