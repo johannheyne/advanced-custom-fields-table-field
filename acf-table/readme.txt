@@ -83,7 +83,7 @@ However, only when activated as a plugin will updates be available.
 `
 include_once( 'advanced-custom-fields-table-field/acf-table.php' );
 `
-3. Make sure the path is correct to include the acf-table.php file.
+Make sure the path is correct to include the acf-table.php file!
 
 == Screenshots ==
 
