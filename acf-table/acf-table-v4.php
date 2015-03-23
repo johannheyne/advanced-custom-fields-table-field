@@ -36,7 +36,7 @@
 			// settings
 			$this->settings = array(
 				'dir_url' => $this->get_file_dirname_url(),
-				'version' => '1.0.2'
+				'version' => '1.0.3'
 			);
 
 		}
@@ -56,7 +56,7 @@
 			$temp = dirname( str_replace( $_SERVER['DOCUMENT_ROOT'], '', __FILE__ ) );
 			$http = 'http://';
 
-			if ( stristr( $_SERVER['HTTP_REFFERER'] , 'https://' ) ) {
+			if ( ! empty( $_SERVER['HTTPS'] ) ) {
 
 				$http = 'https://';
 			}

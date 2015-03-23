@@ -21,7 +21,7 @@ class acf_field_table extends acf_field {
 		*  settings (array) Array of settings
 		*/
 		$this->settings = array(
-			'version' => '1.0.2',
+			'version' => '1.0.3',
 			'dir_url' => $this->get_file_dirname_url()
 		);
 
@@ -80,7 +80,7 @@ class acf_field_table extends acf_field {
 		$temp = dirname( str_replace( $_SERVER['DOCUMENT_ROOT'], '', __FILE__ ) );
 		$http = 'http://';
 
-		if ( stristr( $_SERVER['HTTP_REFFERER'] , 'https://' ) ) {
+		if ( ! empty( $_SERVER['HTTPS'] ) ) {
 
 			$http = 'https://';
 		}

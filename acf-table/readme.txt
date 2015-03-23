@@ -95,6 +95,9 @@ Make sure the path is correct to include the acf-table.php file!
 
 == Changelog ==
 
+= 1.0.3 =
+* Fixed an php error on HTTP_REFFERER.
+
 = 1.0.2 =
 * Fixed error when including the plugin from inside a theme.
 
