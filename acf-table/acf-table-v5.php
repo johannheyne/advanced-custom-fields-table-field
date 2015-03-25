@@ -21,8 +21,8 @@ class acf_field_table extends acf_field {
 		*  settings (array) Array of settings
 		*/
 		$this->settings = array(
-			'version' => '1.0.3',
-			'dir_url' => $this->get_file_dirname_url()
+			'version' => '1.0.4',
+			'dir_url' => plugins_url( '', __FILE__ ) . '/',
 		);
 
 		/*
@@ -63,31 +63,6 @@ class acf_field_table extends acf_field {
 		// do not delete!
     	parent::__construct();
 
-	}
-
-	/*
-	*  get_file_dirname_url()
-	*
-	*  This function generates the URL based of the file path
-	*
-	*  @type	function
-	*  @param	n/a
-	*  @return	$url (string)
-	*/
-
-	function get_file_dirname_url() {
-
-		$temp = dirname( str_replace( $_SERVER['DOCUMENT_ROOT'], '', __FILE__ ) );
-		$http = 'http://';
-
-		if ( ! empty( $_SERVER['HTTPS'] ) ) {
-
-			$http = 'https://';
-		}
-
-		$url = $http . $_SERVER['SERVER_NAME'] . $temp . '/';
-
-		return $url;
 	}
 
 	/*

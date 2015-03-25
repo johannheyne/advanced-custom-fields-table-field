@@ -95,6 +95,9 @@ Make sure the path is correct to include the acf-table.php file!
 
 == Changelog ==
 
+= 1.0.4 =
+* Fixed an uri problem on some hosts.
+
 = 1.0.3 =
 * Fixed an php error on HTTP_REFFERER.
 
