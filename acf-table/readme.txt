@@ -95,6 +95,10 @@ Make sure the path is correct to include the acf-table.php file!
 
 == Changelog ==
 
+= 1.0.5 =
+* Fixed javascript issue in IE 8.
+* Fixed missing table borders and table header´s height in FireFox.
+
 = 1.0.4 =
 * Fixed an uri problem on some hosts.
 

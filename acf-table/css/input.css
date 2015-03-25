@@ -23,6 +23,10 @@
 	.acf-table-body-row {
 		width: 100%;
 	}
+	
+	.acf-table-table * {
+		background-clip: padding-box; /* fix FireFox and IE background color painting over the borders */
+	}
 
 	/* TOP { */
 
@@ -42,7 +46,7 @@
 			display: table-cell;
 			padding: 4px 8px;
 			border: 1px solid #e1e1e1;
-			background-color: #eee;
+		    background-color: #eee;
 			cursor: move;
 			min-width: 68px;
 		}
@@ -71,7 +75,6 @@
 		.acf-table-header-left {
 			position: relative;
 			display: table-cell;
-			height: 28px;
 		}
 		.acf-table-header-cell {
 			position: relative;
@@ -79,6 +82,7 @@
 			padding: 4px 8px;
 			border: 1px solid #e1e1e1;
 			background-color: #f9f9f9;
+			height: 28px;
 		}
 		.acf-table-header-right {
 			position: relative;

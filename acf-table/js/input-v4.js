@@ -7,7 +7,7 @@ jQuery(document).ready(function($){
 
 		t.param = {};
 
-		t.param.class = {
+		t.param.classes = {
 
 			btn_remove_row:	'acf-button-remove acf-table-remove-row',
 			btn_add_row:	'acf-button-add acf-table-add-row',
@@ -17,10 +17,10 @@ jQuery(document).ready(function($){
 
 		t.param.htmlbuttons = {
 
-			add_row:		'<a href="#" class="' + t.param.class.btn_add_row + '"></a>',
-			remove_row:	 '<a href="#" class="' + t.param.class.btn_remove_row + '"></a>',
-			add_col:		'<a href="#" class="' + t.param.class.btn_add_col + '"></a>',
-			remove_col:	 '<a href="#" class="' + t.param.class.btn_remove_col + '"></a>',
+			add_row:		'<a href="#" class="' + t.param.classes.btn_add_row + '"></a>',
+			remove_row:	 '<a href="#" class="' + t.param.classes.btn_remove_row + '"></a>',
+			add_col:		'<a href="#" class="' + t.param.classes.btn_add_col + '"></a>',
+			remove_col:	 '<a href="#" class="' + t.param.classes.btn_remove_col + '"></a>',
 		};
 
 		t.param.htmltable = {
