@@ -398,6 +398,17 @@ class acf_field_table extends acf_field {
 			// BODY
 
 			$value['body'] = $a['b'];
+
+			// IF SINGLE EMPTY CELL, THEN DO NOT RETURN TABLE DATA
+
+			if ( 
+				count( $a['b'] ) === 1
+				AND count( $a['b'][0] ) === 1
+				AND trim( $a['b'][0][0]['c'] ) === ''
+			) {
+
+				$value = false;
+			}
 		}
 
 		return $value;
