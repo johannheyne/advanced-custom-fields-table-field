@@ -1,7 +1,7 @@
 === Advanced Custom Fields: Table Field ===
 Contributors: jonua
 Tags: acf table
-Requires at least: 3.0
+Requires at least: 4.1.0
 Tested up to: 4.2.1
 Stable tag: trunk
 License: GPLv2 or later
@@ -94,6 +94,9 @@ Make sure the path is correct to include the acf-table.php file!
 2. Grab the rows and columns in the grey area and drag them.
 
 == Changelog ==
+
+= 1.0.7 =
+* Use wp_json_encode() instead of json_encode(). This may fix issues in rare enviroments.
 
 = 1.0.6 =
 * If the table has only a single empty cell (this is by default), no table data will return now.

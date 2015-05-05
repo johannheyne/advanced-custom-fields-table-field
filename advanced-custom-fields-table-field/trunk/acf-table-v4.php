@@ -78,7 +78,7 @@
 				// }
 
 				$e .= '<div class="acf-input-wrap">';
-					$e .= '<input type="hidden" data-field-options="' . urlencode( json_encode( $data_field ) ) . '" id="' . $field['id'] . '"  class="' . $field['class'] . '" name="' . $field['name'] . '" value="' . urlencode( $field['value'] ) . '"/>';
+					$e .= '<input type="hidden" data-field-options="' . urlencode( wp_json_encode( $data_field ) ) . '" id="' . $field['id'] . '"  class="' . $field['class'] . '" name="' . $field['name'] . '" value="' . urlencode( $field['value'] ) . '"/>';
 				$e .= '</div>';
 
 			$e .= '</div>';

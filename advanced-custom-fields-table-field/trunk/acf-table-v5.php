@@ -162,7 +162,7 @@ class acf_field_table extends acf_field {
 			// }
 
 			$e .= '<div class="acf-input-wrap">';
-				$e .= '<input type="hidden" data-field-options="' . urlencode( json_encode( $data_field ) ) . '" id="' . esc_attr( $field['id'] ) . '"  class="' . esc_attr( $field['type'] ) . '" name="' . esc_attr( $field['name'] ) . '" value="' . urlencode( $field['value'] ) . '"/>';
+				$e .= '<input type="hidden" data-field-options="' . urlencode( wp_json_encode( $data_field ) ) . '" id="' . esc_attr( $field['id'] ) . '"  class="' . esc_attr( $field['type'] ) . '" name="' . esc_attr( $field['name'] ) . '" value="' . urlencode( $field['value'] ) . '"/>';
 			$e .= '</div>';
 
 		$e .= '</div>';
