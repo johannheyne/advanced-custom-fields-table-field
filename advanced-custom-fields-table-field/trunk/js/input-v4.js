@@ -452,19 +452,30 @@ jQuery(document).ready(function($){
 
 				var p = {},
 					that = $( this ),
-					that_index = that.parent().index();
+					that_index = that.parent().index(),
+					obj_rows = undefined,
+					cols_count = false;
 
 				p.obj_root = that.parents( '.acf-table-root' );
 				p.obj_table = p.obj_root.find( '.acf-table-table' );
+				obj_rows = p.obj_table.find( '.acf-table-body-row' );
+				cols_count = $( obj_rows[ 0 ] ).find( '.acf-table-body-cell' ).length;
 
 				$( p.obj_table.find( '.acf-table-top-row' ).children()[ that_index ] ).remove();
 
 				$( p.obj_table.find( '.acf-table-header-row' ).children()[ that_index ] ).remove();
 
-				p.obj_table.find( '.acf-table-body-row' ).each( function() {
+				if ( cols_count === 1 ) {
 
-					$( $( this ).children()[ that_index ] ).remove();
-				} );
+					obj_rows. remove();
+				}
+				else {
+
+					obj_rows.each( function() {
+
+						$( $( this ).children()[ that_index ] ).remove();
+					} );
+				}
 
 				$( p.obj_table.find( '.acf-table-bottom-row' ).children()[ that_index ] ).remove();
 
