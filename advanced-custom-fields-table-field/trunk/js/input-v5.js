@@ -562,12 +562,23 @@ jQuery(document).ready(function($){
 				e.preventDefault();
 
 				var p = {},
-					that = $( this );
+					that = $( this ),
+					rows_count = false;
 
 				p.obj_root = that.parents( '.acf-table-root' );
 				p.obj_table = p.obj_root.find( '.acf-table-table' );
+				p.obj_rows = p.obj_root.find( '.acf-table-body-row' );
+
+				rows_count = p.obj_rows.length;
 
 				that.parent().parent().remove();
+
+				if ( rows_count == 1 ) {
+
+					t.table_add_row( {
+						obj_row: p.obj_table.find( '.acf-table-header-row' )
+					} );
+				}
 
 				t.table_left_labels( p );
 
