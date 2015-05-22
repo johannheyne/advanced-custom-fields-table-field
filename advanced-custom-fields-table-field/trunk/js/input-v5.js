@@ -7,22 +7,26 @@ jQuery(document).ready(function($){
 
 		t.param = {};
 
-		t.param.classes = {
+		// DIFFERENT IN ACF VERSION 4 and 5 {
 
-			btn_small:		'acf-icon small',
-			btn_add_row:	'acf-sprite-add',
-			btn_add_col:	'acf-sprite-add',
-			btn_remove_row:	'acf-sprite-remove',
-			btn_remove_col:	'acf-sprite-remove',
-		};
+			t.param.classes = {
 
-		t.param.htmlbuttons = {
+				btn_small:		'acf-icon small',
+				btn_add_row:	'acf-sprite-add',
+				btn_add_col:	'acf-sprite-add',
+				btn_remove_row:	'acf-sprite-remove',
+				btn_remove_col:	'acf-sprite-remove',
+			};
 
-			add_row:		'<a href="#" class="acf-table-add-row ' + t.param.classes.btn_small + '"><i class="' + t.param.classes.btn_add_row + '"></i></a>',
-			remove_row:		'<a href="#" class="acf-table-remove-row ' + t.param.classes.btn_small + '"><i class="' + t.param.classes.btn_remove_row + '"></i></a>',
-			add_col:		'<a href="#" class="acf-table-add-col ' + t.param.classes.btn_small + '"><i class="' + t.param.classes.btn_add_col + '"></i></a>',
-			remove_col:		'<a href="#" class="acf-table-remove-col ' + t.param.classes.btn_small + '"><i class="' + t.param.classes.btn_remove_col + '"></i></a>',
-		};
+			t.param.htmlbuttons = {
+
+				add_row:		'<a href="#" class="acf-table-add-row ' + t.param.classes.btn_small + '"><i class="' + t.param.classes.btn_add_row + '"></i></a>',
+				remove_row:		'<a href="#" class="acf-table-remove-row ' + t.param.classes.btn_small + '"><i class="' + t.param.classes.btn_remove_row + '"></i></a>',
+				add_col:		'<a href="#" class="acf-table-add-col ' + t.param.classes.btn_small + '"><i class="' + t.param.classes.btn_add_col + '"></i></a>',
+				remove_col:		'<a href="#" class="acf-table-remove-col ' + t.param.classes.btn_small + '"><i class="' + t.param.classes.btn_remove_col + '"></i></a>',
+			};
+
+		// }
 
 		t.param.htmltable = {
 
