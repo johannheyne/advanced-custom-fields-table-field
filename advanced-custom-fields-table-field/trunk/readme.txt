@@ -2,7 +2,7 @@
 Contributors: jonua
 Tags: acf table
 Requires at least: 4.1.0
-Tested up to: 4.2.1
+Tested up to: 4.2.2
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -85,7 +85,11 @@ However, only when activated as a plugin will updates be available.
 
 2. Grab the rows and columns in the grey area and drag them.
 
+
 == Changelog ==
+
+= 1.1 =
+* Improved User Experience when deleting all columns and rows.
 
 = 1.0.7 =
 * Use wp_json_encode() instead of json_encode(). This may fix issues in rare enviroments.
