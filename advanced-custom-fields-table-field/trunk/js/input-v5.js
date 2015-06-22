@@ -101,7 +101,7 @@ jQuery(document).ready(function($){
 
 		t.each_table = function( ) {
 
-			$('.field_type-table .acf-table-root').each( function() {
+			$('.acf-field-table .acf-table-root').each( function() {
 
 				var p = {};
 				p.obj_root = $( this );
