@@ -90,6 +90,7 @@ However, only when activated as a plugin will updates be available.
 
 = 1.1 =
 * Improved User Experience when deleting all columns and rows.
+* Compatibility to changes of ACF Pro version 5.2.7.
 
 = 1.0.7 =
 * Use wp_json_encode() instead of json_encode(). This may fix issues in rare enviroments.
