@@ -127,6 +127,7 @@
 		.acf-table-body-right {
 			position: relative;
 			display: table-cell;
+			border-bottom: 1px solid transparent;
 		}
 		.acf-table-body-cont {
 			margin: 0;
@@ -246,8 +247,7 @@
 		box-sizing: content-box;
 		position: absolute !important;
 		left: 6px;
-		top: 50%;
-		margin-top: -10px;
+		top: 3px;
 	}
 
 /* BUTTONS } */

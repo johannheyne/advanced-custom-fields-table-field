@@ -91,6 +91,7 @@ However, only when activated as a plugin will updates be available.
 = 1.1.1 =
 * Compatibility to icon changes of ACF Pro version 5.2.8
 * Fixed table top legend height in FireFox
+* Fixed delete column icon position in IE
 
 = 1.1 =
 * Improved User Experience when deleting all columns and rows.
