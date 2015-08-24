@@ -222,25 +222,29 @@
 /* BUTTONS { */
 
 	.acf-table-add-col {
-		position: absolute;
+		box-sizing: content-box;
+		position: absolute !important;
 		top: -9px;
 		right: -10px;
 		z-index: 1;
 	}
 	.acf-table-add-row {
-		position: absolute;
+		box-sizing: content-box;
+		position: absolute !important;
 		bottom: -9px;
 		left: -10px;
 		z-index: 1;
 	}
 	.acf-table-remove-col {
-		position: absolute;
+		box-sizing: content-box;
+		position: absolute !important;
 		top: 4px;
 		left: 50%;
 		margin-left: -10px;
 	}
 	.acf-table-remove-row {
-		position: absolute;
+		box-sizing: content-box;
+		position: absolute !important;
 		left: 6px;
 		top: 50%;
 		margin-top: -10px;

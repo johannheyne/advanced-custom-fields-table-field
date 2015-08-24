@@ -2,7 +2,7 @@
 Contributors: jonua
 Tags: acf table
 Requires at least: 4.1.0
-Tested up to: 4.2.2
+Tested up to: 4.4
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -87,6 +87,9 @@ However, only when activated as a plugin will updates be available.
 
 
 == Changelog ==
+
+= 1.1.1 =
+* Update icons for ACF Pro since version 5.2.8
 
 = 1.1 =
 * Improved User Experience when deleting all columns and rows.

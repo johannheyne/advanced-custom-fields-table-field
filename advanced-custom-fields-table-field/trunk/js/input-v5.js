@@ -12,18 +12,18 @@ jQuery(document).ready(function($){
 			t.param.classes = {
 
 				btn_small:		'acf-icon small',
-				btn_add_row:	'acf-sprite-add',
-				btn_add_col:	'acf-sprite-add',
-				btn_remove_row:	'acf-sprite-remove',
-				btn_remove_col:	'acf-sprite-remove',
+				btn_add_row:	'acf-icon-plus',
+				btn_add_col:	'acf-icon-plus',
+				btn_remove_row:	'acf-icon-minus',
+				btn_remove_col:	'acf-icon-minus',
 			};
 
 			t.param.htmlbuttons = {
 
-				add_row:		'<a href="#" class="acf-table-add-row ' + t.param.classes.btn_small + '"><i class="' + t.param.classes.btn_add_row + '"></i></a>',
-				remove_row:		'<a href="#" class="acf-table-remove-row ' + t.param.classes.btn_small + '"><i class="' + t.param.classes.btn_remove_row + '"></i></a>',
-				add_col:		'<a href="#" class="acf-table-add-col ' + t.param.classes.btn_small + '"><i class="' + t.param.classes.btn_add_col + '"></i></a>',
-				remove_col:		'<a href="#" class="acf-table-remove-col ' + t.param.classes.btn_small + '"><i class="' + t.param.classes.btn_remove_col + '"></i></a>',
+				add_row:		'<a href="#" class="acf-table-add-row ' + t.param.classes.btn_small + ' ' + t.param.classes.btn_add_row + '"></a>',
+				remove_row:		'<a href="#" class="acf-table-remove-row ' + t.param.classes.btn_small + ' ' + t.param.classes.btn_remove_row + '"></a>',
+				add_col:		'<a href="#" class="acf-table-add-col ' + t.param.classes.btn_small + ' ' + t.param.classes.btn_add_col + '"></a>',
+				remove_col:		'<a href="#" class="acf-table-remove-col ' + t.param.classes.btn_small + ' ' + t.param.classes.btn_remove_row + '"></a>',
 			};
 
 		// }
