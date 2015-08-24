@@ -89,7 +89,8 @@ However, only when activated as a plugin will updates be available.
 == Changelog ==
 
 = 1.1.1 =
-* Update icons for ACF Pro since version 5.2.8
+* Compatibility to icon changes of ACF Pro version 5.2.8
+* Fixed table top legend height in FireFox
 
 = 1.1 =
 * Improved User Experience when deleting all columns and rows.
