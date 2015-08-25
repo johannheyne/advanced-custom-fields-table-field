@@ -97,7 +97,7 @@ jQuery(document).ready(function($){
 			t.sortable_col();
 			t.ui_event_use_header();
 			t.ui_event_new_flex_field();
-			t.change_template();
+			t.ui_event_change_template();
 
 		};
 
