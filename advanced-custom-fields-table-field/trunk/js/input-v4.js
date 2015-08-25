@@ -96,6 +96,24 @@ jQuery(document).ready(function($){
 			t.sortable_col();
 			t.ui_event_use_header();
 			t.ui_event_new_flex_field();
+			t.change_template();
+
+		};
+
+		t.ui_event_change_template = function() {
+
+			$( '#page_template' ).on( 'change', function() {
+
+				$( '.acf-table-wrap' ).remove();
+
+				window.setTimeout( function() {
+
+					t.init();
+
+				}, 1000 );
+
+			} );
+
 		};
 
 		t.each_table = function( ) {
@@ -267,6 +285,7 @@ jQuery(document).ready(function($){
 
 			// TABLE HTML MAIN {
 
+				p.obj_root.find( '.acf-table-wrap' ).remove();
 				p.obj_root.append( t.param.htmltable.table );
 
 			// }
