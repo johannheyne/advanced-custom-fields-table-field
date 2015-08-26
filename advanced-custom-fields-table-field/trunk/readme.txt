@@ -88,6 +88,9 @@ However, only when activated as a plugin will updates be available.
 
 == Changelog ==
 
+= 1.1.2 =
+* Fixed missing table on page template change
+
 = 1.1.1 =
 * Compatibility to icon changes of ACF Pro version 5.2.8
 * Fixed table top legend height in FireFox
