@@ -88,6 +88,9 @@ However, only when activated as a plugin will updates be available.
 
 == Changelog ==
 
+= 1.1.3 =
+* Fixed wrong function name 'change_template'
+
 = 1.1.2 =
 * Fixed missing table on page template change
 
