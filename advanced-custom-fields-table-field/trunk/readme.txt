@@ -2,7 +2,7 @@
 Contributors: jonua
 Tags: acf table
 Requires at least: 4.3
-Tested up to: 4.3
+Tested up to: 4.3.1
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -87,6 +87,9 @@ However, only when activated as a plugin will updates be available.
 
 
 == Changelog ==
+
+= 1.1.4 =
+* takes over icon class changes in ACF-Pro since version 5.3.2
 
 = 1.1.3 =
 * Fixed wrong function name 'change_template'

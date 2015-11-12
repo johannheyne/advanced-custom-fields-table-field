@@ -12,10 +12,11 @@ jQuery(document).ready(function($){
 			t.param.classes = {
 
 				btn_small:		'acf-icon small',
-				btn_add_row:	'acf-icon-plus',
-				btn_add_col:	'acf-icon-plus',
-				btn_remove_row:	'acf-icon-minus',
-				btn_remove_col:	'acf-icon-minus',
+				// "acf-icon-plus" becomes "-plus" since ACF Pro Version 5.3.2
+				btn_add_row:	'acf-icon-plus -plus',
+				btn_add_col:	'acf-icon-plus -plus',
+				btn_remove_row:	'acf-icon-minus -minus',
+				btn_remove_col:	'acf-icon-minus -minus',
 			};
 
 			t.param.htmlbuttons = {
