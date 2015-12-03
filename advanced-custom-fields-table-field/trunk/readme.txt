@@ -88,6 +88,9 @@ However, only when activated as a plugin will updates be available.
 
 == Changelog ==
 
+= 1.1.5 =
+* fixed issue occured after database migration with plugin "WP Migrate DB"
+
 = 1.1.4 =
 * takes over icon class changes in ACF-Pro since version 5.3.2
 

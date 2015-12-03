@@ -133,7 +133,7 @@ jQuery(document).ready(function($){
 
 				t.misc_render( p );
 
-				if ( p.data.b[ 1 ] === undefined && p.data.b[ 0 ][ 1 ] === undefined && p.data.b[ 0 ][ 0 ].c === '' ) {
+				if ( typeof p.data.b[ 1 ] === 'undefined' && typeof p.data.b[ 0 ][ 1 ] === 'undefined' && p.data.b[ 0 ][ 0 ].c === '' ) {
 
 					p.obj_root.find( '.acf-table-remove-col' ).hide(),
 					p.obj_root.find( '.acf-table-remove-row' ).hide();
@@ -210,7 +210,7 @@ jQuery(document).ready(function($){
 
 				var val = p.obj_root.find( 'input.table' ).val();
 
-				p.data = {};
+				p.data = false;
 
 				if ( val !== '' ) {
 
@@ -236,29 +236,29 @@ jQuery(document).ready(function($){
 
 					// from data-colparam
 
-					c: {
-						0: {
-
+					c: [
+						{
+							c: '',
 						},
-					},
+					],
 
 					// header
 
-					h: {
-						0: {
+					h: [
+						{
 							c: '',
 						},
-					},
+					],
 
 					// body
 
-					b: {
-						0: {
-							0: {
+					b: [
+						[
+							{
 								c: '',
 							},
-						},
-					},
+						],
+					],
 				};
 
 			// }
@@ -266,11 +266,11 @@ jQuery(document).ready(function($){
 			// MERGE DEFAULT DATA {
 
 				if ( p.data ) {
-
-					p.data = t.helper.setDefaultParam( {
-						p: p.data,
-						d: p.data_defaults,
-					} );
+					
+					if ( typeof p.data.b === 'array' ) {
+						
+						$.extend( true, p.data, p.data_defaults );
+					}
 				}
 				else {
 
@@ -691,9 +691,9 @@ jQuery(document).ready(function($){
 			p.data = t.data_get( p );
 			t.data_default( p );
 
-			p.data.c = {};
-			p.data.h = {};
-			p.data.b = {};
+			p.data.c = [];
+			p.data.h = [];
+			p.data.b = [];
 
 			// TOP {
 
@@ -730,7 +730,7 @@ jQuery(document).ready(function($){
 
 				p.obj_table.find( '.acf-table-body-row' ).each( function() {
 
-					p.data.b[ i ] = {};
+					p.data.b[ i ] = [];
 
 					$( this ).find( '.acf-table-body-cell .acf-table-body-cont' ).each( function() {
 
@@ -948,43 +948,6 @@ jQuery(document).ready(function($){
 
 				return len;
 			},
-
-			setDefaultParam: function ( p ) {
-
-				if ( typeof p === 'undefined' ) {
-
-					p = {};
-				}
-
-				if ( typeof p.p === 'undefined' ) {
-
-					p.p = {};
-				}
-
-				if ( typeof p.d === 'undefined' ) {
-
-					p.d = {};
-				}
-
-				var r = p.p;
-
-				for( var i in p.d ) {
-
-					if ( typeof p.d[ i ] !== 'undefined' && typeof r[ i ] !== typeof p.d[ i ] ) {
-
-						r[ i ] = p.d[ i ];
-					}
-					else {
-
-						if ( typeof p.d[ i ] !== 'undefined' && t.helper.getLength( r[ i ] ) !== t.helper.getLength( p.d[ i ] ) ) {
-
-							r[ i ] = t.helper.setDefaultParam({ p: r[ i ], d: p.d[ i ] });
-						}
-					}
-				}
-
-				return r;
-			}
 		};
 	};
 
