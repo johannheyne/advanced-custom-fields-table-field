@@ -172,12 +172,13 @@
 		/* .acf-table-hide-header { */
 
 			.acf-table-hide-header .acf-table-header-row,
-			.acf-table-hide-header .acf-table-header-row > * {
+			.acf-table-hide-header .acf-table-header-row * {
 				height: 0 !important;
 				font-size: 0 !important;
 				line-height: 0 !important;
 				padding: 0 !important;
 				border: 0 !important;
+				display: block;
 			}
 			.acf-table-hide-header .acf-table-top-row > * {
 				border-bottom: none;

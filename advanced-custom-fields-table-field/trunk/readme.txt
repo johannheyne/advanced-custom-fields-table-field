@@ -88,11 +88,14 @@ However, only when activated as a plugin will updates be available.
 
 == Changelog ==
 
+= 1.1.6 =
+* UI: Fixed table header switch off problem
+
 = 1.1.5 =
-* fixed issue occured after database migration with plugin "WP Migrate DB"
+* Fixed issue occured after database migration with plugin "WP Migrate DB"
 
 = 1.1.4 =
-* takes over icon class changes in ACF-Pro since version 5.3.2
+* Takes over icon class changes in ACF-Pro since version 5.3.2
 
 = 1.1.3 =
 * Fixed wrong function name 'change_template'
