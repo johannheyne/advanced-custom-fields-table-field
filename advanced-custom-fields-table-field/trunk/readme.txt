@@ -88,6 +88,9 @@ However, only when activated as a plugin will updates be available.
 
 == Changelog ==
 
+= 1.1.7 =
+* Fixed support for user profile pages
+
 = 1.1.6 =
 * UI: Fixed table header switch off problem
 
