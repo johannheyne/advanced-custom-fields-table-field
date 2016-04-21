@@ -287,13 +287,17 @@
 		border-top: 6px solid #e5f8ff;
 	}
 	.acf-table-cell-editor-textarea {
-		border: none;
+		border: none !important;
 		padding: 3px 7px !important;
 		background-color: #e5f8ff;
 		font-size: 13px;
 		line-height: 1.4;
 		min-width: 180px;
 		min-height: 61px !important;
+		
+		/* fix profile.php ACF v4 */
+		width: auto !important;
+		margin-bottom: 0 !important;
 	}
 
 /* CELL EDITOR } */

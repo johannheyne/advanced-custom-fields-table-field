@@ -15,6 +15,7 @@ jQuery(document).ready(function($){
 				btn_add_row:	'acf-button-add acf-table-add-row',
 				btn_add_col:	'acf-button-add acf-table-add-col',
 				btn_remove_col:	'acf-button-remove acf-table-remove-col',
+				admin_page_profile: 'profile-php',
 			};
 
 			t.param.htmlbuttons = {
@@ -83,7 +84,33 @@ jQuery(document).ready(function($){
 									'<textarea name="acf-table-cell-editor-textarea" class="acf-table-cell-editor-textarea"></textarea>' +
 								'</div>';
 
+		t.obj = {
+			body: $( 'body' ),
+		};
+
+		t.var = {
+			ajax: false,
+		};
+
 		t.init = function() {
+
+			// check for type of admin page to conclude that fields are put by ajax or not
+			t.is_ajax();
+
+			if ( t.var.ajax ) {
+
+				$( document ).ajaxComplete(function() {
+
+					t.init_workflow();
+				});
+			}
+			else {
+
+				t.init_workflow();
+			}
+		};
+
+		t.init_workflow = function() {
 
 			t.each_table();
 			t.table_add_col_event();
@@ -97,7 +124,14 @@ jQuery(document).ready(function($){
 			t.ui_event_use_header();
 			t.ui_event_new_flex_field();
 			t.ui_event_change_template();
+		};
 
+		t.is_ajax = function() {
+
+			if ( t.obj.body.hasClass( t.param.classes.admin_page_profile ) ) {
+
+				t.var.ajax = true;
+			}
 		};
 
 		t.ui_event_change_template = function() {
