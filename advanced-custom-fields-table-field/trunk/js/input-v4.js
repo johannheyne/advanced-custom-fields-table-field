@@ -266,9 +266,9 @@ jQuery(document).ready(function($){
 			// MERGE DEFAULT DATA {
 
 				if ( p.data ) {
-					
+
 					if ( typeof p.data.b === 'array' ) {
-						
+
 						$.extend( true, p.data, p.data_defaults );
 					}
 				}
