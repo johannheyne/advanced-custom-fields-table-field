@@ -16,6 +16,7 @@ jQuery(document).ready(function($){
 				btn_add_col:	'acf-button-add acf-table-add-col',
 				btn_remove_col:	'acf-button-remove acf-table-remove-col',
 				admin_page_profile: 'profile-php',
+				admin_page_user_edit: 'user-edit-php',
 			};
 
 			t.param.htmlbuttons = {
@@ -128,7 +129,10 @@ jQuery(document).ready(function($){
 
 		t.is_ajax = function() {
 
-			if ( t.obj.body.hasClass( t.param.classes.admin_page_profile ) ) {
+			if ( 
+				t.obj.body.hasClass( t.param.classes.admin_page_profile ) 
+				|| t.obj.body.hasClass( t.param.classes.admin_page_user_edit ) 
+			) {
 
 				t.var.ajax = true;
 			}
