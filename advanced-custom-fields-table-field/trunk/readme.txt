@@ -88,6 +88,9 @@ However, only when activated as a plugin will updates be available.
 
 == Changelog ==
 
+= 1.1.9 =
+* Fixed returning false on single empty table cell for ACF version 4
+
 = 1.1.8 =
 * Fixed support for user edit pages
 
