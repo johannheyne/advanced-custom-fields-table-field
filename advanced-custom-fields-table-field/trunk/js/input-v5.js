@@ -104,7 +104,7 @@ jQuery(document).ready(function($){
 
 		t.ui_event_change_side_postbox = function() {
 
-			$( 'body' ).on( 'change', '#submitdiv input, #formatdiv input, #categorydiv input, #pageparentdiv select', function() {
+			$( 'body' ).on( 'change', '.postbox input, .postbox select', function() {
 
 				$( '.acf-table-wrap' ).remove();
 

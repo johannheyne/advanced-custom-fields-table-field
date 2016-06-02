@@ -1,8 +1,8 @@
 === Advanced Custom Fields: Table Field ===
 Contributors: jonua
 Tags: acf table
-Requires at least: 4.4.2
-Tested up to: 4.5
+Requires at least: 4.5
+Tested up to: 4.5.2
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -87,6 +87,9 @@ However, only when activated as a plugin will updates be available.
 
 
 == Changelog ==
+
+= 1.1.10 =
+* Fixed table functionality with respect to the ACF rules
 
 = 1.1.9 =
 * Fixed returning false on single empty table cell for ACF version 4
