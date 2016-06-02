@@ -98,14 +98,13 @@ jQuery(document).ready(function($){
 			t.sortable_col();
 			t.ui_event_use_header();
 			t.ui_event_new_flex_field();
-			t.ui_event_change_template();
-			t.ui_event_change_postbox();
+			t.ui_event_change_side_postbox();
 
 		};
 
-		t.ui_event_change_postbox = function() {
+		t.ui_event_change_side_postbox = function() {
 
-			$( 'body' ).on( 'change', '.postbox input, .postbox select', function() {
+			$( 'body' ).on( 'change', '#submitdiv input, #formatdiv input, #categorydiv input, #pageparentdiv select', function() {
 
 				$( '.acf-table-wrap' ).remove();
 
