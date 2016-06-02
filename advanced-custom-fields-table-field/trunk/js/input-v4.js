@@ -124,7 +124,8 @@ jQuery(document).ready(function($){
 			t.sortable_col();
 			t.ui_event_use_header();
 			t.ui_event_new_flex_field();
-			t.ui_event_change_template();
+			t.ui_event_change_postbox();
+
 		};
 
 		t.is_ajax = function() {
@@ -138,15 +139,15 @@ jQuery(document).ready(function($){
 			}
 		};
 
-		t.ui_event_change_template = function() {
+		t.ui_event_change_postbox = function() {
 
-			$( '#page_template' ).on( 'change', function() {
+			$( 'body' ).on( 'change', '.postbox input, .postbox select', function() {
 
 				$( '.acf-table-wrap' ).remove();
 
 				window.setTimeout( function() {
 
-					t.init();
+					t.each_table();
 
 				}, 1000 );
 
