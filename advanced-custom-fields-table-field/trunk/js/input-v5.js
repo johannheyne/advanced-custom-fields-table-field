@@ -98,15 +98,13 @@ jQuery(document).ready(function($){
 			t.sortable_col();
 			t.ui_event_use_header();
 			t.ui_event_new_flex_field();
-			t.ui_event_change_side_postbox();
+			t.ui_event_change_location_rule();
 
 		};
 
-		t.ui_event_change_side_postbox = function() {
+		t.ui_event_change_location_rule = function() {
 
-			$( 'body' ).on( 'change', '.postbox input, .postbox select', function() {
-
-				$( '.acf-table-wrap' ).remove();
+			$( 'body' ).on( 'change', '[name="post_category[]"], [name="post_format"], [name="page_template"], [name="parent_id"], [name="role"]', function() {
 
 				window.setTimeout( function() {
 
@@ -123,7 +121,13 @@ jQuery(document).ready(function($){
 			$('.acf-field-table .acf-table-root').each( function() {
 
 				var p = {};
-				p.obj_root = $( this );
+				p.obj_root = $( this ),
+				table = p.obj_root.find( '.acf-table-wrap' );
+
+				if ( table.length > 0 ) {
+
+					return;
+				}
 
 				t.data_get( p );
 
