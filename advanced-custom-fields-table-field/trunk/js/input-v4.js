@@ -141,7 +141,7 @@ jQuery(document).ready(function($){
 
 		t.ui_event_change_location_rule = function() {
 
-			$( 'body' ).on( 'change', '[name="post_category[]"], [name="post_format"], [name="page_template"], [name="parent_id"], [name="role"]', function() {
+			$( 'body' ).on( 'change', '[name="post_category[]"], [name="post_format"], [name="page_template"], [name="parent_id"], [name="role"], [name^="tax_input"]', function() {
 
 				window.setTimeout( function() {
 
