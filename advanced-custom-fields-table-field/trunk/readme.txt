@@ -88,6 +88,9 @@ However, only when activated as a plugin will updates be available.
 
 == Changelog ==
 
+= 1.1.12 =
+* Adds support for field groups post taxonomy rule
+
 = 1.1.11 =
 * Fixed rerendering of tables while changing other content
 
