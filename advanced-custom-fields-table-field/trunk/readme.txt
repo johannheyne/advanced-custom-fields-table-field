@@ -88,6 +88,9 @@ However, only when activated as a plugin will updates be available.
 
 == Changelog ==
 
+= 1.1.13 =
+* Fixes an XSS issue within /wp-admin/ pages
+
 = 1.1.12 =
 * Adds support for field groups post taxonomy rule
 
