@@ -834,7 +834,8 @@ jQuery(document).ready(function($){
 
 			var cell_editor = $( 'body' ).find( '.acf-table-cell-editor' ),
 				cell_editor_textarea = cell_editor.find( '.acf-table-cell-editor-textarea' ),
-				p = {};
+				p = {},
+				cell_editor_val = '';
 
 			if ( typeof cell_editor_textarea.val() !== 'undefined' ) {
 
