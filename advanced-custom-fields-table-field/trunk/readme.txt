@@ -95,39 +95,39 @@ However, only when activated as a plugin will updates be available.
 * Adds support for field groups post taxonomy rule
 
 = 1.1.11 =
-* Fixed rerendering of tables while changing other content
+* Fixes rerendering of tables while changing other content
 
 = 1.1.10 =
 * Fixed table functionality with respect to the ACF rules
 
 = 1.1.9 =
-* Fixed returning false on single empty table cell for ACF version 4
+* Fixes returning false on single empty table cell for ACF version 4
 
 = 1.1.8 =
-* Fixed support for user edit pages
+* Fixes support for user edit pages
 
 = 1.1.7 =
-* Fixed support for user profile pages
+* Fixes support for user profile pages
 
 = 1.1.6 =
-* UI: Fixed table header switch off problem
+* UI: Fixes table header switch off problem
 
 = 1.1.5 =
-* Fixed issue occured after database migration with plugin "WP Migrate DB"
+* Fixes issue occured after database migration with plugin "WP Migrate DB"
 
 = 1.1.4 =
 * Takes over icon class changes in ACF-Pro since version 5.3.2
 
 = 1.1.3 =
-* Fixed wrong function name 'change_template'
+* Fixes wrong function name 'change_template'
 
 = 1.1.2 =
-* Fixed missing table on page template change
+* Fixes missing table on page template change
 
 = 1.1.1 =
 * Compatibility to icon changes of ACF Pro version 5.2.8
-* Fixed table top legend height in FireFox
-* Fixed delete column icon position in IE
+* Fixes table top legend height in FireFox
+* Fixes delete column icon position in IE
 
 = 1.1 =
 * Improved User Experience when deleting all columns and rows.
@@ -140,20 +140,20 @@ However, only when activated as a plugin will updates be available.
 * If the table has only a single empty cell (this is by default), no table data will return now.
 
 = 1.0.5 =
-* Fixed javascript issue in IE 8.
-* Fixed missing table borders and table header´s height in FireFox.
+* Fixes javascript issue in IE 8.
+* Fixes missing table borders and table header´s height in FireFox.
 
 = 1.0.4 =
-* Fixed an uri problem on some hosts.
+* Fixes an uri problem on some hosts.
 
 = 1.0.3 =
-* Fixed an php error on HTTP_REFFERER.
+* Fixes an php error on HTTP_REFFERER.
 
 = 1.0.2 =
-* Fixed error when including the plugin from inside a theme.
+* Fixes error when including the plugin from inside a theme.
 
 = 1.0.1 =
-* Fixed ACF validation error "required" when header option "use table header" was used and unchecked.
+* Fixes ACF validation error "required" when header option "use table header" was used and unchecked.
 
 = 1.0 =
 * Official Release of the free version
