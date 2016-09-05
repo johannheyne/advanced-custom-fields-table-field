@@ -1,8 +1,8 @@
 === Advanced Custom Fields: Table Field ===
-Contributors: jonua
+Contributors: Johann Heyne
 Tags: acf table
-Requires at least: 4.5
-Tested up to: 4.5.3
+Requires at least: 4.5.3
+Tested up to: 4.6
 Stable tag: trunk
 License: GPLv2 or later
 
