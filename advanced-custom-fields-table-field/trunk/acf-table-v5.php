@@ -139,9 +139,8 @@ class acf_field_table extends acf_field {
 		<input type="text" name="<?php echo esc_attr($field['name']) ?>" value="<?php echo esc_attr($field['value']) ?>" style="font-size:<?php echo $field['font_size'] ?>px;" />
 		<?php
 		*/
-
-		$data_field['use_header'] = $field['use_header'];
-
+		$data_field['use_header'] = isset($field['use_header']) ? $field['use_header'] : 0;
+		
 		$e = '';
 
 		$e .= '<div class="acf-table-root">';
@@ -192,7 +191,7 @@ class acf_field_table extends acf_field {
 		wp_enqueue_script('acf-input-table');
 
 		// register & include CSS
-		wp_register_style( 'acf-input-table', $this->settings['dir_url'] . 'css/input.css', array('acf-input'), $this->settings['version'] ); 
+		wp_register_style( 'acf-input-table', $this->settings['dir_url'] . 'css/input.css', array('acf-input'), $this->settings['version'] );
 		wp_enqueue_style('acf-input-table');
 
 	}
@@ -223,7 +222,7 @@ class acf_field_table extends acf_field {
    	*  input_form_data()
    	*
    	*  This function is called once on the 'input' page between the head and footer
-   	*  There are 2 situations where ACF did not load during the 'acf/input_admin_enqueue_scripts' and 
+   	*  There are 2 situations where ACF did not load during the 'acf/input_admin_enqueue_scripts' and
    	*  'acf/input_admin_head' actions because ACF did not know it was going to be used. These situations are
    	*  seen on comments / user edit forms on the front end. This function will always be called, and includes
    	*  $args that related to the current screen such as $args['post_id']
@@ -401,7 +400,7 @@ class acf_field_table extends acf_field {
 
 			// IF SINGLE EMPTY CELL, THEN DO NOT RETURN TABLE DATA
 
-			if ( 
+			if (
 				count( $a['b'] ) === 1
 				AND count( $a['b'][0] ) === 1
 				AND trim( $a['b'][0][0]['c'] ) === ''
@@ -485,7 +484,7 @@ class acf_field_table extends acf_field {
 	*
 	*  @type	filter
 	*  @date	23/01/2013
-	*  @since	3.6.0	
+	*  @since	3.6.0
 	*
 	*  @param	$field (array) the field array holding all the field options
 	*  @return	$field
@@ -497,7 +496,7 @@ class acf_field_table extends acf_field {
 
 		return $field;
 
-	}	
+	}
 
 	*/
 
@@ -520,7 +519,7 @@ class acf_field_table extends acf_field {
 
 		return $field;
 
-	}	
+	}
 
 	*/
 
@@ -541,7 +540,7 @@ class acf_field_table extends acf_field {
 
 	function delete_field( $field ) {
 
-	}	
+	}
 
 	*/
 
