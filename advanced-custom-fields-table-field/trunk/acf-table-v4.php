@@ -212,7 +212,7 @@
 
 				// IF SINGLE EMPTY CELL, THEN DO NOT RETURN TABLE DATA
 
-				if ( 
+				if (
 					count( $a['b'] ) === 1
 					AND count( $a['b'][0] ) === 1
 					AND trim( $a['b'][0][0]['c'] ) === ''

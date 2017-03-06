@@ -1,5 +1,5 @@
 jQuery.noConflict();
-jQuery(document).ready(function($){
+jQuery( document ).ready( function( $ ) {
 
 	function ACFTableField() {
 
@@ -237,7 +237,7 @@ jQuery(document).ready(function($){
 					p: {
 						o: {
 							uh: 0,
-						}, 
+						},
 					},
 
 					// from data-colparam
@@ -389,7 +389,7 @@ jQuery(document).ready(function($){
 
 				var v = {};
 
-			   v.obj_use_header = p.obj_root.find( '.acf-table-fc-opt-use-header' );
+				v.obj_use_header = p.obj_root.find( '.acf-table-fc-opt-use-header' );
 
 			// }
 
@@ -784,12 +784,12 @@ jQuery(document).ready(function($){
 
 			$( 'body' ).on( 'click', '.acf-table-cell-editor-textarea', function( e ) {
 
-				 e.stopImmediatePropagation();
+				e.stopImmediatePropagation();
 			} );
 
 			$( 'body' ).on( 'click', function( e ) {
 
-				 t.cell_editor_save();
+				t.cell_editor_save();
 			} );
 		};
 
