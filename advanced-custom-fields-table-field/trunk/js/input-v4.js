@@ -95,20 +95,7 @@ jQuery( document ).ready(function( $ ){
 
 		t.init = function() {
 
-			// check for type of admin page to conclude that fields are put by ajax or not
-			t.is_ajax();
-
-			if ( t.var.ajax ) {
-
-				$( document ).ajaxComplete(function() {
-
-					t.init_workflow();
-				});
-			}
-			else {
-
-				t.init_workflow();
-			}
+			t.init_workflow();
 		};
 
 		t.init_workflow = function() {
@@ -125,29 +112,33 @@ jQuery( document ).ready(function( $ ){
 			t.ui_event_use_header();
 			t.ui_event_new_flex_field();
 			t.ui_event_change_location_rule();
-
+			t.ui_event_ajax();
 		};
 
-		t.is_ajax = function() {
+		t.ui_event_ajax = function() {
 
-			if ( 
-				t.obj.body.hasClass( t.param.classes.admin_page_profile ) 
-				|| t.obj.body.hasClass( t.param.classes.admin_page_user_edit ) 
-			) {
+			$( document ).ajaxComplete( function( event ) {
 
-				t.var.ajax = true;
-			}
-		};
+				t.each_table();
+			});
+		}
 
 		t.ui_event_change_location_rule = function() {
 
 			$( 'body' ).on( 'change', '[name="post_category[]"], [name="post_format"], [name="page_template"], [name="parent_id"], [name="role"], [name^="tax_input"]', function() {
 
-				window.setTimeout( function() {
+				var interval = setInterval( function() {
 
-					t.each_table();
+					var table_fields = $( '.field_type-table' );
 
-				}, 1000 );
+					if ( table_fields.length > 0 ) {
+
+						t.each_table();
+
+						clearInterval( interval );
+					}
+
+				}, 100 );
 
 			} );
 
@@ -155,7 +146,7 @@ jQuery( document ).ready(function( $ ){
 
 		t.each_table = function( ) {
 
-			$('.field_type-table .acf-table-root').each( function() {
+			$( '.field_type-table .acf-table-root' ).not( '.acf-table-rendered' ).each( function() {
 
 				var p = {};
 				p.obj_root = $( this ),
@@ -165,6 +156,8 @@ jQuery( document ).ready(function( $ ){
 
 					return;
 				}
+
+				p.obj_root.addClass( 'acf-table-rendered' );
 
 				t.data_get( p );
 

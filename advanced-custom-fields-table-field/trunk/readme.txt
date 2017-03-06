@@ -1,8 +1,8 @@
 === Advanced Custom Fields: Table Field ===
 Contributors: Johann Heyne
 Tags: acf table
-Requires at least: 4.5.3
-Tested up to: 4.6
+Requires at least: 4.7
+Tested up to: 4.7
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -87,6 +87,9 @@ However, only when activated as a plugin will updates be available.
 
 
 == Changelog ==
+
+= 1.1.14 =
+* Fixes table does not appear under certain field groups location rules
 
 = 1.1.13 =
 * Fixes an XSS issue within /wp-admin/ pages
