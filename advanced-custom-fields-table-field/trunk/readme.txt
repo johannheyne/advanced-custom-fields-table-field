@@ -88,6 +88,9 @@ However, only when activated as a plugin will updates be available.
 
 == Changelog ==
 
+= 1.1.15 =
+* Adds polish translation by Pawel Golka
+
 = 1.1.14 =
 * Fixes table does not appear under certain field groups location rules
 
