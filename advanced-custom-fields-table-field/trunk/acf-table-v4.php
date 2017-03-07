@@ -251,5 +251,3 @@
 
 	// create field
 	new acf_table_add_on();
-
-?>
