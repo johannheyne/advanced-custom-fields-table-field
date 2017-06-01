@@ -2,7 +2,7 @@
 Contributors: Johann Heyne
 Tags: acf table
 Requires at least: 4.7
-Tested up to: 4.7
+Tested up to: 4.8
 Stable tag: trunk
 License: GPLv2 or later
 
