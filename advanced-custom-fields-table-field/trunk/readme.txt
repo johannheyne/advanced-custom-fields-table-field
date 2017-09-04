@@ -2,7 +2,7 @@
 Contributors: Johann Heyne
 Tags: acf table
 Requires at least: 4.7
-Tested up to: 4.8
+Tested up to: 4.8.1
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -87,6 +87,9 @@ However, only when activated as a plugin will updates be available.
 
 
 == Changelog ==
+
+= 1.1.16 =
+* Keeps the WordPress admin area working, if tablefields value is not a valid JSON string. Logs the invalid value in the console for debugging.
 
 = 1.1.15 =
 * Adds polish translation by Pawel Golka

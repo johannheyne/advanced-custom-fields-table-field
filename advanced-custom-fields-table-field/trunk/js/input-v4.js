@@ -180,7 +180,19 @@ jQuery( document ).ready(function( $ ){
 
 		t.field_options_get = function( p ) {
 
-			p.field_options = $.parseJSON( decodeURIComponent( p.obj_root.find( '[data-field-options]' ).data( 'field-options' ) ) );
+			try {
+
+				p.field_options = $.parseJSON( decodeURIComponent( p.obj_root.find( '[data-field-options]' ).data( 'field-options' ) ) );
+			}
+			catch (e) {
+
+				p.field_options = {
+					use_header: 2
+				};
+
+				console.log( 'The tablefield options value is not a valid JSON string:', decodeURIComponent( p.obj_root.find( '[data-field-options]' ).data( 'field-options' ) ) );
+				console.log( 'The parsing error:', e );
+			}
 
 		};
 
@@ -250,10 +262,21 @@ jQuery( document ).ready(function( $ ){
 
 				if ( val !== '' ) {
 
-					p.data = $.parseJSON( decodeURIComponent( val.replace(/\+/g, '%20') ) );
+					try {
+
+						p.data = $.parseJSON( decodeURIComponent( val.replace(/\+/g, '%20') ) );
+					}
+					catch (e) {
+
+						p.data = false;
+
+						console.log( 'The tablefield value is not a valid JSON string:', decodeURIComponent( val.replace(/\+/g, '%20') ) );
+						console.log( 'The parsing error:', e );
+					}
 				}
 
 				return p.data;
+
 			// }
 
 		};
