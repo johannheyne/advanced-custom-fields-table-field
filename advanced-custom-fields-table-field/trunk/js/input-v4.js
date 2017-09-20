@@ -916,15 +916,25 @@ jQuery( document ).ready(function( $ ){
 			p = $.extend( true, defaults, p );
 
 			// prev cell of current row
-			var prev_cell = t.state.current_cell_obj
+			var table_obj = t.state.current_cell_obj.closest( '.acf-table-table' ),
+				no_header = table_obj.hasClass( 'acf-table-hide-header' );
+				prev_cell = t.state.current_cell_obj
 								.prev( '.acf-table-body-cell, .acf-table-header-cell' );
 
 			// else if get prev row
 			if ( prev_cell.length === 0 ) {
 
+				var row_selectors = [ '.acf-table-body-row' ];
+
+				// prevents going to header cell if table header is hidden
+				if ( no_header === false ) {
+
+					row_selectors.push( '.acf-table-header-row' );
+				}
+
 				prev_cell = t.state.current_cell_obj
 					.parent()
-					.prev( '.acf-table-body-row, .acf-table-header-row' )
+					.prev( row_selectors.join( ',' ) )
 					.find( '.acf-table-body-cell, .acf-table-header-cell' )
 					.last();
 			}
