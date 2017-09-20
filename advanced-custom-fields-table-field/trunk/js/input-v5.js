@@ -85,6 +85,20 @@ jQuery( document ).ready( function( $ ) {
 									'<textarea name="acf-table-cell-editor-textarea" class="acf-table-cell-editor-textarea"></textarea>' +
 								'</div>';
 
+		t.obj = {
+			body: $( 'body' ),
+		};
+
+		t.var = {
+			ajax: false,
+		};
+
+		t.state = {
+			'current_cell_obj': false,
+			'cell_editor_cell': false,
+			'cell_editor_last_keycode': false
+		};
+
 		t.init = function() {
 
 			t.init_workflow();
@@ -98,6 +112,7 @@ jQuery( document ).ready( function( $ ) {
 			t.table_add_row_event();
 			t.table_remove_row();
 			t.cell_editor();
+			t.cell_editor_tab_navigation();
 			t.prevent_cell_links();
 			t.sortable_row();
 			t.sortable_col();
@@ -821,10 +836,12 @@ jQuery( document ).ready( function( $ ) {
 
 				t.cell_editor_save();
 
-				var that = $( this ),
-					that_val = that.find( '.acf-table-body-cont, .acf-table-header-cont' ).html();
+				var that = $( this );
 
-				that.prepend( t.param.htmleditor ).find( '.acf-table-cell-editor-textarea' ).html( that_val ).focus();
+				t.cell_editor_add_editor({
+					'that': that
+				});
+
 			} );
 
 			$( 'body' ).on( 'click', '.acf-table-cell-editor-textarea', function( e ) {
@@ -836,6 +853,91 @@ jQuery( document ).ready( function( $ ) {
 
 				t.cell_editor_save();
 			} );
+		};
+
+		t.cell_editor_add_editor = function( p ) {
+
+			var defaults = {
+				'that': false
+			};
+
+			p = $.extend( true, defaults, p );
+
+			if ( p['that'] ) {
+
+				var that_val = p['that'].find( '.acf-table-body-cont, .acf-table-header-cont' ).html();
+
+				t.state.current_cell_obj = p['that'];
+				t.state.cell_editor_is_open = true;
+
+				p['that'].prepend( t.param.htmleditor ).find( '.acf-table-cell-editor-textarea' ).html( that_val ).focus();
+			}
+		};
+
+		t.get_next_table_cell = function( p ) {
+
+			var defaults = {
+				'key': false
+			};
+
+			p = $.extend( true, defaults, p );
+
+			// next cell of current row
+			var next_cell = t.state.current_cell_obj
+								.next( '.acf-table-body-cell, .acf-table-header-cell' );
+
+			// else if get next row
+			if ( next_cell.length === 0 ) {
+
+				next_cell = t.state.current_cell_obj
+					.parent()
+					.next( '.acf-table-body-row' )
+					.find( '.acf-table-body-cell')
+					.first();
+			}
+
+			// if next row, get first cell of that row
+			if ( next_cell.length !== 0 ) {
+
+				t.state.current_cell_obj = next_cell;
+			}
+			else {
+
+				t.state.current_cell_obj = false;
+			}
+		};
+
+		t.get_prev_table_cell = function( p ) {
+
+			var defaults = {
+				'key': false
+			};
+
+			p = $.extend( true, defaults, p );
+
+			// prev cell of current row
+			var prev_cell = t.state.current_cell_obj
+								.prev( '.acf-table-body-cell, .acf-table-header-cell' );
+
+			// else if get prev row
+			if ( prev_cell.length === 0 ) {
+
+				prev_cell = t.state.current_cell_obj
+					.parent()
+					.prev( '.acf-table-body-row, .acf-table-header-row' )
+					.find( '.acf-table-body-cell, .acf-table-header-cell' )
+					.last();
+			}
+
+			// if next row, get first cell of that row
+			if ( prev_cell.length !== 0 ) {
+
+				t.state.current_cell_obj = prev_cell;
+			}
+			else {
+
+				t.state.current_cell_obj = false;
+			}
 		};
 
 		t.cell_editor_save = function() {
@@ -861,10 +963,43 @@ jQuery( document ).ready( function( $ ) {
 				t.table_build_json( p );
 
 				cell_editor.remove();
+				t.state.cell_editor_is_open = false;
 
 				p.obj_root.find( '.acf-table-remove-col' ).show(),
 				p.obj_root.find( '.acf-table-remove-row' ).show();
 			}
+		};
+
+		t.cell_editor_tab_navigation = function() {
+
+			$( 'body' ).on( 'keydown', '.acf-table-cell-editor', function( e ) {
+
+				var keyCode = e.keyCode || e.which;
+
+				if ( keyCode == 9 ) {
+
+					e.preventDefault();
+
+					t.cell_editor_save();
+
+					if ( t.state.cell_editor_last_keycode === 16 ) {
+
+						t.get_prev_table_cell();
+
+					}
+					else {
+
+						t.get_next_table_cell();
+					}
+
+					t.cell_editor_add_editor({
+						'that': t.state.current_cell_obj
+					});
+				}
+
+				t.state.cell_editor_last_keycode = keyCode;
+
+			});
 		};
 
 		t.prevent_cell_links = function() {

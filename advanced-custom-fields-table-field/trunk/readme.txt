@@ -10,8 +10,8 @@ A Table Field Add-on for the Advanced Custom Fields Plugin
 
 == Description ==
 
-The Table field plugin enables easely editing a table.
-The plugin ist compatible with ACF4 and ACF5.
+The Table field plugin enables easily editing a table.
+The plugin is compatible with ACF4 and ACF5.
 The table field works also with the repeater and flexible field types.
 
 * table header (option)
@@ -87,6 +87,9 @@ However, only when activated as a plugin will updates be available.
 
 
 == Changelog ==
+
+= 1.2 =
+* Adds support for tab navigation. Uses shift + tab for backward navigation.
 
 = 1.1.16 =
 * Keeps the WordPress admin area working, if tablefields value is not a valid JSON string. Logs the invalid value in the console for debugging.
