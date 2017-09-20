@@ -131,7 +131,7 @@ jQuery( document ).ready(function( $ ){
 
 		t.ui_event_change_location_rule = function() {
 
-			$( 'body' ).on( 'change', '[name="post_category[]"], [name="post_format"], [name="page_template"], [name="parent_id"], [name="role"], [name^="tax_input"]', function() {
+			t.obj.body.on( 'change', '[name="post_category[]"], [name="post_format"], [name="page_template"], [name="parent_id"], [name="role"], [name^="tax_input"]', function() {
 
 				var interval = setInterval( function() {
 
@@ -206,7 +206,7 @@ jQuery( document ).ready(function( $ ){
 
 			// HEADER: SELECT FIELD ACTIONS {
 
-				$( 'body' ).on( 'change', '.acf-table-fc-opt-use-header', function() {
+				t.obj.body.on( 'change', '.acf-table-fc-opt-use-header', function() {
 
 					var that = $( this ),
 						p = {};
@@ -240,7 +240,7 @@ jQuery( document ).ready(function( $ ){
 
 		t.ui_event_new_flex_field = function() {
 
-			$( 'body' ).on( 'click', '.acf-fc-popup', function() {
+			t.obj.body.on( 'click', '.acf-fc-popup', function() {
 
 				// SORTABLE {
 
@@ -510,7 +510,7 @@ jQuery( document ).ready(function( $ ){
 
 		t.table_add_col_event = function() {
 
-			$( 'body' ).on( 'click', '.acf-table-add-col', function( e ) {
+			t.obj.body.on( 'click', '.acf-table-add-col', function( e ) {
 
 				e.preventDefault();
 
@@ -555,7 +555,7 @@ jQuery( document ).ready(function( $ ){
 
 		t.table_remove_col = function() {
 
-			$( 'body' ).on( 'click', '.acf-table-remove-col', function( e ) {
+			t.obj.body.on( 'click', '.acf-table-remove-col', function( e ) {
 
 				e.preventDefault();
 
@@ -609,7 +609,7 @@ jQuery( document ).ready(function( $ ){
 
 		t.table_add_row_event = function() {
 
-			$( 'body' ).on( 'click', '.acf-table-add-row', function( e ) {
+			t.obj.body.on( 'click', '.acf-table-add-row', function( e ) {
 
 				e.preventDefault();
 
@@ -659,7 +659,7 @@ jQuery( document ).ready(function( $ ){
 
 		t.table_remove_row = function() {
 
-			$( 'body' ).on( 'click', '.acf-table-remove-row', function( e ) {
+			t.obj.body.on( 'click', '.acf-table-remove-row', function( e ) {
 
 				e.preventDefault();
 
@@ -829,7 +829,7 @@ jQuery( document ).ready(function( $ ){
 
 		t.cell_editor = function() {
 
-			$( 'body' ).on( 'click', '.acf-table-body-cell, .acf-table-header-cell', function( e ) {
+			t.obj.body.on( 'click', '.acf-table-body-cell, .acf-table-header-cell', function( e ) {
 
 				e.stopImmediatePropagation();
 
@@ -843,12 +843,12 @@ jQuery( document ).ready(function( $ ){
 
 			} );
 
-			$( 'body' ).on( 'click', '.acf-table-cell-editor-textarea', function( e ) {
+			t.obj.body.on( 'click', '.acf-table-cell-editor-textarea', function( e ) {
 
 				e.stopImmediatePropagation();
 			} );
 
-			$( 'body' ).on( 'click', function( e ) {
+			t.obj.body.on( 'click', function( e ) {
 
 				t.cell_editor_save();
 			} );
@@ -941,7 +941,7 @@ jQuery( document ).ready(function( $ ){
 
 		t.cell_editor_save = function() {
 
-			var cell_editor = $( 'body' ).find( '.acf-table-cell-editor' ),
+			var cell_editor = t.obj.body.find( '.acf-table-cell-editor' ),
 				cell_editor_textarea = cell_editor.find( '.acf-table-cell-editor-textarea' ),
 				p = {},
 				cell_editor_val = '';
@@ -971,7 +971,7 @@ jQuery( document ).ready(function( $ ){
 
 		t.cell_editor_tab_navigation = function() {
 
-			$( 'body' ).on( 'keydown', '.acf-table-cell-editor', function( e ) {
+			t.obj.body.on( 'keydown', '.acf-table-cell-editor', function( e ) {
 
 				var keyCode = e.keyCode || e.which;
 
@@ -1003,7 +1003,7 @@ jQuery( document ).ready(function( $ ){
 
 		t.prevent_cell_links = function() {
 
-			$( 'body' ).on( 'click', '.acf-table-body-cont a, .acf-table-header-cont a', function( e ) {
+			t.obj.body.on( 'click', '.acf-table-body-cont a, .acf-table-header-cont a', function( e ) {
 
 				e.preventDefault();
 			} );
@@ -1075,7 +1075,7 @@ jQuery( document ).ready(function( $ ){
 
 			$( '.acf-table-top-row' ).sortable( param );
 
-			$( 'body' ).on( 'click', '.acf-fc-popup', function() {
+			t.obj.body.on( 'click', '.acf-fc-popup', function() {
 
 				$( '.acf-table-top-row' ).sortable('destroy');
 				$( '.acf-table-top-row' ).unbind();
