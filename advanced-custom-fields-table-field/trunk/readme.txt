@@ -90,6 +90,7 @@ However, only when activated as a plugin will updates be available.
 
 = 1.2 =
 * Adds support for tab navigation. Uses shift + tab for backward navigation.
+* Minor code improvements
 
 = 1.1.16 =
 * Keeps the WordPress admin area working, if tablefields value is not a valid JSON string. Logs the invalid value in the console for debugging.
