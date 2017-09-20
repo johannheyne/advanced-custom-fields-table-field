@@ -244,8 +244,9 @@ jQuery( document ).ready(function( $ ){
 
 				// SORTABLE {
 
-					$( '.acf-table-table' ).sortable('destroy');
-					$( '.acf-table-table' ).unbind();
+					$( '.acf-table-table' )
+						.sortable('destroy')
+						.unbind();
 
 					window.setTimeout( function() {
 
@@ -1077,8 +1078,9 @@ jQuery( document ).ready(function( $ ){
 
 			t.obj.body.on( 'click', '.acf-fc-popup', function() {
 
-				$( '.acf-table-top-row' ).sortable('destroy');
-				$( '.acf-table-top-row' ).unbind();
+				$( '.acf-table-top-row' )
+					.sortable('destroy')
+					.unbind();
 
 				window.setTimeout( function() {
 
