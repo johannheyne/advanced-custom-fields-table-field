@@ -1014,7 +1014,9 @@ jQuery( document ).ready(function( $ ){
 
 			ui.children().each( function() {
 
-				$( this ).width( $( this ).width() );
+				var that = $( this );
+
+				that.width( that.width() );
 
 			} );
 
