@@ -143,6 +143,10 @@ However, only when activated as a plugin will updates be available.
 
 == Changelog ==
 
+= 1.2.1 =
+* Fixes using user locale for translation
+* Adds description for handling line breaks to plugins page
+
 = 1.2 =
 * Adds support for tab navigation. Uses shift + tab for backward navigation.
 * Minor code improvements
