@@ -18,7 +18,7 @@ The table field works also with the repeater and flexible field types.
 * add and remove table columns and rows
 * change order of columns and rows by dragging
 
-To display the table fields data as an html table you can start with the following basic code example.
+To display the table fields data as an html table in one of your template files you can start with the following basic code example:
 
 `
 $table = get_field( 'your_table_field_name' );
