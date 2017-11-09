@@ -12,14 +12,19 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 // 1. set text domain
 // Reference: https://codex.wordpress.org/Function_Reference/load_plugin_textdomain
-load_plugin_textdomain( 'acf-table', false, dirname( plugin_basename(__FILE__) ) . '/lang/' );
+function acf_table_load_plugin_textdomain( $version ) {
+
+	load_plugin_textdomain( 'acf-table', false, dirname( plugin_basename(__FILE__) ) . '/lang/' );
+}
+
+add_action('init', 'acf_table_load_plugin_textdomain');
+
 
 // 2. Include field type for ACF5
 // $version = 5 and can be ignored until ACF6 exists
 function include_field_types_table( $version ) {
 
 	include_once('acf-table-v5.php');
-
 }
 
 add_action('acf/include_field_types', 'include_field_types_table');
@@ -28,7 +33,6 @@ add_action('acf/include_field_types', 'include_field_types_table');
 function register_fields_table() {
 
 	include_once('acf-table-v4.php');
-
 }
 
 add_action('acf/register_fields', 'register_fields_table');
