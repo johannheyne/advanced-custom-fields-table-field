@@ -1,8 +1,8 @@
 === Advanced Custom Fields: Table Field ===
 Contributors: Johann Heyne
 Tags: acf table
-Requires at least: 4.7
-Tested up to: 4.8.1
+Requires at least: 4.8
+Tested up to: 4.9
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -18,7 +18,7 @@ The table field works also with the repeater and flexible field types.
 * add and remove table columns and rows
 * change order of columns and rows by dragging
 
-To display the table fields data as an html table you can start with the following code.
+To display the table fields data as an html table you can start with the following basic code example.
 
 `
 $table = get_field( 'your_table_field_name' );
@@ -66,6 +66,34 @@ if ( $table ) {
 	echo '</table>';
 }
 `
+=== Line Breaks ===
+
+This is about displaying line breaks in the admin tables and getting line breaks as <br> when outputting the tables HTML.
+
+To convert line breaks to <br> in tables HTML output PHP function nl2br() can be used:
+
+Replace `echo $th['c'];` with `echo nl2br( $th['c'] );` for line breaks in table header cells.
+Replace `echo $td['c'];` with `echo nl2br( $td['c'] );` for line breaks in table body cells.
+
+To display natural line breaks at the editing tables in the admin area, add the following styles to the admin area.
+
+.acf-table-header-cont,
+.acf-table-body-cont {
+    white-space: pre-line;
+}
+
+One way to add these styles to the WordPress admin area is adding the following code to your functions.php file of the theme.
+
+add_action('admin_head', 'acf_table_styles');
+
+function acf_table_styles() {
+  echo '<style>
+    .acf-table-header-cont,
+    .acf-table-body-cont {
+        white-space: pre-line;
+    }
+  </style>';
+}
 
 == Installation ==
 
