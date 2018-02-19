@@ -39,6 +39,28 @@
 				'version' => '1.0.5',
 			);
 
+			// PREVENTS SAVING INVALID TABLE FIELD JSON DATA {
+
+				add_filter( 'update_post_metadata', function( $x, $object_id, $meta_key, $meta_value, $prev_value ) {
+
+					// detecting ACF table json
+					if ( strpos( $meta_value, '{"p":{' ) !== false ) {
+
+						// is new value a valid json string
+						json_decode( $meta_value );
+
+						if ( json_last_error() !== JSON_ERROR_NONE ) {
+
+							// canceling meta value uptdate
+							error_log( 'The plugin advanced-custom-fields-table-field prevented a third party update_post_meta( ' . $object_id . ', "' . $meta_key . '", $value ); action that would save a broken JSON string.' . "\n" . 'For details see https://codex.wordpress.org/Function_Reference/update_post_meta#Character_Escaping.' );
+							return true;
+						}
+					}
+
+				}, 10, 5 );
+
+			// }
+
 		}
 
 		/*
