@@ -2,7 +2,7 @@
 Contributors: Johann Heyne
 Tags: acf table
 Requires at least: 4.8
-Tested up to: 4.9
+Tested up to: 4.9.4
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -142,6 +142,9 @@ However, only when activated as a plugin will updates be available.
 
 
 == Changelog ==
+
+= 1.2.2 =
+* Fixes loosing table data containg quotes on third party update_post_meta() actions to table field values.
 
 = 1.2.1 =
 * Fixes not using user locale for translation
