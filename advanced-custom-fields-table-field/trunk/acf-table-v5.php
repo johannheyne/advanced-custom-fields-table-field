@@ -68,7 +68,10 @@ class acf_field_table extends acf_field {
 			add_filter( 'update_post_metadata', function( $x, $object_id, $meta_key, $meta_value, $prev_value ) {
 
 				// detecting ACF table json
-				if ( strpos( $meta_value, '{"p":{' ) !== false ) {
+				if (
+					is_string( $meta_value ) and
+					strpos( $meta_value, '"acftf":{' ) !== false
+				) {
 
 					// is new value a valid json string
 					json_decode( $meta_value );

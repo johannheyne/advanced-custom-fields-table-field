@@ -46,7 +46,7 @@
 					// detecting ACF table json
 					if (
 						is_string( $meta_value ) and
-						strpos( $meta_value, '{"p":{' ) !== false
+						strpos( $meta_value, '"acftf":{' ) !== false
 					) {
 
 						// is new value a valid json string
