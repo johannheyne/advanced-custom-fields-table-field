@@ -145,6 +145,7 @@ However, only when activated as a plugin will updates be available.
 
 = 1.2.2 =
 * Fixes loosing table data containing quotes on third party update_post_meta() actions to table field values.
+* Adds plugin version to table data for handling structural changes.
 * Fixes an PHP warning since PHP 7.2 when body data is null
 
 = 1.2.1 =

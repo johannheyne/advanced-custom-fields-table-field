@@ -5,6 +5,8 @@ jQuery( document ).ready( function( $ ) {
 
 		var t = this;
 
+		t.version = '1.2.2';
+
 		t.param = {};
 
 		// DIFFERENT IN ACF VERSION 4 and 5 {
@@ -294,6 +296,10 @@ jQuery( document ).ready( function( $ ) {
 			// DEFINE DEFAULT DATA {
 
 				p.data_defaults = {
+
+					acftf: {
+						v: t.version,
+					},
 
 					p: {
 						o: {
@@ -824,10 +830,24 @@ jQuery( document ).ready( function( $ ) {
 
 			// UPDATE INPUT WITH NEW DATA {
 
+				p.data = t.update_table_data_version( p.data );
+
 				p.obj_root.find( 'input.table' ).val( encodeURIComponent( JSON.stringify( p.data ).replace( /\\"/g, '\\"' ) ) );
 
 			// }
 		};
+
+		t.update_table_data_version = function( data ) {
+
+			if ( typeof data.acftf === 'undefined' ) {
+
+				data.acftf = {};
+			}
+
+			data.acftf.v = t.version;
+
+			return data;
+		}
 
 		t.cell_editor = function() {
 
