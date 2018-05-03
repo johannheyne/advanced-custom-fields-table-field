@@ -144,7 +144,8 @@ However, only when activated as a plugin will updates be available.
 == Changelog ==
 
 = 1.2.2 =
-* Fixes loosing table data containg quotes on third party update_post_meta() actions to table field values.
+* Fixes loosing table data containing quotes on third party update_post_meta() actions to table field values.
+* Fixes an PHP warning since PHP 7.2 when body data is null
 
 = 1.2.1 =
 * Fixes not using user locale for translation

@@ -218,7 +218,10 @@
 
 			// IF BODY DATA
 
-			if ( count( $a['b'] ) > 0 ) {
+			if (
+				null !== $a['b'] &&
+				count( $a['b'] ) > 0
+			) {
 
 				// IF HEADER DATA
 
