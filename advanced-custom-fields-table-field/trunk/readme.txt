@@ -143,14 +143,6 @@ However, only when activated as a plugin will updates be available.
 
 == Changelog ==
 
-= 1.2.3 =
-* Adds support for the ACF update_field() function. If you get the table fields data array by get_field(), you can change the table data array and using update_field() to save the changes to the field.
-
-= 1.2.2 =
-* Adds plugin version to table data for handling structural changes.
-* Fixes loosing table data containing quotes on third party update_post_meta() actions to table field values. Limited to new fields or fields value changed since plugin version 1.2.2.
-* Fixes an PHP warning since PHP 7.2 when body data is null
-
 = 1.2.1 =
 * Fixes not using user locale for translation
 * Adds description for handling line breaks to plugins page
