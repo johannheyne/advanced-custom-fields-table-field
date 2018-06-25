@@ -1,8 +1,8 @@
 === Advanced Custom Fields: Table Field ===
 Contributors: Johann Heyne
 Tags: acf table
-Requires at least: 4.8
-Tested up to: 4.9.5
+Requires at least: 4.9
+Tested up to: 4.9.6
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -142,6 +142,9 @@ However, only when activated as a plugin will updates be available.
 
 
 == Changelog ==
+
+= 1.2.3 =
+* Adds support for the ACF update_field() function. If you get the table fields data array by get_field(), you can change the table data array and using update_field() to save the changes to the field.
 
 = 1.2.2 =
 * Adds plugin version to table data for handling structural changes.

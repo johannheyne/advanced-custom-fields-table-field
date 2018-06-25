@@ -377,7 +377,28 @@ class acf_field_table extends acf_field {
 
 	function update_value( $value, $post_id, $field ) {
 
-		$value = urldecode( str_replace( '%5C', '%5C%5C', $value ) );
+		if ( is_string( $value ) ) {
+
+			$value = urldecode( str_replace( '%5C', '%5C%5C', $value ) );
+		}
+
+		if ( is_array( $value ) ) {
+
+			$data = get_post_meta( $post_id, $field['name'], true );
+			$data = json_decode( $data, true );
+
+			if ( isset( $value['header'] ) ) {
+
+				$data['h'] = $value['header'];
+			};
+
+			if ( isset( $value['body'] ) ) {
+
+				$data['b'] = $value['body'];
+			};
+
+			$value = json_encode( $data );
+		}
 
 		return $value;
 
