@@ -390,12 +390,12 @@ class acf_field_table extends acf_field {
 			if ( isset( $value['header'] ) ) {
 
 				$data['h'] = $value['header'];
-			};
+			}
 
 			if ( isset( $value['body'] ) ) {
 
 				$data['b'] = $value['body'];
-			};
+			}
 
 			$value = json_encode( $data );
 		}
