@@ -10,9 +10,7 @@ A Table Field Add-on for the Advanced Custom Fields Plugin
 
 == Description ==
 
-The Table field plugin enables easily editing a table.
-The plugin is compatible with ACF4 and ACF5.
-The table field works also with the repeater and flexible field types.
+The Table Field Plugin enhances the functionality of the "Advanced Custom Fields" plugin with easy-to-edit tables. The plugin requires the "Advanced Custom Fields" plugin and is compatible with version 4 and 5. The table field works also with the repeater and flexible field types.
 
 * table header (option)
 * add and remove table columns and rows
