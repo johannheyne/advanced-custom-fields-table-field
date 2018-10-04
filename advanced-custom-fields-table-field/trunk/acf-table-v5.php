@@ -21,7 +21,7 @@ class acf_field_table extends acf_field {
 		*  settings (array) Array of settings
 		*/
 		$this->settings = array(
-			'version' => '1.0.5',
+			'version' => '1.2.4',
 			'dir_url' => plugins_url( '', __FILE__ ) . '/',
 		);
 
@@ -397,11 +397,10 @@ class acf_field_table extends acf_field {
 				$data['b'] = $value['body'];
 			}
 
-			$value = json_encode( $data );
+			$value = wp_slash( json_encode( $data ) );
 		}
 
 		return $value;
-
 	}
 
 	/*

@@ -36,7 +36,7 @@
 			// settings
 			$this->settings = array(
 				'dir_url' => plugins_url( '', __FILE__ ) . '/',
-				'version' => '1.0.5',
+				'version' => '1.2.4',
 			);
 
 			// PREVENTS SAVING INVALID TABLE FIELD JSON DATA {
@@ -291,7 +291,7 @@
 					$data['b'] = $value['body'];
 				}
 
-				$value = json_encode( $data );
+				$value = wp_slash( json_encode( $data ) );
 			}
 
 			return $value;

@@ -2,7 +2,7 @@
 Contributors: Johann Heyne
 Tags: acf table
 Requires at least: 4.9
-Tested up to: 4.9.6
+Tested up to: 4.9.8
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -142,6 +142,9 @@ However, only when activated as a plugin will updates be available.
 
 
 == Changelog ==
+
+= 1.2.4 =
+* Fixes backslashes on using update_field();
 
 = 1.2.3 =
 * Adds support for the ACF update_field() function. If you get the table fields data array by get_field(), you can change the table data array and using update_field() to save the changes to the field.
