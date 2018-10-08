@@ -8,6 +8,8 @@ Author: Johann Heyne
 Author URI: http://www.johannheyne.de/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: acf-table
+Domain Path: /lang/
 */
 
 // 1. set text domain
