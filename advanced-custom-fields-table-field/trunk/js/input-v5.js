@@ -5,7 +5,7 @@ jQuery( document ).ready( function( $ ) {
 
 		var t = this;
 
-		t.version = '1.2.4';
+		t.version = '1.2.5';
 
 		t.param = {};
 

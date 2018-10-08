@@ -141,6 +141,9 @@ However, only when activated as a plugin will updates be available.
 
 == Changelog ==
 
+= 1.2.5 =
+* Adds danish translation, thanks to Jeppe Skovsgaard
+
 = 1.2.4 =
 * Fixes backslashes on using update_field();
 
