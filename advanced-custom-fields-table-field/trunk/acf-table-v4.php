@@ -161,6 +161,11 @@
 			// key is needed in the field names to correctly save the data
 			$key = $field['name'];
 
+			if ( empty( $field['use_header'] ) ) {
+
+				$field['use_header'] = 0;
+			}
+
 			// Create Field Options HTML
 
 			// USER HEADER

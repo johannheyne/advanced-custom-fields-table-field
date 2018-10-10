@@ -143,6 +143,7 @@ However, only when activated as a plugin will updates be available.
 
 = 1.2.6 =
 * Removes using jQuery.noConflict methode
+* Prevents PHP error if table fields value is from a previous fieldtype
 
 = 1.2.5 =
 * Adds danish translation, thanks to Jeppe Skovsgaard

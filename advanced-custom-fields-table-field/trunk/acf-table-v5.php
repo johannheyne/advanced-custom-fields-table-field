@@ -152,18 +152,10 @@ class acf_field_table extends acf_field {
 		*  This will show what data is available
 		*/
 
-		//echo '<pre>';
-		//	print_r( $field );
-		//echo '</pre>';
+		if ( empty( $field['use_header'] ) ) {
 
-		/*
-		*  Create a simple text input using the 'font_size' setting.
-		*/
-		/*
-		?>
-		<input type="text" name="<?php echo esc_attr($field['name']) ?>" value="<?php echo esc_attr($field['value']) ?>" style="font-size:<?php echo $field['font_size'] ?>px;" />
-		<?php
-		*/
+			$field['use_header'] = 0;
+		}
 
 		$data_field['use_header'] = $field['use_header'];
 
@@ -173,16 +165,16 @@ class acf_field_table extends acf_field {
 
 			// OPTION HEADER {
 
-			if ( $data_field['use_header'] === 0 ) {
+				if ( $data_field['use_header'] === 0 ) {
 
-				$e .= '<div class="acf-table-optionbox">';
-					$e .= '<label>' . __( 'use table header', 'acf-table' ) . ' </label>';
-					$e .= '<select class="acf-table-optionbox-field acf-table-fc-opt-use-header" name="acf-table-opt-use-header">';
-						$e .= '<option value="0">' . __( 'No', 'acf-table' ) . '</option>';
-						$e .= '<option value="1">' . __( 'Yes', 'acf-table' ) . '</option>';
-					$e .= '</select>';
-				$e .= '</div>';
-			}
+					$e .= '<div class="acf-table-optionbox">';
+						$e .= '<label>' . __( 'use table header', 'acf-table' ) . ' </label>';
+						$e .= '<select class="acf-table-optionbox-field acf-table-fc-opt-use-header" name="acf-table-opt-use-header">';
+							$e .= '<option value="0">' . __( 'No', 'acf-table' ) . '</option>';
+							$e .= '<option value="1">' . __( 'Yes', 'acf-table' ) . '</option>';
+						$e .= '</select>';
+					$e .= '</div>';
+				}
 
 			// }
 
