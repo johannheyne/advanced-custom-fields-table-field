@@ -1,11 +1,10 @@
-jQuery.noConflict();
-jQuery( document ).ready(function( $ ){
+(function($) {
 
 	function ACFTableField() {
 
 		var t = this;
 
-		t.version = '1.2.5';
+		t.version = '1.2.6';
 
 		t.param = {};
 
@@ -1180,4 +1179,4 @@ jQuery( document ).ready(function( $ ){
 	var acf_table_field = new ACFTableField();
 	acf_table_field.init();
 
-});
+})( jQuery );

@@ -141,6 +141,9 @@ However, only when activated as a plugin will updates be available.
 
 == Changelog ==
 
+= 1.2.6 =
+* Removes using jQuery.noConflict methode
+
 = 1.2.5 =
 * Adds danish translation, thanks to Jeppe Skovsgaard
 

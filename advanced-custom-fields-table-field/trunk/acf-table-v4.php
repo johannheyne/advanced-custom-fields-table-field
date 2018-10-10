@@ -36,7 +36,7 @@
 			// settings
 			$this->settings = array(
 				'dir_url' => plugins_url( '', __FILE__ ) . '/',
-				'version' => '1.2.5',
+				'version' => '1.2.6',
 			);
 
 			// PREVENTS SAVING INVALID TABLE FIELD JSON DATA {
@@ -128,16 +128,11 @@
 		{
 			// Note: This function can be removed if not used
 
-			// register acf scripts
-			wp_register_script('acf-input-table', $this->settings['dir_url'] . 'js/input-v4.js', array('acf-input'), $this->settings['version'] );
-			wp_register_style('acf-input-table', $this->settings['dir_url'] . 'css/input.css', array('acf-input'), $this->settings['version'] );
-
-			// scripts
-			wp_enqueue_script(array(
-				'acf-input-table',
-			));
+			/// scripts
+			wp_enqueue_script( 'acf-input-table', $this->settings['dir_url'] . 'js/input-v4.js', array( 'jquery', 'acf-input' ), $this->settings['version'], true );
 
 			// styles
+			wp_register_style( 'acf-input-table', $this->settings['dir_url'] . 'css/input.css', array( 'acf-input' ), $this->settings['version'] );
 			wp_enqueue_style(array(
 				'acf-input-table',
 			));
