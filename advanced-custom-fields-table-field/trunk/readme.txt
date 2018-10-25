@@ -6,7 +6,7 @@ Tested up to: 4.9.8
 Stable tag: trunk
 License: GPLv2 or later
 
-A Table Field Add-on for the Advanced Custom Fields Plugin
+A Table Field Add-on for the Advanced Custom Fields Plugin.
 
 == Description ==
 
