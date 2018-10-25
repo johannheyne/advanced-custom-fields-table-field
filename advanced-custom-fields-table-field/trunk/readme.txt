@@ -142,7 +142,7 @@ However, only when activated as a plugin will updates be available.
 == Changelog ==
 
 = 1.2.6 =
-* Removes using jQuery.noConflict methode
+* Replaces jQuery.noConflict methode
 * Prevents PHP error if table fields value is from a previous fieldtype
 
 = 1.2.5 =
