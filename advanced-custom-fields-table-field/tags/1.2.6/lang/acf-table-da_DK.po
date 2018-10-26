@@ -1,0 +1,71 @@
+# Translation of Plugins - Advanced Custom Fields: Table Field - Development (trunk) in Danish
+# This file is distributed under the same license as the Plugins - Advanced Custom Fields: Table Field - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-09-24 10:30:18+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: da_DK\n"
+"Project-Id-Version: Plugins - Advanced Custom Fields: Table Field - Development (trunk)\n"
+
+#. Author of the plugin/theme
+msgid "Johann Heyne"
+msgstr "Johann Heyne"
+
+#. Description of the plugin/theme
+msgid "This free Add-on adds a table field type for the Advanced Custom Fields plugin"
+msgstr "Dette gratis addon tilføjer et tabel felt til Advanced Custom Fields plugin"
+
+#. #-#-#-#-#  advanced-custom-fields-table-field-code.pot (Advanced Custom
+#. Fields: Table Field 1.2.4)  #-#-#-#-#
+#. Plugin URI of the plugin/theme
+#. #-#-#-#-#  advanced-custom-fields-table-field-code.pot (Advanced Custom
+#. Fields: Table Field 1.2.4)  #-#-#-#-#
+#. Author URI of the plugin/theme
+msgid "http://www.johannheyne.de/"
+msgstr "http://www.johannheyne.de/"
+
+#. Plugin Name of the plugin/theme
+msgid "Advanced Custom Fields: Table Field"
+msgstr "Advanced Custom Fields: Table Field"
+
+#: acf-table-v5.php:120
+msgid "Presetting the usage of table header"
+msgstr "Forudindstilling af brugen af tabeloverskrifter"
+
+#: acf-table-v5.php:60
+msgid "Error! Please enter a higher value"
+msgstr "Fejl! Indtast venligst en højere værdi"
+
+#: acf-table-v4.php:185 acf-table-v5.php:124
+msgid "Optional"
+msgstr "Valgfri"
+
+#: acf-table-v4.php:175 acf-table-v5.php:119
+msgid "Table Header"
+msgstr "Tabeloverskrift"
+
+#: acf-table-v4.php:98 acf-table-v4.php:186 acf-table-v5.php:125
+#: acf-table-v5.php:182
+msgid "Yes"
+msgstr "Ja"
+
+#: acf-table-v4.php:97 acf-table-v4.php:187 acf-table-v5.php:126
+#: acf-table-v5.php:181
+msgid "No"
+msgstr "Nej"
+
+#: acf-table-v4.php:95 acf-table-v5.php:179
+msgid "use table header"
+msgstr "brug tabeloverskrift"
+
+#: acf-table-v4.php:25
+msgid "Layout"
+msgstr "Layout"
+
+#: acf-table-v4.php:24 acf-table-v5.php:38
+msgid "Table"
+msgstr "Tabel"

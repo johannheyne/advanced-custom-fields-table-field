@@ -1,0 +1,37 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ACF Table Field\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Johann Heyne <mail@johannheyne.de>\n"
+"Language-Team: Johann Heyne <mail@johannheyne.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: acf-table.php:71
+msgid "use table header"
+msgstr ""
+
+#: acf-table.php:148
+msgid "Table Header"
+msgstr ""
+
+#: acf-table.php:158
+msgid "Optional"
+msgstr ""
+
+#: acf-table.php:159
+msgid "Yes"
+msgstr ""
+
+#: acf-table.php:160
+msgid "No"
+msgstr ""
+
+#: acf-table.php:21
+msgid "Table"
+msgstr ""
