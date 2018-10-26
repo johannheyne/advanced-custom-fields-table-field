@@ -1,5 +1,5 @@
 === Advanced Custom Fields: Table Field ===
-Contributors: Johann Heyne
+Contributors: jonua
 Tags: acf table
 Requires at least: 4.9
 Tested up to: 4.9.8
@@ -12,7 +12,7 @@ A Table Field Add-on for the Advanced Custom Fields Plugin.
 
 The Table Field Plugin enhances the functionality of the ["Advanced Custom Fields" plugin](https://de.wordpress.org/plugins/advanced-custom-fields/) with easy-to-edit tables.
 
-This plugin requires the ["Advanced Custom Fields" plugin](https://de.wordpress.org/plugins/advanced-custom-fields/)!.
+This plugin requires the ["Advanced Custom Fields" plugin](https://de.wordpress.org/plugins/advanced-custom-fields/) or the [Pro version](https://www.advancedcustomfields.com/pro/)!
 
 The table field works also with the repeater and flexible field types.
 
