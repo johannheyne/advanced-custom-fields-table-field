@@ -4,6 +4,7 @@ Tags: acf table
 Requires at least: 4.9
 Tested up to: 4.9.8
 Stable tag: 1.2.6
+Requires PHP: 7.0.0
 License: GPLv2 or later
 
 A Table Field Add-on for the Advanced Custom Fields Plugin.
@@ -27,7 +28,7 @@ The table field works also with the repeater and flexible field types.
 
 = How to output the table html? =
 
-To render the table fields data as an html table in one of your template files you can start with the following basic code example:
+To render the table fields data as an html table in one of your template files (page.php, single.php) you can start with the following basic code example:
 
 `
 $table = get_field( 'your_table_field_name' );
@@ -128,6 +129,84 @@ function acf_table_styles() {
 }
 `
 
+= How to use the table field in Elementor Page Builder? =
+
+In general, its up to Elementor to support ACF field types on the Elementor widgets. All supported ACF fields by Elementor [you can find here](https://docs.elementor.com/article/381-elementor-integration-with-acf). But because the table field is not a native ACF field, the support for this field may never happen.
+
+For now the way to go is using the Elementors shortcode Widget. Before you can use a shortcode to display a table fields table, you have to setup a shortcode in functions.php. The following code does this. You can modify the table html output for your needs.
+
+`function shortcode_acf_tablefield( $atts ) {
+
+    $a = shortcode_atts( array(
+        'field-name' => false,
+        'post-id' => false,
+    ), $atts );
+
+    $table = get_field( $a['field-name'], $a['post-id'] );
+
+    $return = '';
+
+    if ( $table ) {
+
+        $return .= '<table border="0">';
+
+            if ( $table['header'] ) {
+
+                $return .= '<thead>';
+
+                    $return .= '<tr>';
+
+                        foreach ( $table['header'] as $th ) {
+
+                            $return .= '<th>';
+                                $return .= $th['c'];
+                            $return .= '</th>';
+                        }
+
+                    $return .= '</tr>';
+
+                $return .= '</thead>';
+            }
+
+            $return .= '<tbody>';
+
+                foreach ( $table['body'] as $tr ) {
+
+                    $return .= '<tr>';
+
+                        foreach ( $tr as $td ) {
+
+                            $return .= '<td>';
+                                $return .= $td['c'];
+                            $return .= '</td>';
+                        }
+
+                    $return .= '</tr>';
+                }
+
+            $return .= '</tbody>';
+
+        $return .= '</table>';
+    }
+
+    return $return;
+}
+
+add_shortcode( 'table', 'shortcode_acf_tablefield' );`
+
+
+Then use the shortcode in a Elementors shortcode widget like this, to **insert a table from the current page or post**…
+
+`[table field-name="your table field name"]`
+
+You also can **insert a table from another page or post**…
+
+`[table field-name="your table field name" post-id="123"]`
+
+Or you can **insert a table from a ACF option page**…
+
+`[table field-name="your table field name" post-id="option"]`
+
 == Installation ==
 
 This software can be used as both a WP plugin and a theme include.
@@ -145,6 +224,22 @@ However, only when activated as a plugin will updates be available.
 2. The Field Content Editing
 
 2. Grab the rows and columns in the grey area and drag them.
+
+
+== Translations ==
+
+* English - default, always included
+* German: Deutsch - immer dabei!
+* Danish: Dansk - altid der!
+* Polish: Polski - zawsze tam jest!
+
+*Note:* Please [contribute your language](https://translate.wordpress.org/projects/wp-plugins/advanced-custom-fields-table-field) to the plugin to make it even more useful.
+
+
+== Upgrade Notice ==
+
+= 1.2.6 =
+Fixes an PHP error and improves JavaScript code.
 
 
 == Changelog ==
