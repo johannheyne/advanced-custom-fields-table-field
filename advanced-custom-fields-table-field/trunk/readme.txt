@@ -4,7 +4,7 @@ Tags: acf table
 Requires at least: 4.9
 Tested up to: 4.9.8
 Stable tag: 1.2.6
-Requires PHP: 7.0.0
+Requires PHP: 5.6
 License: GPLv2 or later
 
 A Table Field Add-on for the Advanced Custom Fields Plugin.
