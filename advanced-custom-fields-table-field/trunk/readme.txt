@@ -243,7 +243,7 @@ However, only when activated as a plugin will updates be available.
 
 == Upgrade Notice ==
 
-= 1.3 =
+= 1.3.0 =
 * Adds support for table caption
 * Still supports version 4 of ACF
 
@@ -253,7 +253,7 @@ Fixes an PHP error and improves JavaScript code.
 
 == Changelog ==
 
-= 1.3 =
+= 1.3.0 =
 * Adds support for table caption
 * Fixes a javascript issue for ACF version 4
 
