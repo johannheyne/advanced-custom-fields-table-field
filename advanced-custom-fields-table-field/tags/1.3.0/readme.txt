@@ -19,6 +19,7 @@ The table field works also with the repeater and flexible field types.
 
 = Features =
 * Table Header (Option)
+* Table Caption (Option)
 * Add and remove table columns and rows
 * Change order of columns and rows by dragging
 * To move to the next cells editor press key: tab
