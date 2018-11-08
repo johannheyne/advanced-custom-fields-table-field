@@ -120,12 +120,26 @@ class acf_field_table extends acf_field {
 			'instructions'	=> __('Presetting the usage of table header','acf-table'),
 			'type'			=> 'radio',
 			'name'			=> 'use_header',
-			'choices'   =>  array(
+			'choices'   	=>  array(
 				0   =>  __( "Optional", 'acf-table' ),
 				1   =>  __( "Yes", 'acf-table' ),
 				2   =>  __( "No", 'acf-table' ),
 			),
-			'layout'	=>  'horizontal',
+			'layout'		=>  'horizontal',
+			'default_value'	=> 0,
+		));
+
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Table Caption','acf-table'),
+			'instructions'	=> __('Presetting the usage of table caption','acf-table'),
+			'type'			=> 'radio',
+			'name'			=> 'use_caption',
+			'choices'   	=>  array(
+				1   =>  __( "Yes", 'acf-table' ),
+				2   =>  __( "No", 'acf-table' ),
+			),
+			'layout'		=>  'horizontal',
+			'default_value'	=> 2,
 		));
 
 	}
@@ -157,26 +171,48 @@ class acf_field_table extends acf_field {
 			$field['use_header'] = 0;
 		}
 
+		if ( empty( $field['use_caption'] ) ) {
+
+			$field['use_caption'] = 0;
+		}
+
 		$data_field['use_header'] = $field['use_header'];
+		$data_field['use_caption'] = $field['use_caption'];
 
 		$e = '';
 
 		$e .= '<div class="acf-table-root">';
 
-			// OPTION HEADER {
+			$e .= '<div class="acf-table-optionwrap">';
 
-				if ( $data_field['use_header'] === 0 ) {
+				// OPTION HEADER {
 
-					$e .= '<div class="acf-table-optionbox">';
-						$e .= '<label>' . __( 'use table header', 'acf-table' ) . ' </label>';
-						$e .= '<select class="acf-table-optionbox-field acf-table-fc-opt-use-header" name="acf-table-opt-use-header">';
-							$e .= '<option value="0">' . __( 'No', 'acf-table' ) . '</option>';
-							$e .= '<option value="1">' . __( 'Yes', 'acf-table' ) . '</option>';
-						$e .= '</select>';
-					$e .= '</div>';
-				}
+					if ( $data_field['use_header'] === 0 ) {
 
-			// }
+						$e .= '<div class="acf-table-optionbox">';
+							$e .= '<label for="acf-table-opt-use-header">' . __( 'use table header', 'acf-table' ) . ' </label>';
+							$e .= '<select class="acf-table-optionbox-field acf-table-fc-opt-use-header" id="acf-table-opt-use-header" name="acf-table-opt-use-header">';
+								$e .= '<option value="0">' . __( 'No', 'acf-table' ) . '</option>';
+								$e .= '<option value="1">' . __( 'Yes', 'acf-table' ) . '</option>';
+							$e .= '</select>';
+						$e .= '</div>';
+					}
+
+				// }
+
+				// OPTION CAPTION {
+
+					if ( $data_field['use_caption'] === 1 ) {
+
+						$e .= '<div class="acf-table-optionbox">';
+							$e .= '<label for="acf-table-opt-caption">' . __( 'table caption', 'acf-table' ) . ' </label><br>';
+							$e .= '<input class="acf-table-optionbox-field acf-table-fc-opt-caption" id="acf-table-opt-caption" type="text" name="acf-table-opt-caption" value=""></input>';
+						$e .= '</div>';
+					}
+
+				// }
+
+			$e .= '</div>';
 
 			$e .= '<div class="acf-input-wrap">';
 				$e .= '<input type="hidden" data-field-options="' . urlencode( wp_json_encode( $data_field ) ) . '" id="' . esc_attr( $field['id'] ) . '"  class="' . esc_attr( $field['type'] ) . '" name="' . esc_attr( $field['name'] ) . '" value="' . urlencode( $field['value'] ) . '"/>';
@@ -378,6 +414,11 @@ class acf_field_table extends acf_field {
 			$data = get_post_meta( $post_id, $field['name'], true );
 			$data = json_decode( $data, true );
 
+			if ( isset( $value['caption'] ) ) {
+
+				$data['p']['ca'] = $value['caption'];
+			}
+
 			if ( isset( $value['header'] ) ) {
 
 				$data['h'] = $value['header'];
@@ -432,6 +473,20 @@ class acf_field_table extends acf_field {
 			else {
 
 				$value['header'] = false;
+			}
+
+			// IF CAPTION DATA
+
+			if (
+				$field['use_caption'] === 1 AND
+				! empty( $a['p']['ca'] )
+			) {
+
+				$value['caption'] = $a['p']['ca'];
+			}
+			else {
+
+				$value['caption'] = false;
 			}
 
 			// BODY

@@ -23,7 +23,7 @@
 	.acf-table-body-row {
 		width: 100%;
 	}
-	
+
 	.acf-table-table * {
 		background-clip: padding-box; /* fix FireFox and IE background color painting over the borders */
 	}
@@ -294,7 +294,7 @@
 		line-height: 1.4;
 		min-width: 180px;
 		min-height: 61px !important;
-		
+
 		/* fix profile.php ACF v4 */
 		width: auto !important;
 		margin-bottom: 0 !important;
@@ -304,19 +304,37 @@
 
 /* OPTIONBOX { */
 
+	.acf-table-optionwrap {
+		margin-top: 16px;
+		margin-bottom: 16px;
+		padding: 0 51px 0 45px;
+	}
 	.acf-table-optionbox {
-		padding-bottom: 8px;
-		margin-bottom: 8px;
+		margin-top: 16px;
+		margin-bottom: 16px;
 	}
-	.acf-flexible-content .acf-table-optionbox {
-		border-bottom: 1px solid #e1e1e1;
-		padding-bottom: 10px;
-		margin-bottom: 10px;
+	.acf-table-optionbox + .acf-table-optionbox {
+		margin-top: -20px;
 	}
-	
-	.acf-table-optionbox-field {
-		width: auto !important;
-	}
-	
+
+	/* FIELDS { */
+
+		.acf-table-optionbox label {
+			display: inline-block;
+			font-weight: bold;
+			padding-right: 6px;
+			padding-bottom: 10px;
+			padding-top: 10px;
+		}
+
+		.acf-table-fc-opt-use-header{
+			width: auto !important;
+		}
+
+		.acf-table-fc-opt-caption {
+			width: 100% !important;
+		}
+
+	/* FIELDS } */
 
 /* OPTIONBOX } */

@@ -37,6 +37,11 @@ if ( $table ) {
 
 	echo '<table border="0">';
 
+		if ( ! empty( $table['caption'] ) ) {
+
+			echo '<caption>' . $table['caption'] . '</caption>';
+		}
+
 		if ( $table['header'] ) {
 
 			echo '<thead>';
@@ -238,12 +243,16 @@ However, only when activated as a plugin will updates be available.
 
 == Upgrade Notice ==
 
+= 1.3 =
+* Adds support for table caption
 = 1.2.6 =
 Fixes an PHP error and improves JavaScript code.
 
 
 == Changelog ==
 
+= 1.3 =
+* Adds support for table caption
 = 1.2.6 =
 * Replaces jQuery.noConflict methode
 * Prevents PHP error if table fields value is from a previous fieldtype
