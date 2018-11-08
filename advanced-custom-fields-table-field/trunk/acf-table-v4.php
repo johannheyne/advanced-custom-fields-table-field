@@ -36,7 +36,7 @@
 			// settings
 			$this->settings = array(
 				'dir_url' => plugins_url( '', __FILE__ ) . '/',
-				'version' => '1.2.6',
+				'version' => '1.3.0',
 			);
 
 			// PREVENTS SAVING INVALID TABLE FIELD JSON DATA {
