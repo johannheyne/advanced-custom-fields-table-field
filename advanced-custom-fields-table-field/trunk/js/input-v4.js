@@ -96,7 +96,8 @@
 
 		t.state = {
 			'current_cell_obj': false,
-			'cell_editor_cell': false
+			'cell_editor_cell': false,
+			'cell_editor_last_keycode': false
 		};
 
 		t.init = function() {

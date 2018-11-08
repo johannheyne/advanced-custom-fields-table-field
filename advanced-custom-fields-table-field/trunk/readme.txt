@@ -245,6 +245,8 @@ However, only when activated as a plugin will updates be available.
 
 = 1.3 =
 * Adds support for table caption
+* Still supports version 4 of ACF
+
 = 1.2.6 =
 Fixes an PHP error and improves JavaScript code.
 
@@ -253,6 +255,8 @@ Fixes an PHP error and improves JavaScript code.
 
 = 1.3 =
 * Adds support for table caption
+* Fixes a javascript issue for ACF version 4
+
 = 1.2.6 =
 * Replaces jQuery.noConflict methode
 * Prevents PHP error if table fields value is from a previous fieldtype
