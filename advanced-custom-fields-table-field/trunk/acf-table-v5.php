@@ -57,7 +57,7 @@ class acf_field_table extends acf_field {
 		*/
 
 		$this->l10n = array(
-			'error'	=> __('Error! Please enter a higher value', 'acf-table'),
+			//'error'	=> __('Error! Please enter a higher value.', 'acf-table'),
 		);
 
 		// do not delete!
