@@ -64,7 +64,8 @@ class acf_field_table extends acf_field {
 		parent::__construct();
 
 		// PREVENTS SAVING INVALID TABLE FIELD JSON DATA {
-
+			wp_enqueue_editor();
+			
 			add_filter( 'update_post_metadata', function( $x, $object_id, $meta_key, $meta_value, $prev_value ) {
 
 				// detecting ACF table json

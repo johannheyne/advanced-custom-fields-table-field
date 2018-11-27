@@ -1,5 +1,4 @@
-jQuery.noConflict();
-jQuery( document ).ready( function( $ ) {
+(function($) {
 
 	function ACFTableField() {
 
@@ -84,7 +83,7 @@ jQuery( document ).ready( function( $ ) {
 		};
 
 		t.param.htmleditor =	'<div class="acf-table-cell-editor">' +
-									'<textarea name="acf-table-cell-editor-textarea" class="acf-table-cell-editor-textarea"></textarea>' +
+                  '<textarea name="acf-table-cell-editor-textarea" id="acf-table-cell-editor-wysiwyg" class="acf-table-cell-editor-textarea"></textarea>' +
 								'</div>';
 
 		t.obj = {
@@ -103,7 +102,7 @@ jQuery( document ).ready( function( $ ) {
 
 		t.init = function() {
 
-			t.init_workflow();
+      t.init_workflow();
 		};
 
 		t.init_workflow = function() {
@@ -121,7 +120,7 @@ jQuery( document ).ready( function( $ ) {
 			t.ui_event_use_header();
 			t.ui_event_new_flex_field();
 			t.ui_event_change_location_rule();
-			t.ui_event_ajax();
+      t.ui_event_ajax();
 		};
 
 		t.ui_event_ajax = function() {
@@ -850,28 +849,25 @@ jQuery( document ).ready( function( $ ) {
 		}
 
 		t.cell_editor = function() {
-
 			t.obj.body.on( 'click', '.acf-table-body-cell, .acf-table-header-cell', function( e ) {
 
 				e.stopImmediatePropagation();
 
-				t.cell_editor_save();
+        t.cell_editor_save();
 
 				var that = $( this );
 
-				t.cell_editor_add_editor({
-					'that': that
-				});
+        t.cell_editor_add_editor({
+          'that': that
+        });
 
 			} );
 
-			t.obj.body.on( 'click', '.acf-table-cell-editor-textarea', function( e ) {
-
+			t.obj.body.on( 'click', '.acf-table-cell-editor', function( e ) {
 				e.stopImmediatePropagation();
 			} );
 
 			t.obj.body.on( 'click', function( e ) {
-
 				t.cell_editor_save();
 			} );
 		};
@@ -885,14 +881,16 @@ jQuery( document ).ready( function( $ ) {
 			p = $.extend( true, defaults, p );
 
 			if ( p['that'] ) {
-
+        wp.editor.remove( 'acf-table-cell-editor-wysiwyg' );
 				var that_val = p['that'].find( '.acf-table-body-cont, .acf-table-header-cont' ).html();
 
 				t.state.current_cell_obj = p['that'];
 				t.state.cell_editor_is_open = true;
 
-				p['that'].prepend( t.param.htmleditor ).find( '.acf-table-cell-editor-textarea' ).html( that_val ).focus();
-			}
+        p['that'].prepend( t.param.htmleditor ).find( '.acf-table-cell-editor-textarea' ).html( that_val ).focus();
+
+        wp.editor.initialize( 'acf-table-cell-editor-wysiwyg' );
+      }
 		};
 
 		t.get_next_table_cell = function( p ) {
@@ -972,18 +970,15 @@ jQuery( document ).ready( function( $ ) {
 		};
 
 		t.cell_editor_save = function() {
+      var cell_editor = t.obj.body.find( '.acf-table-cell-editor' ),
+        cell_editor_content = wp.editor.getContent('acf-table-cell-editor-wysiwyg'),
+        p = {};
 
-			var cell_editor = t.obj.body.find( '.acf-table-cell-editor' ),
-				cell_editor_textarea = cell_editor.find( '.acf-table-cell-editor-textarea' ),
-				p = {},
-				cell_editor_val = '';
-
-			if ( typeof cell_editor_textarea.val() !== 'undefined' ) {
-
+			if ( typeof cell_editor_content !== 'undefined' ) {
 				p.obj_root = cell_editor.parents( '.acf-table-root' );
 				p.obj_table = p.obj_root.find( '.acf-table-table' );
 
-				var cell_editor_val = cell_editor_textarea.val();
+				var cell_editor_val = cell_editor_content;
 
 				// prevent XSS injection
 				cell_editor_val = cell_editor_val.replace( /\<(script)/ig, '&#060;$1' );
@@ -992,7 +987,7 @@ jQuery( document ).ready( function( $ ) {
 				cell_editor.next().html( cell_editor_val );
 
 				t.table_build_json( p );
-
+        wp.editor.remove( 'acf-table-cell-editor-wysiwyg' );
 				cell_editor.remove();
 				t.state.cell_editor_is_open = false;
 
@@ -1023,9 +1018,9 @@ jQuery( document ).ready( function( $ ) {
 						t.get_next_table_cell();
 					}
 
-					t.cell_editor_add_editor({
-						'that': t.state.current_cell_obj
-					});
+          t.cell_editor_add_editor({
+            'that': t.state.current_cell_obj
+          });
 				}
 
 				t.state.cell_editor_last_keycode = keyCode;
@@ -1181,4 +1176,4 @@ jQuery( document ).ready( function( $ ) {
 	var acf_table_field = new ACFTableField();
 	acf_table_field.init();
 
-});
+})( jQuery );
