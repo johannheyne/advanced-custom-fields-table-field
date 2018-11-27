@@ -84,7 +84,7 @@ jQuery( document ).ready( function( $ ) {
 		};
 
 		t.param.htmleditor =	'<div class="acf-table-cell-editor">' +
-									'<textarea name="acf-table-cell-editor-textarea" class="acf-table-cell-editor-textarea"></textarea>' +
+									'<textarea name="acf-table-cell-editor-textarea" id="acf-table-cell-editor-wysiwyg" class="acf-table-cell-editor-textarea"></textarea>' +
 								'</div>';
 
 		t.obj = {
@@ -865,7 +865,7 @@ jQuery( document ).ready( function( $ ) {
 
 			} );
 
-			t.obj.body.on( 'click', '.acf-table-cell-editor-textarea', function( e ) {
+			t.obj.body.on( 'click', '.acf-table-cell-editor', function( e ) {
 
 				e.stopImmediatePropagation();
 			} );
@@ -885,13 +885,15 @@ jQuery( document ).ready( function( $ ) {
 			p = $.extend( true, defaults, p );
 
 			if ( p['that'] ) {
-
+				wp.editor.remove( 'acf-table-cell-editor-wysiwyg' );
 				var that_val = p['that'].find( '.acf-table-body-cont, .acf-table-header-cont' ).html();
 
 				t.state.current_cell_obj = p['that'];
 				t.state.cell_editor_is_open = true;
 
 				p['that'].prepend( t.param.htmleditor ).find( '.acf-table-cell-editor-textarea' ).html( that_val ).focus();
+				
+        wp.editor.initialize( 'acf-table-cell-editor-wysiwyg' );
 			}
 		};
 
@@ -972,27 +974,24 @@ jQuery( document ).ready( function( $ ) {
 		};
 
 		t.cell_editor_save = function() {
-
 			var cell_editor = t.obj.body.find( '.acf-table-cell-editor' ),
-				cell_editor_textarea = cell_editor.find( '.acf-table-cell-editor-textarea' ),
-				p = {},
-				cell_editor_val = '';
+				cell_editor_content = wp.editor.getContent('acf-table-cell-editor-wysiwyg'),
+				p = {};
 
-			if ( typeof cell_editor_textarea.val() !== 'undefined' ) {
+			if ( typeof cell_editor_content !== 'undefined' ) {
 
 				p.obj_root = cell_editor.parents( '.acf-table-root' );
 				p.obj_table = p.obj_root.find( '.acf-table-table' );
 
-				var cell_editor_val = cell_editor_textarea.val();
-
 				// prevent XSS injection
-				cell_editor_val = cell_editor_val.replace( /\<(script)/ig, '&#060;$1' );
-				cell_editor_val = cell_editor_val.replace( /\<\/(script)/ig, '&#060;/$1' );
+				cell_editor_content = cell_editor_content.replace( /\<(script)/ig, '&#060;$1' );
+				cell_editor_content = cell_editor_content.replace( /\<\/(script)/ig, '&#060;/$1' );
 
-				cell_editor.next().html( cell_editor_val );
+				cell_editor.next().html( cell_editor_content );
 
 				t.table_build_json( p );
-
+				
+        wp.editor.remove( 'acf-table-cell-editor-wysiwyg' );
 				cell_editor.remove();
 				t.state.cell_editor_is_open = false;
 
