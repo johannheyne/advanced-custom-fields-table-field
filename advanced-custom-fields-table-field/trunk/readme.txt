@@ -1,8 +1,8 @@
 === Advanced Custom Fields: Table Field ===
 Contributors: jonua
 Tags: acf table
-Requires at least: 4.9
-Tested up to: 4.9.8
+Requires at least: 5.0
+Tested up to: 5.0.3
 Stable tag: 1.2.6
 Requires PHP: 5.6
 License: GPLv2 or later
@@ -20,6 +20,7 @@ The table field works also with the repeater and flexible field types.
 = Features =
 * Table Header (Option)
 * Table Caption (Option)
+* Support for ACF Gutenberg blocks
 * Add and remove table columns and rows
 * Change order of columns and rows by dragging
 * To move to the next cells editor press key: tab
@@ -244,6 +245,9 @@ However, only when activated as a plugin will updates be available.
 
 == Upgrade Notice ==
 
+= 1.3.1 =
+* Adds support for ACF Gutenberg blocks
+
 = 1.3.0 =
 * Adds support for table caption
 * Still supports version 4 of ACF
@@ -253,6 +257,9 @@ Fixes an PHP error and improves JavaScript code.
 
 
 == Changelog ==
+
+= 1.3.1 =
+* Adds support for ACF Gutenberg blocks
 
 = 1.3.0 =
 * Adds support for table caption
