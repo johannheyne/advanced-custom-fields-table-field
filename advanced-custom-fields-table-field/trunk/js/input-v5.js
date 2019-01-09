@@ -293,19 +293,49 @@
 
 				p.data = false;
 
+				// CHECK FIELD CONTEXT {
+
+					if ( p.obj_root.closest( '.acf-fields' ).hasClass( 'acf-block-fields' ) ) {
+
+						p.field_context = 'block';
+					}
+					else {
+
+						p.field_context = 'box';
+					}
+
+				// }
+
 				if ( val !== '' ) {
 
 					try {
 
-						p.data = $.parseJSON( decodeURIComponent( val.replace(/\+/g, '%20') ) );
+						if ( p.field_context === 'box' ) {
+
+							p.data = $.parseJSON( decodeURIComponent( val.replace(/\+/g, '%20') ) );
+						}
+
+						if ( p.field_context === 'block' ) {
+
+							p.data = $.parseJSON( decodeURIComponent( decodeURIComponent( val.replace(/\+/g, '%20') ) ) );
+						}
 					}
 					catch (e) {
 
-						p.data = false;
+						if ( p.field_context === 'box' ) {
 
-						console.log( 'The tablefield value is not a valid JSON string:', decodeURIComponent( val.replace(/\+/g, '%20') ) );
-						console.log( 'The parsing error:', e );
+							console.log( 'The tablefield value is not a valid JSON string:', decodeURIComponent( val.replace(/\+/g, '%20') ) );
+							console.log( 'The parsing error:', e );
+						}
+
+						if ( p.field_context === 'block' ) {
+
+							console.log( 'The tablefield value is not a valid JSON string:', decodeURIComponent( decodeURIComponent( val.replace(/\+/g, '%20') ) ) );
+							console.log( 'The tablefield value is not a valid JSON string:', decodeURIComponent( decodeURIComponent( decodeURIComponent( val.replace(/\+/g, '%20') ) ) ) );
+							console.log( 'The parsing error:', e );
+						}
 					}
+
 				}
 
 				return p.data;
@@ -891,6 +921,8 @@
 
 				p.obj_root.find( 'input.table' ).val( encodeURIComponent( JSON.stringify( p.data ).replace( /\\"/g, '\\"' ) ) );
 
+				t.field_changed( p );
+
 			// }
 		};
 
@@ -1180,6 +1212,14 @@
 
 			} );
 
+		};
+
+		t.field_changed = function( p ) {
+
+			if ( p.field_context === 'block' ) {
+
+				p.obj_root.change();
+			}
 		};
 
 		t.sort_cols = function( p ) {

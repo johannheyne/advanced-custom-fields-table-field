@@ -453,6 +453,16 @@ class acf_field_table extends acf_field {
 
 	function format_value( $value, $post_id, $field ) {
 
+		// CHECK FOR GUTENBERG BLOCK CONTENT (URL ENCODED JSON) {
+
+			if ( substr( $value , 0 , 1 ) === '%' ) {
+
+				// it is twice decoded, once as field value by table field and once by saving as gutenberg block in post content
+				$value = urldecode( urldecode( str_replace( '%5C', '%5C%5C', $value ) ) );
+			}
+
+		// }
+
 		$a = json_decode( $value, true );
 
 		$value = false;
