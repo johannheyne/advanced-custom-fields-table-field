@@ -2,7 +2,7 @@
 Contributors: jonua
 Tags: acf table
 Requires at least: 4.9
-Tested up to: 4.9.8
+Tested up to: 5.0.3
 Stable tag: 1.2.6
 Requires PHP: 7.0.0
 License: GPLv2 or later
@@ -16,6 +16,10 @@ The Table Field Plugin enhances the functionality of the ["Advanced Custom Field
 This plugin requires the ["Advanced Custom Fields" plugin](https://de.wordpress.org/plugins/advanced-custom-fields/) or the [Pro version](https://www.advancedcustomfields.com/pro/)!
 
 The table field works also with the repeater and flexible field types.
+
+= ACF Pro 5.8 will introduce Blocks for Gutenberg =
+
+The Table Field will support the new [ACF Blocks for Gutenberg](https://www.advancedcustomfields.com/blog/acf-5-8-introducing-acf-blocks-for-gutenberg/). You can test it now. Download and install the Table Field version [1.3.1-beta2](https://downloads.wordpress.org/plugin/advanced-custom-fields-table-field.1.3.1-beta2.zip) together with the latest ACF Pro 4.8 Beta available on your ACF account. Click the ***See all versions*** link alongside your license.
 
 = Features =
 * Table Header (Option)
