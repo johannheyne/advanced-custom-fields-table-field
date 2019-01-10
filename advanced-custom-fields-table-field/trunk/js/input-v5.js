@@ -919,7 +919,16 @@
 
 				p.data = t.update_table_data_version( p.data );
 
-				p.obj_root.find( 'input.table' ).val( encodeURIComponent( JSON.stringify( p.data ).replace( /\\"/g, '\\"' ) ) );
+				// makes json string from data object
+				var data = JSON.stringify( p.data );
+
+				// adds backslash to all \" in JSON string because encodeURIComponent() strippes backslashes
+				data.replace( /\\"/g, '\\"' );
+
+				// encodes the JSON string to URI component, the format, the JSON string is saved to the database
+				data = encodeURIComponent( data )
+
+				p.obj_root.find( 'input.table' ).val( data );
 
 				t.field_changed( p );
 
