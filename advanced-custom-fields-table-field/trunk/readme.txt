@@ -256,7 +256,7 @@ However, only when activated as a plugin will updates be available.
 
 == Upgrade Notice ==
 
-= 1.3.1 =
+= 1.3.2 =
 * Adds support for ACF Gutenberg blocks
 
 = 1.3.0 =
@@ -269,7 +269,7 @@ Fixes an PHP error and improves JavaScript code.
 
 == Changelog ==
 
-= 1.3.1 =
+= 1.3.2 =
 * Adds support for ACF Gutenberg blocks
 
 = 1.3.0 =
