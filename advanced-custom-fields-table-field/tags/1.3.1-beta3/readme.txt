@@ -1,10 +1,10 @@
 === Advanced Custom Fields: Table Field ===
 Contributors: jonua
 Tags: acf table
-Requires at least: 4.9
+Requires at least: 5.0.3
 Tested up to: 5.0.3
 Stable tag: 1.2.6
-Requires PHP: 7.0.0
+Requires PHP: 5.6
 License: GPLv2 or later
 
 A Table Field Add-on for the Advanced Custom Fields Plugin.
@@ -17,12 +17,10 @@ This plugin requires the ["Advanced Custom Fields" plugin](https://de.wordpress.
 
 The table field works also with the repeater and flexible field types.
 
-= ACF Pro 5.8 will introduce Blocks for Gutenberg =
-
-The Table Field will support the new [ACF Blocks for Gutenberg](https://www.advancedcustomfields.com/blog/acf-5-8-introducing-acf-blocks-for-gutenberg/). You can test it now. Download and install the Table Field version [1.3.1-beta3](https://downloads.wordpress.org/plugin/advanced-custom-fields-table-field.1.3.1-beta3.zip) together with the latest ACF Pro 4.8 Beta available on your ACF account. Click the ***See all versions*** link alongside your license.
-
 = Features =
 * Table Header (Option)
+* Table Caption (Option)
+* Support for ACF Gutenberg blocks
 * Add and remove table columns and rows
 * Change order of columns and rows by dragging
 * To move to the next cells editor press key: tab
@@ -37,9 +35,14 @@ To render the table fields data as an html table in one of your template files (
 `
 $table = get_field( 'your_table_field_name' );
 
-if ( ! empty( $table ) ) {
+if ( ! empty ( $table ) ) {
 
 	echo '<table border="0">';
+
+		if ( ! empty( $table['caption'] ) ) {
+
+			echo '<caption>' . $table['caption'] . '</caption>';
+		}
 
 		if ( ! empty( $table['header'] ) ) {
 
@@ -253,11 +256,25 @@ However, only when activated as a plugin will updates be available.
 
 == Upgrade Notice ==
 
+= 1.3.2 =
+* Adds support for ACF Gutenberg blocks
+
+= 1.3.0 =
+* Adds support for table caption
+* Still supports version 4 of ACF
+
 = 1.2.6 =
 Fixes an PHP error and improves JavaScript code.
 
 
 == Changelog ==
+
+= 1.3.2 =
+* Adds support for ACF Gutenberg blocks
+
+= 1.3.0 =
+* Adds support for table caption
+* Fixes a javascript issue for ACF version 4
 
 = 1.2.6 =
 * Replaces jQuery.noConflict methode
