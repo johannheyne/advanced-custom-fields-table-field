@@ -37,11 +37,11 @@ To render the table fields data as an html table in one of your template files (
 `
 $table = get_field( 'your_table_field_name' );
 
-if ( $table ) {
+if ( ! empty( $table ) ) {
 
 	echo '<table border="0">';
 
-		if ( $table['header'] ) {
+		if ( ! empty( $table['header'] ) ) {
 
 			echo '<thead>';
 
@@ -80,6 +80,17 @@ if ( $table ) {
 	echo '</table>';
 }
 `
+
+= Table field returns no data on get_field()? =
+
+If the table has only one empty cell, then `get_field()` returns `FALSE`. `get_field()` returns NULL when a field is not stored in the database. That happens when a page is copied but not their fields content. You can check both with `empty()`…
+
+`$table = get_field( 'your_table_field_name' );
+
+if ( ! empty( $table ) ) {
+	// $table is not FALSE and not NULL.
+	// Field exists in database and has content.
+}`
 
 = How to handle line breaks? =
 
