@@ -25,7 +25,6 @@
 			$this->category = __( 'Layout', 'acf' ); // Basic, Content, Choice, etc
 			$this->defaults = array(
 				'use_header' => 0,
-				'use_caption' => 2,
 				// add default here to merge into your field.
 				// This makes life easy when creating the field options as you don't need to use any if( isset('') ) logic. eg:
 				//'preview_size' => 'thumbnail'
@@ -37,7 +36,7 @@
 			// settings
 			$this->settings = array(
 				'dir_url' => plugins_url( '', __FILE__ ) . '/',
-				'version' => '1.3.2',
+				'version' => '1.2.7',
 			);
 
 			// PREVENTS SAVING INVALID TABLE FIELD JSON DATA {
@@ -89,42 +88,25 @@
 		{
 
 			$data_field['use_header'] = $field['use_header'];
-			$data_field['use_caption'] = $field['use_caption'];
 
 			$e = '';
 
 			$e .= '<div class="acf-table-root">';
 
-				$e .= '<div class="acf-table-optionwrap">';
+				// OPTION HEADER {
 
-					// OPTION HEADER {
+				if ( $data_field['use_header'] === 0 ) {
 
-						if ( $data_field['use_header'] === 0 ) {
+					$e .= '<div class="acf-table-optionbox">';
+						$e .= '<label>' . __( 'use table header', 'acf-table' ) . ' </label>';
+						$e .= '<select class="acf-table-optionbox-field acf-table-fc-opt-use-header" name="acf-table-opt-use-header">';
+							$e .= '<option value="0">' . __( 'No', 'acf-table' ) . '</option>';
+							$e .= '<option value="1">' . __( 'Yes', 'acf-table' ) . '</option>';
+						$e .= '</select>';
+					$e .= '</div>';
+				}
 
-							$e .= '<div class="acf-table-optionbox">';
-								$e .= '<label>' . __( 'use table header', 'acf-table' ) . ' </label>';
-								$e .= '<select class="acf-table-optionbox-field acf-table-fc-opt-use-header" name="acf-table-opt-use-header">';
-									$e .= '<option value="0">' . __( 'No', 'acf-table' ) . '</option>';
-									$e .= '<option value="1">' . __( 'Yes', 'acf-table' ) . '</option>';
-								$e .= '</select>';
-							$e .= '</div>';
-						}
-
-					// }
-
-					// OPTION CAPTION {
-
-						if ( $data_field['use_caption'] === 1 ) {
-
-							$e .= '<div class="acf-table-optionbox">';
-								$e .= '<label for="acf-table-opt-caption">' . __( 'table caption', 'acf-table' ) . ' </label><br>';
-								$e .= '<input class="acf-table-optionbox-field acf-table-fc-opt-caption" id="acf-table-opt-caption" type="text" name="acf-table-opt-caption" value=""></input>';
-							$e .= '</div>';
-						}
-
-					// }
-
-				$e .= '</div>';
+				// }
 
 				$e .= '<div class="acf-input-wrap">';
 					$e .= '<input type="hidden" data-field-options="' . urlencode( wp_json_encode( $data_field ) ) . '" id="' . $field['id'] . '"  class="' . $field['class'] . '" name="' . $field['name'] . '" value="' . urlencode( $field['value'] ) . '"/>';
@@ -190,19 +172,14 @@
 				$field['use_header'] = 0;
 			}
 
-			if ( empty( $field['use_caption'] ) ) {
-
-				$field['use_caption'] = 2;
-			}
-
 			// Create Field Options HTML
 
-			// USE HEADER
+			// USER HEADER
 
 			echo '<tr class="field_option field_option_' . $this->name . '">';
 				echo '<td class="label">';
 					echo '<label>' . __( "Table Header", 'acf-table' ) . '</label>';
-					echo '<p class="description">' . __( "Presetting the usage of table header", 'acf-table' ) . '</p>';
+					//echo '<p class="description">' . __( "", 'acf' ) . '</p>';
 				echo '</td>';
 				echo '<td>';
 
@@ -216,31 +193,6 @@
 								2   =>  __( "No", 'acf-table' ),
 							),
 							'layout'	=>  'horizontal',
-							'default_value'	=> 0,
-						));
-
-				echo '</td>';
-			echo '</tr>';
-
-			// USER CAPTION
-
-			echo '<tr class="field_option field_option_' . $this->name . '">';
-				echo '<td class="label">';
-					echo '<label>' . __( "Table Caption", 'acf-table' ) . '</label>';
-					echo '<p class="description">' . __( "Presetting the usage of table caption", 'acf-table' ) . '</p>';
-				echo '</td>';
-				echo '<td>';
-
-						do_action('acf/create_field', array(
-							'type'	=>  'radio',
-							'name'	=>  'fields[' . $key . '][use_caption]',
-							'value'   =>  $field['use_caption'],
-							'choices'   =>  array(
-								1   =>  __( "Yes", 'acf-table' ),
-								2   =>  __( "No", 'acf-table' ),
-							),
-							'layout'	=>  'horizontal',
-							'default_value'	=> 2,
 						));
 
 				echo '</td>';
@@ -286,20 +238,6 @@
 				else {
 
 					$value['header'] = false;
-				}
-
-				// IF CAPTION DATA
-
-				if (
-					$field['use_caption'] === 1 AND
-					! empty( $a['p']['ca'] )
-				) {
-
-					$value['caption'] = $a['p']['ca'];
-				}
-				else {
-
-					$value['caption'] = false;
 				}
 
 				// BODY
@@ -348,11 +286,6 @@
 
 				$data = get_post_meta( $post_id, $field['name'], true );
 				$data = json_decode( $data, true );
-
-				if ( isset( $value['caption'] ) ) {
-
-					$data['p']['ca'] = $value['caption'];
-				}
 
 				if ( isset( $value['header'] ) ) {
 
