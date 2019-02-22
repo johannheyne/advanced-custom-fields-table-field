@@ -168,6 +168,11 @@ For now the way to go is using the Elementors shortcode Widget. Before you can u
 
         $return .= '<table border="0">';
 
+            if ( ! empty( $table['caption'] ) ) {
+
+                echo '<caption>' . $table['caption'] . '</caption>';
+            }
+
             if ( $table['header'] ) {
 
                 $return .= '<thead>';
