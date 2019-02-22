@@ -3,7 +3,7 @@ Contributors: jonua
 Tags: acf table
 Requires at least: 5.0.3
 Tested up to: 5.1
-Stable tag: 1.3.1
+Stable tag: 1.3.0
 Requires PHP: 5.6
 License: GPLv2 or later
 
@@ -29,6 +29,7 @@ The table field works also with the repeater and flexible field types.
 = ACF Pro 5.8 will introduce Blocks for Gutenberg =
 
 The Table Field will support the new [ACF Blocks for Gutenberg](https://www.advancedcustomfields.com/blog/acf-5-8-introducing-acf-blocks-for-gutenberg/). You can test it now. Download and install the latest ACF Pro 4.8 Beta available on your ACF account. Click the ***See all versions*** link alongside your license.
+
 
 == Frequently Asked Questions ==
 
