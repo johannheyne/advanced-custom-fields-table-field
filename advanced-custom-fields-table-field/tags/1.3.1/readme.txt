@@ -290,7 +290,7 @@ However, only when activated as a plugin will updates be available.
 
 = 1.3.0 =
 * Adds support for table caption
-* Fixes a javascript issue for ACF version 4
+* Fixes an JavaScript issue for ACF version 4
 
 = 1.2.7 =
 * Adds PHP constant ACF_TABLEFIELD_FILTER_POSTMETA. Setting this constant to false prevents an update_post_metadata filter looking for tablefield JSON strings destroyed by update_post_meta().
