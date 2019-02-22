@@ -278,19 +278,15 @@ However, only when activated as a plugin will updates be available.
 
 == Upgrade Notice ==
 
-= 1.3.2 =
-* Adds support for ACF Gutenberg blocks
-
 = 1.3.1 =
 * Changes table data storing format from JSON string to serialized array. This is due to an issue caused by third party plugins using update_post_meta() without providing wp_slash() to the value before. Existing table data values in JSON string format in the database will still exists and be compatible. When a field is saved again, the storage format changes from JSON to serialized array.
+* Fixes an PHP error of table caption
 
 == Changelog ==
 
-= 1.3.2 =
-* Adds support for ACF Gutenberg blocks
-
 = 1.3.1 =
 * Changes table data storing format from JSON string to serialized array. This is due to an issue caused by third party plugins using update_post_meta() without providing wp_slash() to the value before. Existing table data values in JSON string format in the database will still exists and be compatible. When a field is saved again, the storage format changes from JSON to serialized array.
+* Fixes an PHP error of table caption
 
 = 1.3.0 =
 * Adds support for table caption
