@@ -276,21 +276,16 @@ However, only when activated as a plugin will updates be available.
 = 1.3.2 =
 * Adds support for ACF Gutenberg blocks
 
-= 1.3.0 =
-* Adds support for table caption
-* Still supports version 4 of ACF
-
-= 1.2.7 =
-* Adds PHP constant ACF_TABLEFIELD_FILTER_POSTMETA. Setting this constant to false prevents an update_post_metadata filter looking for tablefield JSON strings destroyed by update_post_meta().
-
-= 1.2.6 =
-Fixes an PHP error and improves JavaScript code.
-
+= 1.3.1 =
+* Changes table data storing format from JSON string to serialized array. This is due to an issue caused by third party plugins using update_post_meta() without providing wp_slash() to the value before. Existing table data values in JSON string format in the database will still exists and be compatible. When a field is saved again, the storage format changes from JSON to serialized array.
 
 == Changelog ==
 
 = 1.3.2 =
 * Adds support for ACF Gutenberg blocks
+
+= 1.3.1 =
+* Changes table data storing format from JSON string to serialized array. This is due to an issue caused by third party plugins using update_post_meta() without providing wp_slash() to the value before. Existing table data values in JSON string format in the database will still exists and be compatible. When a field is saved again, the storage format changes from JSON to serialized array.
 
 = 1.3.0 =
 * Adds support for table caption

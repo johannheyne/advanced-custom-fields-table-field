@@ -126,8 +126,21 @@
 
 				$e .= '</div>';
 
+				if ( is_array( $field['value'] ) ) {
+
+					$field['value'] = wp_json_encode( $field['value'] );
+				}
+
+				if ( is_string( $field['value'] ) ) {
+
+					if ( substr( $field['value'] , 0 , 1 ) === '{' ) {
+
+						$field['value'] = urlencode( $field['value'] );
+					}
+				}
+
 				$e .= '<div class="acf-input-wrap">';
-					$e .= '<input type="hidden" data-field-options="' . urlencode( wp_json_encode( $data_field ) ) . '" id="' . $field['id'] . '"  class="' . $field['class'] . '" name="' . $field['name'] . '" value="' . urlencode( $field['value'] ) . '"/>';
+					$e .= '<input type="hidden" data-field-options="' . urlencode( wp_json_encode( $data_field ) ) . '" id="' . $field['id'] . '"  class="' . $field['class'] . '" name="' . $field['name'] . '" value="' . $field['value'] . '"/>';
 				$e .= '</div>';
 
 			$e .= '</div>';
@@ -266,7 +279,21 @@
 
 		function format_value_for_api( $value, $post_id, $field )
 		{
-			$a = json_decode( $value, true );
+			if ( is_string( $value ) ) {
+
+				// CHECK FOR GUTENBERG BLOCK CONTENT (URL ENCODED JSON) {
+
+					if ( substr( $value , 0 , 1 ) === '%' ) {
+
+						$value = urldecode( $value );
+					}
+
+				// }
+
+				$value = json_decode( $value, true ); // decode gutenberg JSONs, but also old table JSONs strings to array
+			}
+
+			$a = $value;
 
 			$value = false;
 
@@ -341,30 +368,26 @@
 		{
 			if ( is_string( $value ) ) {
 
-				$value = urldecode( str_replace( '%5C', '%5C%5C', $value ) );
+				$value = str_replace( '%5C', '%5C%5C', $value );
+				$value = urldecode( $value );
+				$value = json_decode( $value, true );
 			}
 
 			if ( is_array( $value ) ) {
 
 				$data = get_post_meta( $post_id, $field['name'], true );
-				$data = json_decode( $data, true );
 
-				if ( isset( $value['caption'] ) ) {
+				if ( empty( $data ) ) {
 
-					$data['p']['ca'] = $value['caption'];
+					$data = array();
 				}
 
-				if ( isset( $value['header'] ) ) {
+				if ( is_string( $data ) ) {
 
-					$data['h'] = $value['header'];
+					$data = json_decode( $data, true );
 				}
 
-				if ( isset( $value['body'] ) ) {
-
-					$data['b'] = $value['body'];
-				}
-
-				$value = wp_slash( json_encode( $data ) );
+				$value = array_replace_recursive( $data, $value );
 			}
 
 			return $value;

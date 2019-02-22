@@ -220,9 +220,17 @@ class acf_field_table extends acf_field {
 
 			$e .= '</div>';
 
-			if ( substr( $field['value'] , 0 , 1 ) === '{' ) {
+			if ( is_array( $field['value'] ) ) {
 
-				$field['value'] = urlencode( $field['value'] );
+				$field['value'] = wp_json_encode( $field['value'] );
+			}
+
+			if ( is_string( $field['value'] ) ) {
+
+				if ( substr( $field['value'] , 0 , 1 ) === '{' ) {
+
+					$field['value'] = urlencode( $field['value'] );
+				}
 			}
 
 			$e .= '<div class="acf-input-wrap">';
@@ -419,29 +427,24 @@ class acf_field_table extends acf_field {
 
 			$value = str_replace( '%5C', '%5C%5C', $value );
 			$value = urldecode( $value );
+			$value = json_decode( $value, true );
 		}
 
 		if ( is_array( $value ) ) {
 
 			$data = get_post_meta( $post_id, $field['name'], true );
-			$data = json_decode( $data, true );
 
-			if ( isset( $value['caption'] ) ) {
+			if ( empty( $data ) ) {
 
-				$data['p']['ca'] = $value['caption'];
+				$data = array();
 			}
 
-			if ( isset( $value['header'] ) ) {
+			if ( is_string( $data ) ) {
 
-				$data['h'] = $value['header'];
+				$data = json_decode( $data, true );
 			}
 
-			if ( isset( $value['body'] ) ) {
-
-				$data['b'] = $value['body'];
-			}
-
-			$value = wp_slash( json_encode( $data ) );
+			$value = array_replace_recursive( $data, $value );
 		}
 
 		return $value;
@@ -465,16 +468,21 @@ class acf_field_table extends acf_field {
 
 	function format_value( $value, $post_id, $field ) {
 
-		// CHECK FOR GUTENBERG BLOCK CONTENT (URL ENCODED JSON) {
+		if ( is_string( $value ) ) {
 
-			if ( substr( $value , 0 , 1 ) === '%' ) {
+			// CHECK FOR GUTENBERG BLOCK CONTENT (URL ENCODED JSON) {
 
-				$value = urldecode( $value );
-			}
+				if ( substr( $value , 0 , 1 ) === '%' ) {
 
-		// }
+					$value = urldecode( $value );
+				}
 
-		$a = json_decode( $value, true );
+			// }
+
+			$value = json_decode( $value, true ); // decode gutenberg JSONs, but also old table JSONs strings to array
+		}
+
+		$a = $value;
 
 		$value = false;
 
