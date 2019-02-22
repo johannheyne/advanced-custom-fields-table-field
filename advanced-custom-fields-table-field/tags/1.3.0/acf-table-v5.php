@@ -214,8 +214,21 @@ class acf_field_table extends acf_field {
 
 			$e .= '</div>';
 
+			if ( is_array( $field['value'] ) ) {
+
+				$field['value'] = wp_json_encode( $field['value'] );
+			}
+
+			if ( is_string( $field['value'] ) ) {
+
+				if ( substr( $field['value'] , 0 , 1 ) === '{' ) {
+
+					$field['value'] = urlencode( $field['value'] );
+				}
+			}
+
 			$e .= '<div class="acf-input-wrap">';
-				$e .= '<input type="hidden" data-field-options="' . urlencode( wp_json_encode( $data_field ) ) . '" id="' . esc_attr( $field['id'] ) . '"  class="' . esc_attr( $field['type'] ) . '" name="' . esc_attr( $field['name'] ) . '" value="' . urlencode( $field['value'] ) . '"/>';
+				$e .= '<input type="hidden" data-field-options="' . urlencode( wp_json_encode( $data_field ) ) . '" id="' . esc_attr( $field['id'] ) . '"  class="' . esc_attr( $field['type'] ) . '" name="' . esc_attr( $field['name'] ) . '" value="' . $field['value'] . '"/>';
 			$e .= '</div>';
 
 		$e .= '</div>';
@@ -478,6 +491,7 @@ class acf_field_table extends acf_field {
 			// IF CAPTION DATA
 
 			if (
+				! empty( $field['use_caption'] ) AND
 				$field['use_caption'] === 1 AND
 				! empty( $a['p']['ca'] )
 			) {

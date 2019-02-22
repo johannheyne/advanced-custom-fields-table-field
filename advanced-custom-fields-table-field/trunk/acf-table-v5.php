@@ -507,6 +507,7 @@ class acf_field_table extends acf_field {
 			// IF CAPTION DATA
 
 			if (
+				! empty( $field['use_caption'] ) AND
 				$field['use_caption'] === 1 AND
 				! empty( $a['p']['ca'] )
 			) {
