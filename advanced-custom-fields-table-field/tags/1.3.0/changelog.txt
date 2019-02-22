@@ -4,6 +4,9 @@
 * Adds support for table caption
 * Fixes a javascript issue for ACF version 4
 
+= 1.2.7 =
+* Adds PHP constant ACF_TABLEFIELD_FILTER_POSTMETA. Setting this constant to false prevents an update_post_metadata filter looking for tablefield JSON strings destroyed by update_post_meta().
+
 = 1.2.6 =
 * Replaces jQuery.noConflict methode
 * Prevents PHP error if table fields value is from a previous fieldtype

@@ -3,7 +3,7 @@ Contributors: jonua
 Tags: acf table
 Requires at least: 4.9
 Tested up to: 4.9.8
-Stable tag: 1.2.6
+Stable tag: 1.3.0
 Requires PHP: 5.6
 License: GPLv2 or later
 
@@ -218,6 +218,18 @@ Or you can **insert a table from a ACF option page**…
 
 `[table field-name="your table field name" post-id="option"]`
 
+= Third party plugins issues =
+
+The table field stores the table data as a JSON string in postmeta. This can lead to situations where the table plugin prevents third party plugins to update, copy or otherwise storing the tables data.
+
+Third party plugins may using update_post_metadata() on table fields data wich removes backslashes by default. Without applying wp_slash() to the value before update_post_metadata(), the JSON string of the table data would break because backslashes are part of the JSON data syntax escaping quotation marks in content.
+
+To prevent that issue, the table field plugin checks on every update_post_metadata() if the content value is from a table field and still is a valid JSON string. If not, update_post_metadata() will fail and throw an error message, that explains the issue.
+
+In same cases, the table JSON string is just part of serialized data by a third party plugin. The JSON string check of the table field plugin prevents storing that data as well even though the data JSON string may is correct. You could disable the check using the following code in the wp-config.php file. But then the table data are no longe protected from destroing by update_post_metadata(). Use the following code only, if you understand the risk…
+
+`define( "ACF_TABLEFIELD_FILTER_POSTMETA", false );`
+
 == Installation ==
 
 This software can be used as both a WP plugin and a theme include.
@@ -253,6 +265,9 @@ However, only when activated as a plugin will updates be available.
 * Adds support for table caption
 * Still supports version 4 of ACF
 
+= 1.2.7 =
+* Adds PHP constant ACF_TABLEFIELD_FILTER_POSTMETA. Setting this constant to false prevents an update_post_metadata filter looking for tablefield JSON strings destroyed by update_post_meta().
+
 = 1.2.6 =
 Fixes an PHP error and improves JavaScript code.
 
@@ -262,6 +277,9 @@ Fixes an PHP error and improves JavaScript code.
 = 1.3.0 =
 * Adds support for table caption
 * Fixes a javascript issue for ACF version 4
+
+= 1.2.7 =
+* Adds PHP constant ACF_TABLEFIELD_FILTER_POSTMETA. Setting this constant to false prevents an update_post_metadata filter looking for tablefield JSON strings destroyed by update_post_meta().
 
 = 1.2.6 =
 * Replaces jQuery.noConflict methode
