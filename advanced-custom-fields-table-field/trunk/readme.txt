@@ -235,17 +235,13 @@ Or you can **insert a table from a ACF option page**…
 
 `[table field-name="your table field name" post-id="option" table-class="my-table"]`
 
+
 = Third party plugins issues =
 
-The table field stores the table data as a JSON string in postmeta. This can lead to situations where the table plugin prevents third party plugins to update, copy or otherwise storing the tables data.
+Since version 1.3.1 of the table plugin, the storing format of the table data changes from JSON string to serialized array for new or updated tables. The issue with JSON is because of third party plugins that do not properly applying `wp_slash()` to a post_meta value before updating with `update_post_metadata()`. This can break JSON strings because `update_post_metadata()` removes backslashes by default. Backslashes are part of the JSON string syntax escaping quotation marks in content.
 
-Third party plugins may using update_post_metadata() on table fields data wich removes backslashes by default. Without applying wp_slash() to the value before update_post_metadata(), the JSON string of the table data would break because backslashes are part of the JSON data syntax escaping quotation marks in content.
+The table field plugin prevents broken JSON strings to save as a table field data and throws an error message that explains the issue. But this may also breaks the functionality of the third party plugin trying to update the table data. You could disable the JSON string check in the table field plugin using the following code in the wp-config.php file. But then the table JSON data are no longer protected from destroing by `update_post_metadata()`. Use the following code in wp-config.php only, if you understand the risk…
 
-To prevent that issue, the table field plugin checks on every update_post_metadata() if the content value is from a table field and still is a valid JSON string. If not, update_post_metadata() will fail and throw an error message, that explains the issue.
-
-In same cases, the table JSON string is just part of serialized data by a third party plugin. The JSON string check of the table field plugin prevents storing that data as well even though the data JSON string may is correct. You could disable the check using the following code in the wp-config.php file. But then the table data are no longe protected from destroing by update_post_metadata(). Use the following code only, if you understand the risk…
-
-`define( "ACF_TABLEFIELD_FILTER_POSTMETA", false );`
 
 == Installation ==
 
