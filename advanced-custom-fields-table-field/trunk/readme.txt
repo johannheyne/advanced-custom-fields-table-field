@@ -160,6 +160,7 @@ For now the way to go is using the Elementors shortcode Widget. Before you can u
 `function shortcode_acf_tablefield( $atts ) {
 
     $a = shortcode_atts( array(
+        'table-class' => '',
         'field-name' => false,
         'post-id' => false,
     ), $atts );
@@ -170,7 +171,7 @@ For now the way to go is using the Elementors shortcode Widget. Before you can u
 
     if ( $table ) {
 
-        $return .= '<table border="0">';
+        $return .= '<table class="' . $table['table-class'] . '" border="0">';
 
             if ( ! empty( $table['caption'] ) ) {
 
@@ -224,15 +225,15 @@ add_shortcode( 'table', 'shortcode_acf_tablefield' );`
 
 Then use the shortcode in a Elementors shortcode widget like this, to **insert a table from the current page or post**…
 
-`[table field-name="your table field name"]`
+`[table field-name="your table field name" table-class="my-table"]`
 
 You also can **insert a table from another page or post**…
 
-`[table field-name="your table field name" post-id="123"]`
+`[table field-name="your table field name" post-id="123" table-class="my-table"]`
 
 Or you can **insert a table from a ACF option page**…
 
-`[table field-name="your table field name" post-id="option"]`
+`[table field-name="your table field name" post-id="option" table-class="my-table"]`
 
 = Third party plugins issues =
 
