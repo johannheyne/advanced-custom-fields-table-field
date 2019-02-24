@@ -3,7 +3,7 @@ Contributors: jonua
 Tags: acf table
 Requires at least: 5.0.3
 Tested up to: 5.1
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 Requires PHP: 5.6
 License: GPLv2 or later
 
@@ -278,6 +278,9 @@ However, only when activated as a plugin will updates be available.
 
 == Upgrade Notice ==
 
+= 1.3.3 =
+* Fixes returning empty table after saving content containing a single quote.
+
 = 1.3.2 =
 Fixes returning empty table after saving content containing quotes.
 Fixes an issue using update_field() on a table field.
@@ -287,6 +290,9 @@ Changes table data storing format from JSON string to serialized array. This is 
 Fixes an PHP error of table caption.
 
 == Changelog ==
+
+= 1.3.3 =
+* Fixes returning empty table after saving content containing a single quote.
 
 = 1.3.2 =
 * Fixes returning empty table after saving content containing quotes

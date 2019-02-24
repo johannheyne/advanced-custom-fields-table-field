@@ -37,7 +37,7 @@
 			// settings
 			$this->settings = array(
 				'dir_url' => plugins_url( '', __FILE__ ) . '/',
-				'version' => '1.3.2',
+				'version' => '1.3.3',
 			);
 
 			// PREVENTS SAVING INVALID TABLE FIELD JSON DATA {
@@ -369,7 +369,7 @@
 		{
 			if ( is_string( $value ) ) {
 
-				//$value = str_replace( '%5C', '%5C%5C', $value );
+				$value = wp_unslash( $value );
 				$value = urldecode( $value );
 				$value = json_decode( $value, true );
 			}
@@ -401,8 +401,51 @@
 				$value = array_replace_recursive( $data, $value );
 			}
 
+			$value = $this->table_slash( $value );
+
 			return $value;
 		}
+
+		/**
+		* table_slash()
+		*
+		* Add slashes to a string or strings in an array.
+		*
+		* This should be used instead of wp_slash() because wp_slash() convertes all
+		* array values to strings which affects also the table object values of
+		* type number converting to string.
+		*/
+
+		function table_slash( $value ) {
+
+			if ( is_array( $value ) ) {
+
+				foreach ( $value as $k => $v ) {
+
+					if (
+						is_array( $v ) OR
+						is_object( $v )
+					) {
+						$value[ $k ] = $this->table_slash( $v );
+					}
+					else if( is_string( $v ) ) {
+
+						$value[ $k ] = addslashes( $v );
+					}
+					else {
+
+						$value[ $k ] = $v;
+					}
+				}
+
+			} else {
+
+				$value = addslashes( $value );
+			}
+
+			return $value;
+		}
+
 	}
 
 	// create field
