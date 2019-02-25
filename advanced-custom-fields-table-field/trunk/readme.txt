@@ -3,7 +3,7 @@ Contributors: jonua
 Tags: acf table
 Requires at least: 5.0.3
 Tested up to: 5.1
-Stable tag: 1.3.4
+Stable tag: 1.3.5
 Requires PHP: 5.6
 License: GPLv2 or later
 
@@ -313,7 +313,7 @@ However, only when activated as a plugin will updates be available.
 = 1.3.5 =
 Fixes an issue that removes table header content using update_field() while option "use header" is set to "no".
 
-= 1.3.4 =
+= 1.3.5 =
 Fixes an issue that prevents the removal of table contents.
 
 == Changelog ==
