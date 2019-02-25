@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 1.3.4 =
+* Fixes an issue that prevents the removal of table contents
+
 = 1.3.3 =
 * Fixes returning empty table after saving content containing a single quote
 

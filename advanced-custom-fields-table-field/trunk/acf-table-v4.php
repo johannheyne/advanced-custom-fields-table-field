@@ -374,32 +374,34 @@
 				$value = json_decode( $value, true );
 			}
 
-			if ( is_array( $value ) ) {
+			// UPDATE via update_field() {
 
-				$data = get_post_meta( $post_id, $field['name'], true );
+				if (
+					isset( $value['header'] ) OR
+					isset( $value['body'] )
+				) {
 
-				if ( empty( $data ) ) {
+					$data = get_post_meta( $post_id, $field['name'], true );
 
-					$data = array();
+					if ( is_string( $data ) ) {
+
+						$data = json_decode( $data, true );
+					}
+
+					if ( isset( $value['header'] ) ) {
+
+						$data['h'] = $value['header'];
+					}
+
+					if ( isset( $value['body'] ) ) {
+
+						$data['b'] = $value['body'];
+					}
+
+					$value = $data;
 				}
 
-				if ( is_string( $data ) ) {
-
-					$data = json_decode( $data, true );
-				}
-
-				if ( isset( $value['header'] ) ) {
-
-					$data['h'] = $value['header'];
-				}
-
-				if ( isset( $value['body'] ) ) {
-
-					$data['b'] = $value['body'];
-				}
-
-				$value = array_replace_recursive( $data, $value );
-			}
+			// }
 
 			$value = $this->table_slash( $value );
 
