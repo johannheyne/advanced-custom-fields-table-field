@@ -235,6 +235,41 @@ Or you can **insert a table from a ACF option page**…
 
 `[table field-name="your table field name" post-id="option" table-class="my-table"]`
 
+= Updating a table using update_field() =
+
+You can use the ACF PHP function `update_field()` to change a tables data.
+
+Example: adding a new row
+`
+// the post ID where to update the table field
+$post_id = 123;
+
+// gets the table data
+$table_data = get_field( 'table', $post_id );
+
+// defines the new row and its columns
+$new_row = array(
+
+	// must define the same amount of columns as exists in the table
+
+	// column 1
+	array(
+		// the 'c' stands for content of the cell
+		'c' => 'Cell Content of Column 1',
+	),
+
+	// column 2
+	array(
+		'c' => 'Cell Content of Column 2',
+	)
+);
+
+// adds the new row to the table body data
+array_push( $table_data['body'], $new_row );
+
+// saves the new table data
+update_field( 'table', $table_data, $post_id );
+`
 
 = Third party plugins issues =
 
