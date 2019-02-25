@@ -383,6 +383,12 @@
 
 					$data = get_post_meta( $post_id, $field['name'], true );
 
+					// prevents updating a field, thats data are not defined yet
+					if ( empty( $data ) ) {
+
+						return false;
+					}
+
 					if ( is_string( $data ) ) {
 
 						$data = json_decode( $data, true );
