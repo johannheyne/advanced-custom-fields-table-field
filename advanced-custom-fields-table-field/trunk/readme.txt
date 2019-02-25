@@ -277,6 +277,7 @@ Since version 1.3.1 of the table plugin, the storing format of the table data ch
 
 The table field plugin prevents broken JSON strings to save as a table field data and throws an error message that explains the issue. But this may also breaks the functionality of the third party plugin trying to update the table data. You could disable the JSON string check in the table field plugin using the following code in the wp-config.php file. But then the table JSON data are no longer protected from destroing by `update_post_metadata()`. Use the following code in wp-config.php only, if you understand the risk…
 
+`define( "ACF_TABLEFIELD_FILTER_POSTMETA", false );`
 
 == Installation ==
 
@@ -318,7 +319,7 @@ Fixes an issue that prevents the removal of table contents.
 == Changelog ==
 
 = 1.3.5 =
-Fixes an issue that removes table header content using update_field() while option "use header" is set to "no".
+* Fixes an issue that removes table header content using update_field() while option "use header" is set to "no".
 
 = 1.3.4 =
 * Fixes an issue that prevents the removal of table contents
