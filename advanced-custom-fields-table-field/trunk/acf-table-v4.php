@@ -300,7 +300,7 @@
 			// IF BODY DATA
 
 			if (
-				null !== $a['b'] &&
+				! empty( $a['b'] ) AND
 				count( $a['b'] ) > 0
 			) {
 
@@ -388,7 +388,15 @@
 						$data = json_decode( $data, true );
 					}
 
-					if ( isset( $value['header'] ) ) {
+					if ( isset( $value['caption'] ) ) {
+
+						$data['p']['ca'] = $value['caption'];
+					}
+
+					if (
+						isset( $value['header'] ) AND
+						$value['header'] !== false
+					 ) {
 
 						$data['h'] = $value['header'];
 					}
