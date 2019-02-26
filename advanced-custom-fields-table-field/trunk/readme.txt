@@ -312,14 +312,16 @@ However, only when activated as a plugin will updates be available.
 
 = 1.3.5 =
 Fixes an issue that removes table header content using update_field() while option "use header" is set to "no".
+* Fixes an issue with the update_post_metadata filter
 
-= 1.3.5 =
+= 1.3.4 =
 Fixes an issue that prevents the removal of table contents.
 
 == Changelog ==
 
 = 1.3.5 =
 * Fixes an issue that removes table header content using update_field() while option "use header" is set to "no".
+* Fixes an issue with the update_post_metadata filter
 
 = 1.3.4 =
 * Fixes an issue that prevents the removal of table contents

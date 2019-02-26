@@ -89,6 +89,8 @@ class acf_field_table extends acf_field {
 						}
 					}
 
+					return $x;
+
 				}, 10, 5 );
 			}
 
