@@ -171,7 +171,7 @@ For now the way to go is using the Elementors shortcode Widget. Before you can u
 
     if ( $table ) {
 
-        $return .= '<table class="' . $table['table-class'] . '" border="0">';
+        $return .= '<table class="' . $a['table-class'] . '" border="0">';
 
             if ( ! empty( $table['caption'] ) ) {
 
