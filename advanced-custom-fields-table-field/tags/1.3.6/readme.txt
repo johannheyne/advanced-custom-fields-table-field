@@ -311,13 +311,13 @@ However, only when activated as a plugin will updates be available.
 == Upgrade Notice ==
 
 = 1.3.6 =
-* Fixes an issue when changing the field type of a field that already has content in the database.
+* Fixes an issue when changing the field type to table of a field that already has content in the database from another field type.
 
 
 == Changelog ==
 
 = 1.3.6 =
-* Fixes an issue when changing the field type of a field that already has content in the database.
+* Fixes an issue when changing the field type to table of a field that already has content in the database from another field type.
 
 = 1.3.5 =
 * Fixes an issue that removes table header content using update_field() while option "use header" is set to "no".
