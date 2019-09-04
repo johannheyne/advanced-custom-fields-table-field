@@ -1,9 +1,9 @@
 === Advanced Custom Fields: Table Field ===
 Contributors: jonua
 Tags: acf table
-Requires at least: 5.0.3
-Tested up to: 5.1
-Stable tag: 1.3.5
+Requires at least: 5.2.0
+Tested up to: 5.2.2
+Stable tag: 1.3.6
 Requires PHP: 5.6
 License: GPLv2 or later
 
@@ -310,14 +310,14 @@ However, only when activated as a plugin will updates be available.
 
 == Upgrade Notice ==
 
-= 1.3.5 =
-Fixes an issue that removes table header content using update_field() while option "use header" is set to "no".
-* Fixes an issue with the update_post_metadata filter
+= 1.3.6 =
+* Fixes an issue when changing the field type of a field that already has content in the database.
 
-= 1.3.4 =
-Fixes an issue that prevents the removal of table contents.
 
 == Changelog ==
+
+= 1.3.6 =
+* Fixes an issue when changing the field type of a field that already has content in the database.
 
 = 1.3.5 =
 * Fixes an issue that removes table header content using update_field() while option "use header" is set to "no".
