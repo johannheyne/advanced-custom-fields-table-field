@@ -336,6 +336,12 @@
 						}
 					}
 
+					if ( typeof p.data.p != 'object' ) {
+
+						console.log( 'The tablefield value is not a tablefield JSON string:', p.data );
+
+						p.data = false;
+					}
 				}
 
 				return p.data;

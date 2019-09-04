@@ -306,6 +306,13 @@
 						console.log( 'The tablefield value is not a valid JSON string:', decodeURIComponent( val.replace(/\+/g, '%20') ) );
 						console.log( 'The parsing error:', e );
 					}
+
+					if ( typeof p.data.p != 'object' ) {
+
+						console.log( 'The tablefield value is not a tablefield JSON string:', p.data );
+
+						p.data = false;
+					}
 				}
 
 				return p.data;
