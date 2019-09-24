@@ -308,7 +308,7 @@
 
 				// IF HEADER DATA
 
-				if ( $a['p']['o']['uh'] === 1 ) {
+				if ( ! empty( $a['p']['o']['uh'] ) ) {
 
 					$value['header'] = $a['h'];
 				}

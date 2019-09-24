@@ -310,11 +310,13 @@ However, only when activated as a plugin will updates be available.
 
 == Upgrade Notice ==
 
-= 1.3.6 =
-* Fixes an issue when changing the field type to table of a field that already has content in the database from another field type.
-
+= 1.3.7 =
+* Fixes an issue where the table header was not displayed on a page preview.
 
 == Changelog ==
+
+= 1.3.7 =
+* Fixes an issue where the table header was not displayed on a page preview.
 
 = 1.3.6 =
 * Fixes an issue when changing the field type to table of a field that already has content in the database from another field type.
