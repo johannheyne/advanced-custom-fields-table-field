@@ -4,7 +4,7 @@
 
 		var t = this;
 
-		t.version = '1.3.7';
+		t.version = '1.3.8';
 
 		t.param = {};
 
