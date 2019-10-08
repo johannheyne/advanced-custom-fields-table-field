@@ -312,6 +312,8 @@ However, only when activated as a plugin will updates be available.
 
 = 1.3.8 =
 * Fixes an issue where the option "use header" was not applied on updating a field with update_field().
+* Fixes an issue where percent characters in a table field content causes an JavaScript error.
+
 = 1.3.7 =
 * Fixes an issue where the table header was not displayed on a page preview.
 

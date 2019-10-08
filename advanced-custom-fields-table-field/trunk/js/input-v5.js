@@ -317,22 +317,21 @@
 
 						if ( p.field_context === 'block' ) {
 
-							p.data = $.parseJSON( decodeURIComponent( decodeURIComponent( val.replace(/\+/g, '%20') ) ) );
+							p.data = $.parseJSON( decodeURIComponent( val.replace(/\+/g, '%20') ) );
 						}
 					}
 					catch (e) {
 
 						if ( p.field_context === 'box' ) {
 
-							console.log( 'The tablefield value is not a valid JSON string:', decodeURIComponent( val.replace(/\+/g, '%20') ) );
 							console.log( 'The parsing error:', e );
+							console.log( 'The tablefield value is not a valid JSON string:', decodeURIComponent( val.replace(/\+/g, '%20') ) );
 						}
 
 						if ( p.field_context === 'block' ) {
 
-							console.log( 'The tablefield value is not a valid JSON string:', decodeURIComponent( decodeURIComponent( val.replace(/\+/g, '%20') ) ) );
-							console.log( 'The tablefield value is not a valid JSON string:', decodeURIComponent( decodeURIComponent( decodeURIComponent( val.replace(/\+/g, '%20') ) ) ) );
 							console.log( 'The parsing error:', e );
+							console.log( 'The tablefield value is not a valid JSON string:', decodeURIComponent( val.replace(/\+/g, '%20') ) );
 						}
 					}
 

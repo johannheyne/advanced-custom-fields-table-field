@@ -480,7 +480,12 @@ class acf_field_table extends acf_field {
 
 		// }
 
-		$value = $this->table_slash( $value );
+		// $post_id is integer when post is saved, $post_id is  string when block is saved
+		if ( gettype( $post_id ) === 'integer' ) {
+
+			// only saving a post needs addslashes
+			$value = $this->table_slash( $value );
+		}
 
 		return $value;
 	}
