@@ -452,6 +452,11 @@ class acf_field_table extends acf_field {
 					$data = json_decode( $data, true );
 				}
 
+				if ( isset( $value['use_header'] ) ) {
+
+					$data['p']['o']['uh'] = 1;
+				}
+
 				if ( isset( $value['caption'] ) ) {
 
 					$data['p']['ca'] = $value['caption'];
