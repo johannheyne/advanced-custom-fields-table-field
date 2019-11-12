@@ -1,6 +1,6 @@
 == Changelog ==
 
-= 1.3.8 =
+= 1.3.9 =
 * Fixes an issue where option "use header" was not applied on updating a field with update_field().
 * Fixes an issue where percent characters in a table field content causes an JavaScript error.
 
