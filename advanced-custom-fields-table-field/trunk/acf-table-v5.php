@@ -475,12 +475,37 @@ class acf_field_table extends acf_field {
 					$data['b'] = $value['body'];
 				}
 
+				// SYNCHRONICE TOP ROW DATA WITH CHANGED AMOUNT OF BODY COLUMNS  {
+
+					$new_amount_of_body_cols = count( $value['body'][0] );
+					$db_amount_of_top_cols = count( $data['c'] );
+
+					if ( $new_amount_of_body_cols > $db_amount_of_top_cols ) {
+
+						for ( $i = $db_amount_of_top_cols; $i < $new_amount_of_body_cols; $i++ ) {
+
+							// adds a column entry in top row data
+							array_push( $data['c'], array( 'p' => '' ) );
+						}
+					}
+
+					if ( $new_amount_of_body_cols < $db_amount_of_top_cols ) {
+
+						for ( $i = $new_amount_of_body_cols; $i < $db_amount_of_top_cols; $i++ ) {
+
+							// removes a column entry in top row data
+							array_shift( $data['c'] );
+						}
+					}
+
+				// }
+
 				$value = $data;
 			}
 
 		// }
 
-		// $post_id is integer when post is saved, $post_id is  string when block is saved
+		// $post_id is integer when post is saved, $post_id is string when block is saved
 		if ( gettype( $post_id ) === 'integer' ) {
 
 			// only saving a post needs addslashes

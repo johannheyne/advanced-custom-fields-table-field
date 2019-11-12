@@ -309,6 +309,9 @@ However, only when activated as a plugin will updates be available.
 
 == Changelog ==
 
+= 1.3.9 =
+* Fixes an issue when adding or removing columns using update_field().
+
 = 1.3.8 =
 * Fixes an issue where the option "use header" was not applied on updating a field with update_field().
 * Fixes an issue where percent characters in a table field content causes an JavaScript error.
