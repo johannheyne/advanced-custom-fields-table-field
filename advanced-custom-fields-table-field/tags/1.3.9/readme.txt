@@ -1,8 +1,8 @@
 === Advanced Custom Fields: Table Field ===
 Contributors: jonua
 Tags: acf table
-Requires at least: 5.2.0
-Tested up to: 5.2.4
+Requires at least: 5.3
+Tested up to: 5.3
 Stable tag: 1.3.9
 Requires PHP: 5.6
 License: GPLv2 or later
