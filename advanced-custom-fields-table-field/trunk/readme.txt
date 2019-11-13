@@ -310,6 +310,7 @@ However, only when activated as a plugin will updates be available.
 == Changelog ==
 
 = 1.3.9 =
+* Fixes broken ACF select field styles in WordPress 5.3.
 * Fixes an issue when adding or removing columns using update_field().
 
 = 1.3.8 =
