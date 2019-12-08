@@ -216,20 +216,20 @@ For now the way to go is using the Elementors shortcode Widget. Before you can u
     return $return;
 }
 
-add_shortcode( 'table', 'shortcode_acf_tablefield' );`
+add_shortcode( 'tablefield', 'shortcode_acf_tablefield' );`
 
 
 Then use the shortcode in a Elementors shortcode widget like this, to **insert a table from the current page or post**…
 
-`[table field-name="your table field name" table-class="my-table"]`
+`[tablefield field-name="your table field name" table-class="my-table"]`
 
 You also can **insert a table from another page or post**…
 
-`[table field-name="your table field name" post-id="123" table-class="my-table"]`
+`[tablefield field-name="your table field name" post-id="123" table-class="my-table"]`
 
 Or you can **insert a table from a ACF option page**…
 
-`[table field-name="your table field name" post-id="option" table-class="my-table"]`
+`[tablefield field-name="your table field name" post-id="option" table-class="my-table"]`
 
 = Updating a table using update_field() =
 
