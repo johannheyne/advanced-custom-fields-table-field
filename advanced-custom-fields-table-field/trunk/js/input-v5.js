@@ -94,6 +94,8 @@
 			ajax: false,
 		};
 
+		t.tables = {};
+
 		t.state = {
 			'current_cell_obj': false,
 			'cell_editor_cell': false,
@@ -153,13 +155,28 @@
 
 		};
 
+		t.get_field_key = function( that ) {
+
+			return that.closest( '[data-key]').data( 'key' );
+		};
+
 		t.each_table = function( ) {
 
 			$( '.acf-field-table .acf-table-root' ).not( '.acf-table-rendered' ).each( function() {
 
 				var p = {};
-				p.obj_root = $( this ),
-				table = p.obj_root.find( '.acf-table-wrap' );
+
+				p.obj_root = $( this );
+
+				var that = $( this ),
+					field_key = t.get_field_key( that ),
+					table = p.obj_root.find( '.acf-table-wrap' );
+
+				// ADDS TABLE OBJECT {
+
+					t.tables[ field_key ] = p;
+
+				// }
 
 				if ( table.length > 0 ) {
 
