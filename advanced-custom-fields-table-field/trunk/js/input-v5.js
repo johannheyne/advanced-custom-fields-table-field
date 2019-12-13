@@ -993,6 +993,8 @@
 
 				t.cell_editor_save();
 			} );
+
+			t.cell_editor_update_event();
 		};
 
 		t.cell_editor_add_editor = function( p ) {
@@ -1087,6 +1089,47 @@
 			else {
 
 				t.state.current_cell_obj = false;
+			}
+		};
+
+		t.cell_editor_update_event = function() {
+
+			var interval;
+
+			t.obj.body.on( 'keyup', '.acf-table-cell-editor-textarea', function() {
+
+				clearInterval( interval );
+
+				interval = setInterval( function() {
+
+					t.cell_editor_update();
+					clearInterval( interval );
+				}, 300 );
+			} );
+
+		};
+
+		t.cell_editor_update = function() {
+
+			var cell_editor = t.obj.body.find( '.acf-table-cell-editor' ),
+				cell_editor_textarea = cell_editor.find( '.acf-table-cell-editor-textarea' ),
+				p = {},
+				cell_editor_val = '';
+
+			if ( typeof cell_editor_textarea.val() !== 'undefined' ) {
+
+				p.obj_root = cell_editor.parents( '.acf-table-root' );
+				p.obj_table = p.obj_root.find( '.acf-table-table' );
+
+				var cell_editor_val = cell_editor_textarea.val();
+
+				// prevent XSS injection
+				cell_editor_val = cell_editor_val.replace( /\<(script)/ig, '&#060;$1' );
+				cell_editor_val = cell_editor_val.replace( /\<\/(script)/ig, '&#060;/$1' );
+
+				cell_editor.next().html( cell_editor_val );
+
+				t.table_build_json( p );
 			}
 		};
 
