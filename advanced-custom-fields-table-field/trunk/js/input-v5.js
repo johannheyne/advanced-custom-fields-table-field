@@ -1248,7 +1248,7 @@
 
 			if ( p.field_context === 'block' ) {
 
-				p.obj_root.change();
+				p.obj_root.trigger( 'change' );
 			}
 		};
 
