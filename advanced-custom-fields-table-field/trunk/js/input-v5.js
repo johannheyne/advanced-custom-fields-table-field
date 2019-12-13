@@ -200,7 +200,6 @@
 					p.obj_root.find( '.acf-table-remove-col' ).hide(),
 					p.obj_root.find( '.acf-table-remove-row' ).hide();
 				}
-
 			} );
 		};
 
