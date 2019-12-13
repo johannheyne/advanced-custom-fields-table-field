@@ -2,7 +2,7 @@
 Contributors: jonua
 Tags: acf table
 Requires at least: 5.3
-Tested up to: 5.3
+Tested up to: 5.3.1
 Stable tag: 1.3.9
 Requires PHP: 5.6
 License: GPLv2 or later
@@ -308,6 +308,9 @@ However, only when activated as a plugin will updates be available.
 
 
 == Changelog ==
+
+= 1.3.10 =
+* Fixes table cell content update issue on ACF Gutenberg blocks
 
 = 1.3.9 =
 * Fixes broken ACF select field styles in WordPress 5.3.
