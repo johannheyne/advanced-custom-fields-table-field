@@ -230,7 +230,7 @@
 					var that = $( this ),
 						p = {};
 
-					p.obj_root = that.parents( '.acf-table-root' );
+					p.obj_root = that.closest( '.acf-table-root' );
 					p.obj_table = p.obj_root.find( '.acf-table-table' );
 
 					t.data_get( p );
@@ -289,7 +289,7 @@
 
 			p = {};
 
-			p.obj_root = that.parents( '.acf-table-root' );
+			p.obj_root = that.closest( '.acf-table-root' );
 			p.obj_table = p.obj_root.find( '.acf-table-table' );
 
 			t.data_get( p );
@@ -666,7 +666,7 @@
 
 				var that_index = p.obj_col.index();
 
-				p.obj_root = p.obj_col.parents( '.acf-table-root' );
+				p.obj_root = p.obj_col.closest( '.acf-table-root' );
 				p.obj_table = p.obj_root.find( '.acf-table-table' );
 
 				$( p.obj_table.find( '.acf-table-top-row' ).children()[ that_index ] ).after( t.param.htmltable.top_cell.replace( '<!--ph-->', '' ) );
@@ -700,7 +700,7 @@
 					obj_rows = undefined,
 					cols_count = false;
 
-				p.obj_root = that.parents( '.acf-table-root' );
+				p.obj_root = that.closest( '.acf-table-root' );
 				p.obj_table = p.obj_root.find( '.acf-table-table' );
 				p.obj_top = p.obj_root.find( '.acf-table-top-row' );
 				obj_rows = p.obj_table.find( '.acf-table-body-row' );
@@ -766,7 +766,7 @@
 				col_amount = 0,
 				body_cells_html = '';
 
-			p.obj_root = p.obj_row.parents( '.acf-table-root' );
+			p.obj_root = p.obj_row.closest( '.acf-table-root' );
 			p.obj_table = p.obj_root.find( '.acf-table-table' );
 			p.obj_table_rows = p.obj_table.children();
 			col_amount = p.obj_table.find( '.acf-table-top-cell' ).size();
@@ -802,7 +802,7 @@
 					that = $( this ),
 					rows_count = false;
 
-				p.obj_root = that.parents( '.acf-table-root' );
+				p.obj_root = that.closest( '.acf-table-root' );
 				p.obj_table = p.obj_root.find( '.acf-table-table' );
 				p.obj_rows = p.obj_root.find( '.acf-table-body-row' );
 
@@ -1137,7 +1137,7 @@
 
 			if ( typeof cell_editor_textarea.val() !== 'undefined' ) {
 
-				p.obj_root = cell_editor.parents( '.acf-table-root' );
+				p.obj_root = cell_editor.closest( '.acf-table-root' );
 				p.obj_table = p.obj_root.find( '.acf-table-table' );
 
 				var cell_editor_val = cell_editor_textarea.val();
@@ -1161,7 +1161,7 @@
 
 			if ( typeof cell_editor_textarea.val() !== 'undefined' ) {
 
-				p.obj_root = cell_editor.parents( '.acf-table-root' );
+				p.obj_root = cell_editor.closest( '.acf-table-root' );
 				p.obj_table = p.obj_root.find( '.acf-table-table' );
 
 				var cell_editor_val = cell_editor_textarea.val();
@@ -1247,7 +1247,7 @@
 
 					var p = {};
 
-					p.obj_root = ui.item.parents( '.acf-table-root' );
+					p.obj_root = ui.item.closest( '.acf-table-root' );
 					p.obj_table = p.obj_root.find( '.acf-table-table' );
 
 					t.table_left_labels( p );
@@ -1279,7 +1279,7 @@
 
 					p.end_index = ui.item.index();
 
-					p.obj_root = ui.item.parents( '.acf-table-root' );
+					p.obj_root = ui.item.closest( '.acf-table-root' );
 					p.obj_table = p.obj_root.find( '.acf-table-table' );
 
 					t.table_top_labels( p );
