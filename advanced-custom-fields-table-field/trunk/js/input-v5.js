@@ -263,21 +263,40 @@
 
 				t.obj.body.on( 'change', '.acf-table-fc-opt-caption', function() {
 
-					var that = $( this ),
-						p = {};
+					var that = $( this );
+					t.caption_update( that );
+				} );
 
-					p.obj_root = that.parents( '.acf-table-root' );
-					p.obj_table = p.obj_root.find( '.acf-table-table' );
+				var interval;
 
-					t.data_get( p );
-					t.data_default( p );
+				t.obj.body.on( 'keyup', '.acf-table-fc-opt-caption', function() {
 
-					p.data.p.ca = that.val();
-					t.update_table_data_field( p );
+					clearInterval( interval );
+					var that = $( this );
+
+					interval = setInterval( function() {
+
+						t.caption_update( that );
+						clearInterval( interval );
+					}, 300 );
 
 				} );
 
 			// }
+		};
+
+		t.caption_update = function( that ) {
+
+			p = {};
+
+			p.obj_root = that.parents( '.acf-table-root' );
+			p.obj_table = p.obj_root.find( '.acf-table-table' );
+
+			t.data_get( p );
+			t.data_default( p );
+
+			p.data.p.ca = that.val();
+			t.update_table_data_field( p );
 		};
 
 		t.ui_event_new_flex_field = function() {
