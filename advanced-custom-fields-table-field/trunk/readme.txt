@@ -310,7 +310,7 @@ However, only when activated as a plugin will updates be available.
 == Changelog ==
 
 = 1.3.10 =
-* Fixes table cell content update issue on ACF Gutenberg blocks
+* Fixes table cell content and caption update issue on ACF Gutenberg blocks
 
 = 1.3.9 =
 * Fixes broken ACF select field styles in WordPress 5.3.
