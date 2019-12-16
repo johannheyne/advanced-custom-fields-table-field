@@ -270,7 +270,7 @@
 		position: absolute;
 		left: 3px;
 		bottom: -17px;
-		width 0;
+		width: 0;
 		height: 0;
 		border: 7px solid transparent;
 		border-top: 7px solid #2ea2cc;
@@ -281,7 +281,7 @@
 		position: absolute;
 		left: 4px;
 		bottom: -12px;
-		width 0;
+		width: 0;
 		height: 0;
 		border: 6px solid transparent;
 		border-top: 6px solid #e5f8ff;
