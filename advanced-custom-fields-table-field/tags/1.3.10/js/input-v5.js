@@ -1310,7 +1310,11 @@
 
 			if ( p.field_context === 'block' ) {
 
-				p.obj_root.trigger( 'change' );
+				setTimeout( function() {
+
+					p.obj_root.trigger( 'change' );
+
+				}, 0 );
 			}
 		};
 
