@@ -2,7 +2,7 @@
 
 = 1.3.10 =
 * Fixes table cell content and caption update issue on ACF Gutenberg blocks
-* Replaces jQuery depricated size() methode by length
+* Replaces jQuery depricated size() methode by .length property
 
 = 1.3.9 =
 * Fixes broken ACF select field styles in WordPress 5.3.
