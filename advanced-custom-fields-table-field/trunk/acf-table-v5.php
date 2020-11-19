@@ -439,7 +439,14 @@ class acf_field_table extends acf_field {
 				isset( $value['body'] )
 			) {
 
+				// try post_meta
 				$data = get_post_meta( $post_id, $field['name'], true );
+
+				// try term_meta
+				if ( empty( $data ) ) {
+
+					$data = get_term_meta( str_replace('term_', '', $post_id ), $field['name'], true );
+				}
 
 				// prevents updating a field, thats data are not defined yet
 				if ( empty( $data ) ) {
