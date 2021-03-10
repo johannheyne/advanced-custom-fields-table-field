@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 1.3.12 =
+* Updates styles of acf buttons plus and minus
+
 = 1.3.11 =
 * Adds support for updating term type by update_field()
 

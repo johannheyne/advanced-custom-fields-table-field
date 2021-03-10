@@ -2,8 +2,8 @@
 Contributors: jonua
 Tags: acf table
 Requires at least: 5.3
-Tested up to: 5.5.3
-Stable tag: 1.3.10
+Tested up to: 5.7
+Stable tag: 1.3.11
 Requires PHP: 5.6
 License: GPLv2 or later
 
@@ -308,6 +308,9 @@ However, only when activated as a plugin will updates be available.
 
 
 == Changelog ==
+
+= 1.3.12 =
+* Updates styles of acf buttons plus and minus
 
 = 1.3.11 =
 * Adds support for updating term type by update_field()
