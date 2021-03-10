@@ -224,28 +224,24 @@
 /* BUTTONS { */
 
 	.acf-table-add-col {
-		box-sizing: content-box;
 		position: absolute !important;
 		top: -9px;
 		right: -10px;
 		z-index: 1;
 	}
 	.acf-table-add-row {
-		box-sizing: content-box;
 		position: absolute !important;
-		bottom: -9px;
+		bottom: -11px;
 		left: -10px;
 		z-index: 1;
 	}
 	.acf-table-remove-col {
-		box-sizing: content-box;
 		position: absolute !important;
 		top: 4px;
 		left: 50%;
 		margin-left: -10px;
 	}
 	.acf-table-remove-row {
-		box-sizing: content-box;
 		position: absolute !important;
 		left: 6px;
 		top: 3px;
