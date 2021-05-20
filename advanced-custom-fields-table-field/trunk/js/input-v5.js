@@ -1212,7 +1212,7 @@
 			return ui;
 		};
 
-		t.sortable_row = function() {
+		t.sortable_row = function( that ) {
 
 			var param = {
 				axis: 'y',
@@ -1232,11 +1232,11 @@
 				},
 			};
 
-			$( '.acf-table-table:not(.sortable-initialized)' ).sortable( param );
+			that.sortable( param );
 
 		};
 
-		t.sortable_col = function() {
+		t.sortable_col = function( that ) {
 
 			var p = {};
 
@@ -1265,23 +1265,20 @@
 				},
 			};
 
-			$( '.acf-table-table:not(.sortable-initialized) .acf-table-top-row' ).sortable( param );
+			that.find( '.acf-table-top-row' ).sortable( param );
 		};
 
 		t.sortable_event = function() {
 
-			t.obj.body.on( 'mouseenter', '.acf-table-body-left, .acf-table-top-row', function() {
+			t.obj.body.on( 'mouseenter', '.acf-field-table:not(.sortable-initialized)', function() {
 
 				var that = $( this ),
-					root = that.closest( '.acf-field-table' );
+					table = that.find( '.acf-table-table' );
 
-				if ( ! root.hasClass( 'sortable-initialized' ) ) {
+				t.sortable_row( table );
+				t.sortable_col( table );
 
-					t.sortable_row();
-					t.sortable_col();
-
-					root.addClass( 'sortable-initialized' );
-				}
+				that.addClass( 'sortable-initialized' );
 
 			} );
 
