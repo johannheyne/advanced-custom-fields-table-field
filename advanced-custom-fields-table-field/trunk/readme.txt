@@ -3,7 +3,7 @@ Contributors: jonua
 Tags: acf table
 Requires at least: 5.3
 Tested up to: 5.7
-Stable tag: 1.3.12
+Stable tag: 1.3.13
 Requires PHP: 5.6
 License: GPLv2 or later
 
@@ -308,6 +308,10 @@ However, only when activated as a plugin will updates be available.
 
 
 == Changelog ==
+
+= 1.3.13 =
+* Fixes missing sortable columns and rows in ACF Gutenberg blocks
+* Updates depricated jQuery functionalities
 
 = 1.3.12 =
 * Updates styles of acf buttons plus and minus

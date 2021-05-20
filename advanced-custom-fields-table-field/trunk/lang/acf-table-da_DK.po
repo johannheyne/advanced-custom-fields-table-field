@@ -38,10 +38,10 @@ msgid ""
 msgstr ""
 
 #. #-#-#-#-#  advanced-custom-fields-table-field-code.pot (Advanced Custom
-#. Fields: Table Field 1.3.12)  #-#-#-#-#
+#. Fields: Table Field 1.3.13)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
 #. #-#-#-#-#  advanced-custom-fields-table-field-code.pot (Advanced Custom
-#. Fields: Table Field 1.3.12)  #-#-#-#-#
+#. Fields: Table Field 1.3.13)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "http://www.johannheyne.de/"
 msgstr "http://www.johannheyne.de/"

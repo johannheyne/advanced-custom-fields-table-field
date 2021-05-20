@@ -21,7 +21,7 @@ class acf_field_table extends acf_field {
 		*  settings (array) Array of settings
 		*/
 		$this->settings = array(
-			'version' => '1.3.12',
+			'version' => '1.3.13',
 			'dir_url' => plugins_url( '', __FILE__ ) . '/',
 		);
 
