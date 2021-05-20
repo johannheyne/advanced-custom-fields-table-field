@@ -1270,13 +1270,12 @@
 
 		t.sortable_event = function() {
 
-			t.obj.body.on( 'mouseenter', '.acf-field-table:not(.sortable-initialized)', function() {
+			t.obj.body.on( 'mouseenter', '.acf-table-table:not(.sortable-initialized)', function() {
 
-				var that = $( this ),
-					table = that.find( '.acf-table-table' );
+				var that = $( this );
 
-				t.sortable_row( table );
-				t.sortable_col( table );
+				t.sortable_row( that );
+				t.sortable_col( that );
 
 				that.addClass( 'sortable-initialized' );
 
