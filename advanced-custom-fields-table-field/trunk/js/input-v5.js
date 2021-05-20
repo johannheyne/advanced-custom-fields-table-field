@@ -207,7 +207,7 @@
 
 			try {
 
-				p.field_options = $.parseJSON( decodeURIComponent( p.obj_root.find( '[data-field-options]' ).data( 'field-options' ) ) );
+				p.field_options = JSON.parse( decodeURIComponent( p.obj_root.find( '[data-field-options]' ).data( 'field-options' ) ) );
 			}
 			catch (e) {
 
@@ -347,12 +347,12 @@
 
 						if ( p.field_context === 'box' ) {
 
-							p.data = $.parseJSON( decodeURIComponent( val.replace(/\+/g, '%20') ) );
+							p.data = JSON.parse( decodeURIComponent( val.replace(/\+/g, '%20') ) );
 						}
 
 						if ( p.field_context === 'block' ) {
 
-							p.data = $.parseJSON( decodeURIComponent( val.replace(/\+/g, '%20') ) );
+							p.data = JSON.parse( decodeURIComponent( val.replace(/\+/g, '%20') ) );
 						}
 					}
 					catch (e) {
