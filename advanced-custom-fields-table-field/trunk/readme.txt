@@ -235,13 +235,61 @@ Or you can **insert a table from a ACF option page**…
 
 You can use the ACF PHP function `update_field()` to change a tables data.
 
-__Example: adding a new row__
+__Notice__
+
+- Make sure that the number of entries in the header array matches the number of cells in the body rows.
+- The array key 'c' stands for the content of the cells to have the option of adding other cell setting in future development.
+- The table data obtained by get_field() are formatted and differ by the original database data obtained by get_post_meta().
+
+__Example of changing table data using get_field() and update_field()__
+
+`
+// the post ID where to update the table field
+$post_id = 123;
+
+$table_data = get_field( 'my_table', $post_id );
+
+$table_data = array(
+	'use_header' => true, // boolean true/false
+	'caption' => 'My Caption',
+	'header' => array(
+		0 => array(
+			'c' => 'A',
+		),
+		1 => array(
+			'c' => 'B',
+		),
+	),
+	'body' => array(
+		0 => array(
+			0 => array(
+				'c' => 'The content of first cell of first row',
+			),
+			1 => array(
+				'c' => 'The content of second cell of first row',
+			),
+		),
+		1 => array(
+			0 => array(
+				'c' => The content of first cell of second row',
+			),
+			1 => array(
+				'c' => 'The content of second cell of second row',
+			),
+		),
+	)
+);
+
+update_field( 'my_table', $table_data, $post_id );
+`
+
+__Example of adding a new row__
 `
 // the post ID where to update the table field
 $post_id = 123;
 
 // gets the table data
-$table_data = get_field( 'table', $post_id );
+$table_data = get_field( 'my_table', $post_id );
 
 // defines the new row and its columns
 $new_row = array(
@@ -264,7 +312,7 @@ $new_row = array(
 array_push( $table_data['body'], $new_row );
 
 // saves the new table data
-update_field( 'table', $table_data, $post_id );
+update_field( 'my_table', $table_data, $post_id );
 `
 
 = Third party plugins issues =
