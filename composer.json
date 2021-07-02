@@ -1,0 +1,23 @@
+{
+    "name": "johannheyne/advanced-custom-fields-table-field",
+    "description": "Table field for ACF",
+    "type": "wordpress-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Johann Heyne",
+            "email": "mail@johannheyne.de"
+        }
+    ],
+    "minimum-stability" : "stable",
+    "repositories": [
+        {
+            "type":"composer",
+            "url":"https://packagist.org"
+        },
+        {
+            "type":"composer",
+            "url":"https://wpackagist.org"
+        }
+    ]
+}
