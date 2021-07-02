@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 1.3.14 =
+* Prevents the font-size and line-height in the blue editor window of the table cells from being overwritten by other styles.
+* Fixes an issue in update_field() where setting the "use_header" option to false did not work.
+
 = 1.3.13 =
 * Fixes missing sortable columns and rows in ACF Gutenberg blocks
 * Updates depricated jQuery functionalities

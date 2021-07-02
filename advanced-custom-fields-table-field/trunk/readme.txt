@@ -3,7 +3,7 @@ Contributors: jonua
 Tags: acf table
 Requires at least: 5.3
 Tested up to: 5.7
-Stable tag: 1.3.13
+Stable tag: 1.3.14
 Requires PHP: 5.6
 License: GPLv2 or later
 
@@ -235,7 +235,7 @@ Or you can **insert a table from a ACF option page**…
 
 You can use the ACF PHP function `update_field()` to change a tables data.
 
-Example: adding a new row
+__Example: adding a new row__
 `
 // the post ID where to update the table field
 $post_id = 123;
@@ -308,6 +308,10 @@ However, only when activated as a plugin will updates be available.
 
 
 == Changelog ==
+
+= 1.3.14 =
+* Prevents the font-size and line-height in the blue editor window of the table cells from being overwritten by other styles.
+* Fixes an issue in update_field() where setting the "use_header" option to false did not work.
 
 = 1.3.13 =
 * Fixes missing sortable columns and rows in ACF Gutenberg blocks

@@ -21,7 +21,7 @@ class acf_field_table extends acf_field {
 		*  settings (array) Array of settings
 		*/
 		$this->settings = array(
-			'version' => '1.3.13',
+			'version' => '1.3.14',
 			'dir_url' => plugins_url( '', __FILE__ ) . '/',
 		);
 
@@ -459,9 +459,13 @@ class acf_field_table extends acf_field {
 					$data = json_decode( $data, true );
 				}
 
-				if ( isset( $value['use_header'] ) ) {
+				if ( ! empty( $value['use_header'] ) ) {
 
 					$data['p']['o']['uh'] = 1;
+				}
+				else {
+
+					$data['p']['o']['uh'] = 0;
 				}
 
 				if ( isset( $value['caption'] ) ) {
