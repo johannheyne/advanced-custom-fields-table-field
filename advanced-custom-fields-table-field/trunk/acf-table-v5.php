@@ -21,7 +21,7 @@ class acf_field_table extends acf_field {
 		*  settings (array) Array of settings
 		*/
 		$this->settings = array(
-			'version' => '1.3.14',
+			'version' => '1.3.15',
 			'dir_url' => plugins_url( '', __FILE__ ) . '/',
 		);
 
@@ -565,6 +565,7 @@ class acf_field_table extends acf_field {
 		// IF BODY DATA
 
 		if (
+			is_countable( $a['b'] ) AND
 			! empty( $a['b'] ) AND
 			count( $a['b'] ) > 0
 		) {

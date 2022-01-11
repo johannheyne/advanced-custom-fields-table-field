@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 1.3.15 =
+* Fixes an issue with count() in PHP8
+
 = 1.3.14 =
 * Prevents the font-size and line-height in the blue editor window of the table cells from being overwritten by other styles.
 * Fixes an issue in update_field() where setting the "use_header" option to false did not work.
