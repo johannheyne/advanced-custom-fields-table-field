@@ -1,0 +1,341 @@
+.acf-table-wrap {
+	padding: 11px 26px 11px 11px;
+}
+
+.acf-table-wrap,
+.acf-table-wrap *,
+.acf-table-wrap *:before,
+.acf-table-wrap *:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* TABLE { */
+
+	.acf-table-table {
+		display: table;
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	.acf-table-body-row {
+		width: 100%;
+	}
+
+	.acf-table-table * {
+		background-clip: padding-box; /* fix FireFox and IE background color painting over the borders */
+	}
+
+	/* TOP { */
+
+		.acf-table-top-row {
+			position: relative;
+			display: table-row;
+		}
+		.acf-table-top-left {
+			position: relative;
+			display: table-cell;
+			width: 1px;
+			padding: 4px 8px 4px 16px;
+			min-height: 27px;
+		}
+		.acf-table-top-cell {
+			position: relative;
+			display: table-cell;
+			padding: 4px 8px;
+			border: 1px solid #e1e1e1;
+			background-color: #eee;
+			cursor: move;
+			min-width: 68px;
+		}
+		.acf-table-top-right {
+			position: relative;
+			display: table-cell;
+			width: 26px;
+		}
+		.acf-table-top-cont {
+			margin: 0;
+			padding: 0;
+			font-size: inherit;
+			line-height: inherit;
+			text-align: center;
+			color: #aaa;
+		}
+
+	/* TOP } */
+
+	/* HEADER { */
+
+		.acf-table-header-row {
+			position: relative;
+			display: table-row;
+		}
+		.acf-table-header-left {
+			position: relative;
+			display: table-cell;
+		}
+		.acf-table-header-cell {
+			position: relative;
+			display: table-cell;
+			padding: 4px 8px;
+			border: 1px solid #e1e1e1;
+			background-color: #f9f9f9;
+			height: 28px;
+		}
+		.acf-table-header-right {
+			position: relative;
+			display: table-cell;
+			width: 26px;
+		}
+		.acf-table-header-cont {
+			margin: 0;
+			padding: 0;
+			font-size: inherit;
+			line-height: inherit;
+			font-weight: bold;
+		}
+
+	/* HEADER } */
+
+	/* BODY { */
+
+		.acf-table-body-row {
+			position: relative;
+			display: table-row;
+		}
+		.acf-table-body-left {
+			position: relative;
+			display: table-cell;
+			border: 1px solid #e1e1e1;
+			padding: 4px 8px 4px 16px;
+			background-color: #eee;
+			height: 27px;
+			cursor: move;
+			text-align: right;
+			color: #aaa;
+		}
+		.acf-table-body-cell {
+			position: relative;
+			display: table-cell;
+			border: 1px solid #e1e1e1;
+			padding: 4px 8px;
+			background-color: white;
+
+		}
+		.acf-table-body-right {
+			position: relative;
+			display: table-cell;
+			border-bottom: 1px solid transparent;
+		}
+		.acf-table-body-cont {
+			margin: 0;
+			padding: 0;
+			font-size: inherit;
+			line-height: inherit;
+
+			/* FOLD CELLS { *off/
+
+				max-height: 18px;
+				overflow: hidden;
+
+			/* FOLD CELLS } */
+		}
+
+	/* BODY } */
+
+	/* BOTTOM { */
+
+		.acf-table-bottom-row {
+			position: relative;
+			display: table-row;
+		}
+		.acf-table-bottom-left {
+			position: relative;
+			display: table-cell;
+			height: 24px;
+		}
+		.acf-table-bottom-cell {
+			position: relative;
+			display: table-cell;
+		}
+		.acf-table-bottom-right {
+			position: relative;
+			display: table-cell;
+		}
+
+	/* BOTTOM } */
+
+	/* HIDES { */
+
+		/* .acf-table-hide-header { */
+
+			.acf-table-hide-header .acf-table-header-row,
+			.acf-table-hide-header .acf-table-header-row * {
+				height: 0 !important;
+				font-size: 0 !important;
+				line-height: 0 !important;
+				padding: 0 !important;
+				border: 0 !important;
+				display: block;
+			}
+			.acf-table-hide-header .acf-table-top-row > * {
+				border-bottom: none;
+			}
+
+		/* .acf-table-hide-header } */
+
+		/* .acf-table-hide-left { */
+
+			.acf-table.acf-table-hide-left > * > *:first-child {
+				font-size: 0 !important;
+				line-height: 0 !important;
+				width: 16px !important;
+				padding: 0 !important;
+				/*border: 0 !important;*/
+				background: none !important;
+				border-left: none;
+			}
+
+		/* .acf-table-hide-left } */
+
+		/* .acf-table-hide-top { */
+
+			.acf-table.acf-table-hide-top .acf-table-top-left,
+			.acf-table.acf-table-hide-top .acf-table-top-cell,
+			.acf-table.acf-table-hide-top .acf-table-top-right {
+				height: 0 !important;
+				font-size: 0 !important;
+				line-height: 0 !important;
+				height: 16px !important;
+				/*padding: 0 !important;
+				border: 0 !important;*/
+				background: none !important;
+				border-top: none;
+			}
+
+		/* .acf-table-hide-top } */
+
+	/* HIDE } */
+
+/* TABLE } */
+
+/* BUTTONS { */
+
+	.acf-table-add-col {
+		box-sizing: content-box;
+		position: absolute !important;
+		top: -9px;
+		right: -10px;
+		z-index: 1;
+	}
+	.acf-table-add-row {
+		box-sizing: content-box;
+		position: absolute !important;
+		bottom: -9px;
+		left: -10px;
+		z-index: 1;
+	}
+	.acf-table-remove-col {
+		box-sizing: content-box;
+		position: absolute !important;
+		top: 4px;
+		left: 50%;
+		margin-left: -10px;
+	}
+	.acf-table-remove-row {
+		box-sizing: content-box;
+		position: absolute !important;
+		left: 6px;
+		top: 3px;
+	}
+
+/* BUTTONS } */
+
+/* CELL EDITOR { */
+
+	.acf-table-cell-editor {
+		position: absolute;
+		border: 3px solid #2ea2cc;
+		top: -67px;
+		left: 0;
+		z-index: 2;
+		font-size: 0;
+		line-height: 0;
+	}
+	.acf-table-cell-editor:before {
+		content: "";
+		display: block;
+		position: absolute;
+		left: 3px;
+		bottom: -17px;
+		width: 0;
+		height: 0;
+		border: 7px solid transparent;
+		border-top: 7px solid #2ea2cc;
+	}
+	.acf-table-cell-editor:after {
+		content: "";
+		display: block;
+		position: absolute;
+		left: 4px;
+		bottom: -12px;
+		width: 0;
+		height: 0;
+		border: 6px solid transparent;
+		border-top: 6px solid #e5f8ff;
+	}
+	.acf-table-cell-editor-textarea {
+		border: none !important;
+		padding: 3px 7px !important;
+		background-color: #e5f8ff;
+		font-size: 13px;
+		line-height: 1.4;
+		min-width: 180px;
+		min-height: 61px !important;
+
+		/* fix profile.php ACF v4 */
+		width: auto !important;
+		margin-bottom: 0 !important;
+	}
+
+/* CELL EDITOR } */
+
+/* OPTIONBOX { */
+
+	.acf-table-optionwrap {
+		margin-top: 16px;
+		margin-bottom: 16px;
+		padding: 0 51px 0 45px;
+	}
+	.acf-table-optionbox {
+		margin-top: 16px;
+		margin-bottom: 16px;
+	}
+	.acf-table-optionbox + .acf-table-optionbox {
+		margin-top: -20px;
+	}
+
+	/* FIELDS { */
+
+		.acf-table-optionbox label {
+			display: inline-block;
+			font-weight: bold;
+			padding-right: 6px;
+			padding-bottom: 10px;
+			padding-top: 10px;
+		}
+
+		.acf-table-fc-opt-use-header {
+			width: auto !important;
+			padding: 3px 24px 3px 8px !important; /* fixes ACF padding 2px for select fields */
+		}
+
+		.acf-table-fc-opt-caption {
+			width: 100% !important;
+		}
+
+	/* FIELDS } */
+
+/* OPTIONBOX } */
