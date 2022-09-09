@@ -2,8 +2,8 @@
 Contributors: jonua
 Tags: acf table
 Requires at least: 5.3
-Tested up to: 5.7
-Stable tag: 1.3.14
+Tested up to: 6.0.2
+Stable tag: 1.3.15
 Requires PHP: 7.3
 License: GPLv2 or later
 
