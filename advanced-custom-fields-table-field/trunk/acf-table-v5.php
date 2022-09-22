@@ -570,6 +570,8 @@ class acf_field_table extends acf_field {
 			count( $a['b'] ) > 0
 		) {
 
+			$value = array();
+
 			// IF HEADER DATA
 
 			if ( ! empty( $a['p']['o']['uh'] ) ) {
