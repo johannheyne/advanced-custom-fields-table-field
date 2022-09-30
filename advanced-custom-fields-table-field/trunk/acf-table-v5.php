@@ -565,8 +565,8 @@ class acf_field_table extends acf_field {
 		// IF BODY DATA
 
 		if (
-			is_countable( $a['b'] ) AND
 			! empty( $a['b'] ) AND
+			is_countable( $a['b'] ) AND
 			count( $a['b'] ) > 0
 		) {
 
