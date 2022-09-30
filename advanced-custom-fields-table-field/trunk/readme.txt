@@ -3,7 +3,7 @@ Contributors: jonua
 Tags: acf table
 Requires at least: 5.3
 Tested up to: 6.0.2
-Stable tag: 1.3.15
+Stable tag: 1.3.16
 Requires PHP: 7.3
 License: GPLv2 or later
 
@@ -356,6 +356,9 @@ However, only when activated as a plugin will updates be available.
 
 
 == Changelog ==
+
+= 1.3.16 =
+* Fixes an logical error causing PHP warnings
 
 = 1.3.15 =
 * Fixes an issue with count() in PHP8
