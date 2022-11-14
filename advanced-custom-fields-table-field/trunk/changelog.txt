@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 1.3.17 =
+* Changes registering the ACF field type using the acf_register_field_type methode.
+* Removes support for ACF version 4.
+
 = 1.3.16 =
 * Fixes an logical error causing PHP warnings
 
