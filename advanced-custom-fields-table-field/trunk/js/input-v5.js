@@ -155,7 +155,27 @@
 
 		t.get_field_key = function( that ) {
 
-			return that.closest( '[data-key]').data( 'key' );
+			// DETECT BLOCK, GETS BLOCK ID {
+
+				var block_id = '';
+
+				$wp_block = that.closest( '.wp-block' );
+
+				if ( $wp_block.length > 0 ) {
+
+					var block_id = $wp_block.attr( 'id' );
+				}
+
+			// }
+
+			var target = that.closest( '[data-key^="field_"]' );
+
+			if ( target.length > 0 ) {
+
+				return block_id + ':' + target.data( 'key' );
+			}
+
+			return false;
 		};
 
 		t.each_table = function( ) {
