@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 1.3.18 =
+* Fixes issue with Gutenberg block containing a table field. If the same block was used multiple times on a page, the changes were not saved.
+
 = 1.3.17 =
 * Changes registering the ACF field type using the acf_register_field_type methode.
 * Removes support for ACF version 4.

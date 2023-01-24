@@ -3,7 +3,7 @@ Contributors: jonua
 Tags: acf table
 Requires at least: 5.3
 Tested up to: 6.1.0
-Stable tag: 1.3.17
+Stable tag: 1.3.18
 Requires PHP: 7.3
 License: GPLv2 or later
 
@@ -356,6 +356,9 @@ However, only when activated as a plugin will updates be available.
 
 
 == Changelog ==
+
+= 1.3.18 =
+* Fixes issue with Gutenberg block containing a table field. If the same block was used multiple times on a page, the changes were not saved.
 
 = 1.3.17 =
 * Changes registering the ACF field type using the acf_register_field_type methode.
