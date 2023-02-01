@@ -357,6 +357,9 @@ However, only when activated as a plugin will updates be available.
 
 == Changelog ==
 
+= 1.3.19 =
+* Fixes issue not initial loading editing tables in Gutenberg blocks.
+
 = 1.3.18 =
 * Fixes issue with Gutenberg block containing a table field. If the same block was used multiple times on a page, the changes were not saved.
 
