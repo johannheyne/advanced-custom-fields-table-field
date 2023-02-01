@@ -104,7 +104,34 @@
 
 		t.init = function() {
 
-			t.init_workflow();
+			// classic editor
+			if ( $( '.acf-table-root' ).not( '.acf-table-rendered' ).length > 0 ) {
+
+				t.init_workflow();
+			}
+
+			// try again multiple times if gutenberg editor or other delayed appearances
+			var loops = 0;
+			var table_exists = false;
+			var table_exists_interval = setInterval( function() {
+
+				loops++;
+
+				if ( $( '.acf-table-root' ).not( '.acf-table-rendered' ).length > 0 ) {
+
+					table_exists = true;
+					t.init_workflow();
+				}
+
+				if (
+					table_exists ||
+					loops >= 4
+				) {
+
+					clearInterval( table_exists_interval );
+				}
+
+			}, 500 );
 		};
 
 		t.init_workflow = function() {
