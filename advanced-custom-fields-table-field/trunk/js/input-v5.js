@@ -104,34 +104,56 @@
 
 		t.init = function() {
 
-			// classic editor
-			if ( $( '.acf-table-root' ).not( '.acf-table-rendered' ).length > 0 ) {
+			t.init_workflow();
 
-				t.init_workflow();
-			}
+			// DETECTS GUTENBERG {
 
-			// try again multiple times if gutenberg editor or other delayed appearances
-			var loops = 0;
-			var table_exists = false;
-			var table_exists_interval = setInterval( function() {
+				let is_gutenberg = document.body.classList.contains( 'block-editor-page' );
 
-				loops++;
+			// }
 
-				if ( $( '.acf-table-root' ).not( '.acf-table-rendered' ).length > 0 ) {
+			// OBSERVES MUTATIONS IF GUTENBERG {
 
-					table_exists = true;
-					t.init_workflow();
+				if ( is_gutenberg ) {
+
+					// DO NOT FIRE ON EVERY MUTATION
+					var interval = false;
+
+					let mutationObserver = new MutationObserver( function( mutations ) {
+
+						// DETECTS BLOCK LAYOUT MUTATIONS {
+
+							mutations.forEach( function( mutation ) {
+
+								if ( mutation.target.className.includes( 'block-editor-block-list__layout' ) ) {
+
+									clearInterval( interval );
+
+									interval = setInterval( function() {
+
+										if ( $( '.acf-table-root' ).not( '.acf-table-rendered' ).length > 0 ) {
+
+											t.init_workflow();
+										}
+
+										clearInterval( interval );
+
+									}, 500 );
+								}
+							});
+
+						// }
+
+					});
+
+					mutationObserver.observe( document.documentElement, {
+						childList: true,
+						subtree: true,
+					});
 				}
 
-				if (
-					table_exists ||
-					loops >= 4
-				) {
+			// }
 
-					clearInterval( table_exists_interval );
-				}
-
-			}, 500 );
 		};
 
 		t.init_workflow = function() {
@@ -155,7 +177,11 @@
 
 			$( document ).ajaxComplete( function( event ) {
 
-				t.each_table();
+				setTimeout( function() {
+
+					t.each_table();
+
+				}, 1 );
 			});
 		}
 
