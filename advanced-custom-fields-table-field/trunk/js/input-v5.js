@@ -104,7 +104,8 @@
 
 		t.init = function() {
 
-			t.init_workflow();
+			t.update_tables();
+			t.init_once();
 
 			// DETECTS GUTENBERG {
 
@@ -133,7 +134,7 @@
 
 										if ( $( '.acf-table-root' ).not( '.acf-table-rendered' ).length > 0 ) {
 
-											t.init_workflow();
+											t.update_tables();
 										}
 
 										clearInterval( interval );
@@ -156,21 +157,25 @@
 
 		};
 
-		t.init_workflow = function() {
+		t.update_tables = function() {
 
 			t.each_table();
-			t.table_add_col_event();
-			t.table_remove_col();
-			t.table_add_row_event();
+		};
+
+		t.init_once = function() {
+
 			t.table_remove_row();
+			t.table_remove_col();
+			t.table_add_col_event();
+			t.table_add_row_event();
+			t.sortable_event();
 			t.cell_editor();
 			t.cell_editor_tab_navigation();
 			t.prevent_cell_links();
+			t.ui_event_ajax();
 			t.ui_event_use_header();
 			t.ui_event_caption();
 			t.ui_event_change_location_rule();
-			t.ui_event_ajax();
-			t.sortable_event();
 		};
 
 		t.ui_event_ajax = function() {
