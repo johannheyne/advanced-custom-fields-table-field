@@ -3,7 +3,7 @@ Contributors: jonua
 Tags: acf table
 Requires at least: 5.3
 Tested up to: 6.1.1
-Stable tag: 1.3.18
+Stable tag: 1.3.20
 Requires PHP: 7.3
 License: GPLv2 or later
 
