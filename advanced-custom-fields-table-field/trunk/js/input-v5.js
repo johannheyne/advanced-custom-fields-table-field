@@ -104,54 +104,34 @@
 
 		t.init = function() {
 
-			t.update_tables();
 			t.init_once();
+			t.update_tables();
 
-			// DETECTS GUTENBERG {
+			// DETECT NEW TABLES AFTER DOM CHANGES {
 
-				let is_gutenberg = document.body.classList.contains( 'block-editor-page' );
+				var interval = false;
 
-			// }
+				let mutationObserver = new MutationObserver( function( mutations ) {
 
-			// OBSERVES MUTATIONS IF GUTENBERG {
+					clearInterval( interval );
 
-				if ( is_gutenberg ) {
+					interval = setInterval( function() {
 
-					// DO NOT FIRE ON EVERY MUTATION
-					var interval = false;
+						if ( $( '.acf-table-root' ).not( '.acf-table-rendered' ).length > 0 ) {
 
-					let mutationObserver = new MutationObserver( function( mutations ) {
+							t.update_tables();
+						}
 
-						// DETECTS BLOCK LAYOUT MUTATIONS {
+						clearInterval( interval );
 
-							mutations.forEach( function( mutation ) {
+					}, 500 );
 
-								if ( mutation.target.className.includes( 'block-editor-block-list__layout' ) ) {
+				});
 
-									clearInterval( interval );
-
-									interval = setInterval( function() {
-
-										if ( $( '.acf-table-root' ).not( '.acf-table-rendered' ).length > 0 ) {
-
-											t.update_tables();
-										}
-
-										clearInterval( interval );
-
-									}, 500 );
-								}
-							});
-
-						// }
-
-					});
-
-					mutationObserver.observe( document.documentElement, {
-						childList: true,
-						subtree: true,
-					});
-				}
+				mutationObserver.observe( document.documentElement, {
+					childList: true,
+					subtree: true,
+				});
 
 			// }
 
@@ -172,7 +152,7 @@
 			t.cell_editor();
 			t.cell_editor_tab_navigation();
 			t.prevent_cell_links();
-			t.ui_event_ajax();
+			//t.ui_event_ajax();
 			t.ui_event_use_header();
 			t.ui_event_caption();
 			t.ui_event_change_location_rule();
