@@ -1,7 +1,7 @@
 {
     "name": "johannheyne/advanced-custom-fields-table-field",
     "description": "Table field for ACF",
-    "type": "acf-plugin",
+    "type": "wordpress-muplugin",
     "license": "MIT",
     "authors": [
         {
