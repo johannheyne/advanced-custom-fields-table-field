@@ -125,9 +125,24 @@
 		};
 
 		t.ui_event_ajax = function() {
+			const observer = new MutationObserver((mutationsList, observer) => {
+				mutationsList.forEach((mutation) => {
+					if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+						mutation.addedNodes.forEach((addedNode) => {
+							if (addedNode instanceof HTMLElement && addedNode.hasAttribute('data-type') && addedNode.getAttribute('data-type') == 'acf/table') {
+								console.log("runs");
+								t.each_table(addedNode);
+							}
+						});
+					}
+				});
+			});
 
+			const config = { childList: true, subtree: true };
+			observer.observe(document, config);
+
+		
 			$( document ).ajaxComplete( function( event ) {
-
 				t.each_table();
 			});
 		}
