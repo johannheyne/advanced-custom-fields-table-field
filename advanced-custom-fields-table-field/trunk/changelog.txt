@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 1.3.21 =
+* Adds update_field() support for option pages
+* Fixes missing "use_header" property on get_field()
+
 = 1.3.20 =
 * Fixes multiple registering events on Gutenberg
 * Fixes issue not initial loading editing table
