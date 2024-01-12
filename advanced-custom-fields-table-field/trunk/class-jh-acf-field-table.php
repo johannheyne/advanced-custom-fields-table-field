@@ -574,6 +574,18 @@ class jh_acf_field_table extends acf_field {
 
 			// IF HEADER DATA
 
+			if ( isset( $a['p']['o']['uh'] ) ) {
+
+				if ( 0 === $a['p']['o']['uh'] ) {
+
+					$value['use_header'] = false;
+				}
+				elseif ( 1 === $a['p']['o']['uh'] ) {
+
+					$value['use_header'] = true;
+				}
+			}
+
 			if ( ! empty( $a['p']['o']['uh'] ) ) {
 
 				$value['header'] = $a['h'];
