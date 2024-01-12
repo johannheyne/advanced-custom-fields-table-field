@@ -448,6 +448,16 @@ class jh_acf_field_table extends acf_field {
 					$data = get_term_meta( str_replace('term_', '', $post_id ), $field['name'], true );
 				}
 
+				//try options
+				if (
+					empty( $data ) AND (
+						$post_id = 'options' OR
+						$post_id = 'option'
+					)
+				) {
+					$data = get_option('options_' . $field['name']);
+				}
+
 				// prevents updating a field, thats data are not defined yet
 				if ( empty( $data ) ) {
 
