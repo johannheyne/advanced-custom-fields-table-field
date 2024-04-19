@@ -351,6 +351,22 @@ However, only when activated as a plugin will updates be available.
 
 *Note:* Please [contribute your language](https://translate.wordpress.org/projects/wp-plugins/advanced-custom-fields-table-field) to the plugin to make it even more useful.
 
+== PRO ==
+
+The Advanced Custom Fields Table Field plugin is also available in a professional version which includes more functionality and more flexibility. The additional Pro features are:
+
+* Predefined table
+* Table cell content types (simple text or configurable WordPress editor)
+* Table head and table foot
+* Stub column
+* Rowspan and colspan
+* Better way for moving rows and columns
+* Minimum and maximum amount of rows and columns
+* Style choice for the table and parts of the table
+
+The Pro version runs completely independend beside the free version and comes with its own field type.
+
+<a href="https://www.acf-table-field.com">To Pro Website</a>
 
 == Upgrade Notice ==
 
