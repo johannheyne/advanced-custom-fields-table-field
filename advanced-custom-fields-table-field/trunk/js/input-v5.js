@@ -1343,14 +1343,10 @@
 
 		t.field_changed = function( p ) {
 
-			if ( p.field_context === 'block' ) {
+			setTimeout( function() {
 
-				setTimeout( function() {
-
-					p.obj_root.trigger( 'change' );
-
-				}, 0 );
-			}
+				p.obj_root.trigger( 'change' );
+			}, 0 );
 		};
 
 		t.sort_cols = function( p ) {
