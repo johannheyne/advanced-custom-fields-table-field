@@ -373,6 +373,10 @@ The Pro version runs completely independend beside the free version and comes wi
 
 == Changelog ==
 
+= 1.3.22 =
+* Fixes an issue where the trigger changed was executed to the field without any actual change to the field.
+* Fixes an issue where changes to the order of rows and columns and new rows and columns were not saved.
+
 = 1.3.21 =
 * Adds update_field() support for option pages
 * Fixes missing "use_header" property on get_field()
