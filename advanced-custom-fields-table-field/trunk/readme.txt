@@ -3,7 +3,7 @@ Contributors: jonua
 Tags: acf table
 Requires at least: 5.3
 Tested up to: 6.5.2
-Stable tag: 1.3.22
+Stable tag: 1.3.23
 Requires PHP: 7.3
 License: GPLv2 or later
 
@@ -372,6 +372,9 @@ The Pro version runs completely independend beside the free version and comes wi
 
 
 == Changelog ==
+
+= 1.3.23 =
+* Adds Rest API scheme
 
 = 1.3.22 =
 * Fixes an issue where the trigger changed was executed to the field without any actual change to the field.
