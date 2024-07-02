@@ -771,6 +771,25 @@ class jh_acf_field_table extends acf_field {
 	*/
 
 	/**
+	* get_rest_schema()
+	*
+	* Provides the rest api scheme.
+	*/
+
+	public function get_rest_schema( array $field ) {
+
+		$schema = array(
+			'type'     => array( 'object', 'null' ),
+			'title' => 'ACF table custom field type',
+			'type' => array( 'object', 'null' ),
+			//'properties' => array(),
+			'required' => ! empty( $field['required'] ) ? array() : false,
+		);
+
+		return $schema;
+	}
+
+	/**
 	* table_slash()
 	*
 	* Add slashes to a string or strings in an array.
