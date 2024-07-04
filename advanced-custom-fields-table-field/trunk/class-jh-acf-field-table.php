@@ -781,7 +781,7 @@ class jh_acf_field_table extends acf_field {
 		$schema = array(
 			'type'     => array( 'object', 'null' ),
 			'title' => 'ACF table custom field type',
-			'type' => array( 'object', 'null' ),
+			'type' => array( 'object', 'boolean' ),
 			//'properties' => array(),
 			'required' => ! empty( $field['required'] ) ? array() : false,
 		);
