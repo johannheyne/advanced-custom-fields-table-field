@@ -504,6 +504,8 @@
 
 			// }
 
+			let build_table_json = false;
+
 			// TOP CELLS {
 
 				if ( p.data.c ) {
@@ -530,6 +532,7 @@
 
 							if ( cols <= i ) {
 
+								build_table_json = true;
 								break;
 							}
 
@@ -548,6 +551,8 @@
 
 								p.obj_header_insert.before( t.param.htmltable.header_cell.replace( '<!--ph-->', '' ) );
 							}
+
+							build_table_json = true;
 						}
 
 					// }
@@ -587,6 +592,7 @@
 
 								if ( cols <= i ) {
 
+									build_table_json = true;
 									break;
 								}
 
@@ -605,6 +611,8 @@
 
 									row_insert.before( t.param.htmltable.body_cell.replace( '<!--ph-->', '' ) );
 								}
+
+								build_table_json = true;
 							}
 
 						// }
@@ -623,6 +631,15 @@
 
 						p.obj_bottom_insert.before( t.param.htmltable.bottom_cell );
 					}
+				}
+
+			// }
+
+			// BUILD TABLE JSON {
+
+				if ( true === build_table_json ) {
+
+					t.table_build_json( p );
 				}
 
 			// }
