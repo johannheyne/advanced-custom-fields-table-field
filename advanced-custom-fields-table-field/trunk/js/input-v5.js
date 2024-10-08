@@ -124,7 +124,7 @@
 
 						clearInterval( interval );
 
-					}, 500 );
+					}, 250 );
 
 				});
 
