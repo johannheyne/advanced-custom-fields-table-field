@@ -2,7 +2,7 @@
 Contributors: jonua
 Tags: acf table
 Requires at least: 5.3
-Tested up to: 6.6.0
+Tested up to: 6.6.2
 Stable tag: 1.3.24
 Requires PHP: 7.3
 License: GPLv2 or later
@@ -376,6 +376,9 @@ You can change an existing field with field type "Table" (free version) to field
 
 
 == Changelog ==
+
+= 1.3.25 =
+* Adds auto repair table. Fixes table data when loading from database and on editing table.
 
 = 1.3.24 =
 * Fixes Rest API scheme
