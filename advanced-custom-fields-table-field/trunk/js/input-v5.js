@@ -485,6 +485,8 @@
 
 		t.table_render = function( p ) {
 
+			let build_table_json = false;
+
 			// TABLE HTML MAIN {
 
 				p.obj_root.find( '.acf-table-wrap' ).remove();
@@ -504,21 +506,44 @@
 
 			// }
 
-			let build_table_json = false;
+			// CHECK FOR HAVING COLUMNS PARAMETERS {
 
-			// TOP CELLS {
+				if ( 0 === p.data.c.length ) {
 
-				if ( p.data.c ) {
+					build_table_json = true;
 
-					for ( i in p.data.c ) {
+					let length = 1;
 
-						p.obj_top_insert.before( t.param.htmltable.top_cell );
+					if ( p.data.b ) {
+
+						length =  p.data.b[0].length;
+					}
+
+					for ( let index = 0; index < length; index++ ) {
+
+						p.data.c[ index ] = { o: {} };
 					}
 				}
 
-				t.table_top_labels( p );
-
 				let cols = p.data.c.length;
+
+			// }
+
+			// TOP CELLS {
+
+				// INSERT TOP CELLS {
+
+					if ( p.data.c ) {
+
+						for ( i in p.data.c ) {
+
+							p.obj_top_insert.before( t.param.htmltable.top_cell );
+						}
+					}
+
+					t.table_top_labels( p );
+
+				// }
 
 			// }
 
