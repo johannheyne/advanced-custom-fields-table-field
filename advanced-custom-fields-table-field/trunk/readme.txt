@@ -377,7 +377,7 @@ You can change an existing field with field type "Table" (free version) to field
 
 == Changelog ==
 
-= 1.3.25 =
+= 1.3.26 =
 * Adds auto repair table. Fixes table data when loading from database and on editing table.
 
 = 1.3.24 =
