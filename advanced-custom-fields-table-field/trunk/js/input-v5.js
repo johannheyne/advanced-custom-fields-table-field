@@ -421,7 +421,7 @@
 
 		t.data_default = function( p ) {
 
-			// DEFINE DEFAULT DATA {
+			// DEFINES DEFAULT TABLE DATA {
 
 				p.data_defaults = {
 
@@ -465,7 +465,7 @@
 
 			// }
 
-			// REPAIR MISSING DATA OR DATA SECTIONS {
+			// ADDS MISSING DATA OR DATA SECTIONS FROM DEFAULT {
 
 				if ( p.data ) {
 
@@ -529,7 +529,7 @@
 
 			// }
 
-			// CHECK FOR HAVING COLUMNS PARAMETERS {
+			// CHECK FOR EQUAL COLUMNS IN COLUMNS DATA AND FIRST BODY ROW DATA {
 
 				if ( 0 === p.data.c.length ) {
 
