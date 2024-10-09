@@ -535,16 +535,15 @@
 
 			// CHECK FOR EQUAL COLUMNS IN COLUMNS DATA AND FIRST BODY ROW DATA {
 
-				if ( 0 === p.data.c.length ) {
+				if (
+					p.data.c &&
+					p.data.b &&
+					p.data.c.length < p.data.b[0].length
+				 ) {
 
 					build_table_json = true;
 
-					let length = 1;
-
-					if ( p.data.b ) {
-
-						length =  p.data.b[0].length;
-					}
+					let length =  p.data.b[0].length;
 
 					for ( let index = 0; index < length; index++ ) {
 
