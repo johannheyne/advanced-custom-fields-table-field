@@ -465,14 +465,37 @@
 
 			// }
 
-			// MERGE DEFAULT DATA {
+			// REPAIR MISSING DATA OR DATA SECTIONS {
 
 				if ( p.data ) {
 
-					if ( typeof p.data.b === 'array' ) {
+					if ( typeof p.data.c !== 'object' ) {
 
-						$.extend( true, p.data, p.data_defaults );
+						p.data.c = p.data_defaults.c;
 					}
+
+					if ( typeof p.data.h !== 'object' ) {
+
+						p.data.b = p.data_defaults.h;
+					}
+
+					if ( typeof p.data.b !== 'object' ) {
+
+						p.data.b = p.data_defaults.b;
+					}
+
+					if ( typeof p.data.p !== 'object' ) {
+
+						p.data.p = p.data_defaults.p;
+					}
+
+					if ( typeof p.data.acftf !== 'object' ) {
+
+						p.data.acftf === p.data_defaults.acftf;
+					}
+
+					p.data.acftf = $.extend( true, p.data_defaults.acftf, p.data.acftf );
+					p.data.p = $.extend( true, p.data_defaults.p, p.data.p );
 				}
 				else {
 
