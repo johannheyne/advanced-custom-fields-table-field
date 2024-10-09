@@ -823,7 +823,10 @@ class jh_acf_field_table extends acf_field {
 
 		} else {
 
-			$value = addslashes( $value );
+			if ( null !== $value ) {
+
+				$value = addslashes( $value );
+			}
 		}
 
 		return $value;
