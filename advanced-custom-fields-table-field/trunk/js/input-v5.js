@@ -494,8 +494,6 @@
 						p.data.acftf === p.data_defaults.acftf;
 					}
 
-					p.data.acftf = $.extend( true, p.data_defaults.acftf, p.data.acftf );
-					p.data.p = $.extend( true, p.data_defaults.p, p.data.p );
 				}
 				else {
 
@@ -504,6 +502,12 @@
 
 			// }
 
+			// MERGES MISSING SECTION PARAMETERS FROM DEFAULTS {
+
+				p.data.acftf = $.extend( true, p.data_defaults.acftf, p.data.acftf );
+				p.data.p = $.extend( true, p.data_defaults.p, p.data.p );
+
+			// }
 		};
 
 		t.table_render = function( p ) {
