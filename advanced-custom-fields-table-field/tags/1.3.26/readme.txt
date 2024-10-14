@@ -1,21 +1,21 @@
-=== Advanced Custom Fields: Table Field ===
+=== Table Field Add-on for SCF and ACF ===
 Contributors: jonua
 Tags: acf table
 Requires at least: 5.3
 Tested up to: 6.6.2
-Stable tag: 1.3.24
+Stable tag: 1.3.26
 Requires PHP: 7.3
 License: GPLv2 or later
 
-A Table Field Add-on for the Advanced Custom Fields Plugin.
+A Table Field Add-on for the Secure Custom Fields and Advanced Custom Fields Plugin.
 
 == Description ==
 
-The Table Field Plugin enhances the functionality of the [Advanced Custom Fields plugin](https://www.advancedcustomfields.com) with easy-to-edit tables.
+The Table Field plugin is an Add-on and enhances the functionality of the [Secure Custom Fields plugin](https://wordpress.org/plugins/advanced-custom-fields/) and the [Advanced Custom Fields (ACF) plugin](https://www.advancedcustomfields.com) with easy-to-edit tables.
 
-This plugin requires the free or pro <a href="https://www.advancedcustomfields.com">Advanced Custom Fields plugin</a>!
+This plugin requires the [Secure Custom Fields plugin](https://wordpress.org/plugins/advanced-custom-fields/) or the [Advanced Custom Fields plugin](https://www.advancedcustomfields.com)!
 
-The table field works also with the repeater and flexible field types and supports the [ACF Blocks for Gutenberg](https://www.advancedcustomfields.com/blog/acf-5-8-introducing-acf-blocks-for-gutenberg/)
+The table field works also with the ACF repeater and flexible field types and supports the [ACF Blocks for Gutenberg](https://www.advancedcustomfields.com/blog/acf-5-8-introducing-acf-blocks-for-gutenberg/)
 
 = Features =
 * Table Header (Option)
@@ -353,7 +353,7 @@ However, only when activated as a plugin will updates be available.
 
 == PRO ==
 
-The Advanced Custom Fields Table Field plugin is also available in a <a href="https://www.acf-table-field.com">professional version</a> which includes more functionality and more flexibility. The additional Pro features are:
+There is also a <a href="https://www.acf-table-field.com">Table Field Pro</a> Add-on for the Secure Custom Fields plugin and the Advanced Custom Fields plugin.
 
 * Setup custom default table
 * Setup minimum and maximum amount of rows and columns
@@ -367,8 +367,7 @@ The Advanced Custom Fields Table Field plugin is also available in a <a href="ht
 * Support for REST-API
 * Support for third-party plugins
 
-The Pro version runs completely independend beside the free version and comes with its own field type.
-You can change an existing field with field type "Table" (free version) to field type "Table Pro".
+You can change an existing field with field type "Table" to the field type "Table Pro".
 
 <a href="https://www.acf-table-field.com">To Pro Website</a>
 
