@@ -11,7 +11,7 @@ A Table Field Add-on for the Advanced Custom Fields Plugin.
 
 == Description ==
 
-The Table Field Plugin enhances the functionality of the ["Advanced Custom Fields" plugin](https://www.advancedcustomfields.com) with easy-to-edit tables.
+The Table Field Plugin enhances the functionality of the [Advanced Custom Fields plugin](https://www.advancedcustomfields.com) with easy-to-edit tables.
 
 This plugin requires the free or pro ["Advanced Custom Fields" plugin](https://www.advancedcustomfields.com)!
 
