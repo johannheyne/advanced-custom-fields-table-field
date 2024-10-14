@@ -11,9 +11,9 @@ A Table Field Add-on for the Advanced Custom Fields Plugin.
 
 == Description ==
 
-The Table Field Plugin enhances the functionality of the ["Advanced Custom Fields" plugin](https://de.wordpress.org/plugins/advanced-custom-fields/) with easy-to-edit tables.
+The Table Field Plugin enhances the functionality of the ["Advanced Custom Fields" plugin](https://www.advancedcustomfields.com) with easy-to-edit tables.
 
-This plugin requires the ["Advanced Custom Fields" plugin](https://de.wordpress.org/plugins/advanced-custom-fields/) or the [Pro version](https://www.advancedcustomfields.com/pro/)!
+This plugin requires the free or pro ["Advanced Custom Fields" plugin](https://www.advancedcustomfields.com)!
 
 The table field works also with the repeater and flexible field types and supports the [ACF Blocks for Gutenberg](https://www.advancedcustomfields.com/blog/acf-5-8-introducing-acf-blocks-for-gutenberg/)
 
