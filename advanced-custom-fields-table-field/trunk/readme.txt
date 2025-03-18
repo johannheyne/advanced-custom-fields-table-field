@@ -1,10 +1,10 @@
-=== Table Field Add-on for SCF and ACF ===
-Contributors: jonua
+=== Table Field Add-on for ACF and SCF ===
+Contributors: Johann Heyne
 Tags: acf table
 Requires at least: 5.3
-Tested up to: 6.7.1
+Tested up to: 6.7.2
 Stable tag: 1.3.26
-Requires PHP: 7.3
+Requires PHP: 7.5
 License: GPLv2 or later
 
 A Table Field Add-on for the Advanced Custom Fields and Secure Custom Fields Plugin.
@@ -37,7 +37,7 @@ $table = get_field( 'your_table_field_name' );
 
 if ( ! empty ( $table ) ) {
 
-	echo '<table border="0">';
+	echo '<table>';
 
 		if ( ! empty( $table['caption'] ) ) {
 
