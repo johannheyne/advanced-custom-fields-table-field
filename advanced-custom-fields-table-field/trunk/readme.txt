@@ -1,5 +1,5 @@
 === Table Field Add-on for ACF and SCF ===
-Contributors: Johann Heyne
+Contributors: jonua
 Tags: acf table
 Requires at least: 5.3
 Tested up to: 6.7.2
@@ -161,115 +161,157 @@ For now the way to go is using a shortcode. Elementor provides for example a sho
         'post-id' => false,
     ), $atts );
 
-    // Return if no field name is given
-    if ( ! is_string( $a['field-name'] ) ) {
+    $class = new class( $a ) {
 
-        return '';
-    }
+        public $atts;
 
-    // May gets sub fields names
-    $field_names = explode( '/', $a['field-name'] );
+        public $field_names;
 
-    // Gets the root fields value
-    $table = get_field( $field_names[0], $a['post-id'] );
+        public $field_data = '';
 
-    // Iterates the subfields
-    foreach ( $field_names as $key => $field_name ) {
+        public $html = '';
 
-        if ( 0 < $key ) {
+        public function __construct( $atts ) {
 
-            // Subfield exists
-            if ( isset( $table[ $field_name ] )  ) {
+            if ( ! is_string( $atts['field-name'] ) ) {
 
-                $table = $table[ $field_name ];
+                return '';
             }
-            // Subfield may is field type repeater
-            else if (
-                is_array( $table ) &&
-                ! isset( $table[0]['acf_fc_layout'] )
+
+            $this->atts = $atts;
+
+            $this->field_names = explode( '/', $this->atts['field-name'] );
+
+            $this->subfield( 0 );
+
+            echo $this->html;
+        }
+
+        private function may_get_table_html( $data ) {
+
+            if ( isset( $data['body'] ) ) {
+
+                $return = '<table class="' . $this->atts['table-class'] . '">';
+
+                    if ( ! empty( $data['caption'] ) ) {
+
+                        echo '<caption>' . $data['caption'] . '</caption>';
+                    }
+
+                    if ( $data['header'] ) {
+
+                        $return .= '<thead>';
+
+                            $return .= '<tr>';
+
+                                foreach ( $data['header'] as $th ) {
+
+                                    $return .= '<th>';
+                                        $return .= $th['c'];
+                                    $return .= '</th>';
+                                }
+
+                            $return .= '</tr>';
+
+                        $return .= '</thead>';
+                    }
+
+                    $return .= '<tbody>';
+
+                        foreach ( $data['body'] as $tr ) {
+
+                            $return .= '<tr>';
+
+                                foreach ( $tr as $td ) {
+
+                                    $return .= '<td>';
+                                        $return .= $td['c'];
+                                    $return .= '</td>';
+                                }
+
+                            $return .= '</tr>';
+                        }
+
+                    $return .= '</tbody>';
+
+                $return .= '</table>';
+
+                $this->html .= $return;
+            }
+
+
+        }
+
+        private function subfield( $level = 0, $data = null ) {
+
+            if ( isset( $data['body'] ) ) {
+
+                $this->may_get_table_html( $data );
+
+                return;
+            }
+            else if ( ! isset( $this->field_names[ $level ] ) ) {
+
+                return;
+            }
+            else if ( $data === null ) {
+
+                $data = get_field(  $this->field_names[0],  $this->atts['post-id'] );
+            }
+            else if ( isset( $data[ $this->field_names[ $level ] ] ) ) {
+
+                $data = $data[ $this->field_names[ $level ] ];
+            }
+
+            // repeater/group field
+            if (
+                is_array( $data ) &&
+                isset( $data[0] ) &&
+                ! isset( $data[0]['acf_fc_layout'] )
              ) {
 
-                foreach( $table as $layout_key => $layout_data  ) {
+                if ( is_numeric( $this->field_names[ $level + 1 ] )  ) {
 
-                    if (
-                        isset( $layout_data[ $field_name ] )
-                    ) {
+                    if ( isset( $data[  $this->field_names[ $level + 1 ] ] ) ) {
 
-                        $table = $layout_data[ $field_name ];
+                        $this->subfield( $level + 1, $data[  $this->field_names[ $level + 1 ] ] );
+                    }
+                }
+                else {
+
+                    foreach( $data as $key => $item ) {
+
+                        $this->subfield( $level + 1, $item );
                     }
                 }
             }
-            // Subfield is field type flexible content
-            else if (
-                is_array( $table ) &&
-                isset( $table[0]['acf_fc_layout'] )
-            ) {
 
-                foreach( $table as $layout_key => $layout_data  ) {
+            // flexible content field
+            else if (
+                is_array( $data ) &&
+                isset( $data[0] ) &&
+                isset( $data[0]['acf_fc_layout'] )
+             ) {
+
+                foreach( $data as $key => $item ) {
 
                     if (
-                        $layout_data['acf_fc_layout'] === $field_name &&
-                        isset( $layout_data[ $field_names[ $key + 1 ] ] )
+                        $item['acf_fc_layout'] === $this->field_names[ $level + 1 ] &&
+                        isset( $item[ $this->field_names[ $level + 2 ] ] )
                     ) {
 
-                        $table = $layout_data[ $field_names[ $key + 1 ] ];
+                        $this->subfield( $level + 2, $item[ $this->field_names[ $level + 2 ] ] );
                     }
                 }
+            }
+
+            // table field
+            else {
+
+                $this->subfield( $level + 1, $data );
             }
         }
-    }
-
-    $return = '';
-
-    if ( isset( $table['body'] ) ) {
-
-        $return .= '<table class="' . $a['table-class'] . '">';
-
-            if ( ! empty( $table['caption'] ) ) {
-
-                echo '<caption>' . $table['caption'] . '</caption>';
-            }
-
-            if ( $table['header'] ) {
-
-                $return .= '<thead>';
-
-                    $return .= '<tr>';
-
-                        foreach ( $table['header'] as $th ) {
-
-                            $return .= '<th>';
-                                $return .= $th['c'];
-                            $return .= '</th>';
-                        }
-
-                    $return .= '</tr>';
-
-                $return .= '</thead>';
-            }
-
-            $return .= '<tbody>';
-
-                foreach ( $table['body'] as $tr ) {
-
-                    $return .= '<tr>';
-
-                        foreach ( $tr as $td ) {
-
-                            $return .= '<td>';
-                                $return .= $td['c'];
-                            $return .= '</td>';
-                        }
-
-                    $return .= '</tr>';
-                }
-
-            $return .= '</tbody>';
-
-        $return .= '</table>';
-    }
-
-    return $return;
+    };
 }
 
 add_shortcode( 'tablefield', 'shortcode_acf_tablefield' );`
@@ -287,6 +329,10 @@ Getting a table subfield from a **group field**…
 Getting a table subfield from a **repeater field**…
 
 `[tablefield field-name="repeater_field_name/table_field_name"]`
+
+Getting a table subfield from a specific **repeater field item**…
+
+`[tablefield field-name="repeater_field_name/item_index/table_field_name"]`
 
 Getting a table subfield from a **flexible content field**…
 
