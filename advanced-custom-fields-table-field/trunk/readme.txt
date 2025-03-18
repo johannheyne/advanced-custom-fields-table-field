@@ -147,27 +147,83 @@ function acf_table_styles() {
 }
 `
 
-= How to use the table field in Elementor Page Builder? =
+= How to use the table field in Elementor or other Page Builders? =
 
-In general, its up to Elementor to support ACF field types on the Elementor widgets. All supported ACF fields by Elementor [you can find here](https://docs.elementor.com/article/381-elementor-integration-with-acf). But because the table field is not a native ACF field, the support for this field may never happen.
+In general, its up to the page builder plugins to support ACF field types. But because the table field is not a native ACF field, the support for this field may never happen in page builders.
 
-For now the way to go is using the Elementors shortcode Widget. Before you can use a shortcode to display a table fields table, you have to setup a shortcode in functions.php. The following code does this. You can modify the table html output for your needs.
+For now the way to go is using a shortcode. Elementor provides for example a shortcode widget. Before you can use a shortcode to display a table fields table, you have to setup a shortcode in functions.php. The following code does this. You can modify the table html output for your needs.
 
 `function shortcode_acf_tablefield( $atts ) {
 
     $a = shortcode_atts( array(
         'table-class' => '',
-        'field-name' => false,
+        'field-name' => false, // use a slash "/" to separate group field name and table subfield
         'post-id' => false,
     ), $atts );
 
-    $table = get_field( $a['field-name'], $a['post-id'] );
+    // Return if no field name is given
+    if ( ! is_string( $a['field-name'] ) ) {
+
+        return '';
+    }
+
+    // May gets sub fields names
+    $field_names = explode( '/', $a['field-name'] );
+
+    // Gets the root fields value
+    $table = get_field( $field_names[0], $a['post-id'] );
+
+    // Iterates the subfields
+    foreach ( $field_names as $key => $field_name ) {
+
+        if ( 0 < $key ) {
+
+            // Subfield exists
+            if ( isset( $table[ $field_name ] )  ) {
+
+                $table = $table[ $field_name ];
+            }
+            // Subfield may is field type repeater
+            else if (
+                is_array( $table ) &&
+                ! isset( $table[0]['acf_fc_layout'] )
+             ) {
+
+                foreach( $table as $layout_key => $layout_data  ) {
+
+                    if (
+                        isset( $layout_data[ $field_name ] )
+                    ) {
+
+                        $table = $layout_data[ $field_name ];
+                    }
+                }
+            }
+            // Subfield is field type flexible content
+            else if (
+                is_array( $table ) &&
+                isset( $table[0]['acf_fc_layout'] )
+            ) {
+
+                foreach( $table as $layout_key => $layout_data  ) {
+
+                    if (
+                        $layout_data['acf_fc_layout'] === $field_name &&
+                        isset( $layout_data[ $field_names[ $key + 1 ] ] )
+                    ) {
+
+                        $table = $layout_data[ $field_names[ $key + 1 ] ];
+                    }
+                }
+            }
+        }
+    }
 
     $return = '';
 
-    if ( $table ) {
+    if ( isset( $table['body'] ) ) {
 
-        $return .= '<table class="' . $a['table-class'] . '" border="0">';
+        $return .= '<table class="' . $a['table-class'] . '">';
 
             if ( ! empty( $table['caption'] ) ) {
 
@@ -218,18 +274,39 @@ For now the way to go is using the Elementors shortcode Widget. Before you can u
 
 add_shortcode( 'tablefield', 'shortcode_acf_tablefield' );`
 
+Then use the shortcode with the corresponding shortcode options of the Page Builder.
 
-Then use the shortcode in a Elementors shortcode widget like this, to **insert a table from the current page or post**…
+Getting a table field from the **current page or post**…
 
-`[tablefield field-name="your table field name" table-class="my-table"]`
+`[tablefield field-name="table_field_name"]`
 
-You also can **insert a table from another page or post**…
+Getting a table subfield from a **group field**…
 
-`[tablefield field-name="your table field name" post-id="123" table-class="my-table"]`
+`[tablefield field-name="group_field_name/table_field_name"]`
 
-Or you can **insert a table from a ACF option page**…
+Getting a table subfield from a **repeater field**…
 
-`[tablefield field-name="your table field name" post-id="option" table-class="my-table"]`
+`[tablefield field-name="repeater_field_name/table_field_name"]`
+
+Getting a table subfield from a **flexible content field**…
+
+`[tablefield field-name="flexible_content_field_name/layout_name/table_field_name"]`
+
+You can also **get a table field from any kind of nested fields** like in this example, where the table field is part of a layout of an flexible content field, that is a subfield of a repeater field, that is a subfield of a group field…
+
+`[tablefield field-name="group_field_name/repeater_field_name/flexible_content_field_name/layout_name/table_field_namee"]`
+
+Getting a table field from **another page or post**…
+
+`[tablefield field-name="table_field_name" post-id="123"]`
+
+Getting a table field from a **ACF option page**…
+
+`[tablefield field-name="table_field_name" post-id="option"]`
+
+Adding a **CSS class to the table HTML element**…
+
+`[tablefield field-name="table_field_name" table-class="my-table-style"]`
 
 = Updating a table using update_field() =
 
