@@ -155,13 +155,14 @@ For now the way to go is using a shortcode. Elementor provides for example a sho
 
 `function shortcode_acf_tablefield( $atts ) {
 
-    $a = shortcode_atts( array(
-        'table-class' => '',
-        'field-name' => false, // use a slash "/" to separate group field name and table subfield
+    $param = shortcode_atts( array(
+        'field-name' => false,
+        'subfield-name' => false,
         'post-id' => false,
+        'table-class' => '',
     ), $atts );
 
-    $class = new class( $a ) {
+    $class = new class( $param ) {
 
         public $atts;
 
@@ -172,6 +173,11 @@ For now the way to go is using a shortcode. Elementor provides for example a sho
         public $html = '';
 
         public function __construct( $atts ) {
+
+            if ( is_string( $atts['subfield-name'] ) ) {
+
+                $atts['field-name'] = $atts['subfield-name'];
+            }
 
             if ( ! is_string( $atts['field-name'] ) ) {
 
@@ -184,7 +190,6 @@ For now the way to go is using a shortcode. Elementor provides for example a sho
 
             $this->subfield( 0 );
 
-            echo $this->html;
         }
 
         private function may_get_table_html( $data ) {
@@ -238,8 +243,6 @@ For now the way to go is using a shortcode. Elementor provides for example a sho
 
                 $this->html .= $return;
             }
-
-
         }
 
         private function subfield( $level = 0, $data = null ) {
@@ -256,7 +259,14 @@ For now the way to go is using a shortcode. Elementor provides for example a sho
             }
             else if ( $data === null ) {
 
-                $data = get_field(  $this->field_names[0],  $this->atts['post-id'] );
+                if ( $this->atts['subfield-name'] === false ) {
+
+                    $data = get_field(  $this->field_names[0],  $this->atts['post-id'] );
+                }
+                else {
+
+                    $data = get_sub_field( $this->field_names[0] );
+                }
             }
             else if ( isset( $data[ $this->field_names[ $level ] ] ) ) {
 
@@ -268,7 +278,7 @@ For now the way to go is using a shortcode. Elementor provides for example a sho
                 is_array( $data ) &&
                 isset( $data[0] ) &&
                 ! isset( $data[0]['acf_fc_layout'] )
-             ) {
+                ) {
 
                 if ( is_numeric( $this->field_names[ $level + 1 ] )  ) {
 
@@ -291,7 +301,7 @@ For now the way to go is using a shortcode. Elementor provides for example a sho
                 is_array( $data ) &&
                 isset( $data[0] ) &&
                 isset( $data[0]['acf_fc_layout'] )
-             ) {
+                ) {
 
                 foreach( $data as $key => $item ) {
 
@@ -312,6 +322,8 @@ For now the way to go is using a shortcode. Elementor provides for example a sho
             }
         }
     };
+
+    return $class->html;
 }
 
 add_shortcode( 'tablefield', 'shortcode_acf_tablefield' );`
@@ -322,25 +334,29 @@ Getting a table field from the **current page or post**…
 
 `[tablefield field-name="table_field_name"]`
 
-Getting a table subfield from a **group field**…
+Getting a table field from a **group field**…
 
 `[tablefield field-name="group_field_name/table_field_name"]`
 
-Getting a table subfield from a **repeater field**…
+Getting a table field from a **repeater field**…
 
 `[tablefield field-name="repeater_field_name/table_field_name"]`
 
-Getting a table subfield from a specific **repeater field item**…
+Getting a table field from a specific **repeater field item**…
 
 `[tablefield field-name="repeater_field_name/item_index/table_field_name"]`
 
-Getting a table subfield from a **flexible content field**…
+Getting a table field from a **flexible content field**…
 
 `[tablefield field-name="flexible_content_field_name/layout_name/table_field_name"]`
 
 You can also **get a table field from any kind of nested fields** like in this example, where the table field is part of a layout of an flexible content field, that is a subfield of a repeater field, that is a subfield of a group field…
 
 `[tablefield field-name="group_field_name/repeater_field_name/flexible_content_field_name/layout_name/table_field_name"]`
+
+Getting a table field from inside a **group**, **repeater** or **flexible content field** loop…
+
+`[tablefield subfield-name="table_field_name"]`
 
 Getting a table field from **another page or post**…
 
