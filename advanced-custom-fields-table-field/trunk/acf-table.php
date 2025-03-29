@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Advanced Custom Fields: Table Field
-Plugin URI: http://www.johannheyne.de/
+Plugin URI: https://www.acf-table-field.com
 Description: This free Add-on adds a table field type for the Advanced Custom Fields plugin.
 Version: 1.3.26
 Author: Johann Heyne
-Author URI: http://www.johannheyne.de/
+Author URI: http://www.johannheyne.de
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: acf-table

@@ -502,13 +502,15 @@ There is also a <a href="https://www.acf-table-field.com">Table Field Pro</a> Ad
 * Table head and foot rows
 * Stub column
 * Rowspan and colspan
-* Better way for moving rows and columns
+* Improved way for moving rows and columns
+* Disable moving individual columns
 * Support for REST-API
+* Support for WP GraphQL
 * Support for third-party plugins
 
-You can change an existing field with field type "Table" to the field type "Table Pro".
+The Pro plugin can run in parallel and you can change an existing field with field type "Table" to the field type "Table Pro" as required.
 
-<a href="https://www.acf-table-field.com">To Pro Website</a>
+<a href="https://www.acf-table-field.com">to Plugin Website</a>
 
 == Upgrade Notice ==
 
