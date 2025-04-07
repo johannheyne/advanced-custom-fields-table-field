@@ -1,11 +1,12 @@
 === Table Field Add-on for ACF and SCF ===
 Contributors: jonua
-Tags: acf, table, table field, scf, advanced custom fields, secure custom fields, custom fields, add-on
+Tags: acf, table, scf, advanced custom fields, secure custom fields
 Requires at least: 5.3
 Tested up to: 6.7.2
 Stable tag: 1.3.26
 Requires PHP: 7.5
 License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 A Table Field Add-on for the Advanced Custom Fields and Secure Custom Fields Plugin.
 
@@ -492,7 +493,7 @@ However, only when activated as a plugin will updates be available.
 
 == PRO ==
 
-There is also a <a href="https://www.acf-table-field.com">Table Field Pro</a> Add-on for the Secure Custom Fields plugin and the Advanced Custom Fields plugin.
+There is also a [Table Field Pro](https://www.acf-table-field.com) Add-on for the Advanced Custom Fields and Secure Custom Fields plugins.
 
 * Setup custom default table
 * Setup minimum and maximum amount of rows and columns
@@ -510,7 +511,7 @@ There is also a <a href="https://www.acf-table-field.com">Table Field Pro</a> Ad
 
 The Pro plugin can run in parallel and you can change an existing field with field type "Table" to the field type "Table Pro" as required.
 
-<a href="https://www.acf-table-field.com">to Plugin Website</a>
+[to the plugin website](https://www.acf-table-field.com)
 
 == Upgrade Notice ==
 
