@@ -1,6 +1,6 @@
 === Table Field Add-on for ACF and SCF ===
 Contributors: jonua
-Tags: acf table
+Tags: acf, table, table field, scf, advanced custom fields, secure custom fields, custom fields, add-on
 Requires at least: 5.3
 Tested up to: 6.7.2
 Stable tag: 1.3.26
