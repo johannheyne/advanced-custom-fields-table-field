@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 1.3.27 =
+* Fixes loading plugin textdomain to early.
+
 = 1.3.26 =
 * Adds auto repair table. Fixes table data when loading from database and on editing table.
 

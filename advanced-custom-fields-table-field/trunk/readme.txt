@@ -2,8 +2,8 @@
 Contributors: jonua
 Tags: acf, table, scf, advanced custom fields, secure custom fields
 Requires at least: 5.3
-Tested up to: 6.8.0
-Stable tag: 1.3.26
+Tested up to: 6.8.1
+Stable tag: 1.3.27
 Requires PHP: 7.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -517,6 +517,9 @@ The Pro plugin can run in parallel and you can change an existing field with fie
 
 
 == Changelog ==
+
+= 1.3.27 =
+* Fixes loading plugin textdomain to early.
 
 = 1.3.26 =
 * Adds auto repair table. Fixes table data when loading from database and on editing table.
