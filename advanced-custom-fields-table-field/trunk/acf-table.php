@@ -26,7 +26,7 @@ function acf_table_load_plugin_textdomain( $version ) {
 	load_plugin_textdomain( 'acf-table', false, dirname( plugin_basename(__FILE__) ) . '/lang/' );
 }
 
-add_action( 'plugins_loaded', 'acf_table_load_plugin_textdomain' );
+add_action( 'init', 'acf_table_load_plugin_textdomain' );
 
 
 /**
