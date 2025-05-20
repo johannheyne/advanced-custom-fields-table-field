@@ -3,7 +3,7 @@
 Plugin Name: Advanced Custom Fields: Table Field
 Plugin URI: https://www.acf-table-field.com
 Description: This free Add-on adds a table field type for the Advanced Custom Fields plugin.
-Version: 1.3.27
+Version: 1.3.28
 Author: Johann Heyne
 Author URI: http://www.johannheyne.de
 License: GPLv2 or later
