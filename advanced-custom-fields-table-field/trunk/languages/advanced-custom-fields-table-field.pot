@@ -11,10 +11,6 @@ msgstr ""
 "Language: de\n"
 "Project-Id-Version: Plugins - Advanced Custom Fields: Table Field - Development (trunk)\n"
 
-#: acf-table-v5.php:208
-msgid "table caption"
-msgstr ""
-
 #: acf-table-v5.php:134
 msgid "Presetting the usage of table caption"
 msgstr ""
@@ -23,21 +19,8 @@ msgstr ""
 msgid "Table Caption"
 msgstr ""
 
-#. Author of the plugin/theme
-msgid "Johann Heyne"
-msgstr ""
-
 #. Description of the plugin/theme
 msgid "This free Add-on adds a table field type for the Advanced Custom Fields plugin."
-msgstr ""
-
-#. #-#-#-#-#  advanced-custom-fields-table-field-code.pot (Advanced Custom
-#. Fields: Table Field 1.3.28)  #-#-#-#-#
-#. Plugin URI of the plugin/theme
-#. #-#-#-#-#  advanced-custom-fields-table-field-code.pot (Advanced Custom
-#. Fields: Table Field 1.3.28)  #-#-#-#-#
-#. Author URI of the plugin/theme
-msgid "http://www.johannheyne.de/"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
@@ -72,4 +55,9 @@ msgstr ""
 
 #: acf-table-v4.php:24 acf-table-v5.php:38
 msgid "Table"
+msgstr ""
+
+
+#: class-jh-acf-field-table.php:34
+msgid "Allows you to easily edit tabular content."
 msgstr ""
