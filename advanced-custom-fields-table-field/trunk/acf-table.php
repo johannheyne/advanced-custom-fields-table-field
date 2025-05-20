@@ -8,8 +8,8 @@ Author: Johann Heyne
 Author URI: http://www.johannheyne.de
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: acf-table
-Domain Path: /lang/
+Text Domain: advanced-custom-fields-table-field
+Domain Path: /languages
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 function acf_table_load_plugin_textdomain( $version ) {
 
-	load_plugin_textdomain( 'acf-table', false, dirname( plugin_basename(__FILE__) ) . '/lang/' );
+	load_plugin_textdomain( 'advanced-custom-fields-table-field', false, dirname( plugin_basename(__FILE__) ) . '/languages/' );
 }
 
 add_action( 'init', 'acf_table_load_plugin_textdomain' );
