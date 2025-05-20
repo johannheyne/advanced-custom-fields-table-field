@@ -31,6 +31,12 @@ class jh_acf_field_table extends acf_field {
 
 		$this->name = 'table';
 
+		$this->description = __('This allows you to easily edit tabular content.', 'advanced-custom-fields-table-field');
+
+		$this->preview_image = plugins_url( '', __FILE__ ) . '/assets/images/field-preview-table.png';
+
+		$this->doc_url = 'https://wordpress.org/plugins/advanced-custom-fields-table-field/';
+
 		/*
 		*  label (string) Multiple words, can include spaces, visible when selecting a field type
 		*/
@@ -41,7 +47,7 @@ class jh_acf_field_table extends acf_field {
 		*  category (string) basic | content | choice | relational | jquery | layout | CUSTOM GROUP NAME
 		*/
 
-		$this->category = 'layout';
+		$this->category = 'content';
 
 		/*
 		*  defaults (array) Array of default settings which are merged into the field object. These are used later in settings
@@ -213,7 +219,7 @@ class jh_acf_field_table extends acf_field {
 					if ( $data_field['use_caption'] === 1 ) {
 
 						$e .= '<div class="acf-table-optionbox">';
-							$e .= '<label for="acf-table-opt-caption">' . __( 'table caption', 'advanced-custom-fields-table-field' ) . ' </label><br>';
+							$e .= '<label for="acf-table-opt-caption">' . __( 'Table Caption', 'advanced-custom-fields-table-field' ) . ' </label><br>';
 							$e .= '<input class="acf-table-optionbox-field acf-table-fc-opt-caption" id="acf-table-opt-caption" type="text" name="acf-table-opt-caption" value=""></input>';
 						$e .= '</div>';
 					}

@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Plugins - Advanced Custom Fields: Table Field - "
 "Development (trunk)\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-05-21 00:22+0200\n"
+"PO-Revision-Date: 2025-05-21 00:41+0200\n"
 "Last-Translator: Johann Heyne <mail@johannheyne.de>\n"
 "Language-Team: \n"
 "Language: da_DK\n"
@@ -66,27 +66,5 @@ msgid "Table"
 msgstr "Tabel"
 
 #: class-jh-acf-field-table.php:34
-msgid "Allows you to easily edit tabular content."
+msgid "This allows you to easily edit tabular content."
 msgstr "Giver dig mulighed for nemt at redigere tabelindhold."
-
-#~ msgid "Johann Heyne"
-#~ msgstr "Johann Heyne"
-
-#~ msgid "http://www.johannheyne.de/"
-#~ msgstr "http://www.johannheyne.de/"
-
-#~ msgid "table caption"
-#~ msgstr "Tabeltekst"
-
-#~ msgid ""
-#~ "This free Add-on adds a table field type for the Advanced Custom Fields "
-#~ "plugin"
-#~ msgstr ""
-#~ "Dette gratis addon tilføjer et tabel felt til Advanced Custom Fields "
-#~ "plugin"
-
-#~ msgid "Error! Please enter a higher value"
-#~ msgstr "Fejl! Indtast venligst en højere værdi"
-
-#~ msgid "Layout"
-#~ msgstr "Layout"

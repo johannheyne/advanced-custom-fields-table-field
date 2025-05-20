@@ -57,7 +57,6 @@ msgstr ""
 msgid "Table"
 msgstr ""
 
-
 #: class-jh-acf-field-table.php:34
-msgid "Allows you to easily edit tabular content."
+msgid "This allows you to easily edit tabular content."
 msgstr ""

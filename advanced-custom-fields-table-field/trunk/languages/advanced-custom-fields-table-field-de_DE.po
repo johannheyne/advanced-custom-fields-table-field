@@ -64,27 +64,5 @@ msgid "Table"
 msgstr "Tabelle"
 
 #: class-jh-acf-field-table.php:34
-msgid "Allows you to easily edit tabular content."
+msgid "This allows you to easily edit tabular content."
 msgstr "Ermöglicht die einfache Bearbeitung tabellarischer Inhalte."
-
-#~ msgid "Johann Heyne"
-#~ msgstr "Johann Heyne"
-
-#~ msgid "http://www.johannheyne.de/"
-#~ msgstr "http://www.johannheyne.de/"
-
-#~ msgid "table caption"
-#~ msgstr "Tabellen Beschriftung"
-
-#~ msgid "Error! Please enter a higher value."
-#~ msgstr "Fehler! Bitte gib einen höheren Wert ein."
-
-#~ msgid "Error! Please enter a higher value"
-#~ msgstr "Fehler! Bitte gib einen höheren Wert ein."
-
-#~ msgid ""
-#~ "This free Add-on adds a table field type for the Advanced Custom Fields "
-#~ "plugin"
-#~ msgstr ""
-#~ "Diese freie Erweiterung fügt dem \"Advanced Custom Fields\" Plugin ein "
-#~ "Tabellen Feldtype hinzu."

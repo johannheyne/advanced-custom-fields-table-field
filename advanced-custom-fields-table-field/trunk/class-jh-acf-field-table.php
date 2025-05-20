@@ -31,7 +31,7 @@ class jh_acf_field_table extends acf_field {
 
 		$this->name = 'table';
 
-		$this->description = __('Allows you to easily edit tabular content.', 'advanced-custom-fields-table-field');
+		$this->description = __('This allows you to easily edit tabular content.', 'advanced-custom-fields-table-field');
 
 		$this->preview_image = plugins_url( '', __FILE__ ) . '/assets/images/field-preview-table.png';
 

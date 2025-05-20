@@ -64,8 +64,5 @@ msgid "Table"
 msgstr "Tabela"
 
 #: class-jh-acf-field-table.php:34
-msgid "Allows you to easily edit tabular content."
+msgid "This allows you to easily edit tabular content."
 msgstr "Umożliwia łatwą edycję zawartości tabeli."
-
-#~ msgid "Johann Heyne"
-#~ msgstr "Johann Heyne"
