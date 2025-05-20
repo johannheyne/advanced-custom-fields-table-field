@@ -12,9 +12,9 @@ A Table Field Add-on for the Advanced Custom Fields and Secure Custom Fields Plu
 
 == Description ==
 
-The Table Field plugin is an Add-on and enhances the functionality of the [Advanced Custom Fields (ACF) plugin](https://www.advancedcustomfields.com) and the [Secure Custom Fields plugin](https://wordpress.org/plugins/advanced-custom-fields/) with easy-to-edit tables.
+The Table Field plugin is an Add-on and enhances the functionality of the [Advanced Custom Fields (ACF) plugin](https://www.advancedcustomfields.com) and the [Secure Custom Fields plugin](https://wordpress.org/plugins/secure-custom-fields/) with easy-to-edit tables.
 
-This plugin requires the [Advanced Custom Fields plugin](https://www.advancedcustomfields.com) or the [Secure Custom Fields plugin](https://wordpress.org/plugins/advanced-custom-fields/)!
+This plugin requires the [Advanced Custom Fields plugin](https://www.advancedcustomfields.com) or the [Secure Custom Fields plugin](https://wordpress.org/plugins/secure-custom-fields/)!
 
 The table field works also with the ACF repeater and flexible field types and supports the [ACF Blocks for Gutenberg](https://www.advancedcustomfields.com/blog/acf-5-8-introducing-acf-blocks-for-gutenberg/)
 
