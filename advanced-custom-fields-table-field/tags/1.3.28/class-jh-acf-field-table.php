@@ -90,7 +90,8 @@ class jh_acf_field_table extends acf_field {
 						if ( json_last_error() !== JSON_ERROR_NONE ) {
 
 							// canceling meta value uptdate
-							error_log( 'The plugin advanced-custom-fields-table-field prevented a third party update_post_meta( ' . $object_id . ', "' . $meta_key . '", $value ); action that would save a broken JSON string.' . "\n" . 'For details see https://codex.wordpress.org/Function_Reference/update_post_meta#Character_Escaping.' );
+							$error_message = 'The plugin advanced-custom-fields-table-field prevented a third party update_post_meta( ' . $object_id . ', "' . $meta_key . '", $value ); action that would save a broken JSON string.' . "\n" . 'For details see https://codex.wordpress.org/Function_Reference/update_post_meta#Character_Escaping.';
+							trigger_error( esc_html( $error_message ), E_USER_WARNING );
 							return true;
 						}
 					}
