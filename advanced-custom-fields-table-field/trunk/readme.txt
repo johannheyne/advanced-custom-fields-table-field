@@ -3,7 +3,7 @@ Contributors: jonua
 Tags: acf, table, scf, advanced custom fields, secure custom fields
 Requires at least: 5.3
 Tested up to: 6.8
-Stable tag: 1.3.28
+Stable tag: 1.3.29
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -517,6 +517,9 @@ The Pro plugin can run in parallel and you can change an existing field with fie
 
 
 == Changelog ==
+
+= 1.3.29 =
+* Fixes missing field preview image.
 
 = 1.3.28 =
 * Fixes loading translations from translate.wordpress.org.
