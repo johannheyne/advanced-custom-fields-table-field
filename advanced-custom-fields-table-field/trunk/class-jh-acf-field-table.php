@@ -449,13 +449,19 @@ class jh_acf_field_table extends acf_field {
 				// try post_meta
 				$data = get_post_meta( $post_id, $field['name'], true );
 
+				// try user meta
+				if ( empty( $data ) ) {
+
+					$data = get_user_meta( str_replace('user_', '', $post_id ), $field['name'], true );
+				}
+
 				// try term_meta
 				if ( empty( $data ) ) {
 
 					$data = get_term_meta( str_replace('term_', '', $post_id ), $field['name'], true );
 				}
 
-				//try options
+				// try options
 				if (
 					empty( $data ) AND (
 						$post_id = 'options' OR
