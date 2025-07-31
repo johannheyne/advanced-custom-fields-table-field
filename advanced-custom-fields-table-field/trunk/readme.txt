@@ -518,6 +518,9 @@ The Pro plugin can run in parallel and you can change an existing field with fie
 
 == Changelog ==
 
+= 1.3.30 =
+* Enables using update_field() on user fields
+
 = 1.3.29 =
 * Fixes missing field preview image.
 
