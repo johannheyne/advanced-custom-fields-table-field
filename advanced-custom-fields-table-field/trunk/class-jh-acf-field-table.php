@@ -15,6 +15,24 @@ class jh_acf_field_table extends acf_field {
 	*  @return	n/a
 	*/
 
+	public $settings;
+
+	public $name;
+
+	public $description;
+
+	public $preview_image;
+
+	public $doc_url;
+
+	public $label;
+
+	public $category;
+
+	public $defaults;
+
+	public $l10n;
+
 	function __construct() {
 
 		/*
