@@ -551,7 +551,7 @@ The Pro plugin can run in parallel and you can change an existing field with fie
 * Fixes multiple registering events on Gutenberg
 * Fixes issue not initial loading editing table
 
-= 1.3.19=
+= 1.3.19 =
 * Fixes issue not initial loading editing tables in Gutenberg blocks.
 
 = 1.3.18 =
