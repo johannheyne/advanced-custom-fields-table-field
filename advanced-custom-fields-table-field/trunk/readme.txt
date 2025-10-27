@@ -519,6 +519,7 @@ The Pro plugin can run in parallel and you can change an existing field with fie
 == Changelog ==
 
 = 1.3.31 =
+* Adds sanitizing table data using wp_kses( $data, 'post' ) during update_field().
 * Fixes a Cross-Site Scripting vulnerability in table cell content exploitable by authenticated users with Author-level access or higher.
 * Fixes minor table cell editor style issues.
 

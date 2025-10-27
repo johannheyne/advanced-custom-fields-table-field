@@ -557,6 +557,48 @@ class jh_acf_field_table extends acf_field {
 
 		// }
 
+		// SANITIZES DATA VALUES {
+
+			// CAPTION
+			if ( isset( $value['p']['ca'] ) ) {
+
+				$value['p']['ca'] = wp_kses( $value['p']['ca'], 'post' );
+			}
+
+			// HEADER CELL VALUES
+			if (
+				isset( $value['h'] ) &&
+				is_array( $value['h'] )
+			) {
+
+				array_walk_recursive( $value['h'], function ( &$item ) {
+
+					if ( is_string( $item ) ) {
+
+						$item = wp_kses( $item, 'post' );
+					}
+				});
+
+			}
+
+			// BODY CELL VALUES
+			if (
+				isset( $value['b'] ) &&
+				is_array( $value['b'] )
+			) {
+
+				array_walk_recursive( $value['b'], function ( &$item ) {
+
+					if ( is_string( $item ) ) {
+
+						$item = wp_kses( $item, 'post' );
+					}
+				});
+
+			}
+
+		// }
+
 		// $post_id is integer when post is saved, $post_id is string when block is saved
 		if ( gettype( $post_id ) === 'integer' ) {
 
