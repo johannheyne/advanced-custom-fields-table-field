@@ -518,6 +518,10 @@ The Pro plugin can run in parallel and you can change an existing field with fie
 
 == Changelog ==
 
+= 1.3.31 =
+* Fixes a Cross-Site Scripting vulnerability in table cell content exploitable by authenticated users with Author-level access or higher.
+* Fixes minor table cell editor style issues.
+
 = 1.3.30 =
 * Enables using update_field() on user fields
 
