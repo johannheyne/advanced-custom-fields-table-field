@@ -1596,13 +1596,7 @@
 			},
 		};
 
-		t.sanitizeHtml = function( string, id ) {
-
-			/* The param id allows to identify what is sanitizing in the 'sanitize_html' filter */
-			if ( typeof id === 'undefined' ) {
-
-				id = '';
-			}
+		t.sanitizeHtml = function( string ) {
 
 			let otions = {
 				USE_PROFILES: {
