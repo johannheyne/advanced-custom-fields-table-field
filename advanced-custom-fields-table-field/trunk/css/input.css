@@ -265,7 +265,7 @@
 		display: block;
 		position: absolute;
 		left: 3px;
-		bottom: -17px;
+		bottom: -15px;
 		width: 0;
 		height: 0;
 		border: 7px solid transparent;
@@ -276,7 +276,7 @@
 		display: block;
 		position: absolute;
 		left: 4px;
-		bottom: -12px;
+		bottom: -10px;
 		width: 0;
 		height: 0;
 		border: 6px solid transparent;
@@ -284,13 +284,14 @@
 	}
 	.acf-table-cell-editor-textarea {
 		border: none !important;
+		border-radius: 0 !important;
 		padding: 3px 7px !important;
 		background-color: #e5f8ff;
 		font-size: 14px !important;
 		line-height: 1.4 !important;
 		min-width: 180px;
 		min-height: 61px !important;
-
+		box-shadow: none !important;
 		/* fix profile.php ACF v4 */
 		width: auto !important;
 		margin-bottom: 0 !important;
