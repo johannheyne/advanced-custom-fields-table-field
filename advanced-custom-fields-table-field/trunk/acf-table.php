@@ -44,6 +44,7 @@ function jh_include_acf_field_table() {
 	}
 
 	require_once __DIR__ . '/class-jh-acf-field-table.php';
+	require_once __DIR__ . '/integrations/polylang/init.php';
 
 	acf_register_field_type( 'jh_acf_field_table' );
 }
