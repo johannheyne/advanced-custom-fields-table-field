@@ -287,7 +287,8 @@ class jh_acf_field_table extends acf_field {
 	function input_admin_enqueue_scripts() {
 
 		// register & include JS
-		wp_enqueue_script( 'acf-input-table', $this->settings['dir_url'] . 'js/input.js', array( 'jquery', 'acf-input' ), $this->settings['version'], true );
+		wp_enqueue_script( 'acf-input-table', $this->settings['dir_url'] . 'js/init.js', array( 'jquery', 'acf-input' ), $this->settings['version'], true );
+		wp_enqueue_script( 'acf-input-table-execute', $this->settings['dir_url'] . 'js/execute.js', array( 'acf-input-table' ), $this->settings['version'], true );
 
 		// register & include CSS
 		wp_register_style( 'acf-input-table', $this->settings['dir_url'] . 'css/input.css', array( 'acf-input' ), $this->settings['version'] );

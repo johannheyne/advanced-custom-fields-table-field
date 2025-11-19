@@ -1,6 +1,4 @@
-var ACFTableField = {
-	x: false
-};
+var ACFTableField = {};
 
 (function($) {
 
@@ -1815,6 +1813,5 @@ var ACFTableField = {
 	};
 
 	ACFTableField = new ACFTableFieldMain();
-	ACFTableField.init();
 
 })( jQuery );
