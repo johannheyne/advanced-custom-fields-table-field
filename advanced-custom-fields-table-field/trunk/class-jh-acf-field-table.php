@@ -222,9 +222,11 @@ class jh_acf_field_table extends acf_field {
 
 					if ( $data_field['use_header'] === 0 ) {
 
+						$id = uniqid();
+
 						$e .= '<div class="acf-table-optionbox">';
-							$e .= '<label for="acf-table-opt-use-header">' . __( 'use table header', 'advanced-custom-fields-table-field' ) . ' </label>';
-							$e .= '<select class="acf-table-optionbox-field acf-table-fc-opt-use-header" id="acf-table-opt-use-header" name="acf-table-opt-use-header">';
+							$e .= '<label for="acf-table-opt-use-header-' . $id . '">' . __( 'use table header', 'advanced-custom-fields-table-field' ) . ' </label>';
+							$e .= '<select class="acf-table-optionbox-field acf-table-fc-opt-use-header" id="acf-table-opt-use-header-' . $id . '" name="acf-table-opt-use-header">';
 								$e .= '<option value="0">' . __( 'No', 'advanced-custom-fields-table-field' ) . '</option>';
 								$e .= '<option value="1">' . __( 'Yes', 'advanced-custom-fields-table-field' ) . '</option>';
 							$e .= '</select>';
@@ -237,9 +239,11 @@ class jh_acf_field_table extends acf_field {
 
 					if ( $data_field['use_caption'] === 1 ) {
 
+						$id = uniqid();
+
 						$e .= '<div class="acf-table-optionbox">';
-							$e .= '<label for="acf-table-opt-caption">' . __( 'Table Caption', 'advanced-custom-fields-table-field' ) . ' </label><br>';
-							$e .= '<input class="acf-table-optionbox-field acf-table-fc-opt-caption" id="acf-table-opt-caption" type="text" name="acf-table-opt-caption" value=""></input>';
+							$e .= '<label for="acf-table-opt-caption-' . $id . '">' . __( 'Table Caption', 'advanced-custom-fields-table-field' ) . ' </label><br>';
+							$e .= '<input class="acf-table-optionbox-field acf-table-fc-opt-caption" id="acf-table-opt-caption-' . $id . '" type="text" name="acf-table-opt-caption" value=""></input>';
 						$e .= '</div>';
 					}
 
