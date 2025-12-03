@@ -463,6 +463,41 @@ The table field plugin prevents broken JSON strings to save as a table field dat
 
 `define( "ACF_TABLEFIELD_FILTER_POSTMETA", false );`
 
+= UI Sanitizing Options =
+
+Since version 1.3.32, you can configure the UI sanitizing options.
+Ensure you create a dedicated admin script for configuring the table field plugin in your theme and enqueue it correctly.
+This is required so that the hook can be registered in the plugin after the plugin initialization and before the plugin script functionalities are executed.
+
+Create a file in your theme at the path `/js/table-field-config.js`.
+
+Than enqueue that script in the functions.php file with the following action.
+
+`
+add_action( 'admin_enqueue_scripts', function() {
+
+    wp_enqueue_script(
+        'table-field-config', // Table field config script handle
+        get_template_directory_uri() . '/js/table-field-config.js', // Path to the script in the theme
+        array('acf-input-table'), // Required, ensures that the script is loaded and executed at the correct time
+        '1.0', // Version of the script
+        true // Required to be correctly placed in the script queue
+    );
+});`
+
+The sanitization of the table fields UI is handled by DOMPurify.
+Use the following table field hook to modify the DOMPurify options.
+
+`ACFTableField.addFilter( 'core', 'sanitize_html', function( options ) {
+
+	// DOMPurify Options, @see: https://github.com/cure53/DOMPurify?tab=readme-ov-file#can-i-configure-dompurify
+
+	options.ADD_ATTR = ['target']; // For instance, the target attribute can be permitted
+
+	return options;
+});`
+
+
 == Installation ==
 
 This software can be used as both a WP plugin and a theme include.
