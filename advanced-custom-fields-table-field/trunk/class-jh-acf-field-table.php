@@ -39,7 +39,7 @@ class jh_acf_field_table extends acf_field {
 		*  settings (array) Array of settings
 		*/
 		$this->settings = array(
-			'version' => '1.3.31',
+			'version' => '1.3.32',
 			'dir_url' => plugins_url( '', __FILE__ ) . '/',
 		);
 
