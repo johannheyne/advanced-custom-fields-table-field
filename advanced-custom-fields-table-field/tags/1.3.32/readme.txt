@@ -2,7 +2,7 @@
 Contributors: jonua
 Tags: acf, table, scf, advanced custom fields, secure custom fields
 Requires at least: 5.3
-Tested up to: 6.8
+Tested up to: 6.9
 Stable tag: 1.3.32
 Requires PHP: 7.4
 License: GPLv2 or later
@@ -466,12 +466,12 @@ The table field plugin prevents broken JSON strings to save as a table field dat
 = UI Sanitizing Options =
 
 Since version 1.3.32, you can configure the UI sanitizing options.
-Ensure you create a dedicated admin script for configuring the table field plugin in your theme and enqueue it correctly.
-This is required so that the hook can be registered in the plugin after the plugin initialization and before the plugin script functionalities are executed.
+
+Ensure you create a dedicated admin script for configuring the table field plugin in your theme and enqueue it correctly. This is required so that the hook can be registered in the plugin after the plugin initialization and before the plugin script functionalities are executed.
 
 Create a file in your theme at the path `/js/table-field-config.js`.
 
-Than enqueue that script in the functions.php file with the following action.
+Than enqueue that script in your themes `functions.php` file with the following action.
 
 `
 add_action( 'admin_enqueue_scripts', function() {
@@ -486,7 +486,7 @@ add_action( 'admin_enqueue_scripts', function() {
 });`
 
 The sanitization of the table fields UI is handled by DOMPurify.
-Use the following table field hook to modify the DOMPurify options.
+Use the following table field hook in your table field config script to modify the DOMPurify options.
 
 `ACFTableField.addFilter( 'core', 'sanitize_html', function( options ) {
 
