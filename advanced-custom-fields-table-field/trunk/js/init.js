@@ -1600,22 +1600,15 @@ var ACFTableField = {};
 
 		t.sanitizeHtml = function( string ) {
 
-			let otions = {
+			let options = {
 				USE_PROFILES: {
 					html: true
 				}
 			};
 
-			otions = t.doFilter( 'core', 'sanitize_html', otions );
+			options = t.doFilter( 'core', 'sanitize_html', options );
 
-			t.addFilter( 'core', 'sanitize_html', function( options, param ) {
-
-				// DOMPurify Options, @see: https://github.com/cure53/DOMPurify?tab=readme-ov-file#can-i-configure-dompurify
-
-				return options;
-			} );
-
-			string = t.DOMPurify.sanitize( string, otions );
+			string = t.DOMPurify.sanitize( string, options );
 
 			return string;
 		};
