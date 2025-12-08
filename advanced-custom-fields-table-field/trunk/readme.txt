@@ -465,37 +465,35 @@ The table field plugin prevents broken JSON strings to save as a table field dat
 
 = UI Sanitizing Options =
 
-Since version 1.3.32, you can configure the UI sanitizing options.
+Since version 1.3.33, you can configure the UI sanitizing options.
 
-Ensure you create a dedicated admin script for configuring the table field plugin in your theme and enqueue it correctly. This is required so that the hook can be registered in the plugin after the plugin initialization and before the plugin script functionalities are executed.
-
-Create a file in your theme at the path `/js/table-field-config.js`.
-
-Than enqueue that script in your themes `functions.php` file with the following action.
+This requires an admin script, that. You can in your themes `functions.php` file with the following action.
 
 `
-add_action( 'admin_enqueue_scripts', function() {
+add_action( 'acf/input/admin_enqueue_scripts', function() {
 
     wp_enqueue_script(
         'table-field-config', // Table field config script handle
         get_template_directory_uri() . '/js/table-field-config.js', // Path to the script in the theme
-        array('acf-input-table'), // Required, ensures that the script is loaded and executed at the correct time
-        '1.0', // Version of the script
-        true // Required to be correctly placed in the script queue
     );
 });`
 
 The sanitization of the table fields UI is handled by DOMPurify.
 Use the following table field hook in your table field config script to modify the DOMPurify options.
 
-`ACFTableField.addFilter( 'core', 'sanitize_html', function( options ) {
+`
+document.addEventListener('tableFieldRegisterHooks', function(){
 
-	// DOMPurify Options, @see: https://github.com/cure53/DOMPurify?tab=readme-ov-file#can-i-configure-dompurify
+    ACFTableField.addFilter( 'core', 'sanitize_html', function( options ) {
 
-	options.ADD_ATTR = ['target']; // For instance, the target attribute can be permitted
+        // DOMPurify Options, @see: https://github.com/cure53/DOMPurify?tab=readme-ov-file#can-i-configure-dompurify
 
-	return options;
-});`
+        options.ADD_ATTR = ['target']; // For instance, the target attribute can be permitted
+
+        return options;
+    });
+});
+`
 
 
 == Installation ==

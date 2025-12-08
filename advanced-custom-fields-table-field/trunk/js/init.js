@@ -1806,5 +1806,6 @@ var ACFTableField = {};
 	};
 
 	ACFTableField = new ACFTableFieldMain();
+	document.dispatchEvent(new CustomEvent('tableFieldRegisterHooks'));
 
 })( jQuery );
