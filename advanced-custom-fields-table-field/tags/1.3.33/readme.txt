@@ -467,7 +467,7 @@ The table field plugin prevents broken JSON strings to save as a table field dat
 
 Since version 1.3.33, you can configure the UI sanitizing options.
 
-This requires an admin script, that. You can in your themes `functions.php` file with the following action.
+This requires a script to be enqueued as an ACF admin script. You can enqueue it in your theme’s `functions.php` file using the following action.
 
 `
 add_action( 'acf/input/admin_enqueue_scripts', function() {
