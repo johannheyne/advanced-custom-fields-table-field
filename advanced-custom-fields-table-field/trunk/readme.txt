@@ -551,6 +551,10 @@ The Pro plugin can run in parallel and you can change an existing field with fie
 
 == Changelog ==
 
+= 1.3.34 =
+* Allows the target="_blank" attribute on links
+* Adds a filter that ensures links using target="_blank" are automatically given rel="noopener"
+
 = 1.3.33 =
 * Adds hook registering event "tableFieldRegisterHooks"
 * Changes and fixes example showing how to enqueue an admin script and apply the "sanitize_html" filter.
