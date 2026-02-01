@@ -1603,15 +1603,34 @@ var ACFTableField = {};
 			let options = {
 				USE_PROFILES: {
 					html: true
-				}
+				},
+				ADD_ATTR: ['target']
 			};
 
 			options = t.doFilter( 'core', 'sanitize_html', options );
 
 			string = t.DOMPurify.sanitize( string, options );
+			string = t.addNoopenerToHtmlString( string );
 
 			return string;
 		};
+
+		t.addNoopenerToHtmlString = function (html) {
+			const parser = new DOMParser();
+			const doc = parser.parseFromString(html, "text/html");
+
+			doc.querySelectorAll('a[target="_blank"]').forEach(link => {
+				const rel = link.getAttribute('rel');
+
+				if (!rel) {
+					link.setAttribute('rel', 'noopener');
+				} else if (!rel.split(/\s+/).includes('noopener')) {
+					link.setAttribute('rel', rel + ' noopener');
+				}
+			});
+
+			return doc.body.innerHTML;
+		}
 
 		t.DOMPurify = (function () {
 
