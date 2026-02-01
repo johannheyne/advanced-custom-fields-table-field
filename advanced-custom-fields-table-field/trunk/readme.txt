@@ -488,8 +488,6 @@ document.addEventListener('tableFieldRegisterHooks', function(){
 
         // DOMPurify Options, @see: https://github.com/cure53/DOMPurify?tab=readme-ov-file#can-i-configure-dompurify
 
-        options.ADD_ATTR = ['target']; // For instance, the target attribute can be permitted
-
         return options;
     });
 });
