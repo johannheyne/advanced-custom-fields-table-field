@@ -3,7 +3,7 @@ Contributors: jonua
 Tags: acf, table, scf, advanced custom fields, secure custom fields
 Requires at least: 5.3
 Tested up to: 6.9
-Stable tag: 1.3.34
+Stable tag: 1.3.33
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -465,7 +465,7 @@ The table field plugin prevents broken JSON strings to save as a table field dat
 
 = UI Sanitizing Options =
 
-Since version 1.3.34, you can configure the UI sanitizing options.
+Since version 1.3.33, you can configure the UI sanitizing options.
 
 This requires a script to be enqueued as an ACF admin script. You can enqueue it in your theme’s `functions.php` file using the following action.
 
@@ -551,7 +551,7 @@ The Pro plugin can run in parallel and you can change an existing field with fie
 
 == Changelog ==
 
-= 1.3.34 =
+= 1.3.33 =
 * Adds hook registering event "tableFieldRegisterHooks"
 * Changes and fixes example showing how to enqueue an admin script and apply the "sanitize_html" filter.
 
