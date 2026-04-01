@@ -1,0 +1,5 @@
+(function($) {
+
+    ACFTableField.init();
+
+})( jQuery );
