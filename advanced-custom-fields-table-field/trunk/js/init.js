@@ -1634,6 +1634,7 @@ var ACFTableField = {};
 
 		t.DOMPurify = (function () {
 
+			/* This plugin uses its own embedded DOMPurify script to avoid
 			return (function () {
 				/*! @license DOMPurify 3.2.7 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.2.7/LICENSE */
 
