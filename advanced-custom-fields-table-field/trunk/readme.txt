@@ -3,7 +3,7 @@ Contributors: jonua
 Tags: acf, table, scf, advanced custom fields, secure custom fields
 Requires at least: 5.3
 Tested up to: 6.9
-Stable tag: 1.3.34
+Stable tag: 1.3.35
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -548,6 +548,9 @@ The Pro plugin can run in parallel and you can change an existing field with fie
 
 
 == Changelog ==
+
+= 1.3.35 =
+* Updates vendor DOMPurify to version 3.3.3 to address a Cross-site Scripting (XSS) vulnerability.
 
 = 1.3.34 =
 * Allows the target="_blank" attribute on links
