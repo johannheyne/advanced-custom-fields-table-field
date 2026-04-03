@@ -524,7 +524,7 @@ However, only when activated as a plugin will updates be available.
 
 == PRO ==
 
-There is also a [Table Field Pro](https://www.acf-table-field.com) Add-on for the Advanced Custom Fields and Secure Custom Fields plugins.
+There is also a <a href="https://www.acf-table-field.com?src=wp" rel="noopener">Table Field Pro</a> Add-on for the Advanced Custom Fields and Secure Custom Fields plugins.
 
 * Setup custom default table
 * Setup minimum and maximum amount of rows and columns
@@ -542,7 +542,7 @@ There is also a [Table Field Pro](https://www.acf-table-field.com) Add-on for th
 
 The Pro plugin can run in parallel and you can change an existing field with field type "Table" to the field type "Table Pro" as required.
 
-[to the plugin website](https://www.acf-table-field.com)
+<a href="https://www.acf-table-field.com?src=wp" rel="noopener">to the plugin website</a>
 
 == Upgrade Notice ==
 
