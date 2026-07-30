@@ -12,39 +12,47 @@ Text Domain: advanced-custom-fields-table-field
 Domain Path: /languages
 */
 
+namespace ACFTablefield;
+
+use ACFTablefield\PluginClasses;
+use ACFTablefield\PluginInfo;
+
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+
+	exit; // Exit if accessed directly
 }
 
-/**
- * Loads plugin textdomain.
- * https://codex.wordpress.org/Function_Reference/load_plugin_textdomain
- */
+add_action( 'init', function(){
 
-function acf_table_load_plugin_textdomain( $version ) {
-
-	load_plugin_textdomain( 'advanced-custom-fields-table-field', false, dirname( plugin_basename(__FILE__) ) . '/languages/' );
-}
-
-add_action( 'init', 'acf_table_load_plugin_textdomain' );
-
-
-/**
- * Registers the ACF field type.
- */
-
-add_action( 'init', 'jh_include_acf_field_table' );
-
-
-function jh_include_acf_field_table() {
+	/**
+	 * Exits if ACF is not present
+	 */
 
 	if ( ! function_exists( 'acf_register_field_type' ) ) {
 
 		return;
 	}
 
-	require_once __DIR__ . '/class-jh-acf-field-table.php';
-	require_once __DIR__ . '/integrations/polylang/init.php';
+	/**
+	 * Loads files
+	 */
 
-	acf_register_field_type( 'jh_acf_field_table' );
-}
+	require_once( __DIR__ . '/includes/autoload.php');
+	require_once( __DIR__ . '/integrations/polylang/init.php' );
+
+
+	}
+
+	/**
+	 * Loads text domain
+	 */
+
+	load_plugin_textdomain( PluginInfo::get('text_domain'), false, PluginInfo::get('plugin_dir_name') . '/languages/' );
+
+	/**
+	 * Registers field with ACF
+	 */
+
+	PluginClasses::$classes['Field'] = acf_register_field_type( '\ACFTablefield\Field' );
+
+} );
