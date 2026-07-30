@@ -40,7 +40,13 @@ add_action( 'init', function(){
 	require_once( __DIR__ . '/includes/autoload.php');
 	require_once( __DIR__ . '/integrations/polylang/init.php' );
 
+	/**
+	 * Inits settings page
+	 */
 
+	if ( is_admin() ) {
+
+		new PluginSettingsPage();
 	}
 
 	/**
