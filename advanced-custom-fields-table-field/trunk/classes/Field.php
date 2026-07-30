@@ -47,8 +47,7 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 			*  settings (array) Array of settings
 			*/
 			$this->settings = array(
-				'version' => '1.3.35',
-				'dir_url' => plugins_url( '', __FILE__ ) . '/',
+				'version' => ACF_TABLE_FIELD_PLUGIN_VERSION,
 			);
 
 			/*
@@ -59,7 +58,7 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 
 			$this->description = __('This allows you to easily edit tabular content.', 'advanced-custom-fields-table-field');
 
-			$this->preview_image = plugins_url( '', __FILE__ ) . '/assets/images/field-preview-table.png';
+			$this->preview_image = FileSystem::get('plugin_dir_path') . '/assets/images/field-preview-table.png';
 
 			$this->doc_url = 'https://wordpress.org/plugins/advanced-custom-fields-table-field/';
 

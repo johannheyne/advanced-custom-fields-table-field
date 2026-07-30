@@ -25,6 +25,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 add_action( 'init', function(){
 
 	/**
+	 * Exits if plugin already exits
+	 */
+
+	if ( defined( 'ACF_TABLE_FIELD_PLUGIN_VERSION' ) ) {
+
+		return;
+	}
+
+	/**
 	 * Exits if ACF is not present
 	 */
 
@@ -32,6 +41,13 @@ add_action( 'init', function(){
 
 		return;
 	}
+
+	/**
+	 * Defines current plugin version.
+	 * Start at version 1.0.0 and use SemVer - https://semver.org
+	 */
+
+	define( 'ACF_TABLE_FIELD_PLUGIN_VERSION', '1.3.35' /* Plugin Version */ );
 
 	/**
 	 * Loads files
