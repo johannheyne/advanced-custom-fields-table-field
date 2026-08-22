@@ -2,7 +2,7 @@
 Contributors: jonua
 Tags: acf, table, scf, advanced custom fields, secure custom fields
 Requires at least: 5.3
-Tested up to: 7.0.2
+Tested up to: 7.1.0
 Stable tag: 1.3.35
 Requires PHP: 7.4
 License: GPLv2 or later
