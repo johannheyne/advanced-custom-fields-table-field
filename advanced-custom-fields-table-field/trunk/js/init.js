@@ -106,37 +106,44 @@ var ACFTableField = {};
 
 		t.init = function() {
 
-			t.init_once();
-			t.update_tables();
+			acf.add_action( 'ready', function( $el ) { console.log( 'ready' );});
+			acf.add_action( 'load', function( $el ) { console.log( 'load' );});
+			acf.add_action( 'load_field', function( $el ) { console.log( 'load_field' );});
+			acf.add_action( 'append', function( $el ) { console.log( 'append' );});
+			acf.add_action( 'append_field', function( $el ) { console.log( 'append_field' );});
 
-			// DETECT NEW TABLES AFTER DOM CHANGES {
+			acf.add_action( 'ready', function( $el ) {
 
-				var interval = false;
+				t.init_once();
+			});
 
-				let mutationObserver = new MutationObserver( function( mutations ) {
+			acf.add_action( 'append_field', function( $el ) {
 
-					clearInterval( interval );
+				if (
+					$el.hasClass('acf-field-table') &&
+					! $el.find('acf-table-root.acf-table-rendered').length
+				) {
 
-					interval = setInterval( function() {
+					setTimeout( function() {
 
-						if ( $( '.acf-table-root' ).not( '.acf-table-rendered' ).length > 0 ) {
+						t.render_table( $el );
+					}, 50 );
+				}
+			});
 
-							t.update_tables();
-						}
+			acf.add_action( 'load_field', function( $el ) {
 
-						clearInterval( interval );
+				if (
+					$el.hasClass('acf-field-table') &&
+					! $el.find('acf-table-root.acf-table-rendered').length
+				) {
 
-					}, 250 );
+					setTimeout( function() {
 
-				});
-
-				mutationObserver.observe( document.documentElement, {
-					childList: true,
-					subtree: true,
-				});
-
-			// }
-
+						t.render_table( $el );
+					}, 50 );
+				}
+			});
 		};
 
 		t.update_tables = function() {
@@ -222,44 +229,49 @@ var ACFTableField = {};
 
 			$( '.acf-field-table .acf-table-root' ).not( '.acf-table-rendered' ).each( function() {
 
-				var p = {};
-
-				p.obj_root = $( this );
-
-				var that = $( this ),
-					field_key = t.get_field_key( that ),
-					table = p.obj_root.find( '.acf-table-wrap' );
-
-				// ADDS TABLE OBJECT {
-
-					t.tables[ field_key ] = p;
-
-				// }
-
-				if ( table.length > 0 ) {
-
-					return;
-				}
-
-				p.obj_root.addClass( 'acf-table-rendered' );
-
-				t.data_get( p );
-
-				t.data_default( p );
-
-				t.field_options_get( p );
-
-				t.table_render( p );
-
-				t.misc_render( p );
-
-				if ( typeof p.data.b[ 1 ] === 'undefined' && typeof p.data.b[ 0 ][ 1 ] === 'undefined' && p.data.b[ 0 ][ 0 ].c === '' ) {
-
-					p.obj_root.find( '.acf-table-remove-col' ).hide(),
-					p.obj_root.find( '.acf-table-remove-row' ).hide();
-				}
+				t.render_table( $( this ) );
 			} );
 		};
+
+		t.render_table = function( $el ) {
+
+			var p = {};
+
+			p.obj_root =  $el;
+
+			var that = $( this ),
+				field_key = t.get_field_key( that ),
+				table = p.obj_root.find( '.acf-table-wrap' );
+
+			// ADDS TABLE OBJECT {
+
+				t.tables[ field_key ] = p;
+
+			// }
+
+			if ( table.length > 0 ) {
+
+				return;
+			}
+
+			p.obj_root.addClass( 'acf-table-rendered' );
+
+			t.data_get( p );
+
+			t.data_default( p );
+
+			t.field_options_get( p );
+
+			t.table_render( p );
+
+			t.misc_render( p );
+
+			if ( typeof p.data.b[ 1 ] === 'undefined' && typeof p.data.b[ 0 ][ 1 ] === 'undefined' && p.data.b[ 0 ][ 0 ].c === '' ) {
+
+				p.obj_root.find( '.acf-table-remove-col' ).hide(),
+				p.obj_root.find( '.acf-table-remove-row' ).hide();
+			}
+		}
 
 		t.field_options_get = function( p ) {
 
