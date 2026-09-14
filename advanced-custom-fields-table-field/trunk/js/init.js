@@ -106,11 +106,51 @@ var ACFTableField = {};
 
 		t.init = function() {
 
-			acf.add_action( 'ready', function( $el ) { console.log( 'ready' );});
-			acf.add_action( 'load', function( $el ) { console.log( 'load' );});
-			acf.add_action( 'load_field', function( $el ) { console.log( 'load_field' );});
-			acf.add_action( 'append', function( $el ) { console.log( 'append' );});
-			acf.add_action( 'append_field', function( $el ) { console.log( 'append_field' );});
+			/* Tests all relevant ACF actions
+
+			// Core Lifecycle
+			acf.add_action('ready', function($el){ console.log('ready'); });
+			acf.add_action('load', function($el){ console.log('load'); });
+
+			// Field Lifecycle
+			acf.add_action('load_field', function(field){ console.log('load_field'); });
+			acf.add_action('append_field', function(field){ console.log('append_field'); });
+			acf.add_action('remove_field', function(field){ console.log('remove_field'); });
+
+			// Form Lifecycle
+			acf.add_action('validation_begin', function($form){ console.log('validation_begin'); });
+			acf.add_action('validation_end', function($form){ console.log('validation_end'); });
+
+			acf.add_action('submit', function($form){ console.log('submit'); });
+			acf.add_action('submit_success', function($form){ console.log('submit_success'); });
+			acf.add_action('submit_failure', function($form){ console.log('submit_failure'); });
+
+			// Repeater / Flexible Content
+			acf.add_action('append', function($el){ console.log('append'); });
+			acf.add_action('remove', function($el){ console.log('remove'); });
+
+			acf.add_action('sortstart', function($el){ console.log('sortstart'); });
+			acf.add_action('sortstop', function($el){ console.log('sortstop'); });
+
+			// Field‑Specific Init Hooks
+			acf.add_action('select2_init', function($el){ console.log('select2_init'); });
+			acf.add_action('wysiwyg_tinymce_init', function(ed){ console.log('wysiwyg_tinymce_init'); });
+			acf.add_action('wysiwyg_quicktags_init', function(ed){ console.log('wysiwyg_quicktags_init'); });
+			acf.add_action('date_picker_init', function($input){ console.log('date_picker_init'); });
+			acf.add_action('color_picker_init', function($input){ console.log('color_picker_init'); });
+			acf.add_action('google_map_init', function(map){ console.log('google_map_init'); });
+			acf.add_action('relationship_init', function($el){ console.log('relationship_init'); });
+
+			// AJAX / Dynamic Preparation Hooks
+			acf.add_action('prepare_field', function(field){ console.log('prepare_field'); });
+			acf.add_action('prepare_field_group', function(group){ console.log('prepare_field_group'); });
+			acf.add_action('prepare_block', function(block){ console.log('prepare_block'); });
+			acf.add_action('prepare_post', function(post){ console.log('prepare_post'); });
+
+			// ACF Block Hooks (nur für ACF‑Blocks)
+			acf.add_action('render_block_preview', function(block){ console.log('render_block_preview'); });
+			acf.add_action('render_block_type', function(blockType){ console.log('render_block_type'); });*/
+
 
 			acf.add_action( 'ready', function( $el ) {
 
@@ -121,12 +161,12 @@ var ACFTableField = {};
 
 				if (
 					$el.hasClass('acf-field-table') &&
-					! $el.find('acf-table-root.acf-table-rendered').length
+					! $el.find('.acf-table-root.acf-table-rendered').length
 				) {
 
 					setTimeout( function() {
 
-						t.render_table( $el );
+						t.render_table( $el.find('.acf-table-root') );
 					}, 50 );
 				}
 			});
@@ -135,15 +175,58 @@ var ACFTableField = {};
 
 				if (
 					$el.hasClass('acf-field-table') &&
-					! $el.find('acf-table-root.acf-table-rendered').length
+					! $el.find('.acf-table-root.acf-table-rendered').length
 				) {
 
 					setTimeout( function() {
 
-						t.render_table( $el );
+						t.render_table( $el.find('.acf-table-root') );
 					}, 50 );
 				}
 			});
+
+			/* acf.add_action( 'render_block_preview', function( $el ) {
+
+				setTimeout( function() {
+
+					t.update_tables();
+				}, 50 );
+
+			}); */
+
+			wp.data.subscribe(() => {
+
+				const clientId = wp.data.select('core/block-editor').getSelectedBlockClientId();
+
+				if ( ! clientId ) return;
+
+				const selector = '[data-block-id="block_' + clientId + '"]';
+				const blockEl = document.querySelector(selector);
+
+				if ( ! blockEl ) return;
+
+				const field = blockEl.querySelector('.acf-field');
+
+				if ( ! field ) return;
+
+				const fieldType = field.dataset.type;
+
+				if ( fieldType === 'table' ) {
+
+					let $blockEl = $( blockEl ),
+						$rootEl = $blockEl.find('.acf-table-root');
+
+					if (
+						$rootEl &&
+						! $rootEl.hasClass('acf-table-rendered')
+					) {
+
+						t.render_table( $rootEl );
+					}
+				}
+
+			});
+
 		};
 
 		t.update_tables = function() {
@@ -239,7 +322,7 @@ var ACFTableField = {};
 
 			p.obj_root =  $el;
 
-			var that = $( this ),
+			var that = p.obj_root,
 				field_key = t.get_field_key( that ),
 				table = p.obj_root.find( '.acf-table-wrap' );
 
