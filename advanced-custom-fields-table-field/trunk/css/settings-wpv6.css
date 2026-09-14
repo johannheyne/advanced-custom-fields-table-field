@@ -1,11 +1,11 @@
 /* Fixes SCF not providing the native ACF styles for the CSS classes of the licence information page */
 
 .acf_page_acf-table-field-plugin-settings #wpbody-content > .notice,
-.scf_page_acf-table-field-pro-plugin-settings #wpbody-content > .notice {
+.scf_page_acf-table-field-plugin-settings #wpbody-content > .notice {
 	display: none;
 }
 
-.scf_page_acf-table-field-pro-plugin-settings {
+.scf_page_acf-table-field-plugin-settings {
 
 	.acf-input-wrap {
 		margin-top: 8px;
@@ -28,8 +28,8 @@
 }
 
 
-.scf_page_acf-table-field-pro-plugin-settings,
-.acf_page_acf-table-field-pro-plugin-settings {
+.scf_page_acf-table-field-plugin-settings,
+.acf_page_acf-table-field-plugin-settings {
 
 	.notice:first-child {
 		margin-top: 0 !important;
