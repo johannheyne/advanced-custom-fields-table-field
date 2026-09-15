@@ -107,9 +107,32 @@ var ACFTableField = {};
 		t.init = function() {
 
 			t.init_once();
-			t.update_tables();
 
-			// DETECT NEW TABLES AFTER DOM CHANGES {
+			function isGutenberg() {
+				return !!(window.wp && wp.data && wp.data.select('core/editor'));
+			}
+
+			function waitForGutenbergReady( callback ) {
+
+
+				const check = () => {
+
+					const id = wp.data.select('core/editor').getCurrentPostId();
+
+					if ( id ) {
+
+						callback();
+					}
+					else {
+
+						requestAnimationFrame( check );
+					}
+				};
+
+				check();
+			}
+
+			function addMutationObserver() {
 
 				let raf = null;
 
@@ -132,13 +155,31 @@ var ACFTableField = {};
 
 				});
 
-				mutationObserver.observe( document.documentElement, {
+				mutationObserver.observe( document.body, {
 					childList: true,
 					subtree: true,
 				});
 
-			// }
+			}
 
+			if ( isGutenberg() ) {
+
+				waitForGutenbergReady(() => {
+					t.update_tables();
+					addMutationObserver();
+				});
+			}
+			else {
+
+				acf.add_action('ready', function($el){
+
+					requestAnimationFrame(() => {
+
+						t.update_tables();
+						addMutationObserver();
+					});
+				});
+			}
 		};
 
 		t.update_tables = function() {
