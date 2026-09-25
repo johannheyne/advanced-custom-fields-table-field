@@ -476,19 +476,6 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 					return false;
 				}
 
-				// Removes unsuported value entries
-				$value = array_intersect_key( $value,
-					array_flip( array(
-						'header',
-						'body',
-						'use_header',
-						'caption',
-						'p',
-						'h',
-						'b',
-					) )
-				);
-
 				if ( empty( $value ) ) {
 
 					return false;
@@ -498,8 +485,57 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 
 			// GETS FIELDS DATA {
 
+				$data = array();
+
+				// BLOCK
+				if ( strpos( $post_id, 'block_' ) === 0 ) {
+
+                    // Gets post to parse blocks data
+                    $post = get_post();
+
+                    if ( isset( $post->post_content ) ) {
+
+                        $blocks = parse_blocks( $post->post_content );
+
+                        if ( ! empty( $blocks ) ) {
+
+                            foreach( $blocks as $block ) {
+
+                                /**
+                                 * Continue when is no real block
+                                 * Not just editable blocks are parsed as blocks, but also other post content.
+                                 * Only real blocks have a blockName. Others have NULL as blockName value.
+                                 */
+
+                                if ( ! is_string( $block['blockName'] ) ) {
+
+                                    continue;
+                                }
+
+                                // Continue when is not a ACF blocks
+                                if (
+                                    strpos( $block['blockName'], 'acf/' ) !== 0 ||
+                                    empty( $block['attrs'] )
+                                ) {
+
+                                    continue;
+                                }
+
+                                // Try if ACF block has value
+                                if ( isset( $block['attrs']['data'][ $field['name'] ] ) ) {
+
+                                    $data = $block['attrs']['data'][ $field['name'] ];
+                                }
+                            }
+                        }
+                    }
+                }
+
 				// try post_meta
-				$data = get_post_meta( $post_id, $field['name'], true );
+				if ( empty( $data ) ) {
+
+					$data = get_post_meta( $post_id, $field['name'], true );
+				}
 
 				// try user meta
 				if ( empty( $data ) ) {
@@ -523,11 +559,12 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 					$data = get_option('options_' . $field['name']);
 				}
 
+
 				// prevents updating a field, thats data are not defined yet
-				if ( empty( $data ) ) {
+				/* if ( empty( $data ) ) {
 
 					return false;
-				}
+				} */
 
 				if ( is_string( $data ) ) {
 
@@ -536,15 +573,20 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 
 				if ( ! is_array( $data ) ) {
 
-					return false;
+					$data = array();
 				}
 
 			// }
 
 			// GET VARS {
 
-				$db_amount_of_top_cols = count( $data['c'] );
+				$db_amount_of_top_cols = 1;
 				$new_amount_of_body_cols = $db_amount_of_top_cols;
+
+				if ( isset( $data['c'] ) ) {
+
+					$db_amount_of_top_cols = count( $data['c'] );
+				}
 
 				if ( isset( $value['b'][0] ) ) {
 
@@ -558,16 +600,39 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 
 			// }
 
+			// UPDATES FIELD DATA BY UNFORMATED VALUE {
+
+				if ( ! empty( $value['p']['o']['uh'] ) ) {
+
+					$data['p']['o']['uh']  = $value['p']['o']['uh'] ;
+				}
+
+				if ( ! empty( $value['p']['ca'] ) ) {
+
+					$data['p']['ca']  = $value['p']['ca'] ;
+				}
+
+				if (
+					isset( $value['h'] ) AND
+					$value['h'] !== false
+				) {
+
+					$data['h'] = $value['h'];
+				}
+
+				if ( isset( $value['b'] ) ) {
+
+					$data['b'] = $value['b'];
+				}
+
+			// }
+
 			// UPDATES FIELD DATA BY FORMATED VALUE {
 
 
 				if ( ! empty( $value['use_header'] ) ) {
 
 					$data['p']['o']['uh'] = 1;
-				}
-				else {
-
-					$data['p']['o']['uh'] = 0;
 				}
 
 				if ( isset( $value['caption'] ) ) {
@@ -586,28 +651,6 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 				if ( isset( $value['body'] ) ) {
 
 					$data['b'] = $value['body'];
-				}
-
-			// }
-
-			// UPDATES FIELD DATA BY UNFORMATED VALUE {
-
-				if ( ! empty( $value['p'] ) ) {
-
-					$data['p'] = $value['p'];
-				}
-
-				if (
-					isset( $value['h'] ) AND
-					$value['h'] !== false
-				) {
-
-					$data['h'] = $value['h'];
-				}
-
-				if ( isset( $value['b'] ) ) {
-
-					$data['b'] = $value['b'];
 				}
 
 			// }
@@ -640,6 +683,17 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 
 			// }
 
+			$schema = $this->get_rest_schema( $field );
+			$value = $this->apply_schema_defaults( $value, $schema );
+			$value = rest_sanitize_value_from_schema( $value, $schema );
+
+			// $post_id is integer when post is saved, $post_id is string when block is saved
+			/* if ( gettype( $post_id ) === 'integer' ) {
+
+				// only saving a post needs addslashes
+				$value = $this->table_slash( $value );
+			} */
+
 			// SANITIZES DATA VALUES {
 
 				array_walk_recursive( $value, function ( &$item ) {
@@ -651,13 +705,6 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 				});
 
 			// }
-
-			// $post_id is integer when post is saved, $post_id is string when block is saved
-			if ( gettype( $post_id ) === 'integer' ) {
-
-				// only saving a post needs addslashes
-				$value = $this->table_slash( $value );
-			}
 
 			return $value;
 		}
@@ -907,12 +954,173 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 			$schema = array(
 				'type'     => array( 'object', 'null' ),
 				'title' => 'ACF table custom field type',
-				'type' => array( 'object', 'boolean' ),
-				//'properties' => array(),
-				'required' => ! empty( $field['required'] ) ? array() : false,
+				'properties' => array(
+					'acftf' => array(
+                        'title' => 'Table general info',
+                        'type' => 'object',
+                        'properties' => array(
+                            'v' => array(
+                                'title' => 'Table Field plugin version',
+                                'type' => 'string',
+								'required' => true,
+								'default' => ACF_TABLE_FIELD_PLUGIN_VERSION,
+							),
+                        ),
+						'required' => true,
+						'default' => array( 'v' => ACF_TABLE_FIELD_PLUGIN_VERSION ),
+                    ),
+					'p' => array(
+						'title' => 'Field parameter',
+						'type' => 'object',
+						'properties' => array(
+							'o' => array(
+								'title' => 'Table options',
+								'type' => 'object',
+								'properties' => array(
+									'uh' => array(
+										'title' => 'Use table header',
+										'type' => 'boolean',
+										'required' => true,
+										'default' => false,
+									),
+								),
+								'default' => array( 'uh' => false ),
+								'required' => true,
+							),
+							'ca' => array(
+								'title' => 'Table caption',
+								'type' => 'string',
+								'required' => true,
+								'default' => '',
+							),
+						),
+						'required' => true,
+						'default' => array( 'o' => array( 'uh' => false ), 'ca' => '' ),
+					),
+					'c' => array(
+						'title' => 'Table columns',
+						'type' => 'array',
+						'items' => array(
+							'title' => 'Table column',
+							'type' => 'object',
+							'properties' => array(
+								'p' => array(
+									'title' => 'Column parameters',
+									'type' => 'object',
+									'required' => true,
+									'default' => array(),
+								),
+							),
+							'default' => array( 'p' => array() ),
+							'required' => true,
+						),
+						'required' => true,
+						'default' => array( array( 'p' => '' ) ),
+					),
+					'h' => array(
+						'title' => 'Table header rows',
+						'type' => 'array',
+						'items' => array(
+							'title' => 'Table header cell',
+							'type' => 'object',
+							'properties' => array(
+								'c' => array(
+									'title' => 'Header cell content',
+									'type' => 'string',
+									'required' => true,
+									'default' => '',
+								),
+							),
+							'default' => array( 'c' => '' ),
+						),
+						'required' => true,
+						'default' => array( array( 'c' => '' ) ),
+					),
+					'b' => array(
+						'title' => 'Table body rows',
+						'type' => 'array',
+						'items' => array(
+							'title' => 'Table body columns',
+							'type' => 'array',
+							'items' => array(
+								'title' => 'Table body cell',
+								'type' => 'object',
+								'properties' => array(
+									'c' => array(
+										'title' => 'Header row cells',
+										'type' => 'string',
+										'required' => true,
+										'default' => '',
+									),
+								),
+								'default' => array( 'c' => '' ),
+							),
+							'required' => true,
+							'default' => array( array( 'c' => '' ) ),
+						),
+						'required' => true,
+						'default' => array( array( array( 'c' => '' ) ) ),
+					),
+				),
+				'required' => ! empty( $field['required'] ) ? true : false,
 			);
 
 			return $schema;
+		}
+
+		/**
+		* apply_schema_defaults()
+		*
+		* Applies default value entries given by schema
+		*/
+
+		function apply_schema_defaults( $value, array $schema ) {
+
+			if (
+				( null === $value || array() === $value ) &&
+				isset( $schema['default'] )
+			) {
+
+				$value = $schema['default'];
+			}
+
+			$schema_types = array();
+
+			if ( is_array( $schema['type'] ) ) {
+
+				$schema_types = $schema['type'];
+			}
+
+			if ( is_string( $schema['type'] ) ) {
+
+				$schema_types[] = $schema['type'];
+			}
+
+			if (
+				in_array( 'object', $schema_types ) &&
+				isset( $schema['properties'] ) &&
+				is_array( $value )
+			) {
+
+				foreach ( $schema['properties'] as $key => $prop_schema ) {
+
+					$value[ $key ] = $this->apply_schema_defaults( $value[ $key ] ?? null, $prop_schema );
+				}
+			}
+
+			if (
+				'array' === $schema['type'] &&
+				isset( $schema['items'] ) &&
+				is_array( $value )
+			) {
+
+				foreach ( $value as $i => $item ) {
+
+					$value[ $i ] = $this->apply_schema_defaults( $item, $schema['items'] );
+				}
+			}
+
+			return $value;
 		}
 
 		/**
