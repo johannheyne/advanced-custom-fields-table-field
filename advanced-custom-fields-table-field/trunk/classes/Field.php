@@ -473,12 +473,12 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 
 				if ( ! is_array( $value ) ) {
 
-					return false;
+					return null;
 				}
 
 				if ( empty( $value ) ) {
 
-					return false;
+					return null;
 				}
 
 			// }
@@ -563,7 +563,7 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 				// prevents updating a field, thats data are not defined yet
 				/* if ( empty( $data ) ) {
 
-					return false;
+					return null;
 				} */
 
 				if ( is_string( $data ) ) {
