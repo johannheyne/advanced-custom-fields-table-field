@@ -487,75 +487,77 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 
 			// }
 
-			// GETS FIELDS DATA FROM DATABASE {
+			// GETS FIELD DATA FROM DATABASE {
 
 				$data = array();
-
-				// BLOCK
-				if ( strpos( $post_id, 'block_' ) === 0 ) {
-
-                    // Gets post to parse blocks data
-                    $post = get_post();
-
-                    if ( isset( $post->post_content ) ) {
-
-                        $blocks = parse_blocks( $post->post_content );
-
-                        if ( ! empty( $blocks ) ) {
-
-                            foreach( $blocks as $block ) {
-
-                                /**
-                                 * Continue when is no real block
-                                 * Not just editable blocks are parsed as blocks, but also other post content.
-                                 * Only real blocks have a blockName. Others have NULL as blockName value.
-                                 */
-
-                                if ( ! is_string( $block['blockName'] ) ) {
-
-                                    continue;
-                                }
-
-                                // Continue when is not a ACF blocks
-                                if (
-                                    strpos( $block['blockName'], 'acf/' ) !== 0 ||
-                                    empty( $block['attrs'] )
-                                ) {
-
-                                    continue;
-                                }
-
-                                // Try if ACF block has value
-                                if ( isset( $block['attrs']['data'][ $field['name'] ] ) ) {
-
-                                    $data = $block['attrs']['data'][ $field['name'] ];
-                                }
-                            }
-                        }
-                    }
-                }
 
 				// Gets type of source
 				if ( function_exists( 'acf_decode_post_id' ) ) {
 
 					$info = acf_decode_post_id( $post_id );
 
-					if ( $info['type'] === 'post' ) {
+					if ( $info['type'] === 'block' ) {
+
+						// Gets post to parse blocks data
+						$post = get_post();
+
+						if ( isset( $post->post_content ) ) {
+
+							$blocks = parse_blocks( $post->post_content );
+
+							if ( ! empty( $blocks ) ) {
+
+								foreach( $blocks as $block ) {
+
+									/**
+									 * Continue when is no real block
+									 * Not just editable blocks are parsed as blocks, but also other post content.
+									 * Only real blocks have a blockName. Others have NULL as blockName value.
+									 */
+
+									if ( ! is_string( $block['blockName'] ) ) {
+
+										continue;
+									}
+
+									// Continue when is not a ACF blocks
+									if (
+										strpos( $block['blockName'], 'acf/' ) !== 0 ||
+										empty( $block['attrs'] )
+									) {
+
+										continue;
+									}
+
+									// Try if ACF block has value
+									if ( isset( $block['attrs']['data'][ $field['name'] ] ) ) {
+
+										$data = $block['attrs']['data'][ $field['name'] ];
+									}
+								}
+							}
+						}
+					}
+
+					else if (
+						$info['type'] === 'post' ||
+						$info['type'] === 'woo_order'
+					) {
 
 						$data = get_post_meta( $info['id'], $field['name'], true );
 					}
 
-					if ( $info['type'] === 'user' ) {
+					else if ( $info['type'] === 'user' ) {
 
 						$data = get_user_meta( $info['id'], $field['name'], true );
 					}
 
-					if ( $info['type'] === 'term' ) {
+					else if ( $info['type'] === 'term' ) {
 
 						$data = get_term_meta( $info['id'], $field['name'], true );
 					}
 
-					if ( $info['type'] === 'option' ) {
+					else if ( $info['type'] === 'option' ) {
 
 						$data = get_option('options_' . $field['name']);
 					}
