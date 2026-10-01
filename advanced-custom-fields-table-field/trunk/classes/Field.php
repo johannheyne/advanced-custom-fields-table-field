@@ -687,6 +687,28 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 
 			// }
 
+			// ENSURES ORDERING ROWS AND COLS BY GIVEN KEYS {
+
+				// ensures ordering of header row data
+				if ( isset( $value['h'] ) ) {
+
+					ksort( $value['h'], SORT_NUMERIC );
+				}
+
+				// ensures ordering of body rows and cols
+				if ( isset( $value['b'] ) ) {
+
+					ksort( $value['b'], SORT_NUMERIC );
+
+					foreach ( $value['b'] as &$row_data ) {
+
+						ksort( $row_data, SORT_NUMERIC );
+					}
+					unset( $row_data );
+				}
+
+			// }
+
 			// APPLIES DEFAULT VALUES BY SCHEMA {
 
 				$schema = $this->get_rest_schema( $field );
