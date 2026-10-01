@@ -462,14 +462,18 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 
 		function update_value( $value, $post_id, $field ) {
 
-			if ( is_string( $value ) ) {
+			// DECODES URL ENCODED JSON STRING VALUES {
 
-				$value = wp_unslash( $value );
-				$value = urldecode( $value );
-				$value = json_decode( $value, true );
-			}
+				if ( is_string( $value ) ) {
 
-			// SANITIZE INPUT {
+					$value = wp_unslash( $value );
+					$value = urldecode( $value );
+					$value = json_decode( $value, true );
+				}
+
+			// }
+
+			// REJECTS INVALID VALUE TYPES {
 
 				if ( ! is_array( $value ) ) {
 
@@ -483,7 +487,7 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 
 			// }
 
-			// GETS FIELDS DATA {
+			// GETS FIELDS DATA FROM DATABASE {
 
 				$data = array();
 
@@ -571,7 +575,7 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 
 			// }
 
-			// GET VARS {
+			// GET SOME REQUIRED VARS {
 
 				$db_amount_of_top_cols = 1;
 				$new_amount_of_body_cols = $db_amount_of_top_cols;
@@ -622,7 +626,6 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 
 			// UPDATES FIELD DATA BY FORMATED VALUE {
 
-
 				if ( ! empty( $value['use_header'] ) ) {
 
 					$data['p']['o']['uh'] = 1;
@@ -648,7 +651,7 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 
 			// }
 
-			// UPDATES CHANGES TO VALUE {
+			// APPLIES CHANGES TO VALUE {
 
 				$value = $data;
 
@@ -676,18 +679,21 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 
 			// }
 
-			$schema = $this->get_rest_schema( $field );
-			$value = $this->apply_schema_defaults( $value, $schema );
-			$value = rest_sanitize_value_from_schema( $value, $schema );
+			// UPDATES PLUGIN VERSION {
 
-			// $post_id is integer when post is saved, $post_id is string when block is saved
-			/* if ( gettype( $post_id ) === 'integer' ) {
+				$value['acftf']['v'] = ACF_TABLE_FIELD_PLUGIN_VERSION;
 
-				// only saving a post needs addslashes
-				$value = $this->table_slash( $value );
-			} */
+			// }
 
-			// SANITIZES DATA VALUES {
+			// SANITIZES DATA BY REST SCHEMA {
+
+				$schema = $this->get_rest_schema( $field );
+				$value = $this->apply_schema_defaults( $value, $schema );
+				$value = rest_sanitize_value_from_schema( $value, $schema );
+
+			// }
+
+			// SANITIZES DATA STRING VALUES {
 
 				array_walk_recursive( $value, function ( &$item ) {
 
@@ -698,6 +704,13 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 				});
 
 			// }
+
+			// $post_id is integer when post is saved, $post_id is string when block is saved
+			/* if ( gettype( $post_id ) === 'integer' ) {
+
+				// only saving a post needs addslashes
+				$value = $this->table_slash( $value );
+			} */
 
 			return $value;
 		}
