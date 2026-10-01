@@ -573,6 +573,8 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 					$data = array();
 				}
 
+				$data_restore = $data;
+
 			// }
 
 			// GET SOME REQUIRED VARS {
@@ -685,15 +687,26 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 
 			// }
 
-			// SANITIZES DATA BY REST SCHEMA {
+			// APPLIES DEFAULT VALUES BY SCHEMA {
 
 				$schema = $this->get_rest_schema( $field );
 				$value = $this->apply_schema_defaults( $value, $schema );
+
+			// }
+
+			// STORES REST VALIDATION RESULT {
+
+				$validation_before_sanitize = rest_validate_value_from_schema( $value, $schema );
+
+			// }
+
+			// SANITIZES VALUE BY REST SCHEMA {
+
 				$value = rest_sanitize_value_from_schema( $value, $schema );
 
 			// }
 
-			// SANITIZES DATA STRING VALUES {
+			// SANITIZES STRING VALUES {
 
 				array_walk_recursive( $value, function ( &$item ) {
 
@@ -702,6 +715,26 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 						$item = wp_kses_post( $item );
 					}
 				});
+
+			// }
+
+			// VALIDATES VALUE BY REST SCHEMA {
+
+				$sanitized_validation = rest_validate_value_from_schema( $value, $schema );
+
+				if ( is_wp_error( $sanitized_validation ) ) {
+
+					if ( is_wp_error( $validation_before_sanitize ) ) {
+
+						error_log( print_r( $validation_before_sanitize, true ) );
+					}
+					else {
+
+						error_log( print_r( $sanitized_validation, true ) );
+					}
+
+					return $data_restore;
+				}
 
 			// }
 
