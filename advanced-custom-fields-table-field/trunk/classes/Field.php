@@ -601,12 +601,12 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 
 			// UPDATES FIELD DATA BY UNFORMATED VALUE {
 
-				if ( ! empty( $value['p']['o']['uh'] ) ) {
+				if ( isset( $value['p']['o']['uh'] ) ) {
 
 					$data['p']['o']['uh']  = $value['p']['o']['uh'] ;
 				}
 
-				if ( ! empty( $value['p']['ca'] ) ) {
+				if ( isset( $value['p']['ca'] ) ) {
 
 					$data['p']['ca']  = $value['p']['ca'] ;
 				}
@@ -628,9 +628,20 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 
 			// UPDATES FIELD DATA BY FORMATED VALUE {
 
-				if ( ! empty( $value['use_header'] ) ) {
+				if (
+					isset( $value['use_header'] ) &&
+					$value['use_header'] === true
+				) {
 
 					$data['p']['o']['uh'] = 1;
+				}
+
+				if (
+					isset( $value['use_header'] )
+					&& $value['use_header'] === false
+				) {
+
+					$data['p']['o']['uh'] = 0;
 				}
 
 				if ( isset( $value['caption'] ) ) {
@@ -1041,13 +1052,14 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 								'properties' => array(
 									'uh' => array(
 										'title' => 'Use table header',
-										'type' => 'boolean',
+										'type' => 'integer',
+										'enum'     => array( 0, 1 ),
 										'required' => true,
-										'default' => false,
+										'default' => 0,
 									),
 								),
 								'additionalProperties' => false,
-								'default' => array( 'uh' => false ),
+								'default' => array( 'uh' => 0 ),
 								'required' => true,
 							),
 							'ca' => array(
@@ -1059,7 +1071,7 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 						),
 						'additionalProperties' => false,
 						'required' => true,
-						'default' => array( 'o' => array( 'uh' => false ), 'ca' => '' ),
+						'default' => array( 'o' => array( 'uh' => 0 ), 'ca' => '' ),
 					),
 					'c' => array(
 						'title' => 'Table columns',
