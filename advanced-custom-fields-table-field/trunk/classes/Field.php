@@ -559,13 +559,6 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 					$data = get_option('options_' . $field['name']);
 				}
 
-
-				// prevents updating a field, thats data are not defined yet
-				/* if ( empty( $data ) ) {
-
-					return null;
-				} */
-
 				if ( is_string( $data ) ) {
 
 					$data = json_decode( $data, true );
