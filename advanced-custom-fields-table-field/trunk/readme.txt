@@ -2,8 +2,8 @@
 Contributors: jonua
 Tags: acf, table, scf, advanced custom fields, secure custom fields
 Requires at least: 5.3
-Tested up to: 7.1.0
-Stable tag: 1.4.0
+Tested up to: 7.1.2
+Stable tag: 1.4.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -526,21 +526,30 @@ However, only when activated as a plugin will updates be available.
 
 There is also a <a href="https://www.acf-table-field.com?src=wp" rel="noopener">Table Field Pro</a> Add-on for the Advanced Custom Fields and Secure Custom Fields plugins.
 
-* Setup custom default table
-* Setup minimum and maximum amount of rows and columns
-* Setup style choice for the table and parts of the table
-* Restrict table editing functionalities
-* Configurable optional WordPress editor for cell content editing
-* Table head and foot rows
-* Stub column
-* Rowspan and colspan
-* Improved way for moving rows and columns
-* Disable moving individual columns
-* Support for REST-API
-* Support for WP GraphQL
-* Support for third-party plugins
+The Pro plugin offers a highly configurable and flexible table interface.
 
-The Pro plugin can run in parallel and you can change an existing field with field type "Table" to the field type "Table Pro" as required.
+It provides support for 29 languages: Albanian, Chinese, Czech, Danish, Dutch, Finnish, French, (France), German, Greek, Hebrew, Hindi, Icelandic, Italian, Japanese, Korean, Lithuanian, Norwegian, (Bokmål), Polish, Portuguese, Russian, Serbian, Slovak, Slovenian, Spanish, Swedish, Turkish, Ukrainian, Vietnamese
+
+* Table data import for CSV and TSV
+* Table reset
+* Fullscreen table editing
+* Pre-definable custom default table
+* Pre-definable table editing functionalities
+* Pre-definable minimum and maximum amount of rows and columns
+* Pre-definable style choices for the table and all parts of the table
+* Custom column widths for the edditing table
+* Table foot
+* Stub column
+* Disable moving individual columns
+* Optional table cell content editing by configurable WordPress editor
+* Rowspan and colspan
+* Build in WordPress shortcode
+* Ouput - hide table when empty
+* Support for Polylang and Polylang Pro
+* Integrated WP GraphQL support
+* Configurable Sanitizing
+
+The Pro plugin can run alongside the free version, allowing you to convert existing fields from the Table field type to Table Pro whenever needed.
 
 <a href="https://www.acf-table-field.com?src=wp" rel="noopener">to the plugin website</a>
 
