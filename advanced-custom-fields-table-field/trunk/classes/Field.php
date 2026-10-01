@@ -540,25 +540,21 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 
 					$info = acf_decode_post_id( $post_id );
 
-					// try post_meta
 					if ( $info['type'] === 'post' ) {
 
 						$data = get_post_meta( $info['id'], $field['name'], true );
 					}
 
-					// try user meta
 					if ( $info['type'] === 'user' ) {
 
 						$data = get_user_meta( $info['id'], $field['name'], true );
 					}
 
-					// try term_meta
 					if ( $info['type'] === 'term' ) {
 
 						$data = get_term_meta( $info['id'], $field['name'], true );
 					}
 
-					// try options
 					if ( $info['type'] === 'option' ) {
 
 						$data = get_option('options_' . $field['name']);
