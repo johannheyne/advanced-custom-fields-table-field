@@ -679,6 +679,7 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 					for ( $i = $db_amount_of_top_cols; $i < $new_amount_of_body_cols; $i++ ) {
 
 						// adds a column entry in top row data
+						$value['c'] = $value['c'] ?? array();
 						array_push( $value['c'], array( 'p' => '' ) );
 					}
 				}
@@ -688,7 +689,7 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 					for ( $i = $new_amount_of_body_cols; $i < $db_amount_of_top_cols; $i++ ) {
 
 						// removes a column entry in top row data
-						array_shift( $value['c'] );
+						array_pop( $value['c'] );
 					}
 				}
 
