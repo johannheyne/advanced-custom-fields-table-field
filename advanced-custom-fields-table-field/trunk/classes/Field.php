@@ -535,32 +535,34 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
                     }
                 }
 
-				// try post_meta
-				if ( empty( $data ) ) {
+				// Gets type of source
+				if ( function_exists( 'acf_decode_post_id' ) ) {
 
-					$data = get_post_meta( $post_id, $field['name'], true );
-				}
+					$info = acf_decode_post_id( $post_id );
 
-				// try user meta
-				if ( empty( $data ) ) {
+					// try post_meta
+					if ( $info['type'] === 'post' ) {
 
-					$data = get_user_meta( str_replace('user_', '', $post_id ), $field['name'], true );
-				}
+						$data = get_post_meta( $info['id'], $field['name'], true );
+					}
 
-				// try term_meta
-				if ( empty( $data ) ) {
+					// try user meta
+					if ( $info['type'] === 'user' ) {
 
-					$data = get_term_meta( str_replace('term_', '', $post_id ), $field['name'], true );
-				}
+						$data = get_user_meta( $info['id'], $field['name'], true );
+					}
 
-				// try options
-				if (
-					empty( $data ) AND (
-						$post_id === 'options' OR
-						$post_id === 'option'
-					)
-				) {
-					$data = get_option('options_' . $field['name']);
+					// try term_meta
+					if ( $info['type'] === 'term' ) {
+
+						$data = get_term_meta( $info['id'], $field['name'], true );
+					}
+
+					// try options
+					if ( $info['type'] === 'option' ) {
+
+						$data = get_option('options_' . $field['name']);
+					}
 				}
 
 				if ( is_string( $data ) ) {
