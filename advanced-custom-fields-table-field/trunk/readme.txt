@@ -561,8 +561,8 @@ The Pro plugin can run alongside the free version, allowing you to convert exist
 = 1.4.1 =
 * Replaces setInterval() usage to prevent rare UI issues
 * Fixes _acf_changed meta Error
-* Completes the schema
-* Adds schema validation and sanitizing for table data on field updates
+* Completes the REST schema
+* Adds schema validation and sanitizing for table data on field update
 * Adds ensuring rows and cells ordering by array key when updating table data
 
 = 1.4.0 =
