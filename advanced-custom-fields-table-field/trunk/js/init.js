@@ -109,7 +109,15 @@ var ACFTableField = {};
 			t.init_once();
 
 			function isGutenberg() {
-				return !!(window.wp && wp.data && wp.data.select('core/editor'));
+
+				if (
+					document.body &&
+					document.body.classList.contains('block-editor-page')
+				) {
+					return true;
+				}
+
+				return false;
 			}
 
 			function waitForGutenbergReady( callback ) {
