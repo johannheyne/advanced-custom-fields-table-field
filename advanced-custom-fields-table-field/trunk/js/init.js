@@ -108,7 +108,7 @@ var ACFTableField = {};
 
 			t.init_once();
 
-			function isGutenberg() {
+			function isBlockEditor() {
 
 				if (
 					document.body &&
@@ -120,7 +120,7 @@ var ACFTableField = {};
 				return false;
 			}
 
-			function waitForGutenbergReady( callback ) {
+			function waitForBlockEditorReady( callback ) {
 
 
 				const check = () => {
@@ -170,9 +170,9 @@ var ACFTableField = {};
 
 			}
 
-			if ( isGutenberg() ) {
+			if ( isBlockEditor() ) {
 
-				waitForGutenbergReady(() => {
+				waitForBlockEditorReady(() => {
 					t.update_tables();
 					addMutationObserver();
 				});
