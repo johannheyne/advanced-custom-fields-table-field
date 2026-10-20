@@ -58,7 +58,7 @@ if ( ! class_exists( '\ACFTablefield\Field' ) ) {
 
 			$this->description = __('This allows you to easily edit tabular content.', 'advanced-custom-fields-table-field');
 
-			$this->preview_image = FileSystem::get('plugin_dir_path') . '/assets/images/field-preview-table.png';
+			$this->preview_image = FileSystem::get('plugin_dir_url') . '/assets/images/field-preview-table.png';
 
 			$this->doc_url = 'https://wordpress.org/plugins/advanced-custom-fields-table-field/';
 

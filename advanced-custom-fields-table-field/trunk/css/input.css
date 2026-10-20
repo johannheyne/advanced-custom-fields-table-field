@@ -336,3 +336,12 @@
 	/* FIELDS } */
 
 /* OPTIONBOX } */
+
+/* FIELDGROUP PAGE { */
+
+	.field-type-icon.field-type-icon-table:before {
+		-webkit-mask-image: url(../assets/images/field-type-icon-table.svg);
+		mask-image: url(../assets/images/field-type-icon-table.svg);
+	}
+
+/* FIELDGROUP PAGE } */
