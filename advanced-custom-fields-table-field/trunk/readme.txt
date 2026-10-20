@@ -3,7 +3,7 @@ Contributors: jonua
 Tags: acf, table, scf, advanced custom fields, secure custom fields
 Requires at least: 5.3
 Tested up to: 7.1.2
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -557,6 +557,10 @@ The Pro plugin can run alongside the free version, allowing you to convert exist
 
 
 == Changelog ==
+
+= 1.4.3 =
+* Adds field type icon
+* Fixes field type preview
 
 = 1.4.2 =
 * Fixed an issue where the table editor UI stopped working in SCF after version 1.4.1.

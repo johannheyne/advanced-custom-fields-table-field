@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 1.4.3 =
+* Adds field type icon
+* Fixes field type preview
+
 = 1.4.2 =
 * Fixed an issue where the table editor UI stopped working in SCF after version 1.4.1.
 
