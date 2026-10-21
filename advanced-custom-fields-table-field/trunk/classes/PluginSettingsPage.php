@@ -15,6 +15,9 @@ class PluginSettingsPage {
 
 	private $docs_url = 'https://www.acf-table-field.com/docs/';
 	private $github_doc_url = 'https://github.com/johannheyne/acf-table-field-support/issues/new/choose';
+	private $github_sponsors_url = 'https://github.com/sponsors/johannheyne';
+	private $buy_stripe_url = 'https://buy.stripe.com/5kQdR24iFenP5AtbhQ7ok00';
+	private $buy_me_a_coffee_url = 'https://www.buymeacoffee.com/johannheyne';
 	private $website_url = 'https://www.acf-table-field.com';
 	private $wordpress_website_url = 'https://wordpress.org/plugins/advanced-custom-fields-table-field/';
 	private $website_url_pricing = 'https://www.acf-table-field.com#pricing';
@@ -203,6 +206,17 @@ class PluginSettingsPage {
 				<div class="inner" style="padding: 24px;">
 					<p><?php echo sprintf( _x( 'WordPress Repository Website<br><a target="_blank" href="%s">%s</a>', 'settings', PluginInfo::get('text_domain') ), $this->wordpress_website_url, $this->wordpress_website_url ); ?></p>
 					<p><?php echo sprintf( _x( 'For <b>support</b>, please use the plugin’s official <a target="_blank" rel="noopener" href="%s">WordPress support forum</a>. <br>I appreciate any feedback.<br>Cheers, Johann', 'settings', PluginInfo::get('text_domain') ), $this->wordpress_repository_support_url ); ?></p>
+				</div>
+			</div>
+
+			<div class="acf-box">
+				<div class="title"><h3><?php _ex( 'Enjoying this plugin?', 'settings', PluginInfo::get('text_domain') ); ?></h3></div>
+				<div class="inner" style="padding: 24px;">
+					<p><?php echo _x( 'Wouldn\'t it be amazing if this open-source work could be sustained entirely by the community? Your support helps make that vision a reality. Rather than locking features behind a Pro version, community contributions help keep the project open, accessible, and continuously evolving for everyone. With enough support, new features and improvements can be shared with the entire community without limitations.', 'settings', PluginInfo::get('text_domain') ); ?></p>
+					<p><?php echo sprintf( _x( '<a target="_blank" href="%s">%s Github Sponsors</a>', 'settings', PluginInfo::get('text_domain') ), $this->github_sponsors_url, '<img draggable="false" role="img" class="emoji" alt="Heart" src="https://s.w.org/images/core/emoji/17.0.2/svg/2764.svg">' ); ?></p>
+					<p><?php echo sprintf( _x( '<a target="_blank" href="%s">%s Donate via Stripe</a>', 'settings', PluginInfo::get('text_domain') ), $this->buy_stripe_url, '<img draggable="false" role="img" class="emoji" alt="Credit Card" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f4b3.svg">' ); ?></p>
+					<p><?php echo sprintf( _x( '<a target="_blank" href="%s">%s Buy me a coffee</a>', 'settings', PluginInfo::get('text_domain') ), $this->buy_me_a_coffee_url, '<img draggable="false" role="img" class="emoji" alt="Cup ofCoffee" src="https://s.w.org/images/core/emoji/17.0.2/svg/2615.svg">' ); ?></p>
+					<p><?php echo _x( 'Thank you for your support! It means a lot to me and helps ensure the ongoing maintenance and long-term preservation of this open-source project.<br>Cheers, Johann', 'settings', PluginInfo::get('text_domain') ); ?></p>
 				</div>
 			</div>
 
