@@ -558,6 +558,9 @@ The Pro plugin can run alongside the free version, allowing you to convert exist
 
 == Changelog ==
 
+= 1.4.4 =
+* Adds sponsor and donation options
+
 = 1.4.3 =
 * Adds field type icon
 * Fixes field type preview
