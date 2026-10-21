@@ -16,7 +16,7 @@ The Table Field plugin is an Add-on and enhances the functionality of the [Advan
 
 This plugin requires the [Advanced Custom Fields plugin](https://www.advancedcustomfields.com) or the [Secure Custom Fields plugin](https://wordpress.org/plugins/secure-custom-fields/)!
 
-The table field works also with the ACF repeater and flexible field types and supports the [ACF Blocks for Gutenberg](https://www.advancedcustomfields.com/blog/acf-5-8-introducing-acf-blocks-for-gutenberg/)
+The table field works also with the ACF repeater and flexible field types and supports the [ACF Blocks for Gutenberg](https://www.advancedcustomfields.com/blog/acf-5-8-introducing-acf-blocks-for-gutenberg/).
 
 = Features =
 * Table Header (Option)
@@ -85,7 +85,7 @@ if ( ! empty ( $table ) ) {
 }
 `
 
-= Table field returns no data on get_field()? =
+= The Table field returns no data on get_field()? =
 
 If the table has only one empty cell, then `get_field()` returns `FALSE`. `get_field()` returns NULL when a field is not stored in the database. That happens when a page is copied but not their fields content. You can check both with `empty()`…
 
