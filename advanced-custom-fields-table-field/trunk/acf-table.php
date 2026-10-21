@@ -1,40 +1,80 @@
 <?php
 /*
-Plugin Name: Advanced Custom Fields: Table Field
-Plugin URI: http://www.johannheyne.de/
-Description: This free Add-on adds a table field type for the Advanced Custom Fields plugin.
-Version: 1.3.15
+Plugin Name: Table Field Add-on for ACF and SCF
+Plugin URI: https://www.acf-table-field.com
+Description: This free Add-on adds a table field type for the plugins Advanced Custom Fields and Secure Custom Fields.
+Version: 1.4.3
 Author: Johann Heyne
-Author URI: http://www.johannheyne.de/
+Author URI: http://www.johannheyne.de
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: acf-table
-Domain Path: /lang/
+Text Domain: advanced-custom-fields-table-field
+Domain Path: /languages
 */
 
-// 1. set text domain
-// Reference: https://codex.wordpress.org/Function_Reference/load_plugin_textdomain
-function acf_table_load_plugin_textdomain( $version ) {
+namespace ACFTablefield;
 
-	load_plugin_textdomain( 'acf-table', false, dirname( plugin_basename(__FILE__) ) . '/lang/' );
+use ACFTablefield\PluginClasses;
+use ACFTablefield\PluginInfo;
+
+if ( ! defined( 'ABSPATH' ) ) {
+
+	exit; // Exit if accessed directly
 }
 
-add_action('plugins_loaded', 'acf_table_load_plugin_textdomain');
+add_action( 'init', function(){
 
+	/**
+	 * Exits if plugin already exits
+	 */
 
-// 2. Include field type for ACF5
-// $version = 5 and can be ignored until ACF6 exists
-function include_field_types_table( $version ) {
+	if ( defined( 'ACF_TABLE_FIELD_PLUGIN_VERSION' ) ) {
 
-	include_once('acf-table-v5.php');
-}
+		return;
+	}
 
-add_action('acf/include_field_types', 'include_field_types_table');
+	/**
+	 * Exits if ACF is not present
+	 */
 
-// 3. Include field type for ACF4
-function register_fields_table() {
+	if ( ! function_exists( 'acf_register_field_type' ) ) {
 
-	include_once('acf-table-v4.php');
-}
+		return;
+	}
 
-add_action('acf/register_fields', 'register_fields_table');
+	/**
+	 * Defines current plugin version.
+	 * Start at version 1.0.0 and use SemVer - https://semver.org
+	 */
+
+	define( 'ACF_TABLE_FIELD_PLUGIN_VERSION', '1.4.3' /* Plugin Version */ );
+
+	/**
+	 * Loads files
+	 */
+
+	require_once( __DIR__ . '/includes/autoload.php');
+	require_once( __DIR__ . '/integrations/polylang/init.php' );
+
+	/**
+	 * Inits settings page
+	 */
+
+	if ( is_admin() ) {
+
+		new PluginSettingsPage();
+	}
+
+	/**
+	 * Loads text domain
+	 */
+
+	load_plugin_textdomain( PluginInfo::get('text_domain'), false, PluginInfo::get('plugin_dir_name') . '/languages/' );
+
+	/**
+	 * Registers field with ACF
+	 */
+
+	PluginClasses::$classes['Field'] = acf_register_field_type( '\ACFTablefield\Field' );
+
+} );
