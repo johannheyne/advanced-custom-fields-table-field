@@ -223,11 +223,10 @@ class PluginSettingsPage {
 			<div class="acf-box">
 				<div class="title"><h3><?php _ex( 'Pro Version', 'settings', PluginInfo::get('text_domain') ); ?></h3></div>
 				<div class="inner" style="padding: 24px;">
-					<p><b>Table Field Pro</b> brings clarity, organization and powerful configurability to your data workflows — with a modern UI, advanced editing tools, and productivity features built for real‑world projects.</p>
-					<p>Whether you're managing product data, pricing tables, schedules, technical specs, charts, or capturing structured input through an ACF form:<br>
-					<b>Pro gives you the control, flexibility and a clean, intuitive UI you always wanted.</b></p>
-					<p>Get the Pro version at: <?php echo sprintf( _x( '<a target="_blank" href="%s">%s</a>', 'settings', PluginInfo::get('text_domain') ), $this->website_url, str_replace( 'https://www.', '', $this->website_url ) ); ?></p>
-					<p style="margin-top: 2em;"><i>By choosing the Pro version, you help ensure the ongoing maintenance and long-term preservation of this open‑source version.</i></p>
+					<p><?php echo _x( '<b>Table Field Pro</b> brings clarity, organization and powerful configurability to your data workflows — with a modern UI, advanced editing tools, and productivity features built for real-world projects.', 'settings', PluginInfo::get('text_domain') ); ?></p>
+					<p><?php echo _x( 'Whether you\'re managing product data, pricing tables, schedules, technical specs, charts, or capturing structured input through an ACF form:<br><b>Pro gives you the control, flexibility and a clean, intuitive UI you always wanted.</b>', 'settings', PluginInfo::get('text_domain') ); ?></p>
+					<p><?php echo sprintf( _x( 'Get the Pro version at: <a target="_blank" href="%s">%s</a>', 'settings', PluginInfo::get('text_domain') ), $this->website_url, str_replace( 'https://www.', '', $this->website_url ) ); ?></p>
+					<p style="margin-top: 2em;"><?php echo sprintf( _x( '<i>By choosing the Pro version, you help ensure the ongoing maintenance and long-term preservation of this open-source version.</i>', 'settings', PluginInfo::get('text_domain') ), $this->website_url, str_replace( 'https://www.', '', $this->website_url ) ); ?></p>
 				</div>
 			</div>
 
