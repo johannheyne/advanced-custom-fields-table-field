@@ -577,7 +577,7 @@ The Pro plugin can run alongside the free version, allowing you to convert exist
 
 = 1.4.0 =
 * Updates vendor DOMPurify to version 3.4.14
-* Fixes Cross‑site Scripting vulnerability in table cell editor sanitization.
+* Fixes Cross-site Scripting vulnerability in table cell editor sanitization.
 * Adds plugin settings page with plugin infos
 
 = 1.3.35 =
