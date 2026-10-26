@@ -95,10 +95,10 @@
 		.acf-table-header-cell {
 			position: relative;
 			display: table-cell;
-			padding: 4px 8px;
 			border: 1px solid #e1e1e1;
 			background-color: #f9f9f9;
-			height: 28px;
+			height: 35px;
+			font-weight: bold;
 		}
 		.acf-table-header-right {
 			position: relative;
@@ -110,7 +110,7 @@
 			padding: 0;
 			font-size: inherit;
 			line-height: inherit;
-			font-weight: bold;
+			padding: 8px 8px;
 		}
 
 	/* HEADER } */
@@ -136,7 +136,6 @@
 			position: relative;
 			display: table-cell;
 			border: 1px solid #e1e1e1;
-			padding: 4px 8px;
 			background-color: white;
 
 		}
@@ -146,10 +145,11 @@
 			border-bottom: 1px solid transparent;
 		}
 		.acf-table-body-cont {
-			margin: 0;
+			margin: 0 0 4px 0;
 			padding: 0;
 			font-size: inherit;
 			line-height: inherit;
+			padding: 4px 8px;
 
 			/* FOLD CELLS { *off/
 
@@ -268,49 +268,37 @@
 /* CELL EDITOR { */
 
 	.acf-table-cell-editor {
-		position: absolute;
-		border: 3px solid #2ea2cc;
-		top: -67px;
-		left: 0;
-		z-index: 2;
-		font-size: 0;
-		line-height: 0;
+		display: flex;
 	}
-	.acf-table-cell-editor:before {
-		content: "";
-		display: block;
-		position: absolute;
-		left: 3px;
-		bottom: -15px;
-		width: 0;
-		height: 0;
-		border: 7px solid transparent;
-		border-top: 7px solid #2ea2cc;
+
+	.acf-table-table td:has(.acf-table-ell-editor) {
+		padding: 0 !important;
 	}
-	.acf-table-cell-editor:after {
-		content: "";
-		display: block;
-		position: absolute;
-		left: 4px;
-		bottom: -10px;
-		width: 0;
-		height: 0;
-		border: 6px solid transparent;
-		border-top: 6px solid #e5f8ff;
+	.acf-table-table div:has(.acf-table-cell-editor) > .acf-table-body-cont,
+	.acf-table-table div:has(.acf-table-cell-editor) > .acf-table-header-cont {
+		display: none;
 	}
+
 	.acf-table-cell-editor-textarea {
+		padding: 8px 8px !important;
+		min-height: 34px;
+		background-color: var(--color-table-editor-background) !important;
+		font-family: inherit !important;
+		line-height: 1.4 !important;
+		font-size: inherit !important;
+		font-weight: inherit !important;
+		width: 100% !important;
+		margin-bottom: 0 !important;
 		border: none !important;
 		border-radius: 0 !important;
-		padding: 3px 7px !important;
-		background-color: #e5f8ff;
-		font-size: 14px !important;
-		line-height: 1.4 !important;
-		min-width: 180px;
-		min-height: 61px !important;
-		box-shadow: none !important;
-		/* fix profile.php ACF v4 */
-		width: auto !important;
-		margin-bottom: 0 !important;
+		box-shadow: 0 0 0 1px var(--color-table-editor-box-shadow) !important;
+		outline: 0 !important;
+		field-sizing: content;
+	}
+
+	.acf-table-table .acf-table-pro-cell-cont {
+
+		white-space: pre-line !important;
 	}
 
 /* CELL EDITOR } */

@@ -1321,7 +1321,11 @@ var ACFTableField = {};
 
 				that_val = t.sanitizeHtml( that_val );
 
-				p['that'].prepend( t.param.htmleditor ).find( '.acf-table-cell-editor-textarea' ).html( that_val ).focus();
+				let $textarea = p['that'].prepend( t.param.htmleditor ).find( '.acf-table-cell-editor-textarea' );
+				$textarea.html( that_val );
+				$textarea.css( 'min-height', p['that'].height() + 'px' );
+				$textarea.focus();
+				$textarea[0].selectionStart = $textarea[0].selectionEnd = 10000;
 			}
 		};
 
