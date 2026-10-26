@@ -1,3 +1,19 @@
+/**
+ * Variables
+ */
+
+.acf-field-table,
+.acf-table-root {
+	--color-table-cell-background: #eee; /* eee */
+	--color-table-border: #e1e1e1; /* e1e1e1 */
+	--color-table-legend-content: #aaa; /* aaa */
+	--color-table-legend-cell-background: #f9f9f9; /* f9f9f9 */
+	--color-table-editor-background: #e5f8ff; /* e5f8ff */
+	--color-table-editor-box-shadow: #2271b1; /* 2271b1 */
+	--color-table-active-background: #2a9bd9; /* 2a9bd9 */
+}
+
+
 .acf-table-wrap {
 	padding: 11px 26px 11px 11px;
 }
