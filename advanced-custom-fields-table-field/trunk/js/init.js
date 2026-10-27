@@ -34,52 +34,52 @@ var ACFTableField = {};
 
 		t.param.htmltable = {
 
-			body_row:	   '<div class="acf-table-body-row">' +
-								'<div class="acf-table-body-left">' +
+			body_row:	   '<tr class="acf-table-body-row">' +
+								'<td class="acf-table-body-left">' +
 									t.param.htmlbuttons.add_row +
 									'<div class="acf-table-body-cont"><!--ph--></div>' +
-								'</div>' +
-								'<div class="acf-table-body-right">' +
+								'</td>' +
+								'<td class="acf-table-body-right">' +
 									t.param.htmlbuttons.remove_row +
-								'</div>' +
-							'</div>',
+								'</td>' +
+							'</tr>',
 
-			top_cell:	   '<div class="acf-table-top-cell" data-colparam="">' +
+			top_cell:	   '<td class="acf-table-top-cell" data-colparam="">' +
 								t.param.htmlbuttons.add_col +
 								'<div class="acf-table-top-cont"><!--ph--></div>' +
-							'</div>',
+							'</td>',
 
-			header_cell:	'<div class="acf-table-header-cell">' +
+			header_cell:	'<td class="acf-table-header-cell">' +
 								'<div class="acf-table-header-cont"><!--ph--></div>' +
-							'</div>',
+							'</td>',
 
-			body_cell:	  '<div class="acf-table-body-cell">' +
+			body_cell:	  '<td class="acf-table-body-cell">' +
 								'<div class="acf-table-body-cont"><!--ph--></div>' +
-							'</div>',
+							'</td>',
 
-			bottom_cell:	'<div class="acf-table-bottom-cell">' +
+			bottom_cell:	'<td class="acf-table-bottom-cell">' +
 								t.param.htmlbuttons.remove_col +
-							'</div>',
+							'</td>',
 
 			table:		   '<div class="acf-table-wrap">' +
-								'<div class="acf-table-table">' + //  acf-table-hide-header acf-table-hide-left acf-table-hide-top
-									'<div class="acf-table-top-row">' +
-										'<div class="acf-table-top-left">' +
+								'<table class="acf-table-table">' + //  acf-table-hide-header acf-table-hide-left acf-table-hide-top
+									'<tr class="acf-table-top-row">' +
+										'<td class="acf-table-top-left">' +
 											t.param.htmlbuttons.add_col +
-										'</div>' +
-										'<div class="acf-table-top-right"></div>' +
-									'</div>' +
-									'<div class="acf-table-header-row acf-table-header-hide-off">' +
-										'<div class="acf-table-header-left">' +
+										'</td>' +
+										'<td class="acf-table-top-right"></td>' +
+									'</tr>' +
+									'<tr class="acf-table-header-row acf-table-header-hide-off">' +
+										'<td class="acf-table-header-left">' +
 											t.param.htmlbuttons.add_row +
-										'</div>' +
-										'<div class="acf-table-header-right"></div>' +
-									'</div>' +
-									'<div class="acf-table-bottom-row">' +
-										'<div class="acf-table-bottom-left"></div>' +
-										'<div class="acf-table-bottom-right"></div>' +
-									'</div>' +
-								'</div>' +
+										'</td>' +
+										'<td class="acf-table-header-right"></td>' +
+									'</tr>' +
+									'<tr class="acf-table-bottom-row">' +
+										'<td class="acf-table-bottom-left"></td>' +
+										'<td class="acf-table-bottom-right"></td>' +
+									'</tr>' +
+								'</table>' +
 
 							'</div>',
 		};
@@ -989,20 +989,32 @@ var ACFTableField = {};
 
 			p.obj_root = p.obj_row.closest( '.acf-table-root' );
 			p.obj_table = p.obj_root.find( '.acf-table-table' );
-			p.obj_table_rows = p.obj_table.children();
+			p.obj_table_rows = p.obj_table.find( '.acf-table-body-row' );
 			col_amount = p.obj_table.find( '.acf-table-top-cell' ).length;
-			that_index = p.obj_row.index();
+			that_index = p.obj_table_rows.index(p.obj_row);
 
 			for ( i = 0; i < col_amount; i++ ) {
 
 				body_cells_html = body_cells_html + t.param.htmltable.body_cell.replace( '<!--ph-->', '' );
 			}
 
-			$( p.obj_table_rows[ that_index ] )
-				.after( t.param.htmltable.body_row )
-				.next()
-				.find('.acf-table-body-left')
-				.after( body_cells_html );
+			if ( that_index > -1 ) {
+
+				$( p.obj_table_rows[ that_index ] )
+					.after( t.param.htmltable.body_row )
+					.next()
+					.find('.acf-table-body-left')
+					.after( body_cells_html );
+			}
+			else {
+
+				$( p.obj_table_rows[ that_index + 1 ] )
+					.before( t.param.htmltable.body_row )
+					.prev()
+					.find('.acf-table-body-left')
+					.after( body_cells_html );
+			}
+
 
 			t.table_left_labels( p );
 
