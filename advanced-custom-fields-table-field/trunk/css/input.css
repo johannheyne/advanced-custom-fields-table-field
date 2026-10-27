@@ -13,9 +13,14 @@
 	--color-table-active-background: #2a9bd9; /* 2a9bd9 */
 }
 
-
 .acf-table-wrap {
 	padding: 11px 26px 11px 11px;
+	overflow-x: auto;
+}
+
+.acf-table:has( .acf-field-table ), /* fixes repeater view */
+.form-table:has( .acf-field-table ) { /* fixes edit user view */
+	table-layout: fixed !important; /* Prevents automatic expansion */
 }
 
 .acf-table-wrap,
