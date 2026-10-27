@@ -508,6 +508,8 @@ However, only when activated as a plugin will updates be available.
 
 1. The Field Settings
 
+2. Field Editing
+
 
 == Translations ==
 
