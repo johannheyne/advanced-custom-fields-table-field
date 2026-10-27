@@ -1,0 +1,378 @@
+/**
+ * Variables
+ */
+
+.acf-field-table,
+.acf-table-root {
+	--color-table-cell-background: #eee; /* eee */
+	--color-table-border: #e1e1e1; /* e1e1e1 */
+	--color-table-legend-content: #aaa; /* aaa */
+	--color-table-legend-cell-background: #f9f9f9; /* f9f9f9 */
+	--color-table-editor-background: #e5f8ff; /* e5f8ff */
+	--color-table-editor-box-shadow: #2271b1; /* 2271b1 */
+	--color-table-active-background: #2a9bd9; /* 2a9bd9 */
+}
+
+.acf-table-wrap {
+	padding: 11px 26px 11px 11px;
+	overflow-x: auto;
+}
+
+.acf-table:has( .acf-field-table ), /* fixes repeater view */
+.form-table:has( .acf-field-table ) { /* fixes edit user view */
+	table-layout: fixed !important; /* Prevents automatic expansion */
+}
+
+.acf-table-wrap,
+.acf-table-wrap *,
+.acf-table-wrap *:before,
+.acf-table-wrap *:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* TABLE { */
+
+	.acf-table-table {
+		border-collapse: collapse;
+	}
+	.acf-table-table td {
+		vertical-align: top;
+	}
+
+	.acf-table-body-row {
+		width: 100%;
+	}
+
+	.acf-table-table * {
+		background-clip: padding-box; /* fix FireFox and IE background color painting over the borders */
+	}
+
+	/* TOP { */
+
+		.acf-table-top-row {
+			position: relative;
+		}
+		.acf-table-top-left {
+			position: relative;
+			width: 1px;
+			padding: 4px 8px 4px 16px;
+		}
+		.acf-table-top-cell {
+			position: relative;
+			padding: 4px 8px;
+			border: 1px solid #e1e1e1;
+			background-color: #eee;
+			cursor: move;
+			min-width: 68px;
+			height: 28px;
+		}
+		.acf-table-top-right {
+			position: relative;
+			width: 26px;
+		}
+		.acf-table-top-cont {
+			margin: 0;
+			padding: 0;
+			font-size: inherit;
+			line-height: inherit;
+			text-align: center;
+			color: #aaa;
+		}
+
+	/* TOP } */
+
+	/* HEADER { */
+
+		.acf-table-header-row {
+			position: relative;
+		}
+		.acf-table-header-left {
+			position: relative;
+		}
+		.acf-table-header-cell {
+			position: relative;
+			border: 1px solid #e1e1e1;
+			background-color: #f9f9f9;
+			height: 36px;
+			font-weight: bold;
+			padding: 0;
+		}
+		.acf-table-header-right {
+			position: relative;
+			width: 26px;
+			padding: 0;
+		}
+		.acf-table-header-cont {
+			margin: 0;
+			padding: 0;
+			font-size: inherit;
+			line-height: inherit;
+			padding: 8px 8px;
+		}
+
+	/* HEADER } */
+
+	/* BODY { */
+
+		.acf-table-body-row {
+			position: relative;
+		}
+		.acf-table-body-left {
+			position: relative;
+			border: 1px solid #e1e1e1;
+			padding: 0px 8px 0px 16px;
+			background-color: #eee;
+			height: 36px;
+			cursor: move;
+			text-align: right;
+			color: #aaa;
+		}
+		.acf-table-body-cell {
+			position: relative;
+			border: 1px solid #e1e1e1;
+			height: 36px;
+			background-color: white;
+			padding: 0;
+
+		}
+		.acf-table-body-right {
+			position: relative;
+			border-bottom: 1px solid transparent;
+		}
+		.acf-table-body-cont {
+			margin: 0;
+			padding: 0;
+			font-size: inherit;
+			line-height: inherit;
+			padding: 8px 8px;
+
+			/* FOLD CELLS { *off/
+
+				max-height: 18px;
+				overflow: hidden;
+
+			/* FOLD CELLS } */
+		}
+
+	/* BODY } */
+
+	/* BOTTOM { */
+
+		.acf-table-bottom-row {
+			position: relative;
+		}
+		.acf-table-bottom-left {
+			position: relative;
+			height: 24px;
+		}
+		.acf-table-bottom-cell {
+			position: relative;
+		}
+		.acf-table-bottom-right {
+			position: relative;
+		}
+
+	/* BOTTOM } */
+
+	/* HIDES { */
+
+		/* .acf-table-hide-header { */
+
+			.acf-table-hide-header .acf-table-header-row,
+			.acf-table-hide-header .acf-table-header-row * {
+				height: 0 !important;
+				font-size: 0 !important;
+				line-height: 0 !important;
+				padding: 0 !important;
+				border: 0 !important;
+				display: block;
+			}
+			.acf-table-hide-header .acf-table-top-row > * {
+				border-bottom: none;
+			}
+
+		/* .acf-table-hide-header } */
+
+		/* .acf-table-hide-left { */
+
+			.acf-table.acf-table-hide-left > * > *:first-child {
+				font-size: 0 !important;
+				line-height: 0 !important;
+				width: 16px !important;
+				padding: 0 !important;
+				/*border: 0 !important;*/
+				background: none !important;
+				border-left: none;
+			}
+
+		/* .acf-table-hide-left } */
+
+		/* .acf-table-hide-top { */
+
+			.acf-table.acf-table-hide-top .acf-table-top-left,
+			.acf-table.acf-table-hide-top .acf-table-top-cell,
+			.acf-table.acf-table-hide-top .acf-table-top-right {
+				height: 0 !important;
+				font-size: 0 !important;
+				line-height: 0 !important;
+				height: 16px !important;
+				/*padding: 0 !important;
+				border: 0 !important;*/
+				background: none !important;
+				border-top: none;
+			}
+
+		/* .acf-table-hide-top } */
+
+	/* HIDE } */
+
+/* TABLE } */
+
+/* BUTTONS { */
+
+	.acf-table-add-col {
+		position: absolute !important;
+		top: -9px;
+		right: -10px;
+		z-index: 1;
+	}
+	.acf-table-add-row {
+		position: absolute !important;
+		bottom: -11px;
+		left: -10px;
+		z-index: 1;
+	}
+	.acf-table-remove-col {
+		position: absolute !important;
+		top: 4px;
+		left: 50%;
+		margin-left: -10px;
+	}
+	.acf-table-remove-row {
+		position: absolute !important;
+		left: 6px;
+		top: 3px;
+	}
+
+/* BUTTONS } */
+
+/* CELL EDITOR { */
+
+	.acf-table-cell-editor {
+		display: flex;
+	}
+
+	.acf-table-table td:has(.acf-table-cell-editor) {
+		padding: 0 !important;
+	}
+	.acf-table-table td:has(.acf-table-cell-editor) > .acf-table-body-cont,
+	.acf-table-table td:has(.acf-table-cell-editor) > .acf-table-header-cont {
+		display: none;
+	}
+
+	.acf-table-cell-editor-textarea {
+		padding: 8px 8px !important;
+		min-height: 36px;
+		background-color: var(--color-table-editor-background) !important;
+		font-family: inherit !important;
+		line-height: 1.4 !important;
+		font-size: inherit !important;
+		font-weight: inherit !important;
+		width: 100% !important;
+		margin-bottom: 0 !important;
+		border: none !important;
+		border-radius: 0 !important;
+		box-shadow: 0 0 0 1px var(--color-table-editor-box-shadow) !important;
+		outline: 0 !important;
+		field-sizing: content;
+	}
+
+	.acf-table-table .acf-table-pro-cell-cont {
+
+		white-space: pre-line !important;
+	}
+
+/* CELL EDITOR } */
+
+/* OPTIONBOX { */
+
+	.acf-table-optionwrap {
+		margin-top: 16px;
+		margin-bottom: 16px;
+		padding: 0 51px 0 45px;
+	}
+	.acf-table-optionbox {
+		margin-top: 16px;
+		margin-bottom: 16px;
+	}
+	.acf-table-optionbox + .acf-table-optionbox {
+		margin-top: -20px;
+	}
+
+	/* FIELDS { */
+
+		.acf-table-optionbox label {
+			display: inline-block;
+			font-weight: bold;
+			padding-right: 6px;
+			padding-bottom: 10px;
+			padding-top: 10px;
+		}
+
+		.acf-table-fc-opt-use-header {
+			width: auto !important;
+			padding: 3px 24px 3px 8px !important; /* fixes ACF padding 2px for select fields */
+		}
+
+		.acf-table-fc-opt-caption {
+			width: 100% !important;
+		}
+
+	/* FIELDS } */
+
+/* OPTIONBOX } */
+
+/* FIELDGROUP PAGE { */
+
+	.field-type-icon.field-type-icon-table:before {
+		-webkit-mask-image: url(../assets/images/field-type-icon-table.svg);
+		mask-image: url(../assets/images/field-type-icon-table.svg);
+	}
+
+/* FIELDGROUP PAGE } */
+
+/* SORTABLE { */
+
+	.acf-table-top-cell:active:not(:has(a:active)),
+	.acf-table-top-cell.ui-sortable-helper {
+		background-color: var(--color-table-active-background) !important;
+		border: 1px solid var(--color-table-active-background) !important;
+	}
+	.acf-table-top-cell:active:not(:has(a:active)) .acf-table-top-cont,
+	.acf-table-top-cell.ui-sortable-helper .acf-table-top-cont {
+		color: white !important;
+	}
+	.acf-table-top-cell.ui-sortable-helper .acf-table-add-col {
+		opacity: 0;
+	}
+	.acf-table-wrap:has(.ui-sortable-helper) .acf-table-body-cell {
+		min-width: 68px;
+	}
+
+	.acf-table-body-left:active:not(:has(a:active)),
+	.acf-table-body-left.ui-sortable-helper {
+		background-color: var(--color-table-active-background) !important;
+		border: 1px solid var(--color-table-active-background) !important;
+	}
+	.acf-table-body-left:active:not(:has(a:active)) .acf-table-body-cont,
+	.acf-table-body-left.ui-sortable-helper .acf-table-body-cont {
+		color: white !important;
+	}
+	.acf-table-body-row.ui-sortable-helper .acf-table-body-left .acf-table-add-row {
+		opacity: 0;
+	}
+
+/* SORTABLE } */
