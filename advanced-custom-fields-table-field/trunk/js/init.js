@@ -993,6 +993,12 @@ var ACFTableField = {};
 			col_amount = p.obj_table.find( '.acf-table-top-cell' ).length;
 			that_index = p.obj_table_rows.index(p.obj_row);
 
+			if ( p.obj_row.hasClass('acf-table-header-row') ) {
+
+				p.obj_table_rows = p.obj_table.find( '.acf-table-header-row' );
+				that_index = 0;
+			}
+
 			for ( i = 0; i < col_amount; i++ ) {
 
 				body_cells_html = body_cells_html + t.param.htmltable.body_cell.replace( '<!--ph-->', '' );
