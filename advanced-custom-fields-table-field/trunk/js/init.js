@@ -1549,7 +1549,7 @@ var ACFTableField = {};
 
 			var param = {
 				axis: 'y',
-				items: '> .acf-table-body-row',
+				items: '> tbody > .acf-table-body-row',
 				containment: 'parent',
 				handle: '.acf-table-body-left',
 				helper: t.sortable_fix_width,
