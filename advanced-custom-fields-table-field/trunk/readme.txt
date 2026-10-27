@@ -508,10 +508,6 @@ However, only when activated as a plugin will updates be available.
 
 1. The Field Settings
 
-2. The Field Content Editing
-
-2. Grab the rows and columns in the grey area and drag them.
-
 
 == Translations ==
 
