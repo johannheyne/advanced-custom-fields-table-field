@@ -558,8 +558,10 @@ The Pro plugin can run alongside the free version, allowing you to convert exist
 
 == Changelog ==
 
-= 1.4.5 =
+= 1.5.0 =
 * Replaces cell editor box by inline editing like the pro version
+* Removes the 100% width constraint from the editing table
+* Improves vertical overflow handling for the editing table
 
 = 1.4.4 =
 * Adds sponsor and donation options
