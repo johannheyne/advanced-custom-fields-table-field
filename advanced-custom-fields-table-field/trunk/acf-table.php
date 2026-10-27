@@ -3,7 +3,7 @@
 Plugin Name: Table Field Add-on for ACF and SCF
 Plugin URI: https://www.acf-table-field.com
 Description: This free Add-on adds a table field type for the plugins Advanced Custom Fields and Secure Custom Fields.
-Version: 1.5.0
+Version: 1.5.1
 Author: Johann Heyne
 Author URI: http://www.johannheyne.de
 License: GPLv2 or later
@@ -47,7 +47,7 @@ add_action( 'init', function(){
 	 * Start at version 1.0.0 and use SemVer - https://semver.org
 	 */
 
-	define( 'ACF_TABLE_FIELD_PLUGIN_VERSION', '1.5.0' /* Plugin Version */ );
+	define( 'ACF_TABLE_FIELD_PLUGIN_VERSION', '1.5.1' /* Plugin Version */ );
 
 	/**
 	 * Loads files

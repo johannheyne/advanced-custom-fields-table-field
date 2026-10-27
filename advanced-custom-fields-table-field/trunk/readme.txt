@@ -3,7 +3,7 @@ Contributors: jonua
 Tags: acf, table, scf, advanced custom fields, secure custom fields
 Requires at least: 5.3
 Tested up to: 7.1.2
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -555,6 +555,9 @@ The Pro plugin can run alongside the free version, allowing you to convert exist
 
 
 == Changelog ==
+
+= 1.5.1 =
+* Optimizes table text flow and wrapping
 
 = 1.5.0 =
 * Replaces cell editor box by inline editing like the pro version

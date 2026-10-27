@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 1.5.1 =
+* Optimizes table text flow and wrapping
+
 = 1.5.0 =
 * Replaces cell editor box by inline editing like the Pro version
 * Removes the 100% width constraint from the editing table
